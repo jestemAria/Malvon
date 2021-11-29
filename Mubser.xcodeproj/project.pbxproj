@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95F9B275538A800B130F9 /* AppDelegate.swift */; };
+		CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9D275538AC00B130F9 /* Assets.xcassets */; };
+		CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9F275538AC00B130F9 /* MainMenu.xib */; };
+		CFC95FAC275538AC00B130F9 /* MubserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FAB275538AC00B130F9 /* MubserTests.swift */; };
+		CFC95FB6275538AC00B130F9 /* MubserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FB5275538AC00B130F9 /* MubserUITests.swift */; };
+		CFC95FB8275538AC00B130F9 /* MubserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFC95FA8275538AC00B130F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFC95F90275538A800B130F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFC95F97275538A800B130F9;
+			remoteInfo = Mubser;
+		};
+		CFC95FB2275538AC00B130F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFC95F90275538A800B130F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFC95F97275538A800B130F9;
+			remoteInfo = Mubser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFC95F9B275538A800B130F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CFC95F9D275538AC00B130F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFC95FA0275538AC00B130F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFC95FA2275538AC00B130F9 /* Mubser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mubser.entitlements; sourceTree = "<group>"; };
+		CFC95FA7275538AC00B130F9 /* MubserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFC95FAB275538AC00B130F9 /* MubserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubserTests.swift; sourceTree = "<group>"; };
+		CFC95FB1275538AC00B130F9 /* MubserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFC95FB5275538AC00B130F9 /* MubserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubserUITests.swift; sourceTree = "<group>"; };
+		CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubserUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFC95F95275538A800B130F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFC95FA4275538AC00B130F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFC95FAE275538AC00B130F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CFC95F8F275538A800B130F9 = {
+			isa = PBXGroup;
+			children = (
+				CFC95F9A275538A800B130F9 /* Mubser */,
+				CFC95FAA275538AC00B130F9 /* MubserTests */,
+				CFC95FB4275538AC00B130F9 /* MubserUITests */,
+				CFC95F99275538A800B130F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CFC95F99275538A800B130F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFC95F98275538A800B130F9 /* Mubser.app */,
+				CFC95FA7275538AC00B130F9 /* MubserTests.xctest */,
+				CFC95FB1275538AC00B130F9 /* MubserUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFC95F9A275538A800B130F9 /* Mubser */ = {
+			isa = PBXGroup;
+			children = (
+				CFC95F9B275538A800B130F9 /* AppDelegate.swift */,
+				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
+				CFC95F9F275538AC00B130F9 /* MainMenu.xib */,
+				CFC95FA2275538AC00B130F9 /* Mubser.entitlements */,
+			);
+			path = Mubser;
+			sourceTree = "<group>";
+		};
+		CFC95FAA275538AC00B130F9 /* MubserTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFC95FAB275538AC00B130F9 /* MubserTests.swift */,
+			);
+			path = MubserTests;
+			sourceTree = "<group>";
+		};
+		CFC95FB4275538AC00B130F9 /* MubserUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CFC95FB5275538AC00B130F9 /* MubserUITests.swift */,
+				CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */,
+			);
+			path = MubserUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFC95F97275538A800B130F9 /* Mubser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFC95FBB275538AC00B130F9 /* Build configuration list for PBXNativeTarget "Mubser" */;
+			buildPhases = (
+				CFC95F94275538A800B130F9 /* Sources */,
+				CFC95F95275538A800B130F9 /* Frameworks */,
+				CFC95F96275538A800B130F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mubser;
+			productName = Mubser;
+			productReference = CFC95F98275538A800B130F9 /* Mubser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CFC95FA6275538AC00B130F9 /* MubserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFC95FBE275538AC00B130F9 /* Build configuration list for PBXNativeTarget "MubserTests" */;
+			buildPhases = (
+				CFC95FA3275538AC00B130F9 /* Sources */,
+				CFC95FA4275538AC00B130F9 /* Frameworks */,
+				CFC95FA5275538AC00B130F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFC95FA9275538AC00B130F9 /* PBXTargetDependency */,
+			);
+			name = MubserTests;
+			productName = MubserTests;
+			productReference = CFC95FA7275538AC00B130F9 /* MubserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CFC95FB0275538AC00B130F9 /* MubserUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFC95FC1275538AC00B130F9 /* Build configuration list for PBXNativeTarget "MubserUITests" */;
+			buildPhases = (
+				CFC95FAD275538AC00B130F9 /* Sources */,
+				CFC95FAE275538AC00B130F9 /* Frameworks */,
+				CFC95FAF275538AC00B130F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFC95FB3275538AC00B130F9 /* PBXTargetDependency */,
+			);
+			name = MubserUITests;
+			productName = MubserUITests;
+			productReference = CFC95FB1275538AC00B130F9 /* MubserUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFC95F90275538A800B130F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					CFC95F97275538A800B130F9 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					CFC95FA6275538AC00B130F9 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = CFC95F97275538A800B130F9;
+					};
+					CFC95FB0275538AC00B130F9 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = CFC95F97275538A800B130F9;
+					};
+				};
+			};
+			buildConfigurationList = CFC95F93275538A800B130F9 /* Build configuration list for PBXProject "Mubser" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CFC95F8F275538A800B130F9;
+			productRefGroup = CFC95F99275538A800B130F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFC95F97275538A800B130F9 /* Mubser */,
+				CFC95FA6275538AC00B130F9 /* MubserTests */,
+				CFC95FB0275538AC00B130F9 /* MubserUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFC95F96275538A800B130F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
+				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFC95FA5275538AC00B130F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFC95FAF275538AC00B130F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFC95F94275538A800B130F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFC95FA3275538AC00B130F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC95FAC275538AC00B130F9 /* MubserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFC95FAD275538AC00B130F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC95FB8275538AC00B130F9 /* MubserUITestsLaunchTests.swift in Sources */,
+				CFC95FB6275538AC00B130F9 /* MubserUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFC95FA9275538AC00B130F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFC95F97275538A800B130F9 /* Mubser */;
+			targetProxy = CFC95FA8275538AC00B130F9 /* PBXContainerItemProxy */;
+		};
+		CFC95FB3275538AC00B130F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFC95F97275538A800B130F9 /* Mubser */;
+			targetProxy = CFC95FB2275538AC00B130F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CFC95F9F275538AC00B130F9 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFC95FA0275538AC00B130F9 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFC95FB9275538AC00B130F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CFC95FBA275538AC00B130F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CFC95FBC275538AC00B130F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mubser/Mubser.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CFC95FBD275538AC00B130F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mubser/Mubser.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CFC95FBF275538AC00B130F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mubser.app/Contents/MacOS/Mubser";
+			};
+			name = Debug;
+		};
+		CFC95FC0275538AC00B130F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mubser.app/Contents/MacOS/Mubser";
+			};
+			name = Release;
+		};
+		CFC95FC2275538AC00B130F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubserUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Mubser;
+			};
+			name = Debug;
+		};
+		CFC95FC3275538AC00B130F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubserUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Mubser;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFC95F93275538A800B130F9 /* Build configuration list for PBXProject "Mubser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFC95FB9275538AC00B130F9 /* Debug */,
+				CFC95FBA275538AC00B130F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFC95FBB275538AC00B130F9 /* Build configuration list for PBXNativeTarget "Mubser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFC95FBC275538AC00B130F9 /* Debug */,
+				CFC95FBD275538AC00B130F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFC95FBE275538AC00B130F9 /* Build configuration list for PBXNativeTarget "MubserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFC95FBF275538AC00B130F9 /* Debug */,
+				CFC95FC0275538AC00B130F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFC95FC1275538AC00B130F9 /* Build configuration list for PBXNativeTarget "MubserUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFC95FC2275538AC00B130F9 /* Debug */,
+				CFC95FC3275538AC00B130F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFC95F90275538A800B130F9 /* Project object */;
+}

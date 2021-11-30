@@ -9,7 +9,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MubViewController" customModule="Mubser" customModuleProvider="target">
             <connections>
+                <outlet property="backButtonOutlet" destination="oDF-KD-qZS" id="hjO-fT-R4o"/>
                 <outlet property="faviconImageView" destination="Vhq-dS-UBZ" id="mpq-67-8mt"/>
+                <outlet property="forwardButtonOutlet" destination="oJF-xR-Z4V" id="aR4-07-HGi"/>
                 <outlet property="progressIndicator" destination="YhO-4t-qRf" id="8Jm-Aw-0US"/>
                 <outlet property="refreshButton" destination="DhB-2r-p2a" id="wSB-BK-QEE"/>
                 <outlet property="searchField" destination="I8O-2s-z3b" id="2iK-05-zsI"/>
@@ -50,13 +52,13 @@
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgG-f9-HK0">
                     <rect key="frame" x="3" y="214" width="61" height="30"/>
                     <subviews>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDF-KD-qZS">
-                            <rect key="frame" x="-1" y="-2" width="32" height="33"/>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDF-KD-qZS" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="-2" width="30" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="S9Y-LS-Csd"/>
                                 <constraint firstAttribute="width" constant="30" id="fl3-3R-viK"/>
                             </constraints>
-                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSGoBackTemplate" imagePosition="only" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZEe-5c-cee">
+                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSGoBackTemplate" imagePosition="only" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="ZEe-5c-cee">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -64,13 +66,13 @@
                                 <action selector="backButton:" target="-2" id="vkX-N5-rd3"/>
                             </connections>
                         </button>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-xR-Z4V">
-                            <rect key="frame" x="30" y="-2" width="32" height="33"/>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-xR-Z4V" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
+                            <rect key="frame" x="30" y="-2" width="30" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="CZ2-o3-LJk"/>
                                 <constraint firstAttribute="width" constant="30" id="dHL-v6-1iH"/>
                             </constraints>
-                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSGoForwardTemplate" imagePosition="only" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fKN-1N-KdJ">
+                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSGoForwardTemplate" imagePosition="only" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="fKN-1N-KdJ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>

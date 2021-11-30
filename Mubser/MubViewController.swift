@@ -21,6 +21,9 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     @IBOutlet weak var refreshButton: NSButton!
     @IBOutlet weak var faviconImageView: NSImageView!
     
+    @IBOutlet weak var backButtonOutlet: HoverButton!
+    @IBOutlet weak var forwardButtonOutlet: HoverButton!
+    
     @IBOutlet weak var tabStackView: NSStackView!
     @IBOutlet weak var sideView: NSView!
     
@@ -67,6 +70,20 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         }
     }
     
+    func checkButtons() {
+        if webView.canGoBack {
+            backButtonOutlet.isEnabled = true
+        } else {
+            backButtonOutlet.isEnabled = false
+        }
+        
+        if webView.canGoForward {
+            forwardButtonOutlet.isEnabled = true
+        } else {
+            forwardButtonOutlet.isEnabled = false
+        }
+    }
+    
     @IBAction func refreshButton(_ sender: NSButton) {
         if sender.image == NSImage(named: NSImage.refreshTemplateName) {
             webView.reload()
@@ -89,6 +106,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
                 progressIndicator.doubleValue = 0
                 progressIndicator.isHidden = true
                 refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
+                checkButtons()
             }
         } else if keyPath == "title" {
             websiteTitle.stringValue = webView.title!
@@ -100,6 +118,11 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         searchField.stringValue = self.webView.url!.absoluteString
+        checkButtons()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        checkButtons()
     }
     
     @IBAction func searchFieldAction(_ sender: Any) {

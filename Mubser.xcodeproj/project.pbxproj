@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
 		CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95F9B275538A800B130F9 /* AppDelegate.swift */; };
 		CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9D275538AC00B130F9 /* Assets.xcassets */; };
 		CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9F275538AC00B130F9 /* MainMenu.xib */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC95F9B275538A800B130F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC95F9D275538AC00B130F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF7772C227567DCF0034555A /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				CF7772C627567DE50034555A /* HoverButton.swift */,
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
 		CFC95F8F275538A800B130F9 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 		CFC95F9A275538A800B130F9 /* Mubser */ = {
 			isa = PBXGroup;
 			children = (
+				CF7772C227567DCF0034555A /* UI Elements */,
 				CFC95F9B275538A800B130F9 /* AppDelegate.swift */,
 				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
 				CFC95F9F275538AC00B130F9 /* MainMenu.xib */,
@@ -372,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7772C727567DE50034555A /* HoverButton.swift in Sources */,
 				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
 				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,

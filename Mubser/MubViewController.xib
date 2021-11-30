@@ -15,7 +15,6 @@
                 <outlet property="progressIndicator" destination="YhO-4t-qRf" id="8Jm-Aw-0US"/>
                 <outlet property="refreshButton" destination="DhB-2r-p2a" id="wSB-BK-QEE"/>
                 <outlet property="searchField" destination="I8O-2s-z3b" id="2iK-05-zsI"/>
-                <outlet property="sideView" destination="29H-ge-WVP" id="LG8-eI-ESy"/>
                 <outlet property="tabStackView" destination="TAK-Ee-IF3" id="3lD-Pn-CFf"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="webView" destination="HKm-nA-M9f" id="Mai-b1-kCk"/>
@@ -28,6 +27,12 @@
             <rect key="frame" x="0.0" y="0.0" width="505" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Fc0-OO-5sh">
+                    <rect key="frame" x="67" y="242" width="438" height="30"/>
+                </visualEffectView>
+                <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="rut-gv-h2M">
+                    <rect key="frame" x="0.0" y="0.0" width="67" height="272"/>
+                </visualEffectView>
                 <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HKm-nA-M9f" customClass="MubWebView" customModule="MubWebView">
                     <rect key="frame" x="67" y="0.0" width="438" height="242"/>
                     <wkWebViewConfiguration key="configuration">
@@ -114,7 +119,7 @@
                             <rect key="frame" x="29" y="7" width="56" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Tab Title" id="LFP-ul-fLJ">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -141,7 +146,7 @@
                         <constraint firstAttribute="width" constant="16" id="ioO-p2-Hlp"/>
                     </constraints>
                 </progressIndicator>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DhB-2r-p2a">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DhB-2r-p2a" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
                     <rect key="frame" x="67" y="239.5" width="30.5" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="L9C-Zi-5uH"/>
@@ -156,37 +161,38 @@
                         <action selector="refreshButton:" target="-2" id="K1M-w1-lxE"/>
                     </connections>
                 </button>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="29H-ge-WVP">
-                    <rect key="frame" x="500" y="242" width="5" height="30"/>
-                </customView>
             </subviews>
             <constraints>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6ud-Kf-piq"/>
+                <constraint firstItem="HKm-nA-M9f" firstAttribute="leading" secondItem="rut-gv-h2M" secondAttribute="trailing" id="Cup-tw-x75"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="DhB-2r-p2a" secondAttribute="bottom" id="Fjh-zW-MfX"/>
                 <constraint firstAttribute="trailing" secondItem="HKm-nA-M9f" secondAttribute="trailing" id="G48-dj-zcL"/>
                 <constraint firstItem="DhB-2r-p2a" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="67" id="GJ3-zS-8RO"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="28.5" id="GO1-Pd-xzK"/>
+                <constraint firstItem="Fc0-OO-5sh" firstAttribute="trailing" secondItem="HKm-nA-M9f" secondAttribute="trailing" id="IRf-fg-Jla"/>
                 <constraint firstItem="DhB-2r-p2a" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="JIp-KU-n0q"/>
                 <constraint firstAttribute="trailing" secondItem="TAK-Ee-IF3" secondAttribute="trailing" constant="5" id="Jjo-bz-WPa"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="67" id="KZ6-PL-90e"/>
+                <constraint firstAttribute="bottom" secondItem="rut-gv-h2M" secondAttribute="bottom" id="LGt-Ky-0JE"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="30" id="LzU-P1-cVL"/>
+                <constraint firstItem="Fc0-OO-5sh" firstAttribute="top" secondItem="I8O-2s-z3b" secondAttribute="top" id="MBb-uM-ghW"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="YhO-4t-qRf" secondAttribute="bottom" constant="7" id="Nog-uj-TCv"/>
+                <constraint firstItem="Fc0-OO-5sh" firstAttribute="leading" secondItem="I8O-2s-z3b" secondAttribute="leading" id="OVa-L3-0kK"/>
                 <constraint firstItem="IY4-bO-0TV" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="30" id="PCz-en-CHX"/>
+                <constraint firstItem="rut-gv-h2M" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="QpI-CT-xRP"/>
                 <constraint firstItem="TAK-Ee-IF3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Sem-jL-IFc"/>
                 <constraint firstAttribute="bottom" secondItem="IY4-bO-0TV" secondAttribute="bottom" id="VQb-ql-NnP"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="leading" secondItem="sgG-f9-HK0" secondAttribute="trailing" constant="3" id="ZVm-Ln-GIs"/>
+                <constraint firstItem="Fc0-OO-5sh" firstAttribute="bottom" secondItem="TAK-Ee-IF3" secondAttribute="bottom" id="a9b-lj-pbC"/>
                 <constraint firstItem="YhO-4t-qRf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="74" id="jHc-sX-Yd6"/>
                 <constraint firstItem="YhO-4t-qRf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="jgf-1v-182"/>
-                <constraint firstItem="29H-ge-WVP" firstAttribute="leading" secondItem="TAK-Ee-IF3" secondAttribute="trailing" id="k2Y-XS-ymu"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="laZ-AN-m7E"/>
                 <constraint firstAttribute="bottom" secondItem="HKm-nA-M9f" secondAttribute="bottom" id="mJA-yz-sEH"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="67" id="oKF-G0-KYm"/>
-                <constraint firstAttribute="trailing" secondItem="29H-ge-WVP" secondAttribute="trailing" id="oUi-N3-Q4z"/>
-                <constraint firstItem="29H-ge-WVP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="reS-i2-Z1t"/>
-                <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="29H-ge-WVP" secondAttribute="bottom" id="rxx-J4-Yrg"/>
                 <constraint firstItem="TAK-Ee-IF3" firstAttribute="leading" secondItem="I8O-2s-z3b" secondAttribute="trailing" id="tbr-Fa-PRh"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="I8O-2s-z3b" secondAttribute="bottom" id="uVp-EA-ZPI"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="TAK-Ee-IF3" secondAttribute="bottom" id="zWv-x9-fXN"/>
+                <constraint firstItem="rut-gv-h2M" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="zt5-3x-L6f"/>
             </constraints>
             <point key="canvasLocation" x="138.5" y="135"/>
         </customView>

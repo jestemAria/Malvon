@@ -24,7 +24,6 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     @IBOutlet var websiteTitle: NSTextField!
     @IBOutlet var faviconImageView: NSImageView!
     @IBOutlet var tabStackView: NSStackView!
-    @IBOutlet var sideView: NSView!
 
     // Refresh, Back, Forward outlets
     @IBOutlet var refreshButton: NSButton!
@@ -56,8 +55,6 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     // Style the elements ( buttons, searchfields )
     func styleElements() {
         progressIndicator.alphaValue = 0.7
-        tabStackView.layer?.backgroundColor = NSColor.black.cgColor
-        sideView.layer?.backgroundColor = NSColor.black.cgColor
     }
     
     // Configure the elements ( buttons, searchfields )

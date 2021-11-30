@@ -13,6 +13,15 @@
 		CFC95FAC275538AC00B130F9 /* MubserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FAB275538AC00B130F9 /* MubserTests.swift */; };
 		CFC95FB6275538AC00B130F9 /* MubserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FB5275538AC00B130F9 /* MubserUITests.swift */; };
 		CFC95FB8275538AC00B130F9 /* MubserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */; };
+		CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9602527553C7A00B130F9 /* MubWindowController.swift */; };
+		CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC9602627553C7A00B130F9 /* MubWindowController.xib */; };
+		CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9602927553CA600B130F9 /* MubViewController.swift */; };
+		CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC9602A27553CA600B130F9 /* MubViewController.xib */; };
+		CFC9602D27553D0B00B130F9 /* MubWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; };
+		CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; };
+		CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC960412755873400B130F9 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC960402755873400B130F9 /* SearchCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +39,43 @@
 			remoteGlobalIDString = CFC95F97275538A800B130F9;
 			remoteInfo = Mubser;
 		};
+		CFC9601B2755395D00B130F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFC960162755395C00B130F9 /* MubWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CFC95FFC2755395B00B130F9;
+			remoteInfo = MubWebView;
+		};
+		CFC9601D2755395D00B130F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFC960162755395C00B130F9 /* MubWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CFC960062755395C00B130F9;
+			remoteInfo = MubWebViewTests;
+		};
+		CFC9603C2755863D00B130F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF3DF70E25A3B29C00551093;
+			remoteInfo = APSuggestions;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CFC9602F27553D0B00B130F9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */,
+				CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +88,13 @@
 		CFC95FB1275538AC00B130F9 /* MubserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC95FB5275538AC00B130F9 /* MubserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubserUITests.swift; sourceTree = "<group>"; };
 		CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubserUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CFC960162755395C00B130F9 /* MubWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubWebView.xcodeproj; path = MubWebView/MubWebView.xcodeproj; sourceTree = "<group>"; };
+		CFC9602527553C7A00B130F9 /* MubWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWindowController.swift; sourceTree = "<group>"; };
+		CFC9602627553C7A00B130F9 /* MubWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubWindowController.xib; sourceTree = "<group>"; };
+		CFC9602927553CA600B130F9 /* MubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubViewController.swift; sourceTree = "<group>"; };
+		CFC9602A27553CA600B130F9 /* MubViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubViewController.xib; sourceTree = "<group>"; };
+		CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APSuggestions.xcodeproj; path = APSuggestions/APSuggestions.xcodeproj; sourceTree = "<group>"; };
+		CFC960402755873400B130F9 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC9602D27553D0B00B130F9 /* MubWebView.framework in Frameworks */,
+				CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				CFC95F9A275538A800B130F9 /* Mubser */,
+				CFC95FC42755392D00B130F9 /* Frameworks */,
 				CFC95FAA275538AC00B130F9 /* MubserTests */,
 				CFC95FB4275538AC00B130F9 /* MubserUITests */,
 				CFC95F99275538A800B130F9 /* Products */,
@@ -97,6 +152,11 @@
 				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
 				CFC95F9F275538AC00B130F9 /* MainMenu.xib */,
 				CFC95FA2275538AC00B130F9 /* Mubser.entitlements */,
+				CFC9602527553C7A00B130F9 /* MubWindowController.swift */,
+				CFC9602627553C7A00B130F9 /* MubWindowController.xib */,
+				CFC9602927553CA600B130F9 /* MubViewController.swift */,
+				CFC9602A27553CA600B130F9 /* MubViewController.xib */,
+				CFC960402755873400B130F9 /* SearchCell.xib */,
 			);
 			path = Mubser;
 			sourceTree = "<group>";
@@ -118,6 +178,32 @@
 			path = MubserUITests;
 			sourceTree = "<group>";
 		};
+		CFC95FC42755392D00B130F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFC960162755395C00B130F9 /* MubWebView.xcodeproj */,
+				CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFC960172755395C00B130F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFC9601C2755395D00B130F9 /* MubWebView.framework */,
+				CFC9601E2755395D00B130F9 /* MubWebViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFC960382755863C00B130F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFC9603D2755863D00B130F9 /* APSuggestions.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +214,7 @@
 				CFC95F94275538A800B130F9 /* Sources */,
 				CFC95F95275538A800B130F9 /* Frameworks */,
 				CFC95F96275538A800B130F9 /* Resources */,
+				CFC9602F27553D0B00B130F9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +295,16 @@
 			mainGroup = CFC95F8F275538A800B130F9;
 			productRefGroup = CFC95F99275538A800B130F9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CFC960382755863C00B130F9 /* Products */;
+					ProjectRef = CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */;
+				},
+				{
+					ProductGroup = CFC960172755395C00B130F9 /* Products */;
+					ProjectRef = CFC960162755395C00B130F9 /* MubWebView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CFC95F97275538A800B130F9 /* Mubser */,
@@ -217,12 +314,39 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		CFC9601C2755395D00B130F9 /* MubWebView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MubWebView.framework;
+			remoteRef = CFC9601B2755395D00B130F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CFC9601E2755395D00B130F9 /* MubWebViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MubWebViewTests.xctest;
+			remoteRef = CFC9601D2755395D00B130F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CFC9603D2755863D00B130F9 /* APSuggestions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = APSuggestions.framework;
+			remoteRef = CFC9603C2755863D00B130F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		CFC95F96275538A800B130F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
+				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
+				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,7 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
+				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +528,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -421,7 +547,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -430,6 +556,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,7 +575,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -457,6 +584,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
 				PRODUCT_NAME = "$(TARGET_NAME)";

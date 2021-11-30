@@ -3,7 +3,6 @@ import Cocoa
 class APRoundedCornersView: NSView {
     var cornerRadius: CGFloat = 0.0
     
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
     }
@@ -26,5 +25,4 @@ class APRoundedCornersView: NSView {
     override var allowsVibrancy: Bool {
         return true
     }
-    
 }

@@ -22,7 +22,6 @@ public class APSuggestionsWindowController: NSWindowController {
     private var localMouseDownEventMonitor: Any?
     private var lostFocusObserver: Any?
     
-    
     public init() {
         let contentRec = NSRect(x: 0, y: 0, width: 20, height: 20)
         let window = APSuggestionsWindow(contentRect: contentRec, defer: true)
@@ -94,7 +93,7 @@ public class APSuggestionsWindowController: NSWindowController {
         }
         
         // setup auto cancellation if the user clicks outside the suggestion window and parent text field. Note: this is a local event monitor and will only catch clicks in windows that belong to this application.
-        localMouseDownEventMonitor = NSEvent.addLocalMonitorForEvents(matching: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown, NSEvent.EventTypeMask.otherMouseDown], handler: {(_ event: NSEvent) -> NSEvent? in
+        localMouseDownEventMonitor = NSEvent.addLocalMonitorForEvents(matching: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown, NSEvent.EventTypeMask.otherMouseDown], handler: { (_ event: NSEvent) -> NSEvent? in
             // If the mouse event is in the suggestion window, then there is nothing to do.
             var event: NSEvent! = event
             if event.window != suggestionWindow {
@@ -107,7 +106,7 @@ public class APSuggestionsWindowController: NSWindowController {
                     let locationTest: NSPoint? = contentView?.convert(event.locationInWindow, from: nil)
                     let hitView: NSView? = contentView?.hitTest(locationTest ?? NSPoint.zero)
                     let fieldEditor: NSText? = parentTextField?.currentEditor()
-                    if hitView != parentTextField && ((fieldEditor != nil) && hitView != fieldEditor) {
+                    if hitView != parentTextField, fieldEditor != nil, hitView != fieldEditor {
                         // Since the click is not in the parent text field, return nil, so the parent window does not try to process it, and cancel the suggestion window.
                         event = nil
                         self.cancelSuggestions()
@@ -121,7 +120,7 @@ public class APSuggestionsWindowController: NSWindowController {
         })
         // as per the documentation, do not retain event monitors.
         // We also need to auto cancel when the window loses key status. This may be done via a mouse click in another window, or via the keyboard (cmd-~ or cmd-tab), or a notificaiton. Observing NSWindowDidResignKeyNotification catches all of these cases and the mouse down event monitor catches the other cases.
-        lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: parentWindow, queue: nil, using: {(_ arg1: Notification) -> Void in
+        lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: parentWindow, queue: nil, using: { (_: Notification) -> Void in
             // lost key status, cancel the suggestion window
             self.cancelSuggestions()
         })
@@ -170,7 +169,7 @@ public class APSuggestionsWindowController: NSWindowController {
     /* Returns the dictionary of the currently selected suggestion.
      */
     public func selectedSuggestion() -> [String: Any]? {
-        var suggestion: Any? = nil
+        var suggestion: Any?
         // Find the currently selected view's controller (if there is one) and return the representedObject which is the NSMutableDictionary that was passed in via -setSuggestions:
         let selectedView: NSView? = self.selectedView
         for viewController: NSViewController in viewControllers where selectedView == viewController.view {
@@ -179,10 +178,12 @@ public class APSuggestionsWindowController: NSWindowController {
         }
         return suggestion as? [String: Any]
     }
+
     // MARK: Mouse Tracking
+
     public func trackingArea(for view: NSView?) -> Any? {
         // make tracking data (to be stored in NSTrackingArea's userInfo) so we can later determine the imageView without hit testing
-        var trackerData: [AnyHashable: Any]? = nil
+        var trackerData: [AnyHashable: Any]?
         if let aView = view {
             trackerData = [
                 kTrackerKey: aView
@@ -216,18 +217,18 @@ public class APSuggestionsWindowController: NSWindowController {
         // offset the Y posistion so that the suggetion view does not try to draw past the rounded corners.
         for entry: [String: Any] in suggestions {
             frame.origin.y += frame.size.height
-            var frameworkBundle:Bundle? {
+            var frameworkBundle: Bundle? {
                 let bundleId = "com.ashwin.APSuggestions"
                 return Bundle(identifier: bundleId)
             }
             var viewController = NSViewController()
             
             if APsuggestionCellNib == "APFramworkDefaultCell" {
-                viewController = NSViewController.init(nibName: "APFramworkDefaultCell", bundle: frameworkBundle)
+                viewController = NSViewController(nibName: "APFramworkDefaultCell", bundle: frameworkBundle)
             } else {
                 let bundleID = Bundle.main.bundleIdentifier
                 let sdafdasf = Bundle(identifier: bundleID!)
-                viewController = NSViewController.init(nibName: APsuggestionCellNib, bundle: sdafdasf)
+                viewController = NSViewController(nibName: APsuggestionCellNib, bundle: sdafdasf)
             }
             
             let view = viewController.view as? APHighlightingView
@@ -258,14 +259,14 @@ public class APSuggestionsWindowController: NSWindowController {
          */
         // Don't forget to account for the extra room needed the rounded corners.
         contentFrame?.size.height = frame.maxY + (contentView?.cornerRadius)!
-        var winFrame: NSRect = NSRect(origin: window!.frame.origin, size: window!.frame.size)
+        var winFrame = NSRect(origin: window!.frame.origin, size: window!.frame.size)
         winFrame.origin.y = winFrame.maxY - contentFrame!.height
         winFrame.size.height = contentFrame!.height
         window?.setFrame(winFrame, display: true)
     }
     
     // The mouse is now over one of our child image views. Update selection and send action.
-    public override func mouseEntered(with event: NSEvent) {
+    override public func mouseEntered(with event: NSEvent) {
         let view: NSView?
         if let userData = event.trackingArea?.userInfo as? [String: NSView] {
             view = userData[kTrackerKey]!
@@ -276,13 +277,13 @@ public class APSuggestionsWindowController: NSWindowController {
     }
     
     // The mouse has left one of our child image views. Set the selection to no selection and send action
-    public override func mouseExited(with event: NSEvent) {
+    override public func mouseExited(with event: NSEvent) {
         userSetSelectedView(nil)
     }
     
     /* The user released the mouse button. Force the parent text field to send its return action. Notice that there is no mouseDown: implementation. That is because the user may hold the mouse down and drag into another view.
      */
-    public override func mouseUp(with theEvent: NSEvent) {
+    override public func mouseUp(with theEvent: NSEvent) {
         parentTextField?.validateEditing()
         parentTextField?.abortEditing()
         parentTextField?.sendAction(parentTextField?.action, to: parentTextField?.target)
@@ -290,9 +291,10 @@ public class APSuggestionsWindowController: NSWindowController {
     }
     
     // MARK: Keyboard Tracking
-    public override func moveUp(_ sender: Any?) {
+
+    override public func moveUp(_ sender: Any?) {
         let selectedView: NSView? = self.selectedView
-        var previousView: NSView? = nil
+        var previousView: NSView?
         for viewController: NSViewController in viewControllers {
             let view: NSView? = viewController.view
             if view == selectedView {
@@ -305,9 +307,9 @@ public class APSuggestionsWindowController: NSWindowController {
         }
     }
     
-    public override func moveDown(_ sender: Any?) {
+    override public func moveDown(_ sender: Any?) {
         let selectedView: NSView? = self.selectedView
-        var previousView: NSView? = nil
+        var previousView: NSView?
         for viewController: NSViewController in viewControllers.reversed() {
             let view: NSView? = viewController.view
             if view == selectedView {

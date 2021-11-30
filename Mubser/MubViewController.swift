@@ -5,68 +5,90 @@
 //  Created by Ashwin Paudel on 29/11/2021.
 //
 
-// https://www.google.com/s2/favicons?domain=
-
+import APSuggestions
 import Cocoa
 import MubWebView
 import WebKit
-import APSuggestions
 
 class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, NSSearchFieldDelegate {
+    // MARK: - Elements
+
+    // WebView Element
+    @IBOutlet var webView: MubWebView!
     
-    @IBOutlet weak var webView: MubWebView!
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
-    @IBOutlet weak var searchField: NSSearchField!
-    @IBOutlet weak var websiteTitle: NSTextField!
-    @IBOutlet weak var refreshButton: NSButton!
-    @IBOutlet weak var faviconImageView: NSImageView!
+    // Search Field and Progress Indicator Elements
+    @IBOutlet var progressIndicator: NSProgressIndicator!
+    @IBOutlet var searchField: NSSearchField!
     
-    @IBOutlet weak var backButtonOutlet: HoverButton!
-    @IBOutlet weak var forwardButtonOutlet: HoverButton!
+    // Website Title Favicon Image, And tab Elements
+    @IBOutlet var websiteTitle: NSTextField!
+    @IBOutlet var faviconImageView: NSImageView!
+    @IBOutlet var tabStackView: NSStackView!
+    @IBOutlet var sideView: NSView!
+
+    // Refresh, Back, Forward outlets
+    @IBOutlet var refreshButton: NSButton!
+    @IBOutlet var backButtonOutlet: HoverButton!
+    @IBOutlet var forwardButtonOutlet: HoverButton!
     
-    @IBOutlet weak var tabStackView: NSStackView!
-    @IBOutlet weak var sideView: NSView!
-    
+    // Search Suggestions field
     var suggestions = [String]()
     private var suggestionsController: APSuggestionsWindowController?
     private var skipNextSuggestion = false
-    private var window: NSWindow = NSWindow()
+    private var window = NSWindow()
     
+    // MARK: - Setup Functions
+
     override func viewDidAppear() {
         super.viewDidAppear()
-        
-        window = self.view.window!
-        tabStackView.layer?.backgroundColor = NSColor.black.cgColor
-        sideView.layer?.backgroundColor = NSColor.black.cgColor
+        window = view.window!
+        styleElements()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APsuggestionCellNib = "SearchCell"
-        
-        searchField.delegate = self
         (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
-        progressIndicator.alphaValue = 0.7
-        
-        // Enable stuff
-        webView.enableAdblock()
-        webView.enableConfigurations()
-        
+        configureElements()
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
-        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
     }
     
+    // Style the elements ( buttons, searchfields )
+    func styleElements() {
+        progressIndicator.alphaValue = 0.7
+        tabStackView.layer?.backgroundColor = NSColor.black.cgColor
+        sideView.layer?.backgroundColor = NSColor.black.cgColor
+    }
+    
+    // Configure the elements ( buttons, searchfields )
+    func configureElements() {
+        APsuggestionCellNib = "SearchCell"
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+        searchField.delegate = self
+        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+        webView.enableAdblock()
+        webView.enableConfigurations()
+    }
+    
+    // MARK: - Control Buttons
+
     @IBAction func backButton(_ sender: Any) {
         if webView.canGoBack { webView.goBack() }
     }
     
     @IBAction func forwardButton(_ sender: Any) {
-        if webView.canGoForward {
-            webView.goForward()
+        if webView.canGoForward { webView.goForward() }
+    }
+    
+    @IBAction func refreshButton(_ sender: NSButton) {
+        if sender.image == NSImage(named: NSImage.refreshTemplateName) {
+            webView.reload()
+            sender.image = NSImage(named: NSImage.stopProgressTemplateName)
+        } else {
+            webView.stopLoading()
+            sender.image = NSImage(named: NSImage.refreshTemplateName)
         }
     }
     
@@ -84,22 +106,15 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         }
     }
     
-    @IBAction func refreshButton(_ sender: NSButton) {
-        if sender.image == NSImage(named: NSImage.refreshTemplateName) {
-            webView.reload()
-            sender.image = NSImage(named: NSImage.stopProgressTemplateName)
-        } else {
-            webView.stopLoading()
-            sender.image = NSImage(named: NSImage.refreshTemplateName)
-        }
-    }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    // MARK: - Webview Functions
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
             progressIndicator.isHidden = false
             refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
             
-            print(self.webView.estimatedProgress)
-            self.progressIndicator.doubleValue = (self.webView.estimatedProgress * 100) + 10
+            print(webView.estimatedProgress)
+            progressIndicator.doubleValue = (webView.estimatedProgress * 100) + 10
             progressIndicator.increment(by: 50)
             progressIndicator.usesThreadedAnimation = true
             if progressIndicator.doubleValue == 100 {
@@ -116,6 +131,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
             faviconImageView.image = NSImage(data: data!)
         }
     }
+
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         searchField.stringValue = self.webView.url!.absoluteString
         checkButtons()
@@ -125,13 +141,15 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         checkButtons()
     }
     
+    // MARK: - Search Suggestion Functions
+
     @IBAction func searchFieldAction(_ sender: Any) {
-        webView.load(URLRequest(url: URL(string: self.searchField.stringValue)!))
+        webView.load(URLRequest(url: URL(string: searchField.stringValue)!))
     }
     
     @IBAction func searchFieldValueDidUpdate(_ sender: Any) {
         let entry = (sender as? APSuggestionsWindowController)?.selectedSuggestion()
-        if entry != nil && !entry!.isEmpty {
+        if entry != nil, !entry!.isEmpty {
             let fieldEditor: NSText? = window.fieldEditor(false, for: searchField)
             if fieldEditor != nil {
                 updateFieldEditor(fieldEditor, withSuggestion: entry![kSuggestionLabel] as? String)
@@ -140,23 +158,19 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     }
     
     func suggestions(forText text: String?) -> [[String: Any]]? {
-        var testVals = [String]()
-        
-        SearchSuggestions.getQuerySuggestions(text!) { [unowned self] (suggestions, error) in
+        SearchSuggestions.getQuerySuggestions(text!) { [unowned self] suggestions, error in
             if let suggestions = suggestions, suggestions.count > 0 {
                 self.suggestions = suggestions
-            } else {
-                print(error?.localizedDescription)
+            } else if let error = error {
+                print(error.localizedDescription)
             }
         }
-        
-        
-        // Search the known image URLs array for matches.
+    
         var suggestions = [[String: Any]]()
         suggestions.reserveCapacity(1)
         
         for val in self.suggestions {
-            if text != nil && text != "" && (val.hasPrefix(text ?? "") || val.uppercased().hasPrefix(text?.uppercased() ?? "")) {
+            if text != nil, text != "", val.hasPrefix(text ?? "") || val.uppercased().hasPrefix(text?.uppercased() ?? "") {
                 let entry: [String: Any] = [
                     kSuggestionLabel: val
                 ]
@@ -181,14 +195,14 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
             let selection: NSRange? = fieldEditor?.selectedRange
             let text = (selection != nil) ? (fieldEditor?.string as NSString?)?.substring(to: selection!.location) : nil
             let suggestions = self.suggestions(forText: text)
-            if suggestions != nil && suggestions!.count > 0 {
+            if suggestions != nil, suggestions!.count > 0 {
                 // We have at least 1 suggestion. Update the field editor to the first suggestion and show the suggestions window.
                 let suggestion = suggestions![0]
                 
                 updateFieldEditor(fieldEditor, withSuggestion: suggestion[kSuggestionLabel] as? String)
                 suggestionsController?.setSuggestions(suggestions!)
                 if !(suggestionsController?.window?.isVisible ?? false) {
-                    suggestionsController?.begin(for: (control as? NSSearchField))
+                    suggestionsController?.begin(for: control as? NSSearchField)
                 }
             } else {
                 suggestionsController?.cancelSuggestions()
@@ -217,7 +231,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
             if suggestionsController == nil {
                 suggestionsController = APSuggestionsWindowController()
                 suggestionsController?.target = self
-                suggestionsController?.action = #selector(self.searchFieldValueDidUpdate(_:))
+                suggestionsController?.action = #selector(searchFieldValueDidUpdate(_:))
             }
             updateSuggestions(from: obj.object as? NSControl)
         }
@@ -249,7 +263,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         }
         if commandSelector == #selector(NSResponder.complete(_:)) {
             // The user has pressed the key combination for auto completion. AppKit has a built in auto completion. By overriding this command we prevent AppKit"s auto completion and can respond to the user"s intention by showing or cancelling our custom suggestions window.
-            if suggestionsController != nil && suggestionsController!.window != nil && suggestionsController!.window!.isVisible {
+            if suggestionsController != nil, suggestionsController!.window != nil, suggestionsController!.window!.isVisible {
                 suggestionsController?.cancelSuggestions()
             } else {
                 updateSuggestions(from: control)
@@ -260,4 +274,3 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         return false
     }
 }
-

@@ -23,5 +23,4 @@ class APSuggestionsWindow: NSWindow {
         backgroundColor = NSColor.clear
         isOpaque = false
     }
-    
 }

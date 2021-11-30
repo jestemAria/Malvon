@@ -6,7 +6,7 @@ class APHighlightingView: NSView {
     // Draw with or without a highlight style
     override func draw(_ dirtyRect: NSRect) {
         layer?.cornerRadius = 5
-        if isHighlighted {
+        if self.isHighlighted {
             if #available(OSX 10.14, *) {
                 NSColor.selectedContentBackgroundColor.set()
             } else {
@@ -17,9 +17,9 @@ class APHighlightingView: NSView {
         } else {
             NSColor.clear.set()
             __NSRectFillUsingOperation(dirtyRect, .sourceOver)
-            
         }
     }
+
     /* Custom highlighted property setter because when the property changes we need to redraw and update the containing text fields.
      */
     func setHighlighted(_ highlighted: Bool) {
@@ -34,5 +34,4 @@ class APHighlightingView: NSView {
             // make sure we redraw with the correct highlight style.
         }
     }
-    
 }

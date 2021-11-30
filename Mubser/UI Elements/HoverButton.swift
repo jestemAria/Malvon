@@ -9,14 +9,14 @@
 
 import Cocoa
 
-class HoverButton: NSButton{
+class HoverButton: NSButton {
     var backgroundColor: NSColor?
     var hoveredBackgroundColor: NSColor?
     var pressedBackgroundColor: NSColor?
     
     fileprivate var hovered: Bool = false
     
-    override var wantsUpdateLayer:Bool{
+    override var wantsUpdateLayer: Bool {
         return true
     }
     
@@ -30,19 +30,18 @@ class HoverButton: NSButton{
         self.commonInit()
     }
     
-    func commonInit(){
+    func commonInit() {
         self.wantsLayer = true
         self.createTrackingArea()
         self.hovered = false
         self.hoveredBackgroundColor = NSColor.selectedTextBackgroundColor
         self.pressedBackgroundColor = NSColor.selectedTextBackgroundColor
         self.backgroundColor = NSColor.clear
-
     }
     
     fileprivate var trackingArea: NSTrackingArea!
-    func createTrackingArea(){
-        if(self.trackingArea != nil){
+    func createTrackingArea() {
+        if self.trackingArea != nil {
             self.removeTrackingArea(self.trackingArea!)
         }
         let circleRect = self.bounds
@@ -62,18 +61,17 @@ class HoverButton: NSButton{
     }
     
     override func updateLayer() {
-        if hovered && self.isEnabled {
-            if (self.cell!.isHighlighted){
+        if self.hovered, self.isEnabled {
+            if self.cell!.isHighlighted {
                 self.layer?.cornerRadius = 5.0
-                self.layer?.backgroundColor = pressedBackgroundColor?.cgColor
+                self.layer?.backgroundColor = self.pressedBackgroundColor?.cgColor
             } else {
                 self.layer?.cornerRadius = 5.0
-                self.layer?.backgroundColor = hoveredBackgroundColor?.cgColor
+                self.layer?.backgroundColor = self.hoveredBackgroundColor?.cgColor
             }
         } else {
-            self.layer?.backgroundColor = backgroundColor?.cgColor
+            self.layer?.backgroundColor = self.backgroundColor?.cgColor
             self.layer?.borderWidth = 0
         }
-        
     }
 }

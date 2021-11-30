@@ -36,7 +36,7 @@
                     </wkWebViewConfiguration>
                 </wkWebView>
                 <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-2s-z3b">
-                    <rect key="frame" x="67" y="242" width="438" height="30"/>
+                    <rect key="frame" x="67" y="242" width="350" height="30"/>
                     <shadow key="shadow">
                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </shadow>
@@ -53,7 +53,7 @@
                     <rect key="frame" x="3" y="214" width="61" height="30"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDF-KD-qZS" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="-2" width="30" height="35"/>
+                            <rect key="frame" x="1" y="-2" width="30" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="S9Y-LS-Csd"/>
                                 <constraint firstAttribute="width" constant="30" id="fl3-3R-viK"/>
@@ -67,7 +67,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-xR-Z4V" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
-                            <rect key="frame" x="30" y="-2" width="30" height="35"/>
+                            <rect key="frame" x="31" y="-2" width="30" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="CZ2-o3-LJk"/>
                                 <constraint firstAttribute="width" constant="30" id="dHL-v6-1iH"/>
@@ -121,6 +121,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="59g-Mr-UnS"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="nfn-Ep-smW"/>
                     </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>
@@ -178,12 +179,12 @@
                 <constraint firstItem="YhO-4t-qRf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="jgf-1v-182"/>
                 <constraint firstItem="29H-ge-WVP" firstAttribute="leading" secondItem="TAK-Ee-IF3" secondAttribute="trailing" id="k2Y-XS-ymu"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="laZ-AN-m7E"/>
-                <constraint firstAttribute="trailing" secondItem="I8O-2s-z3b" secondAttribute="trailing" id="lqD-3N-eoT"/>
                 <constraint firstAttribute="bottom" secondItem="HKm-nA-M9f" secondAttribute="bottom" id="mJA-yz-sEH"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="67" id="oKF-G0-KYm"/>
                 <constraint firstAttribute="trailing" secondItem="29H-ge-WVP" secondAttribute="trailing" id="oUi-N3-Q4z"/>
                 <constraint firstItem="29H-ge-WVP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="reS-i2-Z1t"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="29H-ge-WVP" secondAttribute="bottom" id="rxx-J4-Yrg"/>
+                <constraint firstItem="TAK-Ee-IF3" firstAttribute="leading" secondItem="I8O-2s-z3b" secondAttribute="trailing" id="tbr-Fa-PRh"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="I8O-2s-z3b" secondAttribute="bottom" id="uVp-EA-ZPI"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="TAK-Ee-IF3" secondAttribute="bottom" id="zWv-x9-fXN"/>
             </constraints>

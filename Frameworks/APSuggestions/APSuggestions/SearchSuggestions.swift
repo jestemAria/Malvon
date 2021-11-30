@@ -17,8 +17,7 @@ public enum SearchSuggestionsError: Error {
     case serializationError(String)
 }
 
-public class SearchSuggestions {
-    
+public enum SearchSuggestions {
     static let baseURL = "https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&alt=json&q="
     
     /// Fetch google's SearchSuggestions suggestions for a given seed term
@@ -26,7 +25,7 @@ public class SearchSuggestions {
     /// - Parameters:
     ///   - term: a seed term
     ///   - completionHandler: A completion handler after finishing task
-    public static func getQuerySuggestions(_ term: String, completionHandler: @escaping ([String]?, Error?) -> Void) -> Void {
+    public static func getQuerySuggestions(_ term: String, completionHandler: @escaping ([String]?, Error?) -> Void) {
         DispatchQueue.global().async {
             let URLString = baseURL + term
             guard let url = URL(string: URLString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "") else {
@@ -48,14 +47,14 @@ public class SearchSuggestions {
             let scanner = Scanner(string: response)
             
             scanner.scanUpTo("[[", into: nil) // Scan to where the JSON begins
-            scanner.scanUpTo(",{", into:  &JSON)
+            scanner.scanUpTo(",{", into: &JSON)
             
             guard JSON != nil else {
                 completionHandler(nil, SearchSuggestionsError.failedToRetrieveData(URLString))
                 return
             }
             
-            //The idea is to identify where the "real" JSON begins and ends.
+            // The idea is to identify where the "real" JSON begins and ends.
             JSON = NSString(format: "%@", JSON!)
             
             do {
@@ -71,16 +70,15 @@ public class SearchSuggestions {
                     }
                 }
                 
-                DispatchQueue.main.async(execute: {
-                    completionHandler(result,nil)
-                })
+                DispatchQueue.main.async {
+                    completionHandler(result, nil)
+                }
             }
             catch {
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async {
                     completionHandler(nil, SearchSuggestionsError.serializationError(URLString))
-                })
+                }
             }
         }
-        
     }
 }

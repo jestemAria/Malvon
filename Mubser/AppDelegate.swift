@@ -23,4 +23,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
+    
+    // MARK: - Functions
+
+    @IBAction func showBrowsingHistory(_ sender: Any?) {
+        let mainWindow = NSWindow(contentViewController: MubHistoryViewController(nibName: NSNib.Name("MubHistoryViewController"), bundle: nil))
+        
+        mainWindow.title = "History"
+        mainWindow.titlebarAppearsTransparent = true
+        mainWindow.makeKeyAndOrderFront(self)
+    }
 }

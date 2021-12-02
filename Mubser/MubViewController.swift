@@ -102,24 +102,54 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
             forwardButtonOutlet.isEnabled = false
         }
     }
+
+    // MARK: - History Functions
+
+    func parseHistoryJSON() -> [MubHistoryElement]? {
+        let fileContents = readFile(path: MubHistoryViewController.path!)
+        let decodedJSON = try? JSONDecoder().decode([MubHistoryElement].self, from: fileContents.data(using: .utf8)!)
+
+        return decodedJSON
+    }
+
+    func addItem(website: String, address: String) {
+        var historyJSON = parseHistoryJSON()
+        var newHistoryJSON: [MubHistoryElement] = historyJSON!
+        let newItem = MubHistoryElement(website: website, address: address)
+        newHistoryJSON.append(newItem)
+        historyJSON = newHistoryJSON
+        do {
+            let data = try JSONEncoder().encode(newHistoryJSON)
+            try data.write(to: MubHistoryViewController.path!)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func addHistoryEntry() {
+        addItem(website: webView.title!, address: webView.url!.absoluteString)
+    }
     
     // MARK: - Webview Functions
 
+    func estimatedProgress() {
+        progressIndicator.isHidden = false
+        refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
+        progressIndicator.doubleValue = (webView.estimatedProgress * 100) + 10
+        progressIndicator.increment(by: 50)
+        
+        progressIndicator.usesThreadedAnimation = true
+        if progressIndicator.doubleValue == 100 {
+            progressIndicator.doubleValue = 0
+            progressIndicator.isHidden = true
+            refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
+            checkButtons()
+        }
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            progressIndicator.isHidden = false
-            refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
-            
-            print(webView.estimatedProgress)
-            progressIndicator.doubleValue = (webView.estimatedProgress * 100) + 10
-            progressIndicator.increment(by: 50)
-            progressIndicator.usesThreadedAnimation = true
-            if progressIndicator.doubleValue == 100 {
-                progressIndicator.doubleValue = 0
-                progressIndicator.isHidden = true
-                refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
-                checkButtons()
-            }
+            estimatedProgress()
         } else if keyPath == "title" {
             websiteTitle.stringValue = webView.title!
             guard let webViewURL = webView.url?.absoluteString else { return }
@@ -135,6 +165,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        addHistoryEntry()
         checkButtons()
     }
     

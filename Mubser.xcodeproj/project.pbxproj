@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF326CD627583BDD0095DA07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF326CD527583BDD0095DA07 /* Helper.swift */; };
 		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
 		CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95F9B275538A800B130F9 /* AppDelegate.swift */; };
 		CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9D275538AC00B130F9 /* Assets.xcassets */; };
@@ -23,9 +24,27 @@
 		CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; };
 		CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC960412755873400B130F9 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC960402755873400B130F9 /* SearchCell.xib */; };
+		CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */; };
+		CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */; };
+		CFD0786E2758120E001482C1 /* MubTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; };
+		CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CFB669EE2756EB6D0025D140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CFB669CE2756EB6B0025D140;
+			remoteInfo = MubTabView;
+		};
+		CFB669F02756EB6D0025D140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CFB669D82756EB6C0025D140;
+			remoteInfo = MubTabViewTests;
+		};
 		CFC95FA8275538AC00B130F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFC95F90275538A800B130F9 /* Project object */;
@@ -70,6 +89,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */,
 				CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */,
 				CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */,
 			);
@@ -79,7 +99,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF326CD527583BDD0095DA07 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
+		CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubTabView.xcodeproj; path = MubTabView/MubTabView.xcodeproj; sourceTree = "<group>"; };
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC95F9B275538A800B130F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC95F9D275538AC00B130F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +119,8 @@
 		CFC9602A27553CA600B130F9 /* MubViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubViewController.xib; sourceTree = "<group>"; };
 		CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APSuggestions.xcodeproj; path = APSuggestions/APSuggestions.xcodeproj; sourceTree = "<group>"; };
 		CFC960402755873400B130F9 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubHistoryViewController.swift; sourceTree = "<group>"; };
+		CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubHistoryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD0786E2758120E001482C1 /* MubTabView.framework in Frameworks */,
 				CFC9602D27553D0B00B130F9 /* MubWebView.framework in Frameworks */,
 				CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */,
 			);
@@ -134,6 +159,15 @@
 			path = "UI Elements";
 			sourceTree = "<group>";
 		};
+		CFB669E92756EB6C0025D140 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFB669EF2756EB6D0025D140 /* MubTabView.framework */,
+				CFB669F12756EB6D0025D140 /* MubTabViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CFC95F8F275538A800B130F9 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +192,7 @@
 		CFC95F9A275538A800B130F9 /* Mubser */ = {
 			isa = PBXGroup;
 			children = (
+				CF326CD527583BDD0095DA07 /* Helper.swift */,
 				CF7772C227567DCF0034555A /* UI Elements */,
 				CFC95F9B275538A800B130F9 /* AppDelegate.swift */,
 				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
@@ -168,6 +203,8 @@
 				CFC9602927553CA600B130F9 /* MubViewController.swift */,
 				CFC9602A27553CA600B130F9 /* MubViewController.xib */,
 				CFC960402755873400B130F9 /* SearchCell.xib */,
+				CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */,
+				CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */,
 			);
 			path = Mubser;
 			sourceTree = "<group>";
@@ -192,6 +229,7 @@
 		CFC95FC42755392D00B130F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */,
 				CFC960162755395C00B130F9 /* MubWebView.xcodeproj */,
 				CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */,
 			);
@@ -312,6 +350,10 @@
 					ProjectRef = CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */;
 				},
 				{
+					ProductGroup = CFB669E92756EB6C0025D140 /* Products */;
+					ProjectRef = CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */;
+				},
+				{
 					ProductGroup = CFC960172755395C00B130F9 /* Products */;
 					ProjectRef = CFC960162755395C00B130F9 /* MubWebView.xcodeproj */;
 				},
@@ -326,6 +368,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		CFB669EF2756EB6D0025D140 /* MubTabView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MubTabView.framework;
+			remoteRef = CFB669EE2756EB6D0025D140 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CFB669F12756EB6D0025D140 /* MubTabViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MubTabViewTests.xctest;
+			remoteRef = CFB669F02756EB6D0025D140 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		CFC9601C2755395D00B130F9 /* MubWebView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -354,6 +410,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */,
 				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
 				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
@@ -384,9 +441,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF7772C727567DE50034555A /* HoverButton.swift in Sources */,
+				CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */,
 				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
 				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,
+				CF326CD627583BDD0095DA07 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     @IBOutlet var tabStackView: NSStackView!
 
     // Refresh, Back, Forward outlets
-    @IBOutlet var refreshButton: NSButton!
+    @IBOutlet var refreshButton: HoverButton!
     @IBOutlet var backButtonOutlet: HoverButton!
     @IBOutlet var forwardButtonOutlet: HoverButton!
     
@@ -49,12 +49,14 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
         configureElements()
+        refreshButton.cornerRadius = 10
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
     }
     
     // Style the elements ( buttons, searchfields )
     func styleElements() {
         progressIndicator.alphaValue = 0.7
+        
     }
     
     // Configure the elements ( buttons, searchfields )

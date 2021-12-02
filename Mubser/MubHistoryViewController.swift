@@ -15,7 +15,13 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Open", action: #selector(openURL), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Copy", action: #selector(copyURL), keyEquivalent: ""))
+        menu.addItem(.separator())
+        menu.addItem(NSMenuItem(title: "Remove From History", action: #selector(deleteItem), keyEquivalent: ""))
+        tableView.menu = menu
+
         tableView.delegate = self
         tableView.dataSource = self
         historyJSON = parseJSON()!.reversed()
@@ -23,7 +29,48 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
         tableView.reloadData()
     }
 
-    @IBAction func clearHistory(_ sender: Any) {}
+    // MARK: - TableView Actions
+
+    @IBAction func openURL(_ sender: Any) {
+        // TODO: Handle Custom URLS
+    }
+
+    @IBAction func copyURL(_ sender: Any) {
+        let url = historyJSON[tableView.clickedRow].address
+
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(url, forType: .string)
+        NSPasteboard.general.string(forType: .string)
+        view.window?.close()
+    }
+
+    @IBAction func deleteItem(_ sender: Any) {
+        var newHistoryJSON = historyJSON
+        newHistoryJSON.remove(at: tableView.clickedRow)
+
+        do {
+            let data = try JSONEncoder().encode(newHistoryJSON)
+            try data.write(to: MubHistoryViewController.path!)
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        view.window?.close()
+    }
+
+    @IBAction func clearHistory(_ sender: Any) {
+        let emptyHistoryJSON = [MubHistoryElement]()
+
+        do {
+            let data = try JSONEncoder().encode(emptyHistoryJSON)
+            try data.write(to: MubHistoryViewController.path!)
+            tableView.reloadData()
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        tableView.reloadData()
+    }
 
     // MARK: - Table View
 
@@ -46,7 +93,6 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     // MARK: - History Items
 
     func parseJSON() -> [MubHistoryElement]? {
-
         let fileContents = readFile(path: MubHistoryViewController.path!)
         let decodedJSON = try? JSONDecoder().decode([MubHistoryElement].self, from: fileContents.data(using: .utf8)!)
 

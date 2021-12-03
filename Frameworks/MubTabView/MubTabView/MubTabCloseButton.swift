@@ -5,7 +5,7 @@
 //  Created by Ashwin Paudel on 01/12/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
+// Code from: https://github.com/robin/LYTabView
 
 import Cocoa
 
@@ -24,12 +24,12 @@ class MubTabCloseButton: MubHoverButton {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setupButton()
+        self.setupButton()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupButton()
+        self.setupButton()
     }
 
     override func draw(_ dirtyRect: NSRect) {

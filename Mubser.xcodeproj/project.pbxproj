@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0AE6C0275AE1570031DE44 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0AE6BF275AE1570031DE44 /* Image1.png */; };
+		CF0AE6C2275AE1950031DE44 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0AE6C1275AE1950031DE44 /* Image2.png */; };
 		CF326CD627583BDD0095DA07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF326CD527583BDD0095DA07 /* Helper.swift */; };
 		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
 		CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA81A49275930C200242A10 /* TabViewController.swift */; };
@@ -101,6 +103,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF0AE6B8275AE10A0031DE44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CF0AE6BF275AE1570031DE44 /* Image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image1.png; sourceTree = "<group>"; };
+		CF0AE6C1275AE1950031DE44 /* Image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image2.png; sourceTree = "<group>"; };
 		CF326CD527583BDD0095DA07 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
 		CFA81A49275930C200242A10 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF0AE6BE275AE12C0031DE44 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CF0AE6BF275AE1570031DE44 /* Image1.png */,
+				CF0AE6C1275AE1950031DE44 /* Image2.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		CF7772C227567DCF0034555A /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +193,8 @@
 				CFC95FC42755392D00B130F9 /* Frameworks */,
 				CFC95FAA275538AC00B130F9 /* MubserTests */,
 				CFC95FB4275538AC00B130F9 /* MubserUITests */,
+				CF0AE6BE275AE12C0031DE44 /* Images */,
+				CF0AE6B8275AE10A0031DE44 /* README.md */,
 				CFC95F99275538A800B130F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -417,10 +433,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */,
+				CF0AE6C0275AE1570031DE44 /* Image1.png in Resources */,
 				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
 				CFA81A4C275930C200242A10 /* TabViewController.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
 				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
+				CF0AE6C2275AE1950031DE44 /* Image2.png in Resources */,
 				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
 			);

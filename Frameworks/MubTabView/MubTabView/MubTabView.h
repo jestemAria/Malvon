@@ -5,8 +5,6 @@
 //  Created by Ashwin Paudel on 30/11/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for MubTabView.

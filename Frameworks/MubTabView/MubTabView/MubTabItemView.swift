@@ -5,7 +5,7 @@
 //  Created by Ashwin Paudel on 01/12/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
+// Code from: https://github.com/robin/LYTabView
 
 import Cocoa
 
@@ -20,9 +20,10 @@ class MubTabItemView: NSButton {
             setupTitleAccordingToItem()
         }
     }
+
     var drawBorder = false {
         didSet {
-            self.needsDisplay = true
+            needsDisplay = true
         }
     }
 
@@ -46,11 +47,12 @@ class MubTabItemView: NSButton {
         .inactive: NSColor(white: 0.68, alpha: 1)
     ]
 
-    @objc dynamic private var realBackgroundColor = NSColor(white: 0.73, alpha: 1) {
+    @objc private dynamic var realBackgroundColor = NSColor(white: 0.73, alpha: 1) {
         didSet {
             needsDisplay = true
         }
     }
+
     var selectedBackgroundColor: ColorConfig = [
         .active: NSColor(white: 0.86, alpha: 1),
         .windowInactive: NSColor(white: 0.96, alpha: 1),
@@ -72,14 +74,14 @@ class MubTabItemView: NSButton {
         }
         set(newTitle) {
             titleView.stringValue = newTitle as String
-            self.invalidateIntrinsicContentSize()
+            invalidateIntrinsicContentSize()
         }
     }
 
     var isMoving = false
 
     private var shouldDrawInHighLight: Bool {
-        if let tabViewItem = self.tabViewItem {
+        if let tabViewItem = tabViewItem {
             return tabViewItem.tabState == .selectedTab && !isDragging
         }
         return false
@@ -103,24 +105,24 @@ class MubTabItemView: NSButton {
     var draggingViewLeadingConstraint: NSLayoutConstraint?
 
     func setupViews() {
-        self.isBordered = false
-        let lowerPriority = NSLayoutConstraint.Priority(rawValue: NSLayoutConstraint.Priority.defaultLow.rawValue-10)
-        self.setContentHuggingPriority(lowerPriority, for: .horizontal)
+        isBordered = false
+        let lowerPriority = NSLayoutConstraint.Priority(rawValue: NSLayoutConstraint.Priority.defaultLow.rawValue - 10)
+        setContentHuggingPriority(lowerPriority, for: .horizontal)
 
         titleView.translatesAutoresizingMaskIntoConstraints = false
         titleView.isEditable = false
         titleView.alignment = .center
         titleView.isBordered = false
         titleView.drawsBackground = false
-        self.addSubview(titleView)
-        let padding = xpadding*2+closeButtonSize.width
+        addSubview(titleView)
+        let padding = xpadding * 2 + closeButtonSize.width
         titleView.trailingAnchor
-            .constraint(greaterThanOrEqualTo: self.trailingAnchor, constant: -padding).isActive = true
-        titleView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: padding).isActive = true
-        titleView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        titleView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: ypadding).isActive = true
-        titleView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -ypadding).isActive = true
+            .constraint(greaterThanOrEqualTo: trailingAnchor, constant: -padding).isActive = true
+        titleView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: padding).isActive = true
+        titleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        titleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        titleView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: ypadding).isActive = true
+        titleView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -ypadding).isActive = true
         titleView.setContentHuggingPriority(lowerPriority, for: .horizontal)
         titleView.setContentCompressionResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: .horizontal)
         titleView.lineBreakMode = .byTruncatingTail
@@ -133,13 +135,13 @@ class MubTabItemView: NSButton {
         closeButton.heightAnchor.constraint(equalToConstant: closeButtonSize.height).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: closeButtonSize.width).isActive = true
         closeButton.isHidden = true
-        self.addSubview(closeButton)
+        addSubview(closeButton)
         closeButton.trailingAnchor
-            .constraint(greaterThanOrEqualTo: self.titleView.leadingAnchor, constant: -xpadding).isActive = true
-        closeButton.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: ypadding).isActive = true
-        closeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: xpadding).isActive = true
-        closeButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        closeButton.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -ypadding).isActive = true
+            .constraint(greaterThanOrEqualTo: titleView.leadingAnchor, constant: -xpadding).isActive = true
+        closeButton.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: ypadding).isActive = true
+        closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: xpadding).isActive = true
+        closeButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        closeButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -ypadding).isActive = true
 
         let menu = NSMenu()
         let addMenuItem = NSMenuItem(title: NSLocalizedString("New Tab", comment: "New Tab"),
@@ -167,13 +169,13 @@ class MubTabItemView: NSButton {
     }
 
     func setupTitleAccordingToItem() {
-        if let item = self.tabViewItem {
+        if let item = tabViewItem {
             tabLabelObserver = item.observe(\.label) { _, _ in
                 if let item = self.tabViewItem {
                     self.title = item.label
                 }
             }
-            self.title = item.label
+            title = item.label
         }
     }
 
@@ -204,39 +206,39 @@ class MubTabItemView: NSButton {
     }
 
     override func draw(_ dirtyRect: NSRect) {
-        let status = self.tabBarView.status
+        let status = tabBarView.status
         if shouldDrawInHighLight {
             selectedBackgroundColor[status]!.setFill()
             titleView.textColor = selectedTextColor[status]!
         } else {
-            self.realBackgroundColor.setFill()
+            realBackgroundColor.setFill()
             titleView.textColor = unselectedForegroundColor
         }
-        self.bounds.fill()
-        if self.drawBorder {
-            let boderFrame = self.bounds.insetBy(dx: 1, dy: -1)
-            self.tabBarView.borderColor[status]!.setStroke()
+        bounds.fill()
+        if drawBorder {
+            let boderFrame = bounds.insetBy(dx: 1, dy: -1)
+            tabBarView.borderColor[status]!.setStroke()
             let path = NSBezierPath(rect: boderFrame)
             path.stroke()
         }
     }
 
     override func mouseDown(with theEvent: NSEvent) {
-        if let tabViewItem = self.tabViewItem {
-            self.tabBarView.selectTabViewItem(tabViewItem)
+        if let tabViewItem = tabViewItem {
+            tabBarView.selectTabViewItem(tabViewItem)
         }
     }
 
     override func updateTrackingAreas() {
         super.updateTrackingAreas()
 
-        if let trackingArea = self.trackingArea {
-            self.removeTrackingArea(trackingArea)
+        if let trackingArea = trackingArea {
+            removeTrackingArea(trackingArea)
         }
 
         let options: NSTrackingArea.Options = [.mouseMoved, .mouseEnteredAndExited, .activeAlways, .inVisibleRect]
-        self.trackingArea = NSTrackingArea(rect: self.bounds, options: options, owner: self, userInfo: nil)
-        self.addTrackingArea(self.trackingArea!)
+        trackingArea = NSTrackingArea(rect: bounds, options: options, owner: self, userInfo: nil)
+        addTrackingArea(trackingArea!)
     }
 
     override func mouseEntered(with theEvent: NSEvent) {
@@ -244,9 +246,9 @@ class MubTabItemView: NSButton {
             return
         }
         hovered = true
-        let status = self.tabBarView.status
+        let status = tabBarView.status
         if !shouldDrawInHighLight {
-            self.animatorOrNot(needAnimation).realBackgroundColor = hoverBackgroundColor[status]!
+            animatorOrNot(needAnimation).realBackgroundColor = hoverBackgroundColor[status]!
         }
         closeButton.animatorOrNot(needAnimation).isHidden = false
     }
@@ -256,9 +258,9 @@ class MubTabItemView: NSButton {
             return
         }
         hovered = false
-        let status = self.tabBarView.status
+        let status = tabBarView.status
         if !shouldDrawInHighLight {
-            self.animatorOrNot(needAnimation).realBackgroundColor = backgroundColor[status]!
+            animatorOrNot(needAnimation).realBackgroundColor = backgroundColor[status]!
         }
         closeButton.animatorOrNot(needAnimation).isHidden = true
     }
@@ -270,39 +272,39 @@ class MubTabItemView: NSButton {
     }
 
     func updateColors() {
-        let status = self.tabBarView.status
+        let status = tabBarView.status
         if hovered {
-            self.realBackgroundColor = hoverBackgroundColor[status]!
+            realBackgroundColor = hoverBackgroundColor[status]!
         } else {
-            self.realBackgroundColor = backgroundColor[status]!
+            realBackgroundColor = backgroundColor[status]!
         }
     }
 
     override func viewDidMoveToWindow() {
-        self.updateColors()
+        updateColors()
     }
 
     @IBAction func addNewTab(_ sender: AnyObject?) {
-        if let target = self.tabBarView.addNewTabButtonTarget, let action = self.tabBarView.addNewTabButtonAction {
+        if let target = tabBarView.addNewTabButtonTarget, let action = tabBarView.addNewTabButtonAction {
             _ = target.perform(action, with: self)
         }
     }
 
     @IBAction func closeTab(_ sender: AnyObject?) {
-        if let tabViewItem = self.tabViewItem {
-            self.tabBarView.removeTabViewItem(tabViewItem, animated: true)
+        if let tabViewItem = tabViewItem {
+            tabBarView.removeTabViewItem(tabViewItem, animated: true)
         }
     }
 
     @IBAction func closeOtherTabs(_ send: AnyObject?) {
-        if let tabViewItem = self.tabViewItem {
-            self.tabBarView.removeAllTabViewItemExcept(tabViewItem)
+        if let tabViewItem = tabViewItem {
+            tabBarView.removeAllTabViewItemExcept(tabViewItem)
         }
     }
 
     @IBAction func closeToRight(_ sender: Any) {
-        if let tabViewItem = self.tabViewItem {
-            self.tabBarView.removeFrom(tabViewItem)
+        if let tabViewItem = tabViewItem {
+            tabBarView.removeFrom(tabViewItem)
         }
     }
 }
@@ -310,25 +312,25 @@ class MubTabItemView: NSButton {
 extension MubTabItemView: NSPasteboardItemDataProvider {
     func pasteboard(_ pasteboard: NSPasteboard?,
                     item: NSPasteboardItem,
-                    provideDataForType type: NSPasteboard.PasteboardType) {
-    }
+                    provideDataForType type: NSPasteboard.PasteboardType) {}
 }
 
 extension MubTabItemView: NSDraggingSource {
     func setupDragAndDrop(_ theEvent: NSEvent) {
         let pasteItem = NSPasteboardItem()
         let dragItem = NSDraggingItem(pasteboardWriter: pasteItem)
-        var draggingRect = self.frame
+        var draggingRect = frame
         draggingRect.size.width = 1
         draggingRect.size.height = 1
         let dummyImage = NSImage(size: NSSize(width: 1, height: 1))
         dragItem.setDraggingFrame(draggingRect, contents: dummyImage)
-        let draggingSession = self.beginDraggingSession(with: [dragItem], event: theEvent, source: self)
+        let draggingSession = beginDraggingSession(with: [dragItem], event: theEvent, source: self)
         draggingSession.animatesToStartingPositionsOnCancelOrFail = true
     }
 
     func draggingSession(_ session: NSDraggingSession,
-                         sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+                         sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation
+    {
         if context == .withinApplication {
             return .move
         }
@@ -340,42 +342,42 @@ extension MubTabItemView: NSDraggingSource {
     }
 
     func draggingSession(_ session: NSDraggingSession, willBeginAt screenPoint: NSPoint) {
-        dragOffset = self.frame.origin.x - screenPoint.x
+        dragOffset = frame.origin.x - screenPoint.x
         closeButton.isHidden = true
-        let dragRect = self.bounds
-        let image = NSImage(data: self.dataWithPDF(inside: dragRect))
-        self.draggingView = NSImageView(frame: dragRect)
-        if let draggingView = self.draggingView {
+        let dragRect = bounds
+        let image = NSImage(data: dataWithPDF(inside: dragRect))
+        draggingView = NSImageView(frame: dragRect)
+        if let draggingView = draggingView {
             draggingView.image = image
             draggingView.translatesAutoresizingMaskIntoConstraints = false
-            self.tabBarView.addSubview(draggingView)
-            draggingView.topAnchor.constraint(equalTo: self.tabBarView.topAnchor).isActive = true
-            draggingView.bottomAnchor.constraint(equalTo: self.tabBarView.bottomAnchor).isActive = true
-            draggingView.widthAnchor.constraint(equalToConstant: self.frame.width)
-            self.draggingViewLeadingConstraint = draggingView.leadingAnchor
-                .constraint(equalTo: self.tabBarView.tabContainerView.leadingAnchor, constant: self.frame.origin.x)
-            self.draggingViewLeadingConstraint?.isActive = true
+            tabBarView.addSubview(draggingView)
+            draggingView.topAnchor.constraint(equalTo: tabBarView.topAnchor).isActive = true
+            draggingView.bottomAnchor.constraint(equalTo: tabBarView.bottomAnchor).isActive = true
+            draggingViewLeadingConstraint = draggingView.leadingAnchor
+                .constraint(equalTo: tabBarView.tabContainerView.leadingAnchor, constant: frame.origin.x)
+            draggingViewLeadingConstraint?.isActive = true
         }
         isDragging = true
-        self.titleView.isHidden = true
-        self.needsDisplay = true
+        titleView.isHidden = true
+        needsDisplay = true
     }
 
     func draggingSession(_ session: NSDraggingSession, movedTo screenPoint: NSPoint) {
-        if let constraint = self.draggingViewLeadingConstraint,
-            let offset = self.dragOffset, let draggingView = self.draggingView {
+        if let constraint = draggingViewLeadingConstraint,
+           let offset = dragOffset, let draggingView = draggingView
+        {
             var constant = screenPoint.x + offset
             let min: CGFloat = 0
             if constant < min {
                 constant = min
             }
-            let max = self.tabBarView.tabContainerView.frame.size.width - self.frame.size.width
+            let max = tabBarView.tabContainerView.frame.size.width - frame.size.width
             if constant > max {
                 constant = max
             }
             constraint.constant = constant
 
-            self.tabBarView.handleDraggingTab(draggingView.frame, dragTabItemView: self)
+            tabBarView.handleDraggingTab(draggingView.frame, dragTabItemView: self)
         }
     }
 
@@ -383,12 +385,12 @@ extension MubTabItemView: NSDraggingSource {
         dragOffset = nil
         isDragging = false
         closeButton.isHidden = false
-        self.titleView.isHidden = false
-        self.draggingView?.removeFromSuperview()
-        self.draggingViewLeadingConstraint = nil
-        self.needsDisplay = true
-        if let tabViewItem = self.tabViewItem {
-            self.tabBarView.updateTabViewForMovedTabItem(tabViewItem)
+        titleView.isHidden = false
+        draggingView?.removeFromSuperview()
+        draggingViewLeadingConstraint = nil
+        needsDisplay = true
+        if let tabViewItem = tabViewItem {
+            tabBarView.updateTabViewForMovedTabItem(tabViewItem)
         }
     }
 }
@@ -400,7 +402,8 @@ extension MubTabItemView: NSMenuDelegate {
         }
         if menuItem.action == #selector(closeToRight) {
             if let tabItem = self.tabViewItem,
-                let tabView = self.tabViewItem?.tabView {
+               let tabView = self.tabViewItem?.tabView
+            {
                 return tabItem != tabView.tabViewItems.last
             }
             return false

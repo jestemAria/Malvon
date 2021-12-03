@@ -9,7 +9,7 @@ import Cocoa
 import MubTabView
 
 class TabViewController: NSViewController {
-    @IBOutlet weak var tabView: MubTabView!
+    @IBOutlet var tabView: MubTabView!
     var tabBarView: MubTabBarView!
 
     override func viewDidLoad() {
@@ -18,7 +18,6 @@ class TabViewController: NSViewController {
         tabBarView = tabView.tabBarView
 
         addViewWithLabel("Tab", aTabBarView: tabBarView, fromTabView: true)
-
 
         tabBarView.minTabHeight = 28
         tabBarView.minTabItemWidth = 120

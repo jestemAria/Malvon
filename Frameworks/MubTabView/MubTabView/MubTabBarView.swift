@@ -5,7 +5,7 @@
 //  Created by Ashwin Paudel on 01/12/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
+// Code from: https://github.com/robin/LYTabView
 
 import Cocoa
 
@@ -56,14 +56,14 @@ public class MubTabBarView: NSView {
     public var needAnimation: Bool = true
     public var isActive: Bool = true {
         didSet {
-
-            self.needsDisplay = true
-            for view in self.tabItemViews() {
+            needsDisplay = true
+            for view in tabItemViews() {
                 view.updateColors()
                 view.needsDisplay = true
             }
         }
     }
+
     public var hideIfOnlyOneTabExists: Bool = true {
         didSet {
             checkVisibilityAccordingToTabCount()
@@ -72,25 +72,25 @@ public class MubTabBarView: NSView {
 
     public var borderStyle: BoderStyle = .none {
         didSet {
-            self.outterStackView.alignment = borderStyle.alignment
-            self.invalidateIntrinsicContentSize()
-            self.needsDisplay = true
-            self.needsLayout = true
+            outterStackView.alignment = borderStyle.alignment
+            invalidateIntrinsicContentSize()
+            needsDisplay = true
+            needsLayout = true
         }
     }
 
     public var paddingWindowButton: Bool = false {
         didSet {
             windowButtonPaddingView.isHidden = !paddingWindowButton
-            self.needsDisplay = true
+            needsDisplay = true
         }
     }
 
     public var minTabItemWidth: CGFloat = 100 {
         didSet {
             if let constraint = minViewWidthConstraint {
-                constraint.constant = self.minViewWidth
-                self.needsLayout = true
+                constraint.constant = minViewWidth
+                needsLayout = true
             }
         }
     }
@@ -103,7 +103,7 @@ public class MubTabBarView: NSView {
 
     var status: BarStatus {
         let isWindowActive = self.isWindowActive
-        if self.isActive && isWindowActive {
+        if isActive, isWindowActive {
             return .active
         } else if !isWindowActive {
             return .windowInactive
@@ -133,7 +133,7 @@ public class MubTabBarView: NSView {
     public var showAddNewTabButton: Bool = true {
         didSet {
             addTabButton.isHidden = !showAddNewTabButton
-            self.needsUpdate = true
+            needsUpdate = true
         }
     }
 
@@ -142,12 +142,12 @@ public class MubTabBarView: NSView {
     public var addNewTabButtonAction: Selector?
 
     public var tabViewItems: [NSTabViewItem] {
-        return self.tabView?.tabViewItems ?? []
+        return tabView?.tabViewItems ?? []
     }
 
-    private var packedTabViewItems: [NSTabViewItem] = [NSTabViewItem]()
+    private var packedTabViewItems = [NSTabViewItem]()
     private var lastUnpackedItem: NSTabViewItem {
-        return self.tabViewItems[self.tabItemViews().count-1]
+        return tabViewItems[tabItemViews().count - 1]
     }
 
     private var hasPackedTabViewItems: Bool {
@@ -155,7 +155,7 @@ public class MubTabBarView: NSView {
     }
 
     private var isWindowActive: Bool {
-        if let window = self.window {
+        if let window = window {
             if (window as? NSPanel) != nil {
                 return NSApp.isActive
             } else {
@@ -167,22 +167,23 @@ public class MubTabBarView: NSView {
 
     @IBOutlet public var tabView: NSTabView? {
         didSet {
-            self.needsUpdate = true
+            needsUpdate = true
         }
     }
 
     let tabContainerView = NSStackView(frame: .zero)
     private var buttonHeight: CGFloat {
-        if let tabItemView = self.tabItemViews().first {
+        if let tabItemView = tabItemViews().first {
             return tabItemView.frame.size.height
         }
         return 20
     }
+
     private let outterStackView = NSStackView(frame: .zero)
     private var addTabButton: NSButton!
     private var packedTabButton: NSButton!
     private var buttonHeightConstraints = [NSLayoutConstraint]()
-    private let windowButtonPaddingView: NSView = NSView(frame: .zero)
+    private let windowButtonPaddingView = NSView(frame: .zero)
     private var windowButtonPaddingViewWidthConstraint: NSLayoutConstraint?
     private var minViewWidthConstraint: NSLayoutConstraint?
     private var minViewWidth: CGFloat {
@@ -191,7 +192,7 @@ public class MubTabBarView: NSView {
 
     override open var intrinsicContentSize: NSSize {
         var height: CGFloat = buttonHeight
-        if let aTabView = self.tabItemViews().first {
+        if let aTabView = tabItemViews().first {
             height = aTabView.intrinsicContentSize.height + borderStyle.borderOffset()
         }
         return NSSize(width: NSView.noIntrinsicMetric, height: height)
@@ -216,17 +217,17 @@ public class MubTabBarView: NSView {
 
     private func setupViews() {
         outterStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(outterStackView)
-        outterStackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        outterStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        outterStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        outterStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        addSubview(outterStackView)
+        outterStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        outterStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        outterStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        outterStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         outterStackView.orientation = .horizontal
         outterStackView.distribution = .fill
         outterStackView.alignment = borderStyle.alignment
         outterStackView.spacing = 1
         outterStackView.setHuggingPriority(NSLayoutConstraint.Priority.defaultLow, for: .horizontal)
-        minViewWidthConstraint = outterStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: self.minViewWidth)
+        minViewWidthConstraint = outterStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: minViewWidth)
         minViewWidthConstraint?.isActive = true
 
         tabContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -250,12 +251,12 @@ public class MubTabBarView: NSView {
         windowButtonPaddingView.translatesAutoresizingMaskIntoConstraints = false
         outterStackView.addView(windowButtonPaddingView, in: .top)
         windowButtonPaddingViewWidthConstraint = windowButtonPaddingView.widthAnchor.constraint(equalToConstant: 68)
-        windowButtonPaddingViewWidthConstraint?.isActive =  true
+        windowButtonPaddingViewWidthConstraint?.isActive = true
         windowButtonPaddingView.isHidden = !paddingWindowButton
 
         // Listen to bound changes
-        self.postsBoundsChangedNotifications = true
-        self.postsFrameChangedNotifications = true
+        postsBoundsChangedNotifications = true
+        postsFrameChangedNotifications = true
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(boundDidChangeNotification),
                                                name: NSView.boundsDidChangeNotification,
@@ -266,27 +267,27 @@ public class MubTabBarView: NSView {
                                                object: self)
     }
 
-    open override func viewDidMoveToWindow() {
-        if let window = self.window {
+    override open func viewDidMoveToWindow() {
+        if let window = window {
             var width: CGFloat = 68
             if let lastButton = window.standardWindowButton(.zoomButton),
-                let firstButton = window.standardWindowButton(.closeButton) {
+               let firstButton = window.standardWindowButton(.closeButton)
+            {
                 width = firstButton.frame.origin.x + lastButton.frame.origin.x + lastButton.frame.size.width
             }
 
             if let constraint = windowButtonPaddingViewWidthConstraint {
                 constraint.constant = width
             }
-
         }
     }
 
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
     }
 
-    required public override init(frame frameRect: NSRect) {
+    override public required init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         setupViews()
     }
@@ -295,8 +296,8 @@ public class MubTabBarView: NSView {
         NotificationCenter.default.removeObserver(self)
     }
 
-    private func removeTabItemView(tabItemView: MubTabItemView, animated: Bool ) {
-        self.tabContainerView.removeView(tabItemView, animated: animated) {
+    private func removeTabItemView(tabItemView: MubTabItemView, animated: Bool) {
+        tabContainerView.removeView(tabItemView, animated: animated) {
             self.needsUpdate = true
         }
         popFirstPackedItem()
@@ -310,29 +311,29 @@ public class MubTabBarView: NSView {
     }
 
     public func removeTabViewItem(_ tabviewItem: NSTabViewItem, animated: Bool = false) {
-        if let index = self.packedTabViewItems.index(of: tabviewItem) {
+        if let index = packedTabViewItems.firstIndex(of: tabviewItem) {
             removePackedTabItem(at: index)
         }
-        self.tabView?.removeTabViewItem(tabviewItem)
+        tabView?.removeTabViewItem(tabviewItem)
     }
 
     public func removeAllTabViewItemExcept(_ tabViewItem: NSTabViewItem) {
-        for tabItem in self.tabViewItems where tabItem != tabViewItem {
+        for tabItem in tabViewItems where tabItem != tabViewItem {
             self.tabView?.removeTabViewItem(tabItem)
         }
     }
 
     func removeFrom(_ tabViewItem: NSTabViewItem) {
-        if let index = self.tabViewItems.index(of: tabViewItem) {
-            let dropItems = self.tabViewItems.dropFirst(index+1)
+        if let index = tabViewItems.firstIndex(of: tabViewItem) {
+            let dropItems = tabViewItems.dropFirst(index + 1)
             for tabItem in dropItems {
-                self.tabView?.removeTabViewItem(tabItem)
+                tabView?.removeTabViewItem(tabItem)
             }
         }
     }
 
     private func tabItemViews() -> [MubTabItemView] {
-        return self.tabContainerView.views(in: .center).flatMap { $0 as? MubTabItemView }
+        return tabContainerView.views(in: .center).compactMap { $0 as? MubTabItemView }
     }
 
     private func shouldShowCloseButton(_ tabBarItem: NSTabViewItem) -> Bool {
@@ -351,29 +352,29 @@ public class MubTabBarView: NSView {
             serialQueue.sync {
                 if !self.needsUpdate {
                     self._needsUpdate = true
-                    OperationQueue.main.addOperation({
+                    OperationQueue.main.addOperation {
                         self.update()
-                    })
+                    }
                 }
             }
         }
     }
 
     func update() {
-        guard self.needsUpdate else {
+        guard needsUpdate else {
             return
         }
         _needsUpdate = false
 
-        if let tabView = self.tabView {
+        if let tabView = tabView {
             let lastTabItem = self.tabItemViews().last?.tabViewItem
             let tabItemViews = self.tabItemViews()
-            self.packedTabViewItems.removeAll()
+            packedTabViewItems.removeAll()
             for (idx, item) in tabView.tabViewItems.enumerated() {
                 if idx < tabItemViews.count {
                     tabItemViews[idx].tabViewItem = item
                 } else {
-                    self.insertTabItem(item, index: idx)
+                    insertTabItem(item, index: idx)
                 }
             }
             for itemView in self.tabItemViews().dropFirst(tabView.tabViewItems.count) {
@@ -382,47 +383,47 @@ public class MubTabBarView: NSView {
             if let lastItem = lastTabItem, self.packedTabViewItems.contains(lastItem) {
                 self.tabItemViews().last?.tabViewItem = lastTabItem
             }
-            packedTabButton.isHidden = !self.hasPackedTabViewItems
+            packedTabButton.isHidden = !hasPackedTabViewItems
             checkVisibilityAccordingToTabCount()
             updateTabState()
         }
     }
 
     func updateTabState() {
-        if let item = self.tabView?.selectedTabViewItem {
-            if self.selectedTabView() == nil {
-                self.tabItemViews().last?.tabViewItem = item
+        if let item = tabView?.selectedTabViewItem {
+            if selectedTabView() == nil {
+                tabItemViews().last?.tabViewItem = item
             }
         }
-        for v in self.tabItemViews() {
+        for v in tabItemViews() {
             v.needsDisplay = true
         }
-        self.needsDisplay = true
+        needsDisplay = true
     }
 
     func checkVisibilityAccordingToTabCount() {
         let count = tabViewItems.count
         if hideIfOnlyOneTabExists {
-            self.animatorOrNot().isHidden = count <= 1
+            animatorOrNot().isHidden = count <= 1
         } else {
-            self.animatorOrNot().isHidden = count < 1
+            animatorOrNot().isHidden = count < 1
         }
     }
 
     func selectTabViewItem(_ tabViewItem: NSTabViewItem) {
-        self.tabView?.selectTabViewItem(tabViewItem)
+        tabView?.selectTabViewItem(tabViewItem)
     }
 
     func selectedTabView() -> MubTabItemView? {
-        if let selectedTabViewItem = self.tabView?.selectedTabViewItem {
-            for tabView in self.tabItemViews() where tabView.tabViewItem == selectedTabViewItem {
+        if let selectedTabViewItem = tabView?.selectedTabViewItem {
+            for tabView in tabItemViews() where tabView.tabViewItem == selectedTabViewItem {
                 return tabView
             }
         }
         return nil
     }
 
-    open override func viewWillMove(toWindow newWindow: NSWindow?) {
+    override open func viewWillMove(toWindow newWindow: NSWindow?) {
         NotificationCenter.default.addObserver(self, selector: #selector(windowStatusDidChange),
                                                name: NSWindow.didBecomeKeyNotification,
                                                object: newWindow)
@@ -432,18 +433,18 @@ public class MubTabBarView: NSView {
     }
 
     @objc private func windowStatusDidChange(_ notification: Notification) {
-        self.needsDisplay = true
-        self.tabContainerView.needsDisplay = true
-        for itemViews in self.tabItemViews() {
+        needsDisplay = true
+        tabContainerView.needsDisplay = true
+        for itemViews in tabItemViews() {
             itemViews.updateColors()
         }
     }
 
-    open override func draw(_ dirtyRect: NSRect) {
+    override open func draw(_ dirtyRect: NSRect) {
         let status = self.status
-        self.borderColor[status]!.setFill()
-        self.bounds.fill()
-        self.backgroundColor[status]!.setFill()
+        borderColor[status]!.setFill()
+        bounds.fill()
+        backgroundColor[status]!.setFill()
         for button in [packedTabButton, addTabButton] {
             if let rect = button?.frame {
                 rect.fill()
@@ -452,21 +453,21 @@ public class MubTabBarView: NSView {
 
         if paddingWindowButton {
             let paddingRect = NSRect(x: 0, y: 0,
-                                     width: self.windowButtonPaddingView.frame.size.width,
-                                     height: self.frame.size.height)
+                                     width: windowButtonPaddingView.frame.size.width,
+                                     height: frame.size.height)
             NSColor.clear.setFill()
             paddingRect.fill()
         }
     }
 
     @IBAction public func closeCurrentTab(_ sender: AnyObject?) {
-        if let item = self.tabView?.selectedTabViewItem {
+        if let item = tabView?.selectedTabViewItem {
             removeTabViewItem(item, animated: true)
         }
     }
 
     @objc private func addNewTab(_ sender: AnyObject?) {
-        if let action = self.addNewTabButtonAction {
+        if let action = addNewTabButtonAction {
             DispatchQueue.main.async {
                 NSApplication.shared.sendAction(action, to: self.addNewTabButtonTarget, from: self)
             }
@@ -475,16 +476,16 @@ public class MubTabBarView: NSView {
 
     @objc private func selectPackedItem(_ sender: AnyObject) {
         if let item = sender as? NSMenuItem, let tabItem = item.representedObject as? NSTabViewItem {
-            self.tabView?.selectTabViewItem(tabItem)
+            tabView?.selectTabViewItem(tabItem)
             item.state = .on
         }
     }
 
     @objc private func showPackedList(_ sender: AnyObject?) {
         let menu = NSMenu()
-        let selectedItem = self.tabView?.selectedTabViewItem
+        let selectedItem = tabView?.selectedTabViewItem
         var itemsInMenu = [lastUnpackedItem]
-        itemsInMenu.append(contentsOf: self.packedTabViewItems)
+        itemsInMenu.append(contentsOf: packedTabViewItems)
         for item in itemsInMenu {
             let menuItem = NSMenuItem(title: item.label, action: nil, keyEquivalent: "")
             if item == selectedItem {
@@ -495,16 +496,16 @@ public class MubTabBarView: NSView {
             menuItem.action = #selector(selectPackedItem)
             menu.addItem(menuItem)
         }
-        if let event = self.window?.currentEvent {
-            NSMenu.popUpContextMenu(menu, with: event, for: self.packedTabButton)
+        if let event = window?.currentEvent {
+            NSMenu.popUpContextMenu(menu, with: event, for: packedTabButton)
         }
     }
 
     private func moveTo(_ dragTabItemView: MubTabItemView, position: NSInteger, movingItemView: MubTabItemView) {
-        self.tabContainerView.removeView(dragTabItemView)
-        self.tabContainerView.insertView(dragTabItemView, at: position, in: .center)
+        tabContainerView.removeView(dragTabItemView)
+        tabContainerView.insertView(dragTabItemView, at: position, in: .center)
         if needAnimation {
-            NSAnimationContext.runAnimationGroup({ (_) in
+            NSAnimationContext.runAnimationGroup({ _ in
                 let origFrame = movingItemView.frame
                 self.tabContainerView.layoutSubtreeIfNeeded()
                 let toFrame = movingItemView.frame
@@ -522,8 +523,8 @@ public class MubTabBarView: NSView {
     func handleDraggingTab(_ dragRect: NSRect, dragTabItemView: MubTabItemView) {
         var idx = 0
         var moved = false
-        for itemView in self.tabItemViews() {
-            if itemView != dragTabItemView && !itemView.isMoving {
+        for itemView in tabItemViews() {
+            if itemView != dragTabItemView, !itemView.isMoving {
                 let midx = itemView.frame.midX
                 if midx > dragRect.minX {
                     moveTo(dragTabItemView, position: idx, movingItemView: itemView)
@@ -536,9 +537,9 @@ public class MubTabBarView: NSView {
             }
         }
         if !moved {
-            idx = self.tabItemViews().count - 1
-            for itemView in self.tabItemViews().reversed() {
-                if itemView != dragTabItemView && !itemView.isMoving {
+            idx = tabItemViews().count - 1
+            for itemView in tabItemViews().reversed() {
+                if itemView != dragTabItemView, !itemView.isMoving {
                     let midx = itemView.frame.midX
                     if midx <= dragRect.maxX {
                         moveTo(dragTabItemView, position: idx, movingItemView: itemView)
@@ -553,12 +554,12 @@ public class MubTabBarView: NSView {
     }
 
     func updateTabViewForMovedTabItem(_ tabItem: NSTabViewItem) {
-        for (idx, itemView) in self.tabItemViews().enumerated() where itemView.tabViewItem == tabItem {
+        for (idx, itemView) in tabItemViews().enumerated() where itemView.tabViewItem == tabItem {
             self.tabView?.selectTabViewItem(at: 0)
             self.tabView?.removeTabViewItem(tabItem)
             self.tabView?.insertTabViewItem(tabItem, at: idx)
         }
-        self.tabView?.selectTabViewItem(tabItem)
+        tabView?.selectTabViewItem(tabItem)
     }
 
     private func createLYTabItemView(_ item: NSTabViewItem) -> MubTabItemView {
@@ -570,19 +571,19 @@ public class MubTabBarView: NSView {
     }
 
     private func itemViewForItem(_ item: NSTabViewItem) -> MubTabItemView? {
-        for tabItemView in self.tabItemViews() where tabItemView.tabViewItem == item {
+        for tabItemView in tabItemViews() where tabItemView.tabViewItem == item {
             return tabItemView
         }
         return nil
     }
 
     public func addTabViewItem(_ item: NSTabViewItem, animated: Bool = false) {
-        self.tabView?.addTabViewItem(item)
-        self.insertTabItem(item, index: self.tabItemViews().count + self.packedTabViewItems.count, animated: animated)
+        tabView?.addTabViewItem(item)
+        insertTabItem(item, index: tabItemViews().count + packedTabViewItems.count, animated: animated)
     }
 
     private func resetHeight() {
-        if let aTabView = self.tabItemViews().first {
+        if let aTabView = tabItemViews().first {
             let height = aTabView.intrinsicContentSize.height
             for constraint in buttonHeightConstraints {
                 constraint.constant = height
@@ -591,45 +592,46 @@ public class MubTabBarView: NSView {
     }
 
     private func needPackItem(addtion: Int = 0) -> Bool {
-        let buttonsWidth: CGFloat = (showAddNewTabButton ? 2 : 1) * self.buttonHeight
-        let width = (self.frame.size.width - buttonsWidth)/CGFloat(self.tabItemViews().count+addtion)
-        return width < self.minTabItemWidth
+        let buttonsWidth: CGFloat = (showAddNewTabButton ? 2 : 1) * buttonHeight
+        let width = (frame.size.width - buttonsWidth) / CGFloat(tabItemViews().count + addtion)
+        return width < minTabItemWidth
     }
 
     private func packLastTab() {
-        guard let lastTabView = self.tabItemViews().last else {
+        guard let lastTabView = tabItemViews().last else {
             return
         }
-        self.insertToPackedItems(self.lastUnpackedItem, index: 0)
-        self.tabContainerView.removeView(lastTabView)
+        insertToPackedItems(lastUnpackedItem, index: 0)
+        tabContainerView.removeView(lastTabView)
         updateTabState()
     }
 
     private func popFirstPackedItem() {
-        if let lastTabViewItem = self.tabItemViews().last?.tabViewItem,
-            hasPackedTabViewItems {
+        if let lastTabViewItem = tabItemViews().last?.tabViewItem,
+           hasPackedTabViewItems
+        {
             let lastUnpackedItem = self.lastUnpackedItem
             let item = packedTabViewItems[0]
             removePackedTabItem(at: 0)
-            self.tabItemViews().last?.tabViewItem = lastUnpackedItem
-            self.insertTabItem(item, index: self.tabItemViews().count)
-            if self.packedTabViewItems.contains(lastTabViewItem) {
-                self.tabItemViews().last?.tabViewItem = lastTabViewItem
+            tabItemViews().last?.tabViewItem = lastUnpackedItem
+            insertTabItem(item, index: tabItemViews().count)
+            if packedTabViewItems.contains(lastTabViewItem) {
+                tabItemViews().last?.tabViewItem = lastTabViewItem
             }
             updateTabState()
         }
     }
 
-    private func insertToPackedItems(_ item: NSTabViewItem, index: NSInteger ) {
-        self.packedTabViewItems.insert(item, at: index)
+    private func insertToPackedItems(_ item: NSTabViewItem, index: NSInteger) {
+        packedTabViewItems.insert(item, at: index)
     }
 
     private func insertTabItem(_ item: NSTabViewItem, index: NSInteger, animated: Bool = false) {
         let needPack = needPackItem(addtion: 1)
-        if needPack || (hasPackedTabViewItems && index > self.tabItemViews().count) {
+        if needPack || (hasPackedTabViewItems && index > tabItemViews().count) {
             packedTabButton.isHidden = false
-            if index >= self.tabItemViews().count {
-                self.insertToPackedItems(item, index: index - self.tabItemViews().count)
+            if index >= tabItemViews().count {
+                insertToPackedItems(item, index: index - tabItemViews().count)
                 return
             }
             packLastTab()
@@ -645,54 +647,54 @@ public class MubTabBarView: NSView {
         }
     }
 
-    final private func adjustPackedItem() {
+    private final func adjustPackedItem() {
         if needPackItem() {
-            if self.tabItemViews().count > 1 {
+            if tabItemViews().count > 1 {
                 packedTabButton.isHidden = false
                 packLastTab()
             }
-        } else if hasPackedTabViewItems && !needPackItem(addtion: 1) {
+        } else if hasPackedTabViewItems, !needPackItem(addtion: 1) {
             popFirstPackedItem()
         }
     }
 
     @objc private func boundDidChangeNotification(notification: Notification) {
-        guard self.tabItemViews().last != nil, !self.tabContainerView.isHidden && self.tabViewItems.count > 1 else {
+        guard tabItemViews().last != nil, !tabContainerView.isHidden, tabViewItems.count > 1 else {
             return
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.adjustPackedItem()
         }
     }
 
-    open override func prepareForInterfaceBuilder() {
+    override open func prepareForInterfaceBuilder() {
         var ibTabItem = NSTabViewItem()
         ibTabItem.label = "Tab"
-        self.addTabViewItem(ibTabItem)
+        addTabViewItem(ibTabItem)
         ibTabItem = NSTabViewItem()
         ibTabItem.label = "Bar"
-        self.addTabViewItem(ibTabItem)
+        addTabViewItem(ibTabItem)
     }
 }
 
 extension MubTabBarView: NSTabViewDelegate {
     public func tabViewDidChangeNumberOfTabViewItems(_ tabView: NSTabView) {
-        self.needsUpdate = true
+        needsUpdate = true
         updateTabState()
-        self.delegate?.tabViewDidChangeNumberOfTabViewItems?(tabView)
+        delegate?.tabViewDidChangeNumberOfTabViewItems?(tabView)
     }
 
     public func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
-        self.updateTabState()
-        self.delegate?.tabView?(tabView, didSelect: tabViewItem)
+        updateTabState()
+        delegate?.tabView?(tabView, didSelect: tabViewItem)
     }
 
     public func tabView(_ tabView: NSTabView, willSelect tabViewItem: NSTabViewItem?) {
-        self.delegate?.tabView?(tabView, willSelect: tabViewItem)
+        delegate?.tabView?(tabView, willSelect: tabViewItem)
     }
 
     public func tabView(_ tabView: NSTabView, shouldSelect tabViewItem: NSTabViewItem?) -> Bool {
-        if let rslt = self.delegate?.tabView?(tabView, shouldSelect: tabViewItem) {
+        if let rslt = delegate?.tabView?(tabView, shouldSelect: tabViewItem) {
             return rslt
         }
         return true

@@ -5,21 +5,20 @@
 //  Created by Ashwin Paudel on 01/12/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
+// Code from: https://github.com/robin/LYTabView
 
 import Cocoa
 
 /// Description
 public class MubTabView: NSView {
-
     /// Tab bar view of the MubTabView
-    public let tabBarView: MubTabBarView = MubTabBarView(frame: .zero)
+    public let tabBarView = MubTabBarView(frame: .zero)
 
     /// Native NSTabView of the MubTabView
-    public let tabView: NSTabView = NSTabView(frame: .zero)
+    public let tabView = NSTabView(frame: .zero)
 
     //
-    private let stackView: NSStackView = NSStackView(frame: .zero)
+    private let stackView = NSStackView(frame: .zero)
 
     /// delegate of MubTabView
     public var delegate: NSTabViewDelegate? {
@@ -31,21 +30,21 @@ public class MubTabView: NSView {
         }
     }
 
-    public var numberOfTabViewItems: Int { return self.tabView.numberOfTabViewItems }
-    public var tabViewItems: [NSTabViewItem] { return self.tabView.tabViewItems }
-    public var selectedTabViewItem: NSTabViewItem? { return self.tabView.selectedTabViewItem }
+    public var numberOfTabViewItems: Int { return tabView.numberOfTabViewItems }
+    public var tabViewItems: [NSTabViewItem] { return tabView.tabViewItems }
+    public var selectedTabViewItem: NSTabViewItem? { return tabView.selectedTabViewItem }
 
-    final private func setupViews() {
+    private final func setupViews() {
         tabView.delegate = tabBarView
         tabView.tabViewType = .noTabsNoBorder
         tabBarView.tabView = tabView
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(stackView)
-        stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
         tabView.translatesAutoresizingMaskIntoConstraints = false
         tabBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,77 +60,77 @@ public class MubTabView: NSView {
         stackView.leadingAnchor.constraint(equalTo: tabView.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: tabView.trailingAnchor).isActive = true
 
-        let lowerPriority = NSLayoutConstraint.Priority(rawValue: NSLayoutConstraint.Priority.defaultLow.rawValue-10)
+        let lowerPriority = NSLayoutConstraint.Priority(rawValue: NSLayoutConstraint.Priority.defaultLow.rawValue - 10)
         tabView.setContentHuggingPriority(lowerPriority, for: .vertical)
         tabBarView.setContentCompressionResistancePriority(NSLayoutConstraint.Priority.defaultHigh, for: .vertical)
         tabBarView.setContentHuggingPriority(NSLayoutConstraint.Priority.defaultHigh, for: .vertical)
     }
 
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
     }
 
-    required public override init(frame frameRect: NSRect) {
+    override public required init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         setupViews()
     }
 }
 
 public extension MubTabView {
-    public func addTabViewItem(_ tabViewItem: NSTabViewItem) {
-        self.tabBarView.addTabViewItem(tabViewItem)
+    func addTabViewItem(_ tabViewItem: NSTabViewItem) {
+        tabBarView.addTabViewItem(tabViewItem)
     }
 
-    public func insertTabViewItem(_ tabViewItem: NSTabViewItem, atIndex index: Int) {
-        self.tabView.insertTabViewItem(tabViewItem, at: index)
+    func insertTabViewItem(_ tabViewItem: NSTabViewItem, atIndex index: Int) {
+        tabView.insertTabViewItem(tabViewItem, at: index)
     }
 
-    public func removeTabViewItem(_ tabViewItem: NSTabViewItem) {
-        self.tabBarView.removeTabViewItem(tabViewItem)
+    func removeTabViewItem(_ tabViewItem: NSTabViewItem) {
+        tabBarView.removeTabViewItem(tabViewItem)
     }
 
-    public func indexOfTabViewItem(_ tabViewItem: NSTabViewItem) -> Int {
-        return self.tabView.indexOfTabViewItem(tabViewItem)
+    func indexOfTabViewItem(_ tabViewItem: NSTabViewItem) -> Int {
+        return tabView.indexOfTabViewItem(tabViewItem)
     }
 
-    public func indexOfTabViewItemWithIdentifier(_ identifier: AnyObject) -> Int {
-        return self.tabView.indexOfTabViewItem(withIdentifier: identifier)
+    func indexOfTabViewItemWithIdentifier(_ identifier: AnyObject) -> Int {
+        return tabView.indexOfTabViewItem(withIdentifier: identifier)
     }
 
-    public func tabViewItem(at index: Int) -> NSTabViewItem {
-        return self.tabView.tabViewItem(at: index)
+    func tabViewItem(at index: Int) -> NSTabViewItem {
+        return tabView.tabViewItem(at: index)
     }
 
-    public func selectFirstTabViewItem(_ sender: AnyObject?) {
-        self.tabView.selectFirstTabViewItem(sender)
+    func selectFirstTabViewItem(_ sender: AnyObject?) {
+        tabView.selectFirstTabViewItem(sender)
     }
 
-    public func selectLastTabViewItem(_ sender: AnyObject?) {
-        self.tabView.selectLastTabViewItem(sender)
+    func selectLastTabViewItem(_ sender: AnyObject?) {
+        tabView.selectLastTabViewItem(sender)
     }
 
-    public func selectNextTabViewItem(_ sender: AnyObject?) {
-        self.tabView.selectNextTabViewItem(sender)
+    func selectNextTabViewItem(_ sender: AnyObject?) {
+        tabView.selectNextTabViewItem(sender)
     }
 
-    public func selectPreviousTabViewItem(_ sender: AnyObject?) {
-        self.tabView.selectPreviousTabViewItem(sender)
+    func selectPreviousTabViewItem(_ sender: AnyObject?) {
+        tabView.selectPreviousTabViewItem(sender)
     }
 
-    public func selectTabViewItem(_ tabViewItem: NSTabViewItem?) {
-        self.tabView.selectTabViewItem(tabViewItem)
+    func selectTabViewItem(_ tabViewItem: NSTabViewItem?) {
+        tabView.selectTabViewItem(tabViewItem)
     }
 
-    public func selectTabViewItem(at index: Int) {
-        self.tabView.selectTabViewItem(at: index)
+    func selectTabViewItem(at index: Int) {
+        tabView.selectTabViewItem(at: index)
     }
 
-    public func selectTabViewItem(withIdentifier identifier: AnyObject) {
-        self.tabView.selectTabViewItem(withIdentifier: identifier)
+    func selectTabViewItem(withIdentifier identifier: AnyObject) {
+        tabView.selectTabViewItem(withIdentifier: identifier)
     }
 
-    public func takeSelectedTabViewItemFromSender(_ sender: AnyObject?) {
-        self.tabView.takeSelectedTabViewItemFromSender(sender)
+    func takeSelectedTabViewItemFromSender(_ sender: AnyObject?) {
+        tabView.takeSelectedTabViewItemFromSender(sender)
     }
 }

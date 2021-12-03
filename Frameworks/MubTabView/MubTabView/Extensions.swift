@@ -5,12 +5,12 @@
 //  Created by Ashwin Paudel on 01/12/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
+// Code from: https://github.com/robin/LYTabView
 
 import Cocoa
 
-extension NSImage {
-    public func scaleToSize(_ size: CGSize) -> NSImage {
+public extension NSImage {
+    func scaleToSize(_ size: CGSize) -> NSImage {
         let scaledImage = NSImage(size: size)
         let rect = NSRect(origin: CGPoint(x: 0, y: 0), size: size)
         scaledImage.lockFocus()
@@ -21,14 +21,14 @@ extension NSImage {
     }
 }
 
-
 extension NSStackView {
     func insertView(_ aView: NSView, atIndex index: Int,
                     inGravity gravity: NSStackView.Gravity,
-                    animated: Bool, completionHandler: (() -> Void)?) {
+                    animated: Bool, completionHandler: (() -> Void)?)
+    {
         self.insertView(aView, at: index, in: gravity)
         if animated {
-            NSAnimationContext.runAnimationGroup({ (context) in
+            NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 0.3
                 context.allowsImplicitAnimation = true
                 self.window?.layoutIfNeeded()
@@ -38,11 +38,12 @@ extension NSStackView {
 
     func addView(_ aView: NSView,
                  inGravity gravity: NSStackView.Gravity,
-                 animated: Bool, completionHandler: (() -> Void)?) {
+                 animated: Bool, completionHandler: (() -> Void)?)
+    {
         self.addView(aView, in: gravity)
         if animated {
             aView.setFrameOrigin(NSPoint(x: self.frame.maxX, y: self.frame.origin.y))
-            NSAnimationContext.runAnimationGroup({ (context) in
+            NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 0.3
                 context.allowsImplicitAnimation = true
                 self.window?.layoutIfNeeded()
@@ -53,7 +54,7 @@ extension NSStackView {
     func removeView(_ aView: NSView, animated: Bool, completionHandler: (() -> Void)?) {
         self.removeView(aView)
         if animated {
-            NSAnimationContext.runAnimationGroup({ (context) in
+            NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 0.3
                 context.allowsImplicitAnimation = true
                 self.window?.layoutIfNeeded()

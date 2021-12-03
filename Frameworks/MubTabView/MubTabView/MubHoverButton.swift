@@ -5,7 +5,7 @@
 //  Created by Ashwin Paudel on 01/12/2021.
 //
 
-// Code from: https://github.com/robin/MubTabView
+// Code from: https://github.com/robin/LYTabView
 
 import Cocoa
 
@@ -29,18 +29,18 @@ class MubHoverButton: NSButton {
     }
 
     override func mouseEntered(with theEvent: NSEvent) {
-        if hovered {
+        if self.hovered {
             return
         }
-        hovered = true
+        self.hovered = true
         needsDisplay = true
     }
 
     override func mouseExited(with theEvent: NSEvent) {
-        if !hovered {
+        if !self.hovered {
             return
         }
-        hovered = false
+        self.hovered = false
         needsDisplay = true
     }
 }

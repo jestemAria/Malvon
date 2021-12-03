@@ -65,10 +65,10 @@ class HoverButton: NSButton {
     override func updateLayer() {
         if self.hovered, self.isEnabled {
             if self.cell!.isHighlighted {
-                self.layer?.cornerRadius = cornerRadius
+                self.layer?.cornerRadius = self.cornerRadius
                 self.layer?.backgroundColor = self.pressedBackgroundColor?.cgColor
             } else {
-                self.layer?.cornerRadius = cornerRadius
+                self.layer?.cornerRadius = self.cornerRadius
                 self.layer?.backgroundColor = self.hoveredBackgroundColor?.cgColor
             }
         } else {

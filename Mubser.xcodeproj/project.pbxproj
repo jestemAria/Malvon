@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF326CD627583BDD0095DA07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF326CD527583BDD0095DA07 /* Helper.swift */; };
 		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
+		CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA81A49275930C200242A10 /* TabViewController.swift */; };
+		CFA81A4C275930C200242A10 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA81A4A275930C200242A10 /* TabViewController.xib */; };
 		CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95F9B275538A800B130F9 /* AppDelegate.swift */; };
 		CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9D275538AC00B130F9 /* Assets.xcassets */; };
 		CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9F275538AC00B130F9 /* MainMenu.xib */; };
@@ -101,6 +103,8 @@
 /* Begin PBXFileReference section */
 		CF326CD527583BDD0095DA07 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
+		CFA81A49275930C200242A10 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		CFA81A4A275930C200242A10 /* TabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabViewController.xib; sourceTree = "<group>"; };
 		CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubTabView.xcodeproj; path = MubTabView/MubTabView.xcodeproj; sourceTree = "<group>"; };
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC95F9B275538A800B130F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				CFC95FA2275538AC00B130F9 /* Mubser.entitlements */,
 				CFC9602527553C7A00B130F9 /* MubWindowController.swift */,
 				CFC9602627553C7A00B130F9 /* MubWindowController.xib */,
+				CFA81A49275930C200242A10 /* TabViewController.swift */,
+				CFA81A4A275930C200242A10 /* TabViewController.xib */,
 				CFC9602927553CA600B130F9 /* MubViewController.swift */,
 				CFC9602A27553CA600B130F9 /* MubViewController.xib */,
 				CFC960402755873400B130F9 /* SearchCell.xib */,
@@ -412,6 +418,7 @@
 			files = (
 				CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */,
 				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
+				CFA81A4C275930C200242A10 /* TabViewController.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
 				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
 				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
@@ -445,6 +452,7 @@
 				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
 				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,
+				CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */,
 				CF326CD627583BDD0095DA07 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,8 +628,10 @@
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need acess to camera";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need acess to microphone";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,8 +658,10 @@
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need acess to camera";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need acess to microphone";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

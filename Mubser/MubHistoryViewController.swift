@@ -15,17 +15,16 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        historyJSON = parseJSON()!
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Open", action: #selector(openURL), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Copy", action: #selector(copyURL), keyEquivalent: ""))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Remove From History", action: #selector(deleteItem), keyEquivalent: ""))
         tableView.menu = menu
-
+        tableView.doubleAction = #selector(openURL)
         tableView.delegate = self
         tableView.dataSource = self
-        historyJSON = parseJSON()!.reversed()
-
         tableView.reloadData()
     }
 
@@ -55,7 +54,7 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
             print(error.localizedDescription)
         }
 
-        view.window?.close()
+        refreshTableView()
     }
 
     @IBAction func clearHistory(_ sender: Any) {
@@ -69,7 +68,7 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
             print(error.localizedDescription)
         }
 
-        tableView.reloadData()
+        refreshTableView()
     }
 
     // MARK: - Table View
@@ -91,6 +90,11 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     }
 
     // MARK: - History Items
+
+    func refreshTableView() {
+        historyJSON = parseJSON()!
+        tableView.reloadData()
+    }
 
     func parseJSON() -> [MubHistoryElement]? {
         let fileContents = readFile(path: MubHistoryViewController.path!)

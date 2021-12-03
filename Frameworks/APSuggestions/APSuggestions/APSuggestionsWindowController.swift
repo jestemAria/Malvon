@@ -310,7 +310,7 @@ public class APSuggestionsWindowController: NSWindowController {
     override public func moveDown(_ sender: Any?) {
         let selectedView: NSView? = self.selectedView
         var previousView: NSView?
-        for viewController: NSViewController in viewControllers.reversed() {
+        for viewController: NSViewController in viewControllers {
             let view: NSView? = viewController.view
             if view == selectedView {
                 break

@@ -10,11 +10,12 @@ import Cocoa
 import MubWebView
 import WebKit
 
-class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, NSSearchFieldDelegate {
+class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDelegate {
     // MARK: - Elements
 
     // WebView Element
     @IBOutlet var webView: MubWebView!
+//    @IBOutlet var webView: WKWebView!
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
@@ -36,6 +37,8 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     private var skipNextSuggestion = false
     private var window = NSWindow()
     
+    var urlObservation: NSKeyValueObservation?
+
     // MARK: - Setup Functions
 
     override func viewDidAppear() {
@@ -48,25 +51,25 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         super.viewDidLoad()
         (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
+//        (self.superclass as? NSTabViewItem)?.label = "aweoifj"
         configureElements()
         refreshButton.cornerRadius = 10
+        webView.delegate = self
+        webView.initializeWebView()
+//        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
+//        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
     }
     
     // Style the elements ( buttons, searchfields )
     func styleElements() {
         progressIndicator.alphaValue = 0.7
-        
     }
     
     // Configure the elements ( buttons, searchfields )
     func configureElements() {
         APsuggestionCellNib = "SearchCell"
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
         searchField.delegate = self
-        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         webView.enableAdblock()
         webView.enableConfigurations()
     }
@@ -74,6 +77,7 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     // MARK: - Control Buttons
 
     @IBAction func backButton(_ sender: Any) {
+        print("Back Button Pressed")
         if webView.canGoBack { webView.goBack() }
     }
     
@@ -133,11 +137,16 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
     }
     
     // MARK: - Webview Functions
-
-    func estimatedProgress() {
+    
+    func mubWebView(_ webView: MubWebView, urlDidChange url: URL?) {
+        searchField.stringValue = url?.absoluteString ?? "NIL"
+        checkButtons()
+    }
+    
+    func mubWebView(_ webView: MubWebView, estimatedProgress progress: Double) {
         progressIndicator.isHidden = false
         refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
-        progressIndicator.doubleValue = (webView.estimatedProgress * 100) + 10
+        progressIndicator.doubleValue = (progress * 100) + 10
         progressIndicator.increment(by: 50)
         
         progressIndicator.usesThreadedAnimation = true
@@ -149,16 +158,12 @@ class MubViewController: NSViewController, WKUIDelegate, WKNavigationDelegate, N
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            estimatedProgress()
-        } else if keyPath == "title" {
-            websiteTitle.stringValue = webView.title!
-            guard let webViewURL = webView.url?.absoluteString else { return }
-            let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
-            let data = try? Data(contentsOf: url!)
-            faviconImageView.image = NSImage(data: data!)
-        }
+    func mubWebView(_ webView: MubWebView, titleChanged title: String) {
+        websiteTitle.stringValue = title
+        guard let webViewURL = webView.url?.absoluteString else { return }
+        let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
+        let data = try? Data(contentsOf: url!)
+        faviconImageView.image = NSImage(data: data!)
     }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF5BB36B275AC9B600BFA6FD /* MubHoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB366275AC9B600BFA6FD /* MubHoverButton.swift */; };
+		CF5BB36C275AC9B600BFA6FD /* MubTabCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB367275AC9B600BFA6FD /* MubTabCloseButton.swift */; };
+		CF5BB36D275AC9B600BFA6FD /* MubTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB368275AC9B600BFA6FD /* MubTabView.swift */; };
+		CF5BB36E275AC9B600BFA6FD /* MubTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB369275AC9B600BFA6FD /* MubTabItemView.swift */; };
+		CF5BB36F275AC9B600BFA6FD /* MubTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB36A275AC9B600BFA6FD /* MubTabBarView.swift */; };
+		CF5BB371275AC9ED00BFA6FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB370275AC9ED00BFA6FD /* Extensions.swift */; };
 		CFB669D32756EB6B0025D140 /* MubTabView.docc in Sources */ = {isa = PBXBuildFile; fileRef = CFB669D22756EB6B0025D140 /* MubTabView.docc */; };
 		CFB669D92756EB6C0025D140 /* MubTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669CE2756EB6B0025D140 /* MubTabView.framework */; };
 		CFB669DE2756EB6C0025D140 /* MubTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB669DD2756EB6C0025D140 /* MubTabViewTests.swift */; };
 		CFB669DF2756EB6C0025D140 /* MubTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB669D12756EB6B0025D140 /* MubTabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD078602757F772001482C1 /* MubTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0785F2757F772001482C1 /* MubTabView.swift */; };
-		CFD0786B27580F8F001482C1 /* MubTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0786A27580F8F001482C1 /* MubTabBarView.swift */; };
-		CFD0786D27580FBE001482C1 /* MubTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0786C27580FBE001482C1 /* MubTabItemView.swift */; };
-		CFD078712758134F001482C1 /* MubHoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD078702758134F001482C1 /* MubHoverButton.swift */; };
-		CFD078732758136E001482C1 /* MubTabCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD078722758136E001482C1 /* MubTabCloseButton.swift */; };
-		CFD0787527581395001482C1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0787427581395001482C1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,17 +30,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF5BB366275AC9B600BFA6FD /* MubHoverButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubHoverButton.swift; sourceTree = "<group>"; };
+		CF5BB367275AC9B600BFA6FD /* MubTabCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabCloseButton.swift; sourceTree = "<group>"; };
+		CF5BB368275AC9B600BFA6FD /* MubTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabView.swift; sourceTree = "<group>"; };
+		CF5BB369275AC9B600BFA6FD /* MubTabItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabItemView.swift; sourceTree = "<group>"; };
+		CF5BB36A275AC9B600BFA6FD /* MubTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabBarView.swift; sourceTree = "<group>"; };
+		CF5BB370275AC9ED00BFA6FD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CFB669CE2756EB6B0025D140 /* MubTabView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MubTabView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB669D12756EB6B0025D140 /* MubTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MubTabView.h; sourceTree = "<group>"; };
 		CFB669D22756EB6B0025D140 /* MubTabView.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MubTabView.docc; sourceTree = "<group>"; };
 		CFB669D82756EB6C0025D140 /* MubTabViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubTabViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB669DD2756EB6C0025D140 /* MubTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewTests.swift; sourceTree = "<group>"; };
-		CFD0785F2757F772001482C1 /* MubTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabView.swift; sourceTree = "<group>"; };
-		CFD0786A27580F8F001482C1 /* MubTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabBarView.swift; sourceTree = "<group>"; };
-		CFD0786C27580FBE001482C1 /* MubTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabItemView.swift; sourceTree = "<group>"; };
-		CFD078702758134F001482C1 /* MubHoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubHoverButton.swift; sourceTree = "<group>"; };
-		CFD078722758136E001482C1 /* MubTabCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabCloseButton.swift; sourceTree = "<group>"; };
-		CFD0787427581395001482C1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +83,12 @@
 		CFB669D02756EB6B0025D140 /* MubTabView */ = {
 			isa = PBXGroup;
 			children = (
-				CFD0785F2757F772001482C1 /* MubTabView.swift */,
-				CFD0786A27580F8F001482C1 /* MubTabBarView.swift */,
-				CFD0786C27580FBE001482C1 /* MubTabItemView.swift */,
-				CFD078702758134F001482C1 /* MubHoverButton.swift */,
-				CFD078722758136E001482C1 /* MubTabCloseButton.swift */,
-				CFD0787427581395001482C1 /* Extensions.swift */,
+				CF5BB370275AC9ED00BFA6FD /* Extensions.swift */,
+				CF5BB366275AC9B600BFA6FD /* MubHoverButton.swift */,
+				CF5BB36A275AC9B600BFA6FD /* MubTabBarView.swift */,
+				CF5BB367275AC9B600BFA6FD /* MubTabCloseButton.swift */,
+				CF5BB369275AC9B600BFA6FD /* MubTabItemView.swift */,
+				CF5BB368275AC9B600BFA6FD /* MubTabView.swift */,
 				CFB669D12756EB6B0025D140 /* MubTabView.h */,
 				CFB669D22756EB6B0025D140 /* MubTabView.docc */,
 			);
@@ -212,13 +212,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD0786D27580FBE001482C1 /* MubTabItemView.swift in Sources */,
+				CF5BB36D275AC9B600BFA6FD /* MubTabView.swift in Sources */,
 				CFB669D32756EB6B0025D140 /* MubTabView.docc in Sources */,
-				CFD0786B27580F8F001482C1 /* MubTabBarView.swift in Sources */,
-				CFD078712758134F001482C1 /* MubHoverButton.swift in Sources */,
-				CFD078602757F772001482C1 /* MubTabView.swift in Sources */,
-				CFD078732758136E001482C1 /* MubTabCloseButton.swift in Sources */,
-				CFD0787527581395001482C1 /* Extensions.swift in Sources */,
+				CF5BB36F275AC9B600BFA6FD /* MubTabBarView.swift in Sources */,
+				CF5BB371275AC9ED00BFA6FD /* Extensions.swift in Sources */,
+				CF5BB36E275AC9B600BFA6FD /* MubTabItemView.swift in Sources */,
+				CF5BB36B275AC9B600BFA6FD /* MubHoverButton.swift in Sources */,
+				CF5BB36C275AC9B600BFA6FD /* MubTabCloseButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

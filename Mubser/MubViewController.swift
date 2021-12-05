@@ -37,6 +37,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     private var skipNextSuggestion = false
     private var window = NSWindow()
     
+    @IBOutlet weak var tabButton: NSButton!
     var urlObservation: NSKeyValueObservation?
 
     // MARK: - Setup Functions
@@ -51,13 +52,11 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         super.viewDidLoad()
         (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
-//        (self.superclass as? NSTabViewItem)?.label = "aweoifj"
         configureElements()
         refreshButton.cornerRadius = 10
         webView.delegate = self
         webView.initializeWebView()
-//        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-//        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+        webView.delegate = self
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
     }
     
@@ -74,6 +73,17 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         webView.enableConfigurations()
     }
     
+    @IBAction func tabsPopoverButton(_ sender: NSButton) {
+        let popover = NSPopover()
+        if popover.isShown {
+            popover.close()
+        } else {
+            popover.behavior = .transient
+            popover.contentViewController = MubTabViewController()
+            popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
+        }
+    }
+
     // MARK: - Control Buttons
 
     @IBAction func backButton(_ sender: Any) {
@@ -167,13 +177,15 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("iwafjeoij")
         searchField.stringValue = self.webView.url!.absoluteString
         checkButtons()
     }
     
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    func mubWebView(_ webView: MubWebView, didFinishLoading url: URL?) {
         addHistoryEntry()
         checkButtons()
+        print("oweifjaweofij")
     }
     
     // MARK: - Search Suggestion Functions

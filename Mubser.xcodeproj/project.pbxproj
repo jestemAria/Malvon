@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF0AE6C0275AE1570031DE44 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0AE6BF275AE1570031DE44 /* Image1.png */; };
-		CF0AE6C2275AE1950031DE44 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0AE6C1275AE1950031DE44 /* Image2.png */; };
 		CF326CD627583BDD0095DA07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF326CD527583BDD0095DA07 /* Helper.swift */; };
 		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
 		CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA81A49275930C200242A10 /* TabViewController.swift */; };
@@ -32,6 +30,9 @@
 		CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */; };
 		CFD0786E2758120E001482C1 /* MubTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; };
 		CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */; };
+		CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */; };
+		CFF1B2DD275D1CAD0057CAC4 /* tabs.json in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2DC275D1CAD0057CAC4 /* tabs.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,9 @@
 		CFC960402755873400B130F9 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubHistoryViewController.swift; sourceTree = "<group>"; };
 		CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubHistoryViewController.xib; sourceTree = "<group>"; };
+		CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewController.swift; sourceTree = "<group>"; };
+		CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubTabViewController.xib; sourceTree = "<group>"; };
+		CFF1B2DC275D1CAD0057CAC4 /* tabs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tabs.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 		CFC95F9A275538A800B130F9 /* Mubser */ = {
 			isa = PBXGroup;
 			children = (
+				CFF1B2D2275D13950057CAC4 /* test */,
 				CF326CD527583BDD0095DA07 /* Helper.swift */,
 				CF7772C227567DCF0034555A /* UI Elements */,
 				CFC95F9B275538A800B130F9 /* AppDelegate.swift */,
@@ -220,13 +225,14 @@
 				CFC95FA2275538AC00B130F9 /* Mubser.entitlements */,
 				CFC9602527553C7A00B130F9 /* MubWindowController.swift */,
 				CFC9602627553C7A00B130F9 /* MubWindowController.xib */,
-				CFA81A49275930C200242A10 /* TabViewController.swift */,
-				CFA81A4A275930C200242A10 /* TabViewController.xib */,
 				CFC9602927553CA600B130F9 /* MubViewController.swift */,
 				CFC9602A27553CA600B130F9 /* MubViewController.xib */,
 				CFC960402755873400B130F9 /* SearchCell.xib */,
 				CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */,
 				CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */,
+				CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */,
+				CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */,
+				CFF1B2DC275D1CAD0057CAC4 /* tabs.json */,
 			);
 			path = Mubser;
 			sourceTree = "<group>";
@@ -273,6 +279,15 @@
 				CFC9603D2755863D00B130F9 /* APSuggestions.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CFF1B2D2275D13950057CAC4 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				CFA81A49275930C200242A10 /* TabViewController.swift */,
+				CFA81A4A275930C200242A10 /* TabViewController.xib */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,14 +448,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */,
-				CF0AE6C0275AE1570031DE44 /* Image1.png in Resources */,
 				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
 				CFA81A4C275930C200242A10 /* TabViewController.xib in Resources */,
+				CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
 				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
-				CF0AE6C2275AE1950031DE44 /* Image2.png in Resources */,
 				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
+				CFF1B2DD275D1CAD0057CAC4 /* tabs.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +487,7 @@
 				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,
 				CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */,
 				CF326CD627583BDD0095DA07 /* Helper.swift in Sources */,
+				CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +663,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need acess to camera";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ashwin Paudel. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need acess to microphone";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -677,7 +693,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need acess to camera";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ashwin Paudel. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need acess to microphone";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

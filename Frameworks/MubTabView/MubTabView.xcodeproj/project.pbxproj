@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF5BB36B275AC9B600BFA6FD /* MubHoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB366275AC9B600BFA6FD /* MubHoverButton.swift */; };
-		CF5BB36C275AC9B600BFA6FD /* MubTabCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB367275AC9B600BFA6FD /* MubTabCloseButton.swift */; };
 		CF5BB36D275AC9B600BFA6FD /* MubTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB368275AC9B600BFA6FD /* MubTabView.swift */; };
-		CF5BB36E275AC9B600BFA6FD /* MubTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB369275AC9B600BFA6FD /* MubTabItemView.swift */; };
-		CF5BB36F275AC9B600BFA6FD /* MubTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB36A275AC9B600BFA6FD /* MubTabBarView.swift */; };
-		CF5BB371275AC9ED00BFA6FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5BB370275AC9ED00BFA6FD /* Extensions.swift */; };
 		CFB669D32756EB6B0025D140 /* MubTabView.docc in Sources */ = {isa = PBXBuildFile; fileRef = CFB669D22756EB6B0025D140 /* MubTabView.docc */; };
 		CFB669D92756EB6C0025D140 /* MubTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669CE2756EB6B0025D140 /* MubTabView.framework */; };
 		CFB669DE2756EB6C0025D140 /* MubTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB669DD2756EB6C0025D140 /* MubTabViewTests.swift */; };
 		CFB669DF2756EB6C0025D140 /* MubTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB669D12756EB6B0025D140 /* MubTabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFF1B2D0275D12E30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2CE275D12E30057CAC4 /* MubTabViewController.swift */; };
+		CFF1B2D1275D12E30057CAC4 /* MubTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2CF275D12E30057CAC4 /* MubTabViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,17 +27,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CF5BB366275AC9B600BFA6FD /* MubHoverButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubHoverButton.swift; sourceTree = "<group>"; };
-		CF5BB367275AC9B600BFA6FD /* MubTabCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabCloseButton.swift; sourceTree = "<group>"; };
 		CF5BB368275AC9B600BFA6FD /* MubTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabView.swift; sourceTree = "<group>"; };
-		CF5BB369275AC9B600BFA6FD /* MubTabItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabItemView.swift; sourceTree = "<group>"; };
-		CF5BB36A275AC9B600BFA6FD /* MubTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabBarView.swift; sourceTree = "<group>"; };
-		CF5BB370275AC9ED00BFA6FD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CFB669CE2756EB6B0025D140 /* MubTabView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MubTabView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB669D12756EB6B0025D140 /* MubTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MubTabView.h; sourceTree = "<group>"; };
 		CFB669D22756EB6B0025D140 /* MubTabView.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MubTabView.docc; sourceTree = "<group>"; };
 		CFB669D82756EB6C0025D140 /* MubTabViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubTabViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB669DD2756EB6C0025D140 /* MubTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewTests.swift; sourceTree = "<group>"; };
+		CFF1B2CE275D12E30057CAC4 /* MubTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewController.swift; sourceTree = "<group>"; };
+		CFF1B2CF275D12E30057CAC4 /* MubTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubTabViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +77,11 @@
 		CFB669D02756EB6B0025D140 /* MubTabView */ = {
 			isa = PBXGroup;
 			children = (
-				CF5BB370275AC9ED00BFA6FD /* Extensions.swift */,
-				CF5BB366275AC9B600BFA6FD /* MubHoverButton.swift */,
-				CF5BB36A275AC9B600BFA6FD /* MubTabBarView.swift */,
-				CF5BB367275AC9B600BFA6FD /* MubTabCloseButton.swift */,
-				CF5BB369275AC9B600BFA6FD /* MubTabItemView.swift */,
 				CF5BB368275AC9B600BFA6FD /* MubTabView.swift */,
 				CFB669D12756EB6B0025D140 /* MubTabView.h */,
 				CFB669D22756EB6B0025D140 /* MubTabView.docc */,
+				CFF1B2CE275D12E30057CAC4 /* MubTabViewController.swift */,
+				CFF1B2CF275D12E30057CAC4 /* MubTabViewController.xib */,
 			);
 			path = MubTabView;
 			sourceTree = "<group>";
@@ -195,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFF1B2D1275D12E30057CAC4 /* MubTabViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,11 +206,7 @@
 			files = (
 				CF5BB36D275AC9B600BFA6FD /* MubTabView.swift in Sources */,
 				CFB669D32756EB6B0025D140 /* MubTabView.docc in Sources */,
-				CF5BB36F275AC9B600BFA6FD /* MubTabBarView.swift in Sources */,
-				CF5BB371275AC9ED00BFA6FD /* Extensions.swift in Sources */,
-				CF5BB36E275AC9B600BFA6FD /* MubTabItemView.swift in Sources */,
-				CF5BB36B275AC9B600BFA6FD /* MubHoverButton.swift in Sources */,
-				CF5BB36C275AC9B600BFA6FD /* MubTabCloseButton.swift in Sources */,
+				CFF1B2D0275D12E30057CAC4 /* MubTabViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

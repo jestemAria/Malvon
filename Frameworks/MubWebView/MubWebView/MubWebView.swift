@@ -17,6 +17,9 @@ import WebKit
 
     /// When the webview's title changes
     @objc optional func mubWebView(_ webView: MubWebView, titleChanged title: String)
+    
+    /// When the webview is done loading
+    @objc optional func mubWebView(_ webView: MubWebView, didFinishLoading url: URL?)
 }
 
 /// The MubWebView, subclass of WKWebView
@@ -48,6 +51,11 @@ public class MubWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
 
             self.delegate?.mubWebView?(webView, urlDidChange: webView.url)
         })
+    }
+    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("[ MubWebView ]: Finished Loading Website")
+        self.delegate?.mubWebView?(webView as! MubWebView, didFinishLoading: webView.url)
     }
 
     /// Add the adblock script into the webview

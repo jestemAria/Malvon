@@ -35,8 +35,9 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     }
 
     @IBAction func copyURL(_ sender: Any) {
-        let url = historyJSON[tableView.clickedRow].address
-
+        var newHistoryJSON: [MubHistoryElement] = historyJSON
+        let url = newHistoryJSON[tableView.clickedRow].address
+        
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(url, forType: .string)
         NSPasteboard.general.string(forType: .string)
@@ -44,9 +45,10 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     }
 
     @IBAction func deleteItem(_ sender: Any) {
-        var newHistoryJSON = historyJSON
+        var newHistoryJSON: [MubHistoryElement] = historyJSON
+        newHistoryJSON.reverse()
         newHistoryJSON.remove(at: tableView.clickedRow)
-
+        
         do {
             let data = try JSONEncoder().encode(newHistoryJSON)
             try data.write(to: MubHistoryViewController.path!)
@@ -81,9 +83,9 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView else { return nil }
 
         if (tableColumn?.identifier)!.rawValue == "historyWebsite" {
-            cell.textField?.stringValue = historyJSON[row].website
+            cell.textField?.stringValue = historyJSON.reversed()[row].website
         } else if (tableColumn?.identifier)!.rawValue == "historyAddress" {
-            cell.textField?.stringValue = historyJSON[row].address
+            cell.textField?.stringValue = historyJSON.reversed()[row].address
         }
 
         return cell

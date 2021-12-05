@@ -11,7 +11,7 @@ class MubWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         self.window?.isMovableByWindowBackground = true
-        self.contentViewController = TabViewController(nibName: "TabViewController", bundle: nil)
+        self.contentViewController = MubViewController()
     }
 
     convenience init() {

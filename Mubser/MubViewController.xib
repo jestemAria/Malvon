@@ -15,6 +15,7 @@
                 <outlet property="progressIndicator" destination="YhO-4t-qRf" id="8Jm-Aw-0US"/>
                 <outlet property="refreshButton" destination="DhB-2r-p2a" id="wSB-BK-QEE"/>
                 <outlet property="searchField" destination="I8O-2s-z3b" id="2iK-05-zsI"/>
+                <outlet property="tabButton" destination="YwA-ia-r7d" id="eGJ-aZ-UWS"/>
                 <outlet property="tabStackView" destination="TAK-Ee-IF3" id="3lD-Pn-CFf"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="webView" destination="HKm-nA-M9f" id="Mai-b1-kCk"/>
@@ -35,7 +36,7 @@
                     </wkWebViewConfiguration>
                 </wkWebView>
                 <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-2s-z3b">
-                    <rect key="frame" x="67" y="242" width="350" height="30"/>
+                    <rect key="frame" x="113" y="242" width="304" height="30"/>
                     <shadow key="shadow">
                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </shadow>
@@ -49,13 +50,13 @@
                     </connections>
                 </searchField>
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgG-f9-HK0">
-                    <rect key="frame" x="3" y="242" width="60" height="30"/>
+                    <rect key="frame" x="63" y="242" width="50" height="30"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDF-KD-qZS" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="-2" width="30" height="35"/>
+                            <rect key="frame" x="0.0" y="1" width="25" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="S9Y-LS-Csd"/>
-                                <constraint firstAttribute="width" constant="30" id="fl3-3R-viK"/>
+                                <constraint firstAttribute="height" constant="25" id="S9Y-LS-Csd"/>
+                                <constraint firstAttribute="width" constant="25" id="fl3-3R-viK"/>
                             </constraints>
                             <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSGoBackTemplate" imagePosition="only" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="ZEe-5c-cee">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -66,10 +67,10 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-xR-Z4V" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
-                            <rect key="frame" x="30" y="-2" width="30" height="35"/>
+                            <rect key="frame" x="25" y="1" width="25" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="CZ2-o3-LJk"/>
-                                <constraint firstAttribute="width" constant="30" id="dHL-v6-1iH"/>
+                                <constraint firstAttribute="height" constant="25" id="CZ2-o3-LJk"/>
+                                <constraint firstAttribute="width" constant="25" id="dHL-v6-1iH"/>
                             </constraints>
                             <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSGoForwardTemplate" imagePosition="only" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="fKN-1N-KdJ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -80,6 +81,9 @@
                             </connections>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="wbX-7T-6ed"/>
+                    </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>
                         <integer value="1000"/>
@@ -130,15 +134,8 @@
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
-                <progressIndicator maxValue="100" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="YhO-4t-qRf">
-                    <rect key="frame" x="74" y="249" width="16" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="dFz-js-HHL"/>
-                        <constraint firstAttribute="width" constant="16" id="ioO-p2-Hlp"/>
-                    </constraints>
-                </progressIndicator>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DhB-2r-p2a" customClass="HoverButton" customModule="Mubser" customModuleProvider="target">
-                    <rect key="frame" x="67" y="239.5" width="30.5" height="37"/>
+                    <rect key="frame" x="113" y="239.5" width="30.5" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="L9C-Zi-5uH"/>
                         <constraint firstAttribute="width" constant="30" id="hWa-jN-lcj"/>
@@ -155,6 +152,26 @@
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Xjr-4l-SeD">
                     <rect key="frame" x="0.0" y="240" width="505" height="5"/>
                 </box>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="YwA-ia-r7d">
+                    <rect key="frame" x="417" y="242" width="88" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="ck1-5E-fKa"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="kpF-Pg-oSV">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="tabsPopoverButton:" target="-2" id="9xF-MY-Bpi"/>
+                    </connections>
+                </button>
+                <progressIndicator maxValue="100" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="YhO-4t-qRf">
+                    <rect key="frame" x="120" y="249" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="dFz-js-HHL"/>
+                        <constraint firstAttribute="width" constant="16" id="ioO-p2-Hlp"/>
+                    </constraints>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="1xJ-Uc-Qs3"/>
@@ -162,20 +179,24 @@
                 <constraint firstItem="Xjr-4l-SeD" firstAttribute="bottom" secondItem="TAK-Ee-IF3" secondAttribute="bottom" id="7fp-xn-Meg"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="I8O-2s-z3b" secondAttribute="bottom" id="8W5-kM-w8B"/>
                 <constraint firstItem="Xjr-4l-SeD" firstAttribute="leading" secondItem="HKm-nA-M9f" secondAttribute="leading" id="93Q-9v-itT"/>
-                <constraint firstItem="DhB-2r-p2a" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="67" id="GJ3-zS-8RO"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="GO1-Pd-xzK"/>
+                <constraint firstItem="YwA-ia-r7d" firstAttribute="leading" secondItem="I8O-2s-z3b" secondAttribute="trailing" id="Hsg-L0-tTF"/>
                 <constraint firstItem="DhB-2r-p2a" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="JIp-KU-n0q"/>
                 <constraint firstAttribute="trailing" secondItem="TAK-Ee-IF3" secondAttribute="trailing" constant="5" id="Jjo-bz-WPa"/>
+                <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="YwA-ia-r7d" secondAttribute="bottom" id="L2A-9g-Cta"/>
+                <constraint firstItem="YwA-ia-r7d" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="N2v-ZB-wSg"/>
+                <constraint firstAttribute="trailing" secondItem="YwA-ia-r7d" secondAttribute="trailing" id="PoD-KZ-pld"/>
                 <constraint firstItem="HKm-nA-M9f" firstAttribute="top" secondItem="Xjr-4l-SeD" secondAttribute="bottom" id="RFc-QQ-6Ik"/>
+                <constraint firstItem="DhB-2r-p2a" firstAttribute="leading" secondItem="sgG-f9-HK0" secondAttribute="trailing" id="SK5-5P-1ga"/>
                 <constraint firstItem="TAK-Ee-IF3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Sem-jL-IFc"/>
+                <constraint firstItem="YhO-4t-qRf" firstAttribute="leading" secondItem="sgG-f9-HK0" secondAttribute="trailing" constant="7" id="Vne-ox-pBS"/>
                 <constraint firstItem="Xjr-4l-SeD" firstAttribute="trailing" secondItem="HKm-nA-M9f" secondAttribute="trailing" id="WBQ-l9-qRR"/>
                 <constraint firstAttribute="bottom" secondItem="HKm-nA-M9f" secondAttribute="bottom" id="Zp6-hh-OiA"/>
-                <constraint firstItem="YhO-4t-qRf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="74" id="jHc-sX-Yd6"/>
                 <constraint firstItem="YhO-4t-qRf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="jgf-1v-182"/>
-                <constraint firstItem="sgG-f9-HK0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="3" id="laZ-AN-m7E"/>
+                <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="sgG-f9-HK0" secondAttribute="trailing" id="jyr-aK-j4Q"/>
+                <constraint firstItem="sgG-f9-HK0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="62.5" id="laZ-AN-m7E"/>
                 <constraint firstItem="Xjr-4l-SeD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="mSj-QT-8Ax"/>
                 <constraint firstAttribute="trailing" secondItem="HKm-nA-M9f" secondAttribute="trailing" id="o6F-6c-yIs"/>
-                <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="67" id="oKF-G0-KYm"/>
                 <constraint firstAttribute="trailing" secondItem="Xjr-4l-SeD" secondAttribute="trailing" id="t7P-dE-SG1"/>
                 <constraint firstItem="TAK-Ee-IF3" firstAttribute="leading" secondItem="I8O-2s-z3b" secondAttribute="trailing" id="tbr-Fa-PRh"/>
             </constraints>

@@ -37,7 +37,7 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     @IBAction func copyURL(_ sender: Any) {
         var newHistoryJSON: [MubHistoryElement] = historyJSON
         let url = newHistoryJSON[tableView.clickedRow].address
-        
+
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(url, forType: .string)
         NSPasteboard.general.string(forType: .string)
@@ -48,7 +48,7 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
         var newHistoryJSON: [MubHistoryElement] = historyJSON
         newHistoryJSON.reverse()
         newHistoryJSON.remove(at: tableView.clickedRow)
-        
+
         do {
             let data = try JSONEncoder().encode(newHistoryJSON)
             try data.write(to: MubHistoryViewController.path!)

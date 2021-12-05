@@ -2,7 +2,7 @@ import Cocoa
 
 class APHighlightingView: NSView {
     var isHighlighted = false
-    
+
     // Draw with or without a highlight style
     override func draw(_ dirtyRect: NSRect) {
         layer?.cornerRadius = 5

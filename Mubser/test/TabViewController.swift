@@ -5,10 +5,10 @@
 ////  Created by Ashwin Paudel on 02/12/2021.
 ////
 //
-//import Cocoa
-//import MubTabView
+// import Cocoa
+// import MubTabView
 //
-//class TabViewController: NSViewController {
+// class TabViewController: NSViewController {
 //    @IBOutlet var tabView: MubTabView!
 //    var tabBarView: MubTabBarView!
 //
@@ -45,4 +45,4 @@
 //            addViewWithLabel(label, aTabBarView: tabBarView)
 //        }
 //    }
-//}
+// }

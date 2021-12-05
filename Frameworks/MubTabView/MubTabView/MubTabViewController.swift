@@ -8,10 +8,8 @@
 import Cocoa
 
 class MubTabViewController: NSViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
-    
 }

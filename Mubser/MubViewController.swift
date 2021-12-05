@@ -37,7 +37,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     private var skipNextSuggestion = false
     private var window = NSWindow()
     
-    @IBOutlet weak var tabButton: NSButton!
+    @IBOutlet var tabButton: NSButton!
     var urlObservation: NSKeyValueObservation?
 
     // MARK: - Setup Functions

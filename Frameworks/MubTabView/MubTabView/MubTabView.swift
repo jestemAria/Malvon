@@ -7,6 +7,4 @@
 
 import Cocoa
 
-public class MubTabView: NSView {
-    
-}
+public class MubTabView: NSView {}

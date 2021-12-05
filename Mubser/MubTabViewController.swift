@@ -8,19 +8,16 @@
 import Cocoa
 
 class MubTabViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+    @IBOutlet var tableView: NSTableView!
 
-    @IBOutlet weak var tableView: NSTableView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
+
     func numberOfRows(in tableView: NSTableView) -> Int {
         return 100
     }
-    
 }

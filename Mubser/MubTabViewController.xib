@@ -56,7 +56,7 @@
                                                                     <constraint firstAttribute="height" constant="30" id="38w-Gj-KB2"/>
                                                                     <constraint firstAttribute="width" constant="30" id="NyC-Mf-xi2"/>
                                                                 </constraints>
-                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="byY-W9-wwR"/>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSNetwork" id="byY-W9-wwR"/>
                                                             </imageView>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jkU-rT-7FD">
                                                                 <rect key="frame" x="28" y="5" width="378" height="20"/>
@@ -125,6 +125,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSCaution" width="32" height="32"/>
+        <image name="NSNetwork" width="32" height="32"/>
     </resources>
 </document>

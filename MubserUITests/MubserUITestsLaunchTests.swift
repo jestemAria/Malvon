@@ -8,7 +8,6 @@
 import XCTest
 
 class MubserUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

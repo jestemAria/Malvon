@@ -5,11 +5,10 @@
 //  Created by Ashwin Paudel on 29/11/2021.
 //
 
-import XCTest
 @testable import Mubser
+import XCTest
 
 class MubserTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -29,5 +28,4 @@ class MubserTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

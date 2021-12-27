@@ -30,7 +30,6 @@
 		CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */; };
 		CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */; };
-		CFF1B2DD275D1CAD0057CAC4 /* currentWebsite.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2DC275D1CAD0057CAC4 /* currentWebsite.txt */; };
 		CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F8275D26D70036C4D7 /* Image1.png */; };
 		CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F9275D26D70036C4D7 /* Image2.png */; };
 		ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55DE277A0D79004C994E /* MubSearchField.swift */; };
@@ -131,7 +130,6 @@
 		CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubHistoryViewController.xib; sourceTree = "<group>"; };
 		CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewController.swift; sourceTree = "<group>"; };
 		CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubTabViewController.xib; sourceTree = "<group>"; };
-		CFF1B2DC275D1CAD0057CAC4 /* currentWebsite.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = currentWebsite.txt; sourceTree = "<group>"; };
 		CFF9A1F8275D26D70036C4D7 /* Image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image1.png; sourceTree = "<group>"; };
 		CFF9A1F9275D26D70036C4D7 /* Image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image2.png; sourceTree = "<group>"; };
 		ED7C55DE277A0D79004C994E /* MubSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubSearchField.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */,
 				CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */,
 				CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */,
-				CFF1B2DC275D1CAD0057CAC4 /* currentWebsite.txt */,
 			);
 			path = Mubser;
 			sourceTree = "<group>";
@@ -450,7 +447,6 @@
 				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
 				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
-				CFF1B2DD275D1CAD0057CAC4 /* currentWebsite.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

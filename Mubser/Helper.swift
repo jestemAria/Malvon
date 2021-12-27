@@ -81,13 +81,10 @@ extension String {
     }
     
     var removeHTTP: String {
-        let url = URL(string: self)!
-        let string1 = String(url.absoluteString.dropFirst((url.scheme?.count ?? -3) + 3))
-        
-        return url.host!
+        URL(string: self)!.host!
     }
     
     var removeWhitespace: String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

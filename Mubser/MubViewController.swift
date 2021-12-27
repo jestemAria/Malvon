@@ -40,6 +40,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     @IBOutlet var tabButton: NSButton!
     var urlObservation: NSKeyValueObservation?
     
+    @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
     // MARK: - Setup Functions
     
     override func viewDidAppear() {
@@ -55,7 +56,8 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         configureElements()
         refreshButton.cornerRadius = 10
         webView.delegate = self
-        webView.initializeWebView()
+        downloadProgressIndicator.doubleValue = 0
+        webView.initializeWebView(downloadProgressIndicator: downloadProgressIndicator)
         webView.delegate = self
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         updateWebsiteURL()
@@ -222,11 +224,13 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         updateWebsiteURL()
-                
+        
         GlobalVariables.currentWebsite = self.webView.url!.absoluteString
         GlobalVariables.currentWebsiteRemovedHTTP = self.webView.url!.absoluteString.removeHTTP
         checkButtons()
     }
+    
+    
     
     func mubWebView(_ webView: MubWebView, didFinishLoading url: URL?) {
         addHistoryEntry()
@@ -237,7 +241,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     // MARK: - Search Field
     @IBAction func searchFieldAction(_ sender: Any) {
         if searchField.stringValue.isValidURL{
-        webView.load(URLRequest(url: URL(string: searchField.stringValue)!))
+            webView.load(URLRequest(url: URL(string: searchField.stringValue)!))
         } else {
             webView.load(URLRequest(url: URL(string: "https://www.google.com/search?client=mubser&q=\(searchField.stringValue.encodeToURL)")!))
         }

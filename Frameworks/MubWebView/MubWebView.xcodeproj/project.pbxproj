@@ -12,6 +12,9 @@
 		CFC9600C2755395C00B130F9 /* MubWebViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9600B2755395C00B130F9 /* MubWebViewTests.swift */; };
 		CFC9600D2755395C00B130F9 /* MubWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC95FFF2755395B00B130F9 /* MubWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFC960202755396700B130F9 /* MubWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9601F2755396700B130F9 /* MubWebView.swift */; };
+		ED16493A277A6D8F00814567 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED164939277A6D8E00814567 /* Downloader.swift */; };
+		ED16493D277A6DCA00814567 /* MubWebViewDownloadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */; };
+		ED16493E277A6DCA00814567 /* MubWebViewDownloadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED16493C277A6DCA00814567 /* MubWebViewDownloadingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,9 @@
 		CFC960062755395C00B130F9 /* MubWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC9600B2755395C00B130F9 /* MubWebViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWebViewTests.swift; sourceTree = "<group>"; };
 		CFC9601F2755396700B130F9 /* MubWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWebView.swift; sourceTree = "<group>"; };
+		ED164939277A6D8E00814567 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = MubWebViewDownloadingViewController.swift; sourceTree = "<group>"; };
+		ED16493C277A6DCA00814567 /* MubWebViewDownloadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubWebViewDownloadingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +80,11 @@
 			isa = PBXGroup;
 			children = (
 				CFC95FFF2755395B00B130F9 /* MubWebView.h */,
+				ED164939277A6D8E00814567 /* Downloader.swift */,
 				CFC9601F2755396700B130F9 /* MubWebView.swift */,
 				CFC960002755395B00B130F9 /* MubWebView.docc */,
+				ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */,
+				ED16493C277A6DCA00814567 /* MubWebViewDownloadingViewController.xib */,
 			);
 			path = MubWebView;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED16493E277A6DCA00814567 /* MubWebViewDownloadingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +209,8 @@
 			files = (
 				CFC960202755396700B130F9 /* MubWebView.swift in Sources */,
 				CFC960012755395B00B130F9 /* MubWebView.docc in Sources */,
+				ED16493D277A6DCA00814567 /* MubWebViewDownloadingViewController.swift in Sources */,
+				ED16493A277A6D8F00814567 /* Downloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

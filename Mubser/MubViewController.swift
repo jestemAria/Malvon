@@ -40,7 +40,6 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     @IBOutlet var tabButton: NSButton!
     var urlObservation: NSKeyValueObservation?
     
-    @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
     // MARK: - Setup Functions
     
     override func viewDidAppear() {
@@ -56,8 +55,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         configureElements()
         refreshButton.cornerRadius = 10
         webView.delegate = self
-        downloadProgressIndicator.doubleValue = 0
-        webView.initializeWebView(downloadProgressIndicator: downloadProgressIndicator)
+        webView.initializeWebView()
         webView.delegate = self
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         updateWebsiteURL()
@@ -204,6 +202,8 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         let data = try? Data(contentsOf: url!)
         faviconImageView.image = NSImage(data: data!)
     }
+    
+    
     
     func updateWebsiteURL() {
         let scheme = self.webView.url!.scheme! + "://"

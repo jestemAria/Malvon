@@ -10,7 +10,7 @@ import AppKit
 
 //class ConnectionManager: NSObject {
 //    static let sharedInstance = ConnectionManager()
-    
+
 class DownloaderProgress: NSObject {
     static let shardInstance = DownloaderProgress()
     @objc dynamic var isFinished: Bool = false
@@ -43,7 +43,7 @@ class FilesDownloader: NSObject, URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         do {
-            try FileManager.default.copyItem(at: location, to: toURL!)
+            try FileManager.default.moveItem(at: location, to: toURL!)
         } catch (let writeError) {
             print("Error creating a file \(location) : \(writeError)")
         }

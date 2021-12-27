@@ -2,7 +2,7 @@ import Cocoa
 
 class APHighlightingView: NSView {
     var isHighlighted = false
-
+    
     // Draw with or without a highlight style
     override func draw(_ dirtyRect: NSRect) {
         layer?.cornerRadius = 5
@@ -19,7 +19,7 @@ class APHighlightingView: NSView {
             __NSRectFillUsingOperation(dirtyRect, .sourceOver)
         }
     }
-
+    
     /* Custom highlighted property setter because when the property changes we need to redraw and update the containing text fields.
      */
     func setHighlighted(_ highlighted: Bool) {

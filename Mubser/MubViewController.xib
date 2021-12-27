@@ -10,7 +10,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MubViewController" customModule="Mubser" customModuleProvider="target">
             <connections>
                 <outlet property="backButtonOutlet" destination="oDF-KD-qZS" id="hjO-fT-R4o"/>
-                <outlet property="downloadProgressIndicator" destination="MWl-F3-aVt" id="uST-F7-Sfj"/>
                 <outlet property="faviconImageView" destination="Vhq-dS-UBZ" id="mpq-67-8mt"/>
                 <outlet property="forwardButtonOutlet" destination="oJF-xR-Z4V" id="aR4-07-HGi"/>
                 <outlet property="progressIndicator" destination="YhO-4t-qRf" id="8Jm-Aw-0US"/>
@@ -189,10 +188,6 @@
                         <action selector="tabsPopoverButton:" target="-2" id="X55-1C-c2a"/>
                     </connections>
                 </button>
-                <progressIndicator fixedFrame="YES" maxValue="100" doubleValue="50" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="MWl-F3-aVt">
-                    <rect key="frame" x="0.0" y="-5" width="801" height="12"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="aVA-wm-c0j" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6i6-Ha-CUt"/>

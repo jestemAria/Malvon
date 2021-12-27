@@ -178,9 +178,9 @@ public class APSuggestionsWindowController: NSWindowController {
         }
         return suggestion as? [String: Any]
     }
-
+    
     // MARK: Mouse Tracking
-
+    
     public func trackingArea(for view: NSView?) -> Any? {
         // make tracking data (to be stored in NSTrackingArea's userInfo) so we can later determine the imageView without hit testing
         var trackerData: [AnyHashable: Any]?
@@ -291,7 +291,7 @@ public class APSuggestionsWindowController: NSWindowController {
     }
     
     // MARK: Keyboard Tracking
-
+    
     override public func moveUp(_ sender: Any?) {
         let selectedView: NSView? = self.selectedView
         var previousView: NSView?

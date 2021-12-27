@@ -20,6 +20,9 @@ import WebKit
     
     /// When the webview is done loading
     @objc optional func mubWebView(_ webView: MubWebView, didFinishLoading url: URL?)
+    
+    /// When the webview is done loading
+    @objc optional func mubWebView(_ webView: MubWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures)
 }
 
 /// The MubWebView, subclass of WKWebView
@@ -36,12 +39,9 @@ public class MubWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
     var titleObservation: NSKeyValueObservation?
     var estimatedProgressObservation: NSKeyValueObservation?
     
-    var downloadProgressIndicator: NSProgressIndicator?
     private lazy var downloader = FilesDownloader()
     
-    public func initializeWebView(downloadProgressIndicator: NSProgressIndicator) {
-        self.downloadProgressIndicator = downloadProgressIndicator
-        self.downloadProgressIndicator?.isHidden = true
+    public func initializeWebView() {
         self.uiDelegate = self
         self.navigationDelegate = self
         
@@ -76,19 +76,13 @@ public class MubWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                     decisionHandler(.allow)
                 } else {
                     print("Code DOWNLOADING")
-                    downloadProgressIndicator?.isHidden = false
-                    downloadProgressIndicator?.doubleValue = 50
-                    let panel = NSOpenPanel()
-                    panel.allowsMultipleSelection = false
-                    panel.canChooseFiles = false
-                    panel.canChooseDirectories = true
+                    let panel = NSSavePanel()
+                    panel.nameFieldStringValue = response.suggestedFilename!
+                    DownloaderProgress.shardInstance.isFinished = false
                     panel.canCreateDirectories = true
                     panel.beginSheetModal(for: self.window!) { [self] (res) in
                         if res == .OK {
-                            let filePath = panel.url?.appendingPathComponent(response.suggestedFilename!)
-                            
-                            
-                            
+                            let filePath = panel.url
                             let ProgView = MubWebViewDownloadingViewController(nibName: "MubWebViewDownloadingViewController", bundle: frameworkBundle)
                             
                             let mainWindow = NSWindow(contentViewController: ProgView)

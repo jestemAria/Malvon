@@ -15,11 +15,9 @@ class MubWindowController: NSWindowController {
         
         let customToolbar = NSToolbar()
         window?.titleVisibility = .hidden
-        window?.toolbar = customToolbar        
+        window?.toolbar = customToolbar
     }
     
-    
-
     convenience init() {
         self.init(windowNibName: "MubWindowController")
     }

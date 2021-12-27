@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: - Functions
-
+    
     @IBAction func showBrowsingHistory(_ sender: Any?) {
         let mainWindow = NSWindow(contentViewController: MubHistoryViewController(nibName: NSNib.Name("MubHistoryViewController"), bundle: nil))
         

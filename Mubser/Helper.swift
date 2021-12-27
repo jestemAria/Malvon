@@ -29,6 +29,25 @@ func readFile(fileName: String, extension: String) -> String {
     return contents
 }
 
+// Writing
+
+func writeFile(contents: String, path: URL) {
+    do {
+        try contents.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+    } catch {
+        print("Error: [Writing File]: \(error.localizedDescription)")
+    }
+}
+
+func writeFile(contents: String, fileName: String, extension: String) {
+    let path = URL(string: "file://" + Bundle.main.path(forResource: fileName, ofType: `extension`)!)!
+    do {
+        try contents.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+    } catch {
+        print("Error: [Writing File]: \(error.localizedDescription)")
+    }
+}
+
 // MARK: - Paths
 
 public func mubDataDir() -> URL? {
@@ -43,4 +62,32 @@ public func mubDataDir() -> URL? {
         return folder
     } catch {}
     return nil
+}
+
+// MARK: - Extensions
+
+extension String {
+    var isValidURL: Bool {
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+            return match.range.length == self.utf16.count
+        } else {
+            return false
+        }
+    }
+    
+    var encodeToURL: String {
+        self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    }
+    
+    var removeHTTP: String {
+        let url = URL(string: self)!
+        let string1 = String(url.absoluteString.dropFirst((url.scheme?.count ?? -3) + 3))
+        
+        return url.host!
+    }
+    
+    var removeWhitespace: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }

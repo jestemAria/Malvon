@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		CF326CD627583BDD0095DA07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF326CD527583BDD0095DA07 /* Helper.swift */; };
 		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
-		CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA81A49275930C200242A10 /* TabViewController.swift */; };
-		CFA81A4C275930C200242A10 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA81A4A275930C200242A10 /* TabViewController.xib */; };
 		CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95F9B275538A800B130F9 /* AppDelegate.swift */; };
 		CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9D275538AC00B130F9 /* Assets.xcassets */; };
 		CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9F275538AC00B130F9 /* MainMenu.xib */; };
@@ -32,9 +30,11 @@
 		CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */; };
 		CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */; };
-		CFF1B2DD275D1CAD0057CAC4 /* tabs.json in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2DC275D1CAD0057CAC4 /* tabs.json */; };
+		CFF1B2DD275D1CAD0057CAC4 /* currentWebsite.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2DC275D1CAD0057CAC4 /* currentWebsite.txt */; };
 		CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F8275D26D70036C4D7 /* Image1.png */; };
 		CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F9275D26D70036C4D7 /* Image2.png */; };
+		ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55DE277A0D79004C994E /* MubSearchField.swift */; };
+		ED7C55E1277A1568004C994E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55E0277A1568004C994E /* GlobalVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +109,6 @@
 		CF0AE6B8275AE10A0031DE44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF326CD527583BDD0095DA07 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
-		CFA81A49275930C200242A10 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		CFA81A4A275930C200242A10 /* TabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabViewController.xib; sourceTree = "<group>"; };
 		CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubTabView.xcodeproj; path = MubTabView/MubTabView.xcodeproj; sourceTree = "<group>"; };
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC95F9B275538A800B130F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,9 +131,11 @@
 		CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubHistoryViewController.xib; sourceTree = "<group>"; };
 		CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewController.swift; sourceTree = "<group>"; };
 		CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubTabViewController.xib; sourceTree = "<group>"; };
-		CFF1B2DC275D1CAD0057CAC4 /* tabs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tabs.json; sourceTree = "<group>"; };
+		CFF1B2DC275D1CAD0057CAC4 /* currentWebsite.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = currentWebsite.txt; sourceTree = "<group>"; };
 		CFF9A1F8275D26D70036C4D7 /* Image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image1.png; sourceTree = "<group>"; };
 		CFF9A1F9275D26D70036C4D7 /* Image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image2.png; sourceTree = "<group>"; };
+		ED7C55DE277A0D79004C994E /* MubSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubSearchField.swift; sourceTree = "<group>"; };
+		ED7C55E0277A1568004C994E /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				CF7772C627567DE50034555A /* HoverButton.swift */,
+				ED7C55DE277A0D79004C994E /* MubSearchField.swift */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -218,8 +219,8 @@
 		CFC95F9A275538A800B130F9 /* Mubser */ = {
 			isa = PBXGroup;
 			children = (
-				CFF1B2D2275D13950057CAC4 /* test */,
 				CF326CD527583BDD0095DA07 /* Helper.swift */,
+				ED7C55E0277A1568004C994E /* GlobalVariables.swift */,
 				CF7772C227567DCF0034555A /* UI Elements */,
 				CFC95F9B275538A800B130F9 /* AppDelegate.swift */,
 				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
@@ -234,7 +235,7 @@
 				CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */,
 				CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */,
 				CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */,
-				CFF1B2DC275D1CAD0057CAC4 /* tabs.json */,
+				CFF1B2DC275D1CAD0057CAC4 /* currentWebsite.txt */,
 			);
 			path = Mubser;
 			sourceTree = "<group>";
@@ -281,15 +282,6 @@
 				CFC9603D2755863D00B130F9 /* APSuggestions.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CFF1B2D2275D13950057CAC4 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				CFA81A49275930C200242A10 /* TabViewController.swift */,
-				CFA81A4A275930C200242A10 /* TabViewController.xib */,
-			);
-			path = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +349,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					CFC95F97275538A800B130F9 = {
 						CreatedOnToolsVersion = 13.1;
@@ -451,7 +443,6 @@
 			files = (
 				CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */,
 				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
-				CFA81A4C275930C200242A10 /* TabViewController.xib in Resources */,
 				CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
 				CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */,
@@ -459,7 +450,7 @@
 				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
 				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
-				CFF1B2DD275D1CAD0057CAC4 /* tabs.json in Resources */,
+				CFF1B2DD275D1CAD0057CAC4 /* currentWebsite.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,10 +477,11 @@
 			files = (
 				CF7772C727567DE50034555A /* HoverButton.swift in Sources */,
 				CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */,
+				ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */,
 				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
+				ED7C55E1277A1568004C994E /* GlobalVariables.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
 				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,
-				CFA81A4B275930C200242A10 /* TabViewController.swift in Sources */,
 				CF326CD627583BDD0095DA07 /* Helper.swift in Sources */,
 				CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */,
 			);
@@ -590,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -645,7 +637,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -660,6 +652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mubser/Mubser.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -675,7 +668,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -690,6 +683,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mubser/Mubser.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -705,7 +699,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
 				PRODUCT_NAME = "$(TARGET_NAME)";

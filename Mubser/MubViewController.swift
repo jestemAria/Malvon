@@ -12,20 +12,20 @@ import WebKit
 
 class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDelegate {
     // MARK: - Elements
-
+    
     // WebView Element
     @IBOutlet var webView: MubWebView!
-//    @IBOutlet var webView: WKWebView!
+    //    @IBOutlet var webView: WKWebView!
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
-    @IBOutlet var searchField: NSSearchField!
+    @IBOutlet var searchField: MubSearchField!
     
     // Website Title Favicon Image, And tab Elements
     @IBOutlet var websiteTitle: NSTextField!
     @IBOutlet var faviconImageView: NSImageView!
     @IBOutlet var tabStackView: NSStackView!
-
+    
     // Refresh, Back, Forward outlets
     @IBOutlet var refreshButton: HoverButton!
     @IBOutlet var backButtonOutlet: HoverButton!
@@ -39,9 +39,9 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     @IBOutlet var tabButton: NSButton!
     var urlObservation: NSKeyValueObservation?
-
+    
     // MARK: - Setup Functions
-
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         window = view.window!
@@ -58,11 +58,14 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         webView.initializeWebView()
         webView.delegate = self
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
+        updateWebsiteURL()
     }
     
     // Style the elements ( buttons, searchfields )
     func styleElements() {
         progressIndicator.alphaValue = 0.7
+        backButtonOutlet.changeTint = true
+        forwardButtonOutlet.changeTint = true
     }
     
     // Configure the elements ( buttons, searchfields )
@@ -83,9 +86,9 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
             popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
         }
     }
-
+    
     // MARK: - Control Buttons
-
+    
     @IBAction func backButton(_ sender: Any) {
         print("Back Button Pressed")
         if webView.canGoBack { webView.goBack() }
@@ -118,17 +121,18 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
             forwardButtonOutlet.isEnabled = false
         }
     }
-
+    
     // MARK: - History Functions
-
+    
     func parseHistoryJSON() -> [MubHistoryElement]? {
         let fileContents = readFile(path: MubHistoryViewController.path!)
         let decodedJSON = try? JSONDecoder().decode([MubHistoryElement].self, from: fileContents.data(using: .utf8)!)
-
+        
         return decodedJSON
     }
-
+    
     func addItem(website: String, address: String) {
+        createHistoryFileIfNotExists()
         var historyJSON = parseHistoryJSON()
         var newHistoryJSON: [MubHistoryElement] = historyJSON!
         let newItem = MubHistoryElement(website: website, address: address)
@@ -146,10 +150,33 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         addItem(website: webView.title!, address: webView.url!.absoluteString)
     }
     
+    // If the history.json file doesn't exist, create it
+    func createHistoryFileIfNotExists() {
+        if let pathComponent = MubHistoryViewController.path {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                print("FILE AVAILABLE")
+            } else {
+                let str = "[]"
+                do {
+                    try str.write(to: MubHistoryViewController.path!, atomically: true, encoding: String.Encoding.utf8)
+                } catch {
+                    print("orejiawo: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            print("FILE PATH NOT AVAILABLE")
+        }
+    }
+    
     // MARK: - Webview Functions
     
     func mubWebView(_ webView: MubWebView, urlDidChange url: URL?) {
-        searchField.stringValue = url?.absoluteString ?? "NIL"
+        updateWebsiteURL()
+        
+        GlobalVariables.currentWebsite = self.webView.url!.absoluteString
+        GlobalVariables.currentWebsiteRemovedHTTP = self.webView.url!.absoluteString.removeHTTP
         checkButtons()
     }
     
@@ -175,10 +202,29 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         let data = try? Data(contentsOf: url!)
         faviconImageView.image = NSImage(data: data!)
     }
-
+    
+    func updateWebsiteURL() {
+        let scheme = self.webView.url!.scheme! + "://"
+        let host = self.webView.url!.host!
+        let path = self.webView.url!.path
+        
+        let attribute = [ NSAttributedString.Key.foregroundColor: NSColor.gray ]
+        
+        let attrPath = NSAttributedString(string: path, attributes: attribute)
+        let attrHost = NSAttributedString(string: host)
+        let attrScheme = NSMutableAttributedString(string: scheme, attributes: attribute)
+        
+        attrScheme.append(attrHost)
+        attrScheme.append(attrPath)
+        
+        searchField.attributedStringValue = attrScheme
+    }
+    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("iwafjeoij")
-        searchField.stringValue = self.webView.url!.absoluteString
+        updateWebsiteURL()
+                
+        GlobalVariables.currentWebsite = self.webView.url!.absoluteString
+        GlobalVariables.currentWebsiteRemovedHTTP = self.webView.url!.absoluteString.removeHTTP
         checkButtons()
     }
     
@@ -188,10 +234,13 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         print("oweifjaweofij")
     }
     
-    // MARK: - Search Suggestion Functions
-
+    // MARK: - Search Field
     @IBAction func searchFieldAction(_ sender: Any) {
+        if searchField.stringValue.isValidURL{
         webView.load(URLRequest(url: URL(string: searchField.stringValue)!))
+        } else {
+            webView.load(URLRequest(url: URL(string: "https://www.google.com/search?client=mubser&q=\(searchField.stringValue.encodeToURL)")!))
+        }
     }
     
     @IBAction func searchFieldValueDidUpdate(_ sender: Any) {
@@ -212,7 +261,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
                 print(error.localizedDescription)
             }
         }
-    
+        
         var suggestions = [[String: Any]]()
         suggestions.reserveCapacity(1)
         

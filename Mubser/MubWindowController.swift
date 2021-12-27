@@ -12,7 +12,13 @@ class MubWindowController: NSWindowController {
         super.windowDidLoad()
         self.window?.isMovableByWindowBackground = true
         self.contentViewController = MubViewController()
+        
+        let customToolbar = NSToolbar()
+        window?.titleVisibility = .hidden
+        window?.toolbar = customToolbar        
     }
+    
+    
 
     convenience init() {
         self.init(windowNibName: "MubWindowController")

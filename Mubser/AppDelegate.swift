@@ -33,4 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainWindow.titlebarAppearsTransparent = true
         mainWindow.makeKeyAndOrderFront(self)
     }
+    
+    @IBAction func openNewApplicationWindow(_ sender: Any?) {
+        let newWindow = MubWindowController()
+        newWindow.showWindow(nil)
+    }
 }

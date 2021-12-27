@@ -14,6 +14,8 @@ class HoverButton: NSButton {
     var hoveredBackgroundColor: NSColor?
     var pressedBackgroundColor: NSColor?
     
+    var changeTint: Bool = false
+    
     fileprivate var hovered: Bool = false
     
     override var wantsUpdateLayer: Bool {
@@ -66,13 +68,28 @@ class HoverButton: NSButton {
         if self.hovered, self.isEnabled {
             if self.cell!.isHighlighted {
                 self.layer?.cornerRadius = self.cornerRadius
-                self.layer?.backgroundColor = self.pressedBackgroundColor?.cgColor
+                
+                if changeTint {
+                    self.contentTintColor = .yellow
+                } else {
+                    self.layer?.backgroundColor = self.pressedBackgroundColor?.cgColor
+                }
             } else {
                 self.layer?.cornerRadius = self.cornerRadius
-                self.layer?.backgroundColor = self.hoveredBackgroundColor?.cgColor
+                
+                if changeTint {
+                    self.contentTintColor = .yellow
+                } else {
+                    self.layer?.backgroundColor = self.hoveredBackgroundColor?.cgColor
+                }
             }
         } else {
-            self.layer?.backgroundColor = self.backgroundColor?.cgColor
+            
+            if changeTint {
+                self.contentTintColor = .labelColor
+            } else {
+                self.layer?.backgroundColor = self.backgroundColor?.cgColor
+            }
             self.layer?.borderWidth = 0
         }
     }

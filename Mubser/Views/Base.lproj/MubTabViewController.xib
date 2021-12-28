@@ -43,7 +43,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="Jo2-ZA-SIj">
+                                            <tableCellView identifier="TabsViewCell" id="Jo2-ZA-SIj" customClass="MubTabsTableViewCell" customModule="Mubser" customModuleProvider="target">
                                                 <rect key="frame" x="18" y="0.0" width="404" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -91,6 +91,8 @@
                                                     <constraint firstAttribute="trailing" secondItem="EDP-wi-WEZ" secondAttribute="trailing" id="wCg-4o-Zgp"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="TabIcon" destination="KxA-Mq-mJK" id="V2E-yf-j8f"/>
+                                                    <outlet property="TabTitle" destination="jkU-rT-7FD" id="40m-wS-WWu"/>
                                                     <outlet property="textField" destination="jkU-rT-7FD" id="Qmc-jh-yO5"/>
                                                 </connections>
                                             </tableCellView>

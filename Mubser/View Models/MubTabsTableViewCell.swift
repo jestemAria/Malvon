@@ -1,5 +1,5 @@
 //
-//  MubDownloadsTableViewCell.swift
+//  MubTabsTableViewCell.swift
 //  Mubser
 //
 //  Created by Ashwin Paudel on 2021-12-28.
@@ -8,11 +8,10 @@
 
 import Cocoa
 
-class MubDownloadsTableViewCell: NSTableCellView {
+class MubTabsTableViewCell: NSTableCellView {
     
-    @IBOutlet weak var MubFileIcon: NSImageView!
-    @IBOutlet weak var MubFileName: NSTextField!
-    @IBOutlet weak var MubLocation: NSTextField!
+    @IBOutlet weak var TabIcon: NSImageView!
+    @IBOutlet weak var TabTitle: NSTextField!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

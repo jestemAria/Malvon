@@ -10,6 +10,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MubViewController" customModule="Mubser" customModuleProvider="target">
             <connections>
                 <outlet property="backButtonOutlet" destination="oDF-KD-qZS" id="hjO-fT-R4o"/>
+                <outlet property="createNewTabButton" destination="MY4-k8-RtJ" id="jun-Ru-3WM"/>
                 <outlet property="faviconImageView" destination="Vhq-dS-UBZ" id="mpq-67-8mt"/>
                 <outlet property="forwardButtonOutlet" destination="oJF-xR-Z4V" id="aR4-07-HGi"/>
                 <outlet property="progressIndicator" destination="YhO-4t-qRf" id="8Jm-Aw-0US"/>
@@ -108,7 +109,7 @@
                     </customSpacing>
                 </stackView>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAK-Ee-IF3">
-                    <rect key="frame" x="713" y="446" width="83" height="30"/>
+                    <rect key="frame" x="678" y="446" width="83" height="30"/>
                     <subviews>
                         <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1rd-77-vpa">
                             <rect key="frame" x="-2" y="0.0" width="5" height="30"/>
@@ -134,6 +135,7 @@
                         </textField>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Kqs-Tp-vLV"/>
                         <constraint firstAttribute="trailing" secondItem="cxo-gT-ccJ" secondAttribute="trailing" id="eMk-Sy-NsT"/>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="nfn-Ep-smW"/>
                     </constraints>
@@ -174,9 +176,9 @@
                     <rect key="frame" x="0.0" y="441" width="801" height="5"/>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aVA-wm-c0j">
-                    <rect key="frame" x="706" y="444" width="95" height="34"/>
+                    <rect key="frame" x="678" y="444" width="83" height="34"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95" id="09T-9N-eRg"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="09T-9N-eRg"/>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="D8J-2Q-yaS"/>
                         <constraint firstAttribute="height" constant="34" id="h5O-64-qPx"/>
                     </constraints>
@@ -188,8 +190,40 @@
                         <action selector="tabsPopoverButton:" target="-2" id="X55-1C-c2a"/>
                     </connections>
                 </button>
+                <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7F-a5-dCJ">
+                    <rect key="frame" x="766" y="445" width="32" height="30"/>
+                    <subviews>
+                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Ais-eX-Cf4">
+                            <rect key="frame" x="-2" y="0.0" width="5" height="30"/>
+                        </box>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MY4-k8-RtJ">
+                            <rect key="frame" x="2" y="-1.5" width="30.5" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="1Pq-iX-qMM"/>
+                                <constraint firstAttribute="width" constant="30" id="uD4-WF-rrO"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="83d-hP-Tv0">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="createNewTab:" target="-2" id="1Zk-Pi-5Ma"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
+                <constraint firstItem="P7F-a5-dCJ" firstAttribute="leading" secondItem="TAK-Ee-IF3" secondAttribute="trailing" constant="5" id="1Lb-Vg-vlE"/>
+                <constraint firstAttribute="trailing" secondItem="P7F-a5-dCJ" secondAttribute="trailing" constant="3" id="20S-Zq-3sv"/>
                 <constraint firstItem="aVA-wm-c0j" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6i6-Ha-CUt"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="YhO-4t-qRf" secondAttribute="trailing" constant="-23" id="7fB-fZ-ytq"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="I8O-2s-z3b" secondAttribute="bottom" constant="2" id="8b5-Lw-EnC"/>
@@ -197,25 +231,28 @@
                 <constraint firstItem="TAK-Ee-IF3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="GZ8-Sy-sLw"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="I9M-ti-snJ"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="aVA-wm-c0j" secondAttribute="bottom" id="IOw-pB-bdF"/>
-                <constraint firstAttribute="trailing" secondItem="TAK-Ee-IF3" secondAttribute="trailing" constant="5" id="Jjo-bz-WPa"/>
-                <constraint firstAttribute="trailing" secondItem="aVA-wm-c0j" secondAttribute="trailing" id="Kgd-7j-WGb"/>
+                <constraint firstAttribute="trailing" secondItem="TAK-Ee-IF3" secondAttribute="trailing" constant="40" id="Jjo-bz-WPa"/>
                 <constraint firstItem="YhO-4t-qRf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="9" id="NKK-3g-3jY"/>
+                <constraint firstItem="aVA-wm-c0j" firstAttribute="width" secondItem="TAK-Ee-IF3" secondAttribute="width" id="NMR-tE-oeF"/>
                 <constraint firstItem="aVA-wm-c0j" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="OJK-FU-gRA"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="DhB-2r-p2a" secondAttribute="trailing" constant="-30" id="SRf-Aa-Wjd"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="WjG-sQ-lih"/>
+                <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="P7F-a5-dCJ" secondAttribute="bottom" constant="1" id="Y7L-xs-GLo"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3.5" id="YyQ-Mj-eGV"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="sgG-f9-HK0" secondAttribute="bottom" constant="0.5" id="aUL-Xz-MmE"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="TAK-Ee-IF3" secondAttribute="bottom" constant="2" id="czC-Vk-rD1"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3" id="jEA-Ed-r2n"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="66" id="laZ-AN-m7E"/>
                 <constraint firstItem="DhB-2r-p2a" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="noD-Qb-9Xw"/>
+                <constraint firstItem="P7F-a5-dCJ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3" id="pl8-uS-QZo"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="vdI-nn-gH3"/>
-                <constraint firstAttribute="trailing" secondItem="aVA-wm-c0j" secondAttribute="trailing" id="yaI-gt-0fB"/>
+                <constraint firstAttribute="trailing" secondItem="aVA-wm-c0j" secondAttribute="trailing" constant="40" id="yaI-gt-0fB"/>
             </constraints>
             <point key="canvasLocation" x="88.5" y="238"/>
         </customView>
     </objects>
     <resources>
+        <image name="NSAddTemplate" catalog="system" width="14" height="13"/>
         <image name="NSGoBackTemplate" width="10" height="14"/>
         <image name="NSGoForwardTemplate" width="10" height="14"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>

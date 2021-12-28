@@ -18,11 +18,7 @@
 		CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9602927553CA600B130F9 /* MubViewController.swift */; };
 		CFC9602D27553D0B00B130F9 /* MubWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; };
 		CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; };
-		CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */; };
-		CFD0786E2758120E001482C1 /* MubTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; };
-		CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */; };
 		CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F8275D26D70036C4D7 /* Image1.png */; };
 		CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F9275D26D70036C4D7 /* Image2.png */; };
@@ -41,23 +37,13 @@
 		ED4DF717277BAA1A00EE6F28 /* DownloadsJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF716277BAA1A00EE6F28 /* DownloadsJSONModel.swift */; };
 		ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55DE277A0D79004C994E /* MubSearchField.swift */; };
 		ED7C55E1277A1568004C994E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55E0277A1568004C994E /* GlobalVariables.swift */; };
+		ED9199BA277BAEFE005FC091 /* MubSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9199A5277BAEE4005FC091 /* MubSuggestions.framework */; };
+		ED9199BB277BAEFE005FC091 /* MubSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED9199A5277BAEE4005FC091 /* MubSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ED9199BD277BBFF6005FC091 /* TabsJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199BC277BBFF6005FC091 /* TabsJSONModel.swift */; };
+		ED9199BF277BC602005FC091 /* MubTabsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199BE277BC602005FC091 /* MubTabsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CFB669EE2756EB6D0025D140 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CFB669CE2756EB6B0025D140;
-			remoteInfo = MubTabView;
-		};
-		CFB669F02756EB6D0025D140 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CFB669D82756EB6C0025D140;
-			remoteInfo = MubTabViewTests;
-		};
 		CFC95FA8275538AC00B130F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFC95F90275538A800B130F9 /* Project object */;
@@ -86,12 +72,19 @@
 			remoteGlobalIDString = CFC960062755395C00B130F9;
 			remoteInfo = MubWebViewTests;
 		};
-		CFC9603C2755863D00B130F9 /* PBXContainerItemProxy */ = {
+		ED9199A4277BAEE4005FC091 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */;
+			containerPortal = ED91999E277BAEE3005FC091 /* MubSuggestions.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CF3DF70E25A3B29C00551093;
-			remoteInfo = APSuggestions;
+			remoteGlobalIDString = ED919986277BAEE2005FC091;
+			remoteInfo = MubSuggestions;
+		};
+		ED9199A6277BAEE4005FC091 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED91999E277BAEE3005FC091 /* MubSuggestions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED91998E277BAEE3005FC091;
+			remoteInfo = MubSuggestionsTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -102,9 +95,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */,
 				CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */,
-				CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */,
+				ED9199BB277BAEFE005FC091 /* MubSuggestions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,7 +106,6 @@
 /* Begin PBXFileReference section */
 		CF0AE6B8275AE10A0031DE44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
-		CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubTabView.xcodeproj; path = MubTabView/MubTabView.xcodeproj; sourceTree = "<group>"; };
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC95F9B275538A800B130F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC95F9D275538AC00B130F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,7 +119,6 @@
 		CFC960162755395C00B130F9 /* MubWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubWebView.xcodeproj; path = MubWebView/MubWebView.xcodeproj; sourceTree = "<group>"; };
 		CFC9602527553C7A00B130F9 /* MubWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWindowController.swift; sourceTree = "<group>"; };
 		CFC9602927553CA600B130F9 /* MubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubViewController.swift; sourceTree = "<group>"; };
-		CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APSuggestions.xcodeproj; path = APSuggestions/APSuggestions.xcodeproj; sourceTree = "<group>"; };
 		CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubHistoryViewController.swift; sourceTree = "<group>"; };
 		CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewController.swift; sourceTree = "<group>"; };
 		CFF9A1F8275D26D70036C4D7 /* Image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image1.png; sourceTree = "<group>"; };
@@ -148,6 +138,9 @@
 		ED4DF716277BAA1A00EE6F28 /* DownloadsJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsJSONModel.swift; sourceTree = "<group>"; };
 		ED7C55DE277A0D79004C994E /* MubSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubSearchField.swift; sourceTree = "<group>"; };
 		ED7C55E0277A1568004C994E /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		ED91999E277BAEE3005FC091 /* MubSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubSuggestions.xcodeproj; path = MubSuggestions/MubSuggestions.xcodeproj; sourceTree = "<group>"; };
+		ED9199BC277BBFF6005FC091 /* TabsJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsJSONModel.swift; sourceTree = "<group>"; };
+		ED9199BE277BC602005FC091 /* MubTabsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MubTabsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,9 +148,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD0786E2758120E001482C1 /* MubTabView.framework in Frameworks */,
 				CFC9602D27553D0B00B130F9 /* MubWebView.framework in Frameworks */,
-				CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */,
+				ED9199BA277BAEFE005FC091 /* MubSuggestions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,15 +177,6 @@
 				CFF9A1F9275D26D70036C4D7 /* Image2.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		CFB669E92756EB6C0025D140 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CFB669EF2756EB6D0025D140 /* MubTabView.framework */,
-				CFB669F12756EB6D0025D140 /* MubTabViewTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CFC95F8F275538A800B130F9 = {
@@ -254,9 +237,8 @@
 		CFC95FC42755392D00B130F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */,
+				ED91999E277BAEE3005FC091 /* MubSuggestions.xcodeproj */,
 				CFC960162755395C00B130F9 /* MubWebView.xcodeproj */,
-				CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -266,14 +248,6 @@
 			children = (
 				CFC9601C2755395D00B130F9 /* MubWebView.framework */,
 				CFC9601E2755395D00B130F9 /* MubWebViewTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		CFC960382755863C00B130F9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CFC9603D2755863D00B130F9 /* APSuggestions.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,6 +310,7 @@
 			children = (
 				ED4DF714277BA9D300EE6F28 /* HistoryJSONModel.swift */,
 				ED4DF716277BAA1A00EE6F28 /* DownloadsJSONModel.swift */,
+				ED9199BC277BBFF6005FC091 /* TabsJSONModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,9 +320,19 @@
 			children = (
 				CF7772C627567DE50034555A /* HoverButton.swift */,
 				ED7C55DE277A0D79004C994E /* MubSearchField.swift */,
+				ED9199BE277BC602005FC091 /* MubTabsTableViewCell.swift */,
 				ED4DF6EE277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		ED91999F277BAEE3005FC091 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED9199A5277BAEE4005FC091 /* MubSuggestions.framework */,
+				ED9199A7277BAEE4005FC091 /* MubSuggestionsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,8 +399,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = Mub;
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1320;
+				ORGANIZATIONNAME = "Ashwin Paudel";
 				TargetAttributes = {
 					CFC95F97275538A800B130F9 = {
 						CreatedOnToolsVersion = 13.1;
@@ -444,12 +431,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = CFC960382755863C00B130F9 /* Products */;
-					ProjectRef = CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */;
-				},
-				{
-					ProductGroup = CFB669E92756EB6C0025D140 /* Products */;
-					ProjectRef = CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */;
+					ProductGroup = ED91999F277BAEE3005FC091 /* Products */;
+					ProjectRef = ED91999E277BAEE3005FC091 /* MubSuggestions.xcodeproj */;
 				},
 				{
 					ProductGroup = CFC960172755395C00B130F9 /* Products */;
@@ -466,20 +449,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		CFB669EF2756EB6D0025D140 /* MubTabView.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MubTabView.framework;
-			remoteRef = CFB669EE2756EB6D0025D140 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFB669F12756EB6D0025D140 /* MubTabViewTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MubTabViewTests.xctest;
-			remoteRef = CFB669F02756EB6D0025D140 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		CFC9601C2755395D00B130F9 /* MubWebView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -494,11 +463,18 @@
 			remoteRef = CFC9601D2755395D00B130F9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CFC9603D2755863D00B130F9 /* APSuggestions.framework */ = {
+		ED9199A5277BAEE4005FC091 /* MubSuggestions.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = APSuggestions.framework;
-			remoteRef = CFC9603C2755863D00B130F9 /* PBXContainerItemProxy */;
+			path = MubSuggestions.framework;
+			remoteRef = ED9199A4277BAEE4005FC091 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ED9199A7277BAEE4005FC091 /* MubSuggestionsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MubSuggestionsTests.xctest;
+			remoteRef = ED9199A6277BAEE4005FC091 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -545,12 +521,14 @@
 				ED4DF70E277BA81900EE6F28 /* MubFile.swift in Sources */,
 				CF7772C727567DE50034555A /* HoverButton.swift in Sources */,
 				CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */,
+				ED9199BD277BBFF6005FC091 /* TabsJSONModel.swift in Sources */,
 				ED4DF717277BAA1A00EE6F28 /* DownloadsJSONModel.swift in Sources */,
 				ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */,
 				ED4DF6EF277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift in Sources */,
 				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
 				ED4DF715277BA9D300EE6F28 /* HistoryJSONModel.swift in Sources */,
 				ED7C55E1277A1568004C994E /* GlobalVariables.swift in Sources */,
+				ED9199BF277BC602005FC091 /* MubTabsTableViewCell.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
 				ED4DF712277BA86100EE6F28 /* Extension+String.swift in Sources */,
 				ED47E7A1277B703D00AE7795 /* MubDownloadsViewController.swift in Sources */,

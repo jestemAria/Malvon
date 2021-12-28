@@ -2,16 +2,25 @@
 //  MubWindowController.swift
 //  Mubser
 //
-//  Created by Ashwin Paudel on 29/11/2021.
+//  Created by Ashwin Paudel on 2021-11-29.
+//  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
 
 class MubWindowController: NSWindowController {
+    
+    lazy var tabViewController: NSTabViewController = {
+        let tabVC = NSTabViewController()
+        tabVC.addTabViewItem(NSTabViewItem(viewController: MubViewController()))
+        
+        tabVC.tabStyle = .unspecified
+        return tabVC
+    }()
+    
     override func windowDidLoad() {
         super.windowDidLoad()
-        self.window?.isMovableByWindowBackground = true
-        self.contentViewController = MubViewController()
+        self.contentViewController = tabViewController
         
         let customToolbar = NSToolbar()
         window?.titleVisibility = .hidden

@@ -7,7 +7,7 @@ The new macOS Web Browser.
 - [x] Search Suggestions
 - [x] Implement history
 - [x] Downloding + Downloads History
-- [ ] Tabs
+- [x] Tabs
 
 ## Images
 

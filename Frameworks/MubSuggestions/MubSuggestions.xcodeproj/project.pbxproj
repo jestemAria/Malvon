@@ -7,198 +7,171 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CFC960072755395C00B130F9 /* MubWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC95FFC2755395B00B130F9 /* MubWebView.framework */; };
-		CFC9600C2755395C00B130F9 /* MubWebViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9600B2755395C00B130F9 /* MubWebViewTests.swift */; };
-		CFC9600D2755395C00B130F9 /* MubWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC95FFF2755395B00B130F9 /* MubWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFC960202755396700B130F9 /* MubWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9601F2755396700B130F9 /* MubWebView.swift */; };
-		ED16493A277A6D8F00814567 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED164939277A6D8E00814567 /* Downloader.swift */; };
-		ED16493D277A6DCA00814567 /* MubWebViewDownloadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */; };
-		ED3D9BE8277AA50900570B1F /* FileUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D9BE7277AA50900570B1F /* FileUnits.swift */; };
-		ED4DF704277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF706277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib */; };
+		ED91998F277BAEE3005FC091 /* MubSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED919986277BAEE2005FC091 /* MubSuggestions.framework */; };
+		ED919994277BAEE3005FC091 /* MubSuggestionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED919993277BAEE3005FC091 /* MubSuggestionsTests.swift */; };
+		ED919995277BAEE3005FC091 /* MubSuggestions.h in Headers */ = {isa = PBXBuildFile; fileRef = ED919989277BAEE2005FC091 /* MubSuggestions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED9199B3277BAEEF005FC091 /* APSuggestionsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199AC277BAEEF005FC091 /* APSuggestionsWindowController.swift */; };
+		ED9199B4277BAEEF005FC091 /* APFramworkDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9199AD277BAEEF005FC091 /* APFramworkDefaultCell.xib */; };
+		ED9199B5277BAEEF005FC091 /* APSuggestionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199AE277BAEEF005FC091 /* APSuggestionsWindow.swift */; };
+		ED9199B6277BAEEF005FC091 /* APRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199AF277BAEEF005FC091 /* APRoundedCornersView.swift */; };
+		ED9199B7277BAEEF005FC091 /* APSuggestibleTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199B0277BAEEF005FC091 /* APSuggestibleTextFieldCell.swift */; };
+		ED9199B8277BAEEF005FC091 /* SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199B1277BAEEF005FC091 /* SearchSuggestions.swift */; };
+		ED9199B9277BAEEF005FC091 /* APHighlightingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9199B2277BAEEF005FC091 /* APHighlightingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CFC960082755395C00B130F9 /* PBXContainerItemProxy */ = {
+		ED919990277BAEE3005FC091 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CFC95FF32755395B00B130F9 /* Project object */;
+			containerPortal = ED91997D277BAEE2005FC091 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFC95FFB2755395B00B130F9;
-			remoteInfo = MubWebView;
+			remoteGlobalIDString = ED919985277BAEE2005FC091;
+			remoteInfo = MubSuggestions;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CFC95FFC2755395B00B130F9 /* MubWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MubWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFC95FFF2755395B00B130F9 /* MubWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MubWebView.h; sourceTree = "<group>"; };
-		CFC960062755395C00B130F9 /* MubWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFC9600B2755395C00B130F9 /* MubWebViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWebViewTests.swift; sourceTree = "<group>"; };
-		CFC9601F2755396700B130F9 /* MubWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWebView.swift; sourceTree = "<group>"; };
-		ED164939277A6D8E00814567 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = MubWebViewDownloadingViewController.swift; sourceTree = "<group>"; };
-		ED3D9BE7277AA50900570B1F /* FileUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUnits.swift; sourceTree = "<group>"; };
-		ED4DF705277BA57900EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubWebViewDownloadingViewController.xib; sourceTree = "<group>"; };
+		ED919986277BAEE2005FC091 /* MubSuggestions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MubSuggestions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED919989277BAEE2005FC091 /* MubSuggestions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MubSuggestions.h; sourceTree = "<group>"; };
+		ED91998E277BAEE3005FC091 /* MubSuggestionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MubSuggestionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED919993277BAEE3005FC091 /* MubSuggestionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubSuggestionsTests.swift; sourceTree = "<group>"; };
+		ED9199AC277BAEEF005FC091 /* APSuggestionsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSuggestionsWindowController.swift; sourceTree = "<group>"; };
+		ED9199AD277BAEEF005FC091 /* APFramworkDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APFramworkDefaultCell.xib; sourceTree = "<group>"; };
+		ED9199AE277BAEEF005FC091 /* APSuggestionsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSuggestionsWindow.swift; sourceTree = "<group>"; };
+		ED9199AF277BAEEF005FC091 /* APRoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APRoundedCornersView.swift; sourceTree = "<group>"; };
+		ED9199B0277BAEEF005FC091 /* APSuggestibleTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSuggestibleTextFieldCell.swift; sourceTree = "<group>"; };
+		ED9199B1277BAEEF005FC091 /* SearchSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestions.swift; sourceTree = "<group>"; };
+		ED9199B2277BAEEF005FC091 /* APHighlightingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APHighlightingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CFC95FF92755395B00B130F9 /* Frameworks */ = {
+		ED919983277BAEE2005FC091 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC960032755395C00B130F9 /* Frameworks */ = {
+		ED91998B277BAEE3005FC091 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC960072755395C00B130F9 /* MubWebView.framework in Frameworks */,
+				ED91998F277BAEE3005FC091 /* MubSuggestions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CFC95FF22755395B00B130F9 = {
+		ED91997C277BAEE2005FC091 = {
 			isa = PBXGroup;
 			children = (
-				CFC95FFE2755395B00B130F9 /* MubWebView */,
-				CFC9600A2755395C00B130F9 /* MubWebViewTests */,
-				CFC95FFD2755395B00B130F9 /* Products */,
+				ED919988277BAEE2005FC091 /* MubSuggestions */,
+				ED919992277BAEE3005FC091 /* MubSuggestionsTests */,
+				ED919987277BAEE2005FC091 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CFC95FFD2755395B00B130F9 /* Products */ = {
+		ED919987277BAEE2005FC091 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFC95FFC2755395B00B130F9 /* MubWebView.framework */,
-				CFC960062755395C00B130F9 /* MubWebViewTests.xctest */,
+				ED919986277BAEE2005FC091 /* MubSuggestions.framework */,
+				ED91998E277BAEE3005FC091 /* MubSuggestionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CFC95FFE2755395B00B130F9 /* MubWebView */ = {
+		ED919988277BAEE2005FC091 /* MubSuggestions */ = {
 			isa = PBXGroup;
 			children = (
-				ED91997B277BAE06005FC091 /* Classes */,
-				ED91997A277BADC4005FC091 /* Controllers */,
-				CFC95FFF2755395B00B130F9 /* MubWebView.h */,
-				ED919979277BADB1005FC091 /* Utilities */,
-				ED919978277BADA7005FC091 /* Views */,
+				ED9199AD277BAEEF005FC091 /* APFramworkDefaultCell.xib */,
+				ED9199B2277BAEEF005FC091 /* APHighlightingView.swift */,
+				ED9199AF277BAEEF005FC091 /* APRoundedCornersView.swift */,
+				ED9199B0277BAEEF005FC091 /* APSuggestibleTextFieldCell.swift */,
+				ED9199AE277BAEEF005FC091 /* APSuggestionsWindow.swift */,
+				ED9199AC277BAEEF005FC091 /* APSuggestionsWindowController.swift */,
+				ED919989277BAEE2005FC091 /* MubSuggestions.h */,
+				ED9199B1277BAEEF005FC091 /* SearchSuggestions.swift */,
 			);
-			path = MubWebView;
+			path = MubSuggestions;
 			sourceTree = "<group>";
 		};
-		CFC9600A2755395C00B130F9 /* MubWebViewTests */ = {
+		ED919992277BAEE3005FC091 /* MubSuggestionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				CFC9600B2755395C00B130F9 /* MubWebViewTests.swift */,
+				ED919993277BAEE3005FC091 /* MubSuggestionsTests.swift */,
 			);
-			path = MubWebViewTests;
-			sourceTree = "<group>";
-		};
-		ED919978277BADA7005FC091 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				ED4DF706277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		ED919979277BADB1005FC091 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				ED164939277A6D8E00814567 /* Downloader.swift */,
-				ED3D9BE7277AA50900570B1F /* FileUnits.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		ED91997A277BADC4005FC091 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		ED91997B277BAE06005FC091 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				CFC9601F2755396700B130F9 /* MubWebView.swift */,
-			);
-			path = Classes;
+			path = MubSuggestionsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		CFC95FF72755395B00B130F9 /* Headers */ = {
+		ED919981277BAEE2005FC091 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC9600D2755395C00B130F9 /* MubWebView.h in Headers */,
+				ED919995277BAEE3005FC091 /* MubSuggestions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CFC95FFB2755395B00B130F9 /* MubWebView */ = {
+		ED919985277BAEE2005FC091 /* MubSuggestions */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFC960102755395C00B130F9 /* Build configuration list for PBXNativeTarget "MubWebView" */;
+			buildConfigurationList = ED919998277BAEE3005FC091 /* Build configuration list for PBXNativeTarget "MubSuggestions" */;
 			buildPhases = (
-				CFC95FF72755395B00B130F9 /* Headers */,
-				CFC95FF82755395B00B130F9 /* Sources */,
-				CFC95FF92755395B00B130F9 /* Frameworks */,
-				CFC95FFA2755395B00B130F9 /* Resources */,
+				ED919981277BAEE2005FC091 /* Headers */,
+				ED919982277BAEE2005FC091 /* Sources */,
+				ED919983277BAEE2005FC091 /* Frameworks */,
+				ED919984277BAEE2005FC091 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MubWebView;
-			productName = MubWebView;
-			productReference = CFC95FFC2755395B00B130F9 /* MubWebView.framework */;
+			name = MubSuggestions;
+			productName = MubSuggestions;
+			productReference = ED919986277BAEE2005FC091 /* MubSuggestions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CFC960052755395C00B130F9 /* MubWebViewTests */ = {
+		ED91998D277BAEE3005FC091 /* MubSuggestionsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFC960132755395C00B130F9 /* Build configuration list for PBXNativeTarget "MubWebViewTests" */;
+			buildConfigurationList = ED91999B277BAEE3005FC091 /* Build configuration list for PBXNativeTarget "MubSuggestionsTests" */;
 			buildPhases = (
-				CFC960022755395C00B130F9 /* Sources */,
-				CFC960032755395C00B130F9 /* Frameworks */,
-				CFC960042755395C00B130F9 /* Resources */,
+				ED91998A277BAEE3005FC091 /* Sources */,
+				ED91998B277BAEE3005FC091 /* Frameworks */,
+				ED91998C277BAEE3005FC091 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CFC960092755395C00B130F9 /* PBXTargetDependency */,
+				ED919991277BAEE3005FC091 /* PBXTargetDependency */,
 			);
-			name = MubWebViewTests;
-			productName = MubWebViewTests;
-			productReference = CFC960062755395C00B130F9 /* MubWebViewTests.xctest */;
+			name = MubSuggestionsTests;
+			productName = MubSuggestionsTests;
+			productReference = ED91998E277BAEE3005FC091 /* MubSuggestionsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CFC95FF32755395B00B130F9 /* Project object */ = {
+		ED91997D277BAEE2005FC091 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					CFC95FFB2755395B00B130F9 = {
-						CreatedOnToolsVersion = 13.1;
-						LastSwiftMigration = 1320;
+					ED919985277BAEE2005FC091 = {
+						CreatedOnToolsVersion = 13.2.1;
 					};
-					CFC960052755395C00B130F9 = {
-						CreatedOnToolsVersion = 13.1;
+					ED91998D277BAEE3005FC091 = {
+						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = CFC95FF62755395B00B130F9 /* Build configuration list for PBXProject "MubWebView" */;
+			buildConfigurationList = ED919980277BAEE2005FC091 /* Build configuration list for PBXProject "MubSuggestions" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -206,27 +179,27 @@
 				en,
 				Base,
 			);
-			mainGroup = CFC95FF22755395B00B130F9;
-			productRefGroup = CFC95FFD2755395B00B130F9 /* Products */;
+			mainGroup = ED91997C277BAEE2005FC091;
+			productRefGroup = ED919987277BAEE2005FC091 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CFC95FFB2755395B00B130F9 /* MubWebView */,
-				CFC960052755395C00B130F9 /* MubWebViewTests */,
+				ED919985277BAEE2005FC091 /* MubSuggestions */,
+				ED91998D277BAEE3005FC091 /* MubSuggestionsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CFC95FFA2755395B00B130F9 /* Resources */ = {
+		ED919984277BAEE2005FC091 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED4DF704277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib in Resources */,
+				ED9199B4277BAEEF005FC091 /* APFramworkDefaultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC960042755395C00B130F9 /* Resources */ = {
+		ED91998C277BAEE3005FC091 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -236,48 +209,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CFC95FF82755395B00B130F9 /* Sources */ = {
+		ED919982277BAEE2005FC091 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED3D9BE8277AA50900570B1F /* FileUnits.swift in Sources */,
-				CFC960202755396700B130F9 /* MubWebView.swift in Sources */,
-				ED16493D277A6DCA00814567 /* MubWebViewDownloadingViewController.swift in Sources */,
-				ED16493A277A6D8F00814567 /* Downloader.swift in Sources */,
+				ED9199B5277BAEEF005FC091 /* APSuggestionsWindow.swift in Sources */,
+				ED9199B3277BAEEF005FC091 /* APSuggestionsWindowController.swift in Sources */,
+				ED9199B7277BAEEF005FC091 /* APSuggestibleTextFieldCell.swift in Sources */,
+				ED9199B6277BAEEF005FC091 /* APRoundedCornersView.swift in Sources */,
+				ED9199B8277BAEEF005FC091 /* SearchSuggestions.swift in Sources */,
+				ED9199B9277BAEEF005FC091 /* APHighlightingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC960022755395C00B130F9 /* Sources */ = {
+		ED91998A277BAEE3005FC091 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC9600C2755395C00B130F9 /* MubWebViewTests.swift in Sources */,
+				ED919994277BAEE3005FC091 /* MubSuggestionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CFC960092755395C00B130F9 /* PBXTargetDependency */ = {
+		ED919991277BAEE3005FC091 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CFC95FFB2755395B00B130F9 /* MubWebView */;
-			targetProxy = CFC960082755395C00B130F9 /* PBXContainerItemProxy */;
+			target = ED919985277BAEE2005FC091 /* MubSuggestions */;
+			targetProxy = ED919990277BAEE3005FC091 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		ED4DF706277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ED4DF705277BA57900EE6F28 /* Base */,
-			);
-			name = MubWebViewDownloadingViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		CFC9600E2755395C00B130F9 /* Debug */ = {
+		ED919996277BAEE3005FC091 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -341,7 +305,7 @@
 			};
 			name = Debug;
 		};
-		CFC9600F2755395C00B130F9 /* Release */ = {
+		ED919997277BAEE3005FC091 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -398,10 +362,9 @@
 			};
 			name = Release;
 		};
-		CFC960112755395C00B130F9 /* Debug */ = {
+		ED919999277BAEE3005FC091 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -420,19 +383,17 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubSuggestions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		CFC960122755395C00B130F9 /* Release */ = {
+		ED91999A277BAEE3005FC091 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -451,7 +412,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubSuggestions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -459,44 +420,32 @@
 			};
 			name = Release;
 		};
-		CFC960142755395C00B130F9 /* Debug */ = {
+		ED91999C277BAEE3005FC091 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubWebViewTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubSuggestionsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		CFC960152755395C00B130F9 /* Release */ = {
+		ED91999D277BAEE3005FC091 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubWebViewTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MubSuggestionsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -506,34 +455,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CFC95FF62755395B00B130F9 /* Build configuration list for PBXProject "MubWebView" */ = {
+		ED919980277BAEE2005FC091 /* Build configuration list for PBXProject "MubSuggestions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFC9600E2755395C00B130F9 /* Debug */,
-				CFC9600F2755395C00B130F9 /* Release */,
+				ED919996277BAEE3005FC091 /* Debug */,
+				ED919997277BAEE3005FC091 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFC960102755395C00B130F9 /* Build configuration list for PBXNativeTarget "MubWebView" */ = {
+		ED919998277BAEE3005FC091 /* Build configuration list for PBXNativeTarget "MubSuggestions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFC960112755395C00B130F9 /* Debug */,
-				CFC960122755395C00B130F9 /* Release */,
+				ED919999277BAEE3005FC091 /* Debug */,
+				ED91999A277BAEE3005FC091 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFC960132755395C00B130F9 /* Build configuration list for PBXNativeTarget "MubWebViewTests" */ = {
+		ED91999B277BAEE3005FC091 /* Build configuration list for PBXNativeTarget "MubSuggestionsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFC960142755395C00B130F9 /* Debug */,
-				CFC960152755395C00B130F9 /* Release */,
+				ED91999C277BAEE3005FC091 /* Debug */,
+				ED91999D277BAEE3005FC091 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CFC95FF32755395B00B130F9 /* Project object */;
+	rootObject = ED91997D277BAEE2005FC091 /* Project object */;
 }

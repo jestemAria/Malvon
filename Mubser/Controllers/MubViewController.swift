@@ -2,7 +2,8 @@
 //  MubViewController.swift
 //  Mubser
 //
-//  Created by Ashwin Paudel on 29/11/2021.
+//  Created by Ashwin Paudel on 2021-11-29.
+//  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
 import APSuggestions
@@ -15,7 +16,6 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     // WebView Element
     @IBOutlet var webView: MubWebView!
-    //    @IBOutlet var webView: WKWebView!
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
@@ -37,8 +37,12 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     private var skipNextSuggestion = false
     private var window = NSWindow()
     
-    @IBOutlet var tabButton: NSButton!
-    var urlObservation: NSKeyValueObservation?
+    // Show the tabs
+    @IBOutlet var showTabsButton: NSButton!
+    let tabsPopover = NSPopover()
+    var tabsPopoverPositioningView: NSView?
+    @IBOutlet var createNewTabButton: NSButton!
+    public var website: URL?
     
     // MARK: - Setup Functions
     
@@ -54,11 +58,13 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
         configureElements()
         refreshButton.cornerRadius = 10
-        webView.delegate = self
         webView.initializeWebView()
         webView.delegate = self
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
+        self.website = URL(string: "https://www.google.com")!
         updateWebsiteURL()
+        tabsPopover.behavior = .transient
+        tabsPopover.animates = false
     }
     
     // Style the elements ( buttons, searchfields )
@@ -76,18 +82,21 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         webView.enableConfigurations()
     }
     
+    // MARK: - Buttons
+    
     @IBAction func tabsPopoverButton(_ sender: NSButton) {
-        let popover = NSPopover()
-        if popover.isShown {
-            popover.close()
+        tabsPopoverPositioningView = NSView()
+        tabsPopoverPositioningView?.frame = sender.frame
+        view.addSubview(tabsPopoverPositioningView!, positioned: .below, relativeTo: sender)
+        
+        if tabsPopover.isShown {
+            tabsPopover.close()
         } else {
-            popover.behavior = .transient
-            popover.contentViewController = MubTabViewController()
-            popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
+            tabsPopover.contentViewController = MubTabViewController(windowController: ((self.view.window?.windowController as? MubWindowController)!))
+            tabsPopover.show(relativeTo: .zero, of: tabsPopoverPositioningView!, preferredEdge: .maxY)
+            tabsPopoverPositioningView?.frame = NSMakeRect(0, -200, 10, 10)
         }
     }
-    
-    // MARK: - Control Buttons
     
     @IBAction func backButton(_ sender: Any) {
         print("Back Button Pressed")
@@ -106,6 +115,13 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
             webView.stopLoading()
             sender.image = NSImage(named: NSImage.refreshTemplateName)
         }
+    }
+    
+    @IBAction func createNewTab(_ sender: Any) {
+        let tab = (self.view.window?.windowController as? MubWindowController)?.tabViewController
+        tab?.addTabViewItem(NSTabViewItem(viewController: MubViewController()))
+        
+        tab?.selectedTabViewItemIndex = tab!.tabViewItems.count-1
     }
     
     func checkButtons() {
@@ -174,7 +190,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     func mubWebView(_ webView: MubWebView, urlDidChange url: URL?) {
         updateWebsiteURL()
-        
+        self.website = url
         GlobalVariables.currentWebsite = self.webView.url!.absoluteString
         GlobalVariables.currentWebsiteRemovedHTTP = self.webView.url!.absoluteString.removeHTTP
         checkButtons()
@@ -197,6 +213,8 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     func mubWebView(_ webView: MubWebView, titleChanged title: String) {
         websiteTitle.stringValue = title
+        self.title = title
+        
         guard let webViewURL = webView.url?.absoluteString else { return }
         let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
         let data = try? Data(contentsOf: url!)

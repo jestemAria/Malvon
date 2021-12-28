@@ -2,7 +2,8 @@
 //  MubserUITestsLaunchTests.swift
 //  MubserUITests
 //
-//  Created by Ashwin Paudel on 29/11/2021.
+//  Created by Ashwin Paudel on 2021-11-29.
+//  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
 import XCTest

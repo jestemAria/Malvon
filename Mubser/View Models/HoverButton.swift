@@ -2,7 +2,8 @@
 //  HoverButton.swift
 //  Mubser
 //
-//  Created by Ashwin Paudel on 30/11/2021.
+//  Created by Ashwin Paudel on 2021-11-30.
+//  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
 // Code From: https://github.com/fancymax/HoverButton

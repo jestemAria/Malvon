@@ -2,7 +2,8 @@
 //  AppDelegate.swift
 //  Mubser
 //
-//  Created by Ashwin Paudel on 29/11/2021.
+//  Created by Ashwin Paudel on 2021-11-29.
+//  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -24,24 +25,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    // MARK: - Functions
+    // MARK: - Menu Bar Functions
     
     @IBAction func showBrowsingHistory(_ sender: Any?) {
         let mainWindow = NSWindow(contentViewController: MubHistoryViewController(nibName: NSNib.Name("MubHistoryViewController"), bundle: nil))
-        
-        mainWindow.title = "History"
-        mainWindow.titlebarAppearsTransparent = true
-        mainWindow.makeKeyAndOrderFront(self)
-        
         window.window?.beginSheet(mainWindow, completionHandler: nil)
     }
     
     @IBAction func showDownloadHistory(_ sender: Any?) {
         let mainWindow = NSWindow(contentViewController: MubDownloadsViewController(nibName: NSNib.Name("MubDownloadsViewController"), bundle: nil))
-        
-        mainWindow.title = "Downloads"
-        mainWindow.titlebarAppearsTransparent = true
-
         window.window?.beginSheet(mainWindow, completionHandler: nil)
     }
     

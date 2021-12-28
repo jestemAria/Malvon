@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF326CD627583BDD0095DA07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF326CD527583BDD0095DA07 /* Helper.swift */; };
 		CF7772C727567DE50034555A /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7772C627567DE50034555A /* HoverButton.swift */; };
 		CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95F9B275538A800B130F9 /* AppDelegate.swift */; };
 		CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC95F9D275538AC00B130F9 /* Assets.xcassets */; };
@@ -16,22 +15,30 @@
 		CFC95FB6275538AC00B130F9 /* MubserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FB5275538AC00B130F9 /* MubserUITests.swift */; };
 		CFC95FB8275538AC00B130F9 /* MubserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */; };
 		CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9602527553C7A00B130F9 /* MubWindowController.swift */; };
-		CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC9602627553C7A00B130F9 /* MubWindowController.xib */; };
 		CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9602927553CA600B130F9 /* MubViewController.swift */; };
-		CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC9602A27553CA600B130F9 /* MubViewController.xib */; };
 		CFC9602D27553D0B00B130F9 /* MubWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; };
 		CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC9603E2755867400B130F9 /* APSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; };
 		CFC9603F2755867400B130F9 /* APSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9603D2755863D00B130F9 /* APSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFC960412755873400B130F9 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC960402755873400B130F9 /* SearchCell.xib */; };
 		CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */; };
-		CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */; };
 		CFD0786E2758120E001482C1 /* MubTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; };
 		CFD0786F2758120E001482C1 /* MubTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFB669EF2756EB6D0025D140 /* MubTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */; };
-		CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */; };
 		CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F8275D26D70036C4D7 /* Image1.png */; };
 		CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F9275D26D70036C4D7 /* Image2.png */; };
+		ED47E7A1277B703D00AE7795 /* MubDownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED47E79F277B703D00AE7795 /* MubDownloadsViewController.swift */; };
+		ED4DF6EF277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF6EE277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift */; };
+		ED4DF6F2277BA55800EE6F28 /* MubWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6F4277BA55800EE6F28 /* MubWindowController.xib */; };
+		ED4DF6F5277BA55D00EE6F28 /* MubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6F7277BA55D00EE6F28 /* MubViewController.xib */; };
+		ED4DF6F8277BA56100EE6F28 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6FA277BA56100EE6F28 /* SearchCell.xib */; };
+		ED4DF6FB277BA56500EE6F28 /* MubHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6FD277BA56500EE6F28 /* MubHistoryViewController.xib */; };
+		ED4DF6FE277BA56900EE6F28 /* MubTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF700277BA56900EE6F28 /* MubTabViewController.xib */; };
+		ED4DF701277BA56C00EE6F28 /* MubDownloadsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF703277BA56C00EE6F28 /* MubDownloadsViewController.xib */; };
+		ED4DF70E277BA81900EE6F28 /* MubFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF70D277BA81900EE6F28 /* MubFile.swift */; };
+		ED4DF710277BA84300EE6F28 /* MubPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF70F277BA84300EE6F28 /* MubPaths.swift */; };
+		ED4DF712277BA86100EE6F28 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF711277BA86100EE6F28 /* Extension+String.swift */; };
+		ED4DF715277BA9D300EE6F28 /* HistoryJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF714277BA9D300EE6F28 /* HistoryJSONModel.swift */; };
+		ED4DF717277BAA1A00EE6F28 /* DownloadsJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF716277BAA1A00EE6F28 /* DownloadsJSONModel.swift */; };
 		ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55DE277A0D79004C994E /* MubSearchField.swift */; };
 		ED7C55E1277A1568004C994E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C55E0277A1568004C994E /* GlobalVariables.swift */; };
 /* End PBXBuildFile section */
@@ -106,7 +113,6 @@
 
 /* Begin PBXFileReference section */
 		CF0AE6B8275AE10A0031DE44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CF326CD527583BDD0095DA07 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CF7772C627567DE50034555A /* HoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
 		CFB669E82756EB6C0025D140 /* MubTabView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubTabView.xcodeproj; path = MubTabView/MubTabView.xcodeproj; sourceTree = "<group>"; };
 		CFC95F98275538A800B130F9 /* Mubser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mubser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,17 +127,25 @@
 		CFC95FB7275538AC00B130F9 /* MubserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubserUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CFC960162755395C00B130F9 /* MubWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MubWebView.xcodeproj; path = MubWebView/MubWebView.xcodeproj; sourceTree = "<group>"; };
 		CFC9602527553C7A00B130F9 /* MubWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWindowController.swift; sourceTree = "<group>"; };
-		CFC9602627553C7A00B130F9 /* MubWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubWindowController.xib; sourceTree = "<group>"; };
 		CFC9602927553CA600B130F9 /* MubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubViewController.swift; sourceTree = "<group>"; };
-		CFC9602A27553CA600B130F9 /* MubViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubViewController.xib; sourceTree = "<group>"; };
 		CFC960372755863C00B130F9 /* APSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APSuggestions.xcodeproj; path = APSuggestions/APSuggestions.xcodeproj; sourceTree = "<group>"; };
-		CFC960402755873400B130F9 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubHistoryViewController.swift; sourceTree = "<group>"; };
-		CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubHistoryViewController.xib; sourceTree = "<group>"; };
 		CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubTabViewController.swift; sourceTree = "<group>"; };
-		CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubTabViewController.xib; sourceTree = "<group>"; };
 		CFF9A1F8275D26D70036C4D7 /* Image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image1.png; sourceTree = "<group>"; };
 		CFF9A1F9275D26D70036C4D7 /* Image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image2.png; sourceTree = "<group>"; };
+		ED47E79F277B703D00AE7795 /* MubDownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubDownloadsViewController.swift; sourceTree = "<group>"; };
+		ED4DF6EE277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubDownloadsTableViewCell.swift; sourceTree = "<group>"; };
+		ED4DF6F3277BA55800EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubWindowController.xib; sourceTree = "<group>"; };
+		ED4DF6F6277BA55D00EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubViewController.xib; sourceTree = "<group>"; };
+		ED4DF6F9277BA56100EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchCell.xib; sourceTree = "<group>"; };
+		ED4DF6FC277BA56500EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubHistoryViewController.xib; sourceTree = "<group>"; };
+		ED4DF6FF277BA56900EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubTabViewController.xib; sourceTree = "<group>"; };
+		ED4DF702277BA56C00EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubDownloadsViewController.xib; sourceTree = "<group>"; };
+		ED4DF70D277BA81900EE6F28 /* MubFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubFile.swift; sourceTree = "<group>"; };
+		ED4DF70F277BA84300EE6F28 /* MubPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubPaths.swift; sourceTree = "<group>"; };
+		ED4DF711277BA86100EE6F28 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		ED4DF714277BA9D300EE6F28 /* HistoryJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryJSONModel.swift; sourceTree = "<group>"; };
+		ED4DF716277BAA1A00EE6F28 /* DownloadsJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsJSONModel.swift; sourceTree = "<group>"; };
 		ED7C55DE277A0D79004C994E /* MubSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubSearchField.swift; sourceTree = "<group>"; };
 		ED7C55E0277A1568004C994E /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,15 +187,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		CF7772C227567DCF0034555A /* UI Elements */ = {
-			isa = PBXGroup;
-			children = (
-				CF7772C627567DE50034555A /* HoverButton.swift */,
-				ED7C55DE277A0D79004C994E /* MubSearchField.swift */,
-			);
-			path = "UI Elements";
-			sourceTree = "<group>";
-		};
 		CFB669E92756EB6C0025D140 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,12 +200,12 @@
 			isa = PBXGroup;
 			children = (
 				CFC95F9A275538A800B130F9 /* Mubser */,
+				CF0AE6BE275AE12C0031DE44 /* Images */,
 				CFC95FC42755392D00B130F9 /* Frameworks */,
 				CFC95FAA275538AC00B130F9 /* MubserTests */,
 				CFC95FB4275538AC00B130F9 /* MubserUITests */,
-				CF0AE6BE275AE12C0031DE44 /* Images */,
-				CF0AE6B8275AE10A0031DE44 /* README.md */,
 				CFC95F99275538A800B130F9 /* Products */,
+				CF0AE6B8275AE10A0031DE44 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,22 +222,14 @@
 		CFC95F9A275538A800B130F9 /* Mubser */ = {
 			isa = PBXGroup;
 			children = (
-				CF326CD527583BDD0095DA07 /* Helper.swift */,
-				ED7C55E0277A1568004C994E /* GlobalVariables.swift */,
-				CF7772C227567DCF0034555A /* UI Elements */,
 				CFC95F9B275538A800B130F9 /* AppDelegate.swift */,
-				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
+				ED4DF708277BA5DB00EE6F28 /* Controllers */,
 				CFC95F9F275538AC00B130F9 /* MainMenu.xib */,
-				CFC95FA2275538AC00B130F9 /* Mubser.entitlements */,
-				CFC9602527553C7A00B130F9 /* MubWindowController.swift */,
-				CFC9602627553C7A00B130F9 /* MubWindowController.xib */,
-				CFC9602927553CA600B130F9 /* MubViewController.swift */,
-				CFC9602A27553CA600B130F9 /* MubViewController.xib */,
-				CFC960402755873400B130F9 /* SearchCell.xib */,
-				CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */,
-				CFD078622757F7C3001482C1 /* MubHistoryViewController.xib */,
-				CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */,
-				CFF1B2D9275D13B30057CAC4 /* MubTabViewController.xib */,
+				ED4DF713277BA9BC00EE6F28 /* Models */,
+				ED4DF70B277BA6FD00EE6F28 /* Resources */,
+				ED4DF70C277BA80900EE6F28 /* Utilities */,
+				ED4DF718277BAB1400EE6F28 /* View Models */,
+				ED4DF707277BA58100EE6F28 /* Views */,
 			);
 			path = Mubser;
 			sourceTree = "<group>";
@@ -279,6 +276,78 @@
 				CFC9603D2755863D00B130F9 /* APSuggestions.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ED4DF707277BA58100EE6F28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED4DF70A277BA68600EE6F28 /* Cells */,
+				ED4DF6F4277BA55800EE6F28 /* MubWindowController.xib */,
+				ED4DF6F7277BA55D00EE6F28 /* MubViewController.xib */,
+				ED4DF6FD277BA56500EE6F28 /* MubHistoryViewController.xib */,
+				ED4DF700277BA56900EE6F28 /* MubTabViewController.xib */,
+				ED4DF703277BA56C00EE6F28 /* MubDownloadsViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED4DF708277BA5DB00EE6F28 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFC9602527553C7A00B130F9 /* MubWindowController.swift */,
+				CFC9602927553CA600B130F9 /* MubViewController.swift */,
+				CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */,
+				CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */,
+				ED47E79F277B703D00AE7795 /* MubDownloadsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED4DF70A277BA68600EE6F28 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED4DF6FA277BA56100EE6F28 /* SearchCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ED4DF70B277BA6FD00EE6F28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CFC95F9D275538AC00B130F9 /* Assets.xcassets */,
+				CFC95FA2275538AC00B130F9 /* Mubser.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED4DF70C277BA80900EE6F28 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ED7C55E0277A1568004C994E /* GlobalVariables.swift */,
+				ED4DF70D277BA81900EE6F28 /* MubFile.swift */,
+				ED4DF70F277BA84300EE6F28 /* MubPaths.swift */,
+				ED4DF711277BA86100EE6F28 /* Extension+String.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		ED4DF713277BA9BC00EE6F28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED4DF714277BA9D300EE6F28 /* HistoryJSONModel.swift */,
+				ED4DF716277BAA1A00EE6F28 /* DownloadsJSONModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ED4DF718277BAB1400EE6F28 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF7772C627567DE50034555A /* HoverButton.swift */,
+				ED7C55DE277A0D79004C994E /* MubSearchField.swift */,
+				ED4DF6EE277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +419,7 @@
 				TargetAttributes = {
 					CFC95F97275538A800B130F9 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1320;
 					};
 					CFC95FA6275538AC00B130F9 = {
 						CreatedOnToolsVersion = 13.1;
@@ -438,14 +508,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD078642757F7C3001482C1 /* MubHistoryViewController.xib in Resources */,
-				CFC960412755873400B130F9 /* SearchCell.xib in Resources */,
-				CFF1B2DB275D13B30057CAC4 /* MubTabViewController.xib in Resources */,
+				ED4DF6FB277BA56500EE6F28 /* MubHistoryViewController.xib in Resources */,
+				ED4DF701277BA56C00EE6F28 /* MubDownloadsViewController.xib in Resources */,
+				ED4DF6F8277BA56100EE6F28 /* SearchCell.xib in Resources */,
+				ED4DF6FE277BA56900EE6F28 /* MubTabViewController.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
 				CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */,
 				CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */,
-				CFC9602C27553CA600B130F9 /* MubViewController.xib in Resources */,
-				CFC9602827553C7A00B130F9 /* MubWindowController.xib in Resources */,
+				ED4DF6F5277BA55D00EE6F28 /* MubViewController.xib in Resources */,
+				ED4DF6F2277BA55800EE6F28 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,15 +542,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4DF70E277BA81900EE6F28 /* MubFile.swift in Sources */,
 				CF7772C727567DE50034555A /* HoverButton.swift in Sources */,
 				CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */,
+				ED4DF717277BAA1A00EE6F28 /* DownloadsJSONModel.swift in Sources */,
 				ED7C55DF277A0D79004C994E /* MubSearchField.swift in Sources */,
+				ED4DF6EF277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift in Sources */,
 				CFC9602727553C7A00B130F9 /* MubWindowController.swift in Sources */,
+				ED4DF715277BA9D300EE6F28 /* HistoryJSONModel.swift in Sources */,
 				ED7C55E1277A1568004C994E /* GlobalVariables.swift in Sources */,
 				CFC95F9C275538A800B130F9 /* AppDelegate.swift in Sources */,
+				ED4DF712277BA86100EE6F28 /* Extension+String.swift in Sources */,
+				ED47E7A1277B703D00AE7795 /* MubDownloadsViewController.swift in Sources */,
 				CFC9602B27553CA600B130F9 /* MubViewController.swift in Sources */,
-				CF326CD627583BDD0095DA07 /* Helper.swift in Sources */,
 				CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */,
+				ED4DF710277BA84300EE6F28 /* MubPaths.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +599,54 @@
 				CFC95FA0275538AC00B130F9 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		ED4DF6F4277BA55800EE6F28 /* MubWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF6F3277BA55800EE6F28 /* Base */,
+			);
+			name = MubWindowController.xib;
+			sourceTree = "<group>";
+		};
+		ED4DF6F7277BA55D00EE6F28 /* MubViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF6F6277BA55D00EE6F28 /* Base */,
+			);
+			name = MubViewController.xib;
+			sourceTree = "<group>";
+		};
+		ED4DF6FA277BA56100EE6F28 /* SearchCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF6F9277BA56100EE6F28 /* Base */,
+			);
+			name = SearchCell.xib;
+			sourceTree = "<group>";
+		};
+		ED4DF6FD277BA56500EE6F28 /* MubHistoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF6FC277BA56500EE6F28 /* Base */,
+			);
+			name = MubHistoryViewController.xib;
+			sourceTree = "<group>";
+		};
+		ED4DF700277BA56900EE6F28 /* MubTabViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF6FF277BA56900EE6F28 /* Base */,
+			);
+			name = MubTabViewController.xib;
+			sourceTree = "<group>";
+		};
+		ED4DF703277BA56C00EE6F28 /* MubDownloadsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF702277BA56C00EE6F28 /* Base */,
+			);
+			name = MubDownloadsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -647,7 +772,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Mubser/Mubser.entitlements;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Mubser/Resources/Mubser.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -669,6 +795,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Mubser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -678,7 +805,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Mubser/Mubser.entitlements;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Mubser/Resources/Mubser.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

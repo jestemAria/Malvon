@@ -125,7 +125,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     // MARK: - History Functions
     
     func parseHistoryJSON() -> [MubHistoryElement]? {
-        let fileContents = readFile(path: MubHistoryViewController.path!)
+        let fileContents = MubFile.read(path: MubHistoryViewController.path!)
         let decodedJSON = try? JSONDecoder().decode([MubHistoryElement].self, from: fileContents.data(using: .utf8)!)
         
         return decodedJSON

@@ -7,7 +7,7 @@
 
 // Code From: https://github.com/geek1706/swift-google-autocomplete
 
-import Foundation
+import Cocoa
 
 public enum SearchSuggestionsError: Error {
     case invalidURL(String)

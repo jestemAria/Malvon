@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MubDownloadsViewController" customModule="Mubser" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="wGv-Jx-Bik" id="wI5-sD-aJB"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="uXT-fd-hXr"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="554" height="276"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="10" verticalLineScroll="30" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n79-Mt-RTe">
+                    <rect key="frame" x="0.0" y="0.0" width="554" height="227"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <clipView key="contentView" id="8Dt-jL-boh">
+                        <rect key="frame" x="1" y="1" width="552" height="225"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="wGv-Jx-Bik">
+                                <rect key="frame" x="0.0" y="0.0" width="552" height="225"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <size key="intercellSpacing" width="17" height="0.0"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn width="540" minWidth="40" maxWidth="1000" id="Uys-bw-yiD">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="File Name">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="MGU-WV-ORg">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView identifier="DownloadsItemCell" id="hxI-LE-vkH" customClass="MubDownloadsTableViewCell" customModule="Mubser" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="0.0" width="535" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vWs-AH-YrL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="535" height="30"/>
+                                                        <subviews>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KjA-dJ-suY">
+                                                                <rect key="frame" x="5" y="0.0" width="30" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="j9g-9M-pQi"/>
+                                                                    <constraint firstAttribute="height" constant="30" id="w5O-6M-Ool"/>
+                                                                </constraints>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="mIW-CI-chT"/>
+                                                            </imageView>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Bw-Er-vBa">
+                                                                <rect key="frame" x="51" y="7" width="122" height="16"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="googlechrome.dmg" id="XRd-FK-QCZ">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="cC8-9L-zOo">
+                                                                <rect key="frame" x="42" y="0.0" width="5" height="30"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            </box>
+                                                            <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-xA-tfW">
+                                                                <rect key="frame" x="175" y="0.0" width="5" height="30"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            </box>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-Dv-nSc">
+                                                                <rect key="frame" x="186" y="7" width="331" height="16"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="/Users/ashwinpaudel/Documents/googlechrome.dmg" id="Qs6-qy-bbQ">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="KjA-dJ-suY" firstAttribute="leading" secondItem="vWs-AH-YrL" secondAttribute="leading" constant="5" id="FaF-jy-PfN"/>
+                                                            <constraint firstAttribute="bottom" secondItem="KjA-dJ-suY" secondAttribute="bottom" id="ThR-Ks-rSj"/>
+                                                            <constraint firstItem="KjA-dJ-suY" firstAttribute="top" secondItem="vWs-AH-YrL" secondAttribute="top" id="vrR-dL-Bgx"/>
+                                                        </constraints>
+                                                    </customView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="vWs-AH-YrL" secondAttribute="bottom" id="Kv7-nH-t3Z"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vWs-AH-YrL" secondAttribute="trailing" id="Own-15-U7R"/>
+                                                    <constraint firstItem="vWs-AH-YrL" firstAttribute="leading" secondItem="hxI-LE-vkH" secondAttribute="leading" id="X9j-Sx-oI2"/>
+                                                    <constraint firstItem="vWs-AH-YrL" firstAttribute="top" secondItem="hxI-LE-vkH" secondAttribute="top" id="h8Z-hY-nVX"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="MubFileIcon" destination="KjA-dJ-suY" id="45A-qU-gDC"/>
+                                                    <outlet property="MubFileName" destination="9Bw-Er-vBa" id="HGT-PX-l8C"/>
+                                                    <outlet property="MubLocation" destination="oWr-Dv-nSc" id="Bkd-qu-j3m"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9BK-IA-C2l">
+                        <rect key="frame" x="1" y="210" width="552" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="guK-FH-SIR">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XRw-bh-UN6">
+                    <rect key="frame" x="5" y="249.5" width="20.5" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="gSM-sT-cqy">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closeButton:" target="-2" id="Hhd-0k-MVZ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="161" y="262"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+        <image name="NSStopProgressTemplate" width="14" height="13"/>
+    </resources>
+</document>

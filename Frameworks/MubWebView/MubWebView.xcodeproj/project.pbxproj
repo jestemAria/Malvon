@@ -14,7 +14,8 @@
 		CFC960202755396700B130F9 /* MubWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9601F2755396700B130F9 /* MubWebView.swift */; };
 		ED16493A277A6D8F00814567 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED164939277A6D8E00814567 /* Downloader.swift */; };
 		ED16493D277A6DCA00814567 /* MubWebViewDownloadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */; };
-		ED16493E277A6DCA00814567 /* MubWebViewDownloadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED16493C277A6DCA00814567 /* MubWebViewDownloadingViewController.xib */; };
+		ED3D9BE8277AA50900570B1F /* FileUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D9BE7277AA50900570B1F /* FileUnits.swift */; };
+		ED4DF704277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF706277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,8 @@
 		CFC9601F2755396700B130F9 /* MubWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MubWebView.swift; sourceTree = "<group>"; };
 		ED164939277A6D8E00814567 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = MubWebViewDownloadingViewController.swift; sourceTree = "<group>"; };
-		ED16493C277A6DCA00814567 /* MubWebViewDownloadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MubWebViewDownloadingViewController.xib; sourceTree = "<group>"; };
+		ED3D9BE7277AA50900570B1F /* FileUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUnits.swift; sourceTree = "<group>"; };
+		ED4DF705277BA57900EE6F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MubWebViewDownloadingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +86,8 @@
 				CFC9601F2755396700B130F9 /* MubWebView.swift */,
 				CFC960002755395B00B130F9 /* MubWebView.docc */,
 				ED16493B277A6DCA00814567 /* MubWebViewDownloadingViewController.swift */,
-				ED16493C277A6DCA00814567 /* MubWebViewDownloadingViewController.xib */,
+				ED4DF706277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib */,
+				ED3D9BE7277AA50900570B1F /* FileUnits.swift */,
 			);
 			path = MubWebView;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				TargetAttributes = {
 					CFC95FFB2755395B00B130F9 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1320;
 					};
 					CFC960052755395C00B130F9 = {
 						CreatedOnToolsVersion = 13.1;
@@ -189,7 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED16493E277A6DCA00814567 /* MubWebViewDownloadingViewController.xib in Resources */,
+				ED4DF704277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3D9BE8277AA50900570B1F /* FileUnits.swift in Sources */,
 				CFC960202755396700B130F9 /* MubWebView.swift in Sources */,
 				CFC960012755395B00B130F9 /* MubWebView.docc in Sources */,
 				ED16493D277A6DCA00814567 /* MubWebViewDownloadingViewController.swift in Sources */,
@@ -231,6 +236,17 @@
 			targetProxy = CFC960082755395C00B130F9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ED4DF706277BA57900EE6F28 /* MubWebViewDownloadingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED4DF705277BA57900EE6F28 /* Base */,
+			);
+			name = MubWebViewDownloadingViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CFC9600E2755395C00B130F9 /* Debug */ = {
@@ -357,6 +373,7 @@
 		CFC960112755395C00B130F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -379,6 +396,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -386,6 +404,7 @@
 		CFC960122755395C00B130F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

@@ -11,7 +11,7 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var searchField: NSSearchField!
     var historyJSON = [MubHistoryElement]()
-    static let path = mubDataDir()?.appendingPathComponent("history.json")
+    static let path = MubPaths.dataDirectory()?.appendingPathComponent("history.json")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,14 +99,9 @@ class MubHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVi
     }
     
     func parseJSON() -> [MubHistoryElement]? {
-        let fileContents = readFile(path: MubHistoryViewController.path!)
+        let fileContents = MubFile.read(path: MubHistoryViewController.path!)
         let decodedJSON = try? JSONDecoder().decode([MubHistoryElement].self, from: fileContents.data(using: .utf8)!)
         
         return decodedJSON
     }
-}
-
-struct MubHistoryElement: Codable {
-    let website: String
-    let address: String
 }

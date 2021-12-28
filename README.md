@@ -6,8 +6,8 @@ The new macOS Web Browser.
 - [x] Create a simple browser ( reload, back, forward, searchfield, progress bar )
 - [x] Search Suggestions
 - [x] Implement history
-- [x] Add tabbing
-- [ ] Downloads
+- [x] Downloding + Downloads History
+- [ ] Tabs
 
 ## Images
 

@@ -32,6 +32,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainWindow.title = "History"
         mainWindow.titlebarAppearsTransparent = true
         mainWindow.makeKeyAndOrderFront(self)
+        
+        window.window?.beginSheet(mainWindow, completionHandler: nil)
+    }
+    
+    @IBAction func showDownloadHistory(_ sender: Any?) {
+        let mainWindow = NSWindow(contentViewController: MubDownloadsViewController(nibName: NSNib.Name("MubDownloadsViewController"), bundle: nil))
+        
+        mainWindow.title = "Downloads"
+        mainWindow.titlebarAppearsTransparent = true
+
+        window.window?.beginSheet(mainWindow, completionHandler: nil)
     }
     
     @IBAction func openNewApplicationWindow(_ sender: Any?) {

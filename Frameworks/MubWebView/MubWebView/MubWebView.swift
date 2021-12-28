@@ -82,13 +82,17 @@ public class MubWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                     panel.canCreateDirectories = true
                     panel.beginSheetModal(for: self.window!) { [self] (res) in
                         if res == .OK {
+                            DownloaderProgress.shardInstance.fileName = panel.nameFieldStringValue
+
                             let filePath = panel.url
                             let ProgView = MubWebViewDownloadingViewController(nibName: "MubWebViewDownloadingViewController", bundle: frameworkBundle)
                             
                             let mainWindow = NSWindow(contentViewController: ProgView)
-                            mainWindow.title = "Downloading..."
-                            mainWindow.titlebarAppearsTransparent = true
-                            mainWindow.makeKeyAndOrderFront(self)
+
+
+                            self.window?.beginSheet(mainWindow, completionHandler: { _ in
+                                print("asdfkjansdkfjnasdfto")
+                            })
                             
                             downloader.download(from: response.url!, tourl: filePath!)
                             decisionHandler(.allow)
@@ -118,25 +122,25 @@ public class MubWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
     /// Add the configurations to the webview to make it faster and enable more features
     public func enableConfigurations() {
         self.configuration.preferences.setValue(true, forKey: "offlineApplicationCacheIsEnabled")
-        self.configuration.preferences.setValue(true, forKey: "aggressiveTileRetentionEnabled")
-        self.configuration.preferences.setValue(true, forKey: "screenCaptureEnabled")
-        self.configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
-        self.configuration.preferences.setValue(true, forKey: "allowsPictureInPictureMediaPlayback")
         self.configuration.preferences.setValue(true, forKey: "fullScreenEnabled")
-        self.configuration.preferences.setValue(true, forKey: "largeImageAsyncDecodingEnabled")
-        self.configuration.preferences.setValue(false, forKey: "animatedImageAsyncDecodingEnabled")
-        self.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-        self.configuration.preferences.setValue(true, forKey: "usesPageCache")
-        self.configuration.preferences.setValue(true, forKey: "mediaSourceEnabled")
+        self.configuration.preferences.setValue(true, forKey: "allowsPictureInPictureMediaPlayback")
+        self.configuration.preferences.setValue(true, forKey: "simpleLineLayoutEnabled")
         self.configuration.preferences.setValue(true, forKey: "acceleratedDrawingEnabled")
-        self.configuration.preferences.setValue(false, forKey: "backspaceKeyNavigationEnabled")
-        self.configuration.preferences.setValue(true, forKey: "mediaDevicesEnabled")
-        self.configuration.preferences.setValue(true, forKey: "mockCaptureDevicesPromptEnabled")
-        self.configuration.preferences.setValue(true, forKey: "canvasUsesAcceleratedDrawing")
-        self.configuration.preferences.setValue(true, forKey: "aggressiveTileRetentionEnabled")
-        self.configuration.preferences.setValue(true, forKey: "videoQualityIncludesDisplayCompositingEnabled")
+        self.configuration.preferences.setValue(true, forKey: "largeImageAsyncDecodingEnabled")
+        self.configuration.preferences.setValue(true, forKey: "animatedImageAsyncDecodingEnabled")
         self.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
+        self.configuration.preferences.setValue(true, forKey: "loadsImagesAutomatically")
+        self.configuration.preferences.setValue(true, forKey: "screenCaptureEnabled")
+        self.configuration.preferences.setValue(true, forKey: "acceleratedCompositingEnabled")
+        self.configuration.preferences.setValue(true, forKey: "canvasUsesAcceleratedDrawing")
+        self.configuration.preferences.setValue(true, forKey: "localFileContentSniffingEnabled")
+        self.configuration.preferences.setValue(true, forKey: "usesPageCache")
+        self.configuration.preferences.setValue(false, forKey: "backspaceKeyNavigationEnabled")
+        self.configuration.preferences.setValue(true, forKey: "aggressiveTileRetentionEnabled")
         self.configuration.preferences.setValue(true, forKey: "appNapEnabled")
+        self.configuration.preferences.setValue(true, forKey: "aggressiveTileRetentionEnabled")
+        self.configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
+        self.configuration.preferences.setValue(true, forKey: "videoQualityIncludesDisplayCompositingEnabled")
         
         self.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
     }

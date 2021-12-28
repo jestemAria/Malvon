@@ -203,8 +203,8 @@
                 <constraint firstItem="aVA-wm-c0j" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="OJK-FU-gRA"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="leading" secondItem="DhB-2r-p2a" secondAttribute="trailing" constant="-30" id="SRf-Aa-Wjd"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="WjG-sQ-lih"/>
-                <constraint firstItem="sgG-f9-HK0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3" id="YyQ-Mj-eGV"/>
-                <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="sgG-f9-HK0" secondAttribute="bottom" constant="1" id="aUL-Xz-MmE"/>
+                <constraint firstItem="sgG-f9-HK0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3.5" id="YyQ-Mj-eGV"/>
+                <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="sgG-f9-HK0" secondAttribute="bottom" constant="0.5" id="aUL-Xz-MmE"/>
                 <constraint firstItem="qVW-c6-syA" firstAttribute="top" secondItem="TAK-Ee-IF3" secondAttribute="bottom" constant="2" id="czC-Vk-rD1"/>
                 <constraint firstItem="I8O-2s-z3b" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="3" id="jEA-Ed-r2n"/>
                 <constraint firstItem="sgG-f9-HK0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="66" id="laZ-AN-m7E"/>

@@ -7,20 +7,22 @@
 
 import Cocoa
 
+
 class MubWebViewDownloadingViewController: NSViewController {
    
    @IBOutlet weak var progressIndicator: NSProgressIndicator!
    
    @IBOutlet weak var progressLabel: NSTextField!
    
-   private var token: NSKeyValueObservation?
+    @IBOutlet weak var percentageLabel: NSTextField!
+    @IBOutlet weak var fileNameLabel: NSTextField!
+    private var token: NSKeyValueObservation?
    private var token1: NSKeyValueObservation?
    
    override func viewDidLoad() {
       super.viewDidLoad()
       // Do view setup here.
       print("elwaifjemlfkm")
-      
       token1 = DownloaderProgress.shardInstance.observe(\.isFinished, changeHandler: { _, _ in
          print("finished")
          DispatchQueue.main.async {
@@ -32,11 +34,15 @@ class MubWebViewDownloadingViewController: NSViewController {
          
       })
       
-      
+      fileNameLabel.stringValue = DownloaderProgress.shardInstance.fileName ?? "???????.??"
+
       token = DownloaderProgress.shardInstance.observe(\.progress, changeHandler: { _, _ in
          DispatchQueue.main.async {
             self.progressIndicator?.doubleValue = DownloaderProgress.shardInstance.progress
-            self.progressLabel.stringValue = String(Int(DownloaderProgress.shardInstance.progress)) + "%"
+//            print("doisjfoifejo", DownloaderProgress.shardInstance.countOfBytesReceived, DownloaderProgress.shardInstance.countOfBytesExpectedToReceive)
+             self.percentageLabel.stringValue = String(Int(DownloaderProgress.shardInstance.progress)) + "%"
+             
+            self.progressLabel.stringValue = "\(Units(bytes: Int64(DownloaderProgress.shardInstance.countOfBytesReceived)).getReadableUnit()) / \(Units(bytes: Int64(DownloaderProgress.shardInstance.countOfBytesExpectedToReceive)).getReadableUnit())"
          }
       })
       

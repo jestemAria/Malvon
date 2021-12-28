@@ -9,6 +9,7 @@
 
 import Cocoa
 import WebKit
+//import Mubser
 
 @objc public protocol MubWebViewDelegate: NSObjectProtocol {
     /// When the webview URL changes
@@ -25,6 +26,10 @@ import WebKit
     
     /// When the webview is done loading
     @objc optional func mubWebView(_ webView: MubWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures)
+    
+    @objc func mubWebView(_ webView: MubWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MubWebView
+    
+    @objc func mubWebViewWillCloseTab()
 }
 
 /// The MubWebView, subclass of WKWebView
@@ -68,6 +73,16 @@ public class MubWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("[ MubWebView ]: Finished Loading Website")
         self.delegate?.mubWebView?(webView as! MubWebView, didFinishLoading: webView.url)
+    }
+    
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        
+        return self.delegate?.mubWebView(webView as! MubWebView, createWebViewWith: configuration, navigationAction: navigationAction)
+    }
+    
+    public func webViewDidClose(_ webView: WKWebView) {
+        webView.removeFromSuperview()
+        self.delegate?.mubWebViewWillCloseTab()
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {

@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +17,7 @@
                 <outlet property="searchField" destination="I8O-2s-z3b" id="2iK-05-zsI"/>
                 <outlet property="tabStackView" destination="TAK-Ee-IF3" id="3lD-Pn-CFf"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
-                <outlet property="webView" destination="HKm-nA-M9f" id="Mai-b1-kCk"/>
+                <outlet property="webContentView" destination="8jb-zi-p1l" id="Jcz-GF-D0Q"/>
                 <outlet property="websiteTitle" destination="cxo-gT-ccJ" id="oBJ-0j-OIL"/>
             </connections>
         </customObject>
@@ -28,14 +27,6 @@
             <rect key="frame" x="0.0" y="0.0" width="801" height="478"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HKm-nA-M9f" customClass="MubWebView" customModule="MubWebView">
-                    <rect key="frame" x="0.0" y="0.0" width="801" height="442"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <wkWebViewConfiguration key="configuration">
-                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                        <wkPreferences key="preferences"/>
-                    </wkWebViewConfiguration>
-                </wkWebView>
                 <searchField wantsLayer="YES" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-2s-z3b" customClass="MubSearchField" customModule="Mubser" customModuleProvider="target">
                     <rect key="frame" x="143" y="446" width="416" height="29"/>
                     <constraints>
@@ -202,7 +193,7 @@
                                 <constraint firstAttribute="height" constant="30" id="1Pq-iX-qMM"/>
                                 <constraint firstAttribute="width" constant="30" id="uD4-WF-rrO"/>
                             </constraints>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="83d-hP-Tv0">
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="83d-hP-Tv0">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -220,6 +211,10 @@
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jb-zi-p1l">
+                    <rect key="frame" x="0.0" y="0.0" width="801" height="442"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </customView>
             </subviews>
             <constraints>
                 <constraint firstItem="P7F-a5-dCJ" firstAttribute="leading" secondItem="TAK-Ee-IF3" secondAttribute="trailing" constant="5" id="1Lb-Vg-vlE"/>
@@ -252,7 +247,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" catalog="system" width="14" height="13"/>
+        <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSGoBackTemplate" width="10" height="14"/>
         <image name="NSGoForwardTemplate" width="10" height="14"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>

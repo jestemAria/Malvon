@@ -14,8 +14,10 @@ import WebKit
 class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDelegate {
     // MARK: - Elements
     
-    // WebView Element
-    @IBOutlet var webView: MubWebView!
+    
+    // webView! Element
+    @IBOutlet weak var webContentView: NSView!
+    var webView: MubWebView?
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
@@ -44,7 +46,20 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     @IBOutlet var createNewTabButton: NSButton!
     public var website: URL?
     
+    public var webConfigurations: WKWebViewConfiguration
+    
+    private var loadURL = true
     // MARK: - Setup Functions
+    
+    init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true) {
+        self.webConfigurations = config
+        self.loadURL = loadURL
+        super.init(nibName: "MubViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -54,15 +69,25 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.webView = MubWebView(frame: self.webContentView.frame, configuration: self.webConfigurations)
+        
+        self.webContentView.addSubview(self.webView!)
+        
+        self.webView?.autoresizingMask = [.width, .height]
+        
         (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
         configureElements()
         refreshButton.cornerRadius = 10
-        webView.initializeWebView()
-        webView.delegate = self
-        webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
+        webView!.initializeWebView()
+        webView!.delegate = self
+        
+        if loadURL == true {
+            webView!.load(URLRequest(url: URL(string: "https://www.google.com")!))
+            updateWebsiteURL()
+        }
         self.website = URL(string: "https://www.google.com")!
-        updateWebsiteURL()
         tabsPopover.behavior = .transient
         tabsPopover.animates = false
     }
@@ -78,8 +103,8 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     func configureElements() {
         APsuggestionCellNib = "SearchCell"
         searchField.delegate = self
-        webView.enableAdblock()
-        webView.enableConfigurations()
+        webView!.enableAdblock()
+        webView!.enableConfigurations()
     }
     
     // MARK: - Buttons
@@ -100,19 +125,19 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     @IBAction func backButton(_ sender: Any) {
         print("Back Button Pressed")
-        if webView.canGoBack { webView.goBack() }
+        if webView!.canGoBack { webView!.goBack() }
     }
     
     @IBAction func forwardButton(_ sender: Any) {
-        if webView.canGoForward { webView.goForward() }
+        if webView!.canGoForward { webView!.goForward() }
     }
     
     @IBAction func refreshButton(_ sender: NSButton) {
         if sender.image == NSImage(named: NSImage.refreshTemplateName) {
-            webView.reload()
+            webView!.reload()
             sender.image = NSImage(named: NSImage.stopProgressTemplateName)
         } else {
-            webView.stopLoading()
+            webView!.stopLoading()
             sender.image = NSImage(named: NSImage.refreshTemplateName)
         }
     }
@@ -125,13 +150,13 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     }
     
     func checkButtons() {
-        if webView.canGoBack {
+        if webView!.canGoBack {
             backButtonOutlet.isEnabled = true
         } else {
             backButtonOutlet.isEnabled = false
         }
         
-        if webView.canGoForward {
+        if webView!.canGoForward {
             forwardButtonOutlet.isEnabled = true
         } else {
             forwardButtonOutlet.isEnabled = false
@@ -163,7 +188,7 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     }
     
     func addHistoryEntry() {
-        addItem(website: webView.title!, address: webView.url!.absoluteString)
+        addItem(website: webView!.title!, address: webView!.url!.absoluteString)
     }
     
     // If the history.json file doesn't exist, create it
@@ -186,14 +211,26 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         }
     }
     
-    // MARK: - Webview Functions
+    // MARK: - webView Functions
     
     func mubWebView(_ webView: MubWebView, urlDidChange url: URL?) {
         updateWebsiteURL()
         self.website = url
-        GlobalVariables.currentWebsite = self.webView.url!.absoluteString
-        GlobalVariables.currentWebsiteRemovedHTTP = self.webView.url!.absoluteString.removeHTTP
+        GlobalVariables.currentWebsite = self.webView!.url!.absoluteString
+        GlobalVariables.currentWebsiteRemovedHTTP = self.webView!.url!.absoluteString.removeHTTP
         checkButtons()
+    }
+    
+    func mubWebView(_ webView: MubWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MubWebView {
+        let tab = (self.view.window?.windowController as? MubWindowController)?.tabViewController
+        let VC = MubViewController(config: configuration, loadURL: false)
+        
+        
+        tab?.addTabViewItem(NSTabViewItem(viewController: VC))
+        
+        tab?.selectedTabViewItemIndex = tab!.tabViewItems.count-1
+        
+        return VC.webView!
     }
     
     func mubWebView(_ webView: MubWebView, estimatedProgress progress: Double) {
@@ -221,12 +258,16 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
         faviconImageView.image = NSImage(data: data!)
     }
     
-    
+    func mubWebViewWillCloseTab() {
+        let tab = (self.view.window?.windowController as? MubWindowController)?.tabViewController
+        
+        tab?.tabViewItems.remove(at: tab!.selectedTabViewItemIndex)
+    }
     
     func updateWebsiteURL() {
-        let scheme = self.webView.url!.scheme! + "://"
-        let host = self.webView.url!.host!
-        let path = self.webView.url!.path
+        let scheme = (self.webView!.url?.scheme ?? "http(s)") + "://"
+        let host = self.webView!.url?.host ?? "www.unknown.com"
+        let path = self.webView!.url?.path ?? "/unknown"
         
         let attribute = [ NSAttributedString.Key.foregroundColor: NSColor.gray ]
         
@@ -243,8 +284,8 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         updateWebsiteURL()
         
-        GlobalVariables.currentWebsite = self.webView.url!.absoluteString
-        GlobalVariables.currentWebsiteRemovedHTTP = self.webView.url!.absoluteString.removeHTTP
+        GlobalVariables.currentWebsite = self.webView!.url!.absoluteString
+        GlobalVariables.currentWebsiteRemovedHTTP = self.webView!.url!.absoluteString.removeHTTP
         checkButtons()
     }
     
@@ -259,9 +300,9 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     // MARK: - Search Field
     @IBAction func searchFieldAction(_ sender: Any) {
         if searchField.stringValue.isValidURL{
-            webView.load(URLRequest(url: URL(string: searchField.stringValue)!))
+            webView!.load(URLRequest(url: URL(string: searchField.stringValue)!))
         } else {
-            webView.load(URLRequest(url: URL(string: "https://www.google.com/search?client=mubser&q=\(searchField.stringValue.encodeToURL)")!))
+            webView!.load(URLRequest(url: URL(string: "https://www.google.com/search?client=mubser&q=\(searchField.stringValue.encodeToURL)")!))
         }
     }
     

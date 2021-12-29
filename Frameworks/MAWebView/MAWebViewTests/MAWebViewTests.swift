@@ -1,14 +1,14 @@
 //
-//  MalvonTests.swift
-//  MalvonTests
+//  MAWebViewTests.swift
+//  MAWebViewTests
 //
 //  Created by Ashwin Paudel on 2021-12-29.
 //
 
 import XCTest
-@testable import Malvon
+@testable import MAWebView
 
-class MalvonTests: XCTestCase {
+class MAWebViewTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

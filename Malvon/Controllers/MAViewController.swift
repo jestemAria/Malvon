@@ -71,16 +71,16 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         super.viewDidLoad()
         
         self.webView = MAWebView(frame: self.webContentView.frame, configuration: self.webConfigurations)
-
+        
         self.webContentView.addSubview(self.webView!)
-
+        
         self.webView?.autoresizingMask = [.width, .height]
-
+        
         (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
         (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
         refreshButton.cornerRadius = 10
         configureElements()
-
+        
         if loadURL == true {
             webView!.load(URLRequest(url: URL(string: "https://www.google.com")!))
             updateWebsiteURL()
@@ -137,9 +137,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Buttons
     
     @IBAction func tabsPopoverButton(_ sender: NSButton) {
-//        tabsPopoverPositioningView = NSView()
-//        tabsPopoverPositioningView?.frame = sender.frame
-//        view.addSubview(tabsPopoverPositioningView!, positioned: .below, relativeTo: sender)
+        //        tabsPopoverPositioningView = NSView()
+        //        tabsPopoverPositioningView?.frame = sender.frame
+        //        view.addSubview(tabsPopoverPositioningView!, positioned: .below, relativeTo: sender)
         
         if tabsPopover.isShown {
             tabsPopover.close()
@@ -147,8 +147,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             tabsPopover.contentViewController = MATabViewController(windowController: ((self.view.window?.windowController as? MAWindowController)!))
             
             tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
-//            tabsPopover.show(relativeTo: .zero, of: tabsPopoverPositioningView!, preferredEdge: .maxY)
-//            tabsPopoverPositioningView?.frame = sender.frame
+            //            tabsPopover.show(relativeTo: .zero, of: tabsPopoverPositioningView!, preferredEdge: .maxY)
+            //            tabsPopoverPositioningView?.frame = sender.frame
         }
     }
     

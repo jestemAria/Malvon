@@ -1,14 +1,14 @@
 //
-//  MalvonTests.swift
-//  MalvonTests
+//  MASearchSuggestionsTests.swift
+//  MASearchSuggestionsTests
 //
 //  Created by Ashwin Paudel on 2021-12-29.
 //
 
 import XCTest
-@testable import Malvon
+@testable import MASearchSuggestions
 
-class MalvonTests: XCTestCase {
+class MASearchSuggestionsTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

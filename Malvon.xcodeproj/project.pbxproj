@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
+		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD2438F277CC01400926C9B /* MAWebView.framework */; };
+		EDD24396277CC01E00926C9B /* MAWebView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD2438F277CC01400926C9B /* MAWebView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDF62B2F277C96AF006DF3EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B2E277C96AF006DF3EB /* AppDelegate.swift */; };
 		EDF62B31277C96B2006DF3EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF62B30277C96B2006DF3EB /* Assets.xcassets */; };
 		EDF62B34277C96B2006DF3EB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62B32277C96B2006DF3EB /* MainMenu.xib */; };
@@ -17,10 +21,6 @@
 		EDF62B5A277C96D3006DF3EB /* MAWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62B58277C96D3006DF3EB /* MAWindowController.xib */; };
 		EDF62B5D277C9738006DF3EB /* MAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B5B277C9738006DF3EB /* MAViewController.swift */; };
 		EDF62B5E277C9738006DF3EB /* MAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62B5C277C9738006DF3EB /* MAViewController.xib */; };
-		EDF62B87277C9830006DF3EB /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF62B83277C9821006DF3EB /* MASearchSuggestions.framework */; };
-		EDF62B88277C9830006DF3EB /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDF62B83277C9821006DF3EB /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EDF62B8A277C9835006DF3EB /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF62B7A277C981D006DF3EB /* MAWebView.framework */; };
-		EDF62B8B277C9835006DF3EB /* MAWebView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDF62B7A277C981D006DF3EB /* MAWebView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDF62B92277C9887006DF3EB /* MADownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B8E277C9887006DF3EB /* MADownloadsTableViewCell.swift */; };
 		EDF62B93277C9887006DF3EB /* HoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B8F277C9887006DF3EB /* HoverButton.swift */; };
 		EDF62B94277C9887006DF3EB /* MATabsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B90277C9887006DF3EB /* MATabsTableViewCell.swift */; };
@@ -42,6 +42,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EDD24385277CC01100926C9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDF62ADC277C8E11006DF3EB;
+			remoteInfo = MASearchSuggestions;
+		};
+		EDD24387277CC01100926C9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDF62AE4277C8E11006DF3EB;
+			remoteInfo = MASearchSuggestionsTests;
+		};
+		EDD2438E277CC01400926C9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDD24389277CC01400926C9B /* MAWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDF62AA7277C8D4A006DF3EB;
+			remoteInfo = MAWebView;
+		};
+		EDD24390277CC01400926C9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDD24389277CC01400926C9B /* MAWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDF62AAF277C8D4B006DF3EB;
+			remoteInfo = MAWebViewTests;
+		};
 		EDF62B3B277C96B2006DF3EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDF62B23277C96AF006DF3EB /* Project object */;
@@ -56,45 +84,17 @@
 			remoteGlobalIDString = EDF62B2A277C96AF006DF3EB;
 			remoteInfo = Malvon;
 		};
-		EDF62B79277C981D006DF3EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDF62B74277C981D006DF3EB /* MAWebView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDF62AA7277C8D4A006DF3EB;
-			remoteInfo = MAWebView;
-		};
-		EDF62B7B277C981D006DF3EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDF62B74277C981D006DF3EB /* MAWebView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDF62AAF277C8D4B006DF3EB;
-			remoteInfo = MAWebViewTests;
-		};
-		EDF62B82277C9821006DF3EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDF62B7D277C9821006DF3EB /* MASearchSuggestions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDF62ADC277C8E11006DF3EB;
-			remoteInfo = MASearchSuggestions;
-		};
-		EDF62B84277C9821006DF3EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDF62B7D277C9821006DF3EB /* MASearchSuggestions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDF62AE4277C8E11006DF3EB;
-			remoteInfo = MASearchSuggestionsTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EDF62B89277C9830006DF3EB /* Embed Frameworks */ = {
+		EDD24394277CC01B00926C9B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EDF62B8B277C9835006DF3EB /* MAWebView.framework in Embed Frameworks */,
-				EDF62B88277C9830006DF3EB /* MASearchSuggestions.framework in Embed Frameworks */,
+				EDD24396277CC01E00926C9B /* MAWebView.framework in Embed Frameworks */,
+				EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
+		EDD24389277CC01400926C9B /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
 		EDF62B2B277C96AF006DF3EB /* Malvon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malvon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF62B2E277C96AF006DF3EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF62B30277C96B2006DF3EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,8 +118,6 @@
 		EDF62B58277C96D3006DF3EB /* MAWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MAWindowController.xib; sourceTree = "<group>"; };
 		EDF62B5B277C9738006DF3EB /* MAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAViewController.swift; sourceTree = "<group>"; };
 		EDF62B5C277C9738006DF3EB /* MAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MAViewController.xib; sourceTree = "<group>"; };
-		EDF62B74277C981D006DF3EB /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = ../../../../../.Trash/Frameworks/MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
-		EDF62B7D277C9821006DF3EB /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = ../../../../../.Trash/Frameworks/MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
 		EDF62B8E277C9887006DF3EB /* MADownloadsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MADownloadsTableViewCell.swift; sourceTree = "<group>"; };
 		EDF62B8F277C9887006DF3EB /* HoverButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoverButton.swift; sourceTree = "<group>"; };
 		EDF62B90277C9887006DF3EB /* MATabsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MATabsTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62B8A277C9835006DF3EB /* MAWebView.framework in Frameworks */,
-				EDF62B87277C9830006DF3EB /* MASearchSuggestions.framework in Frameworks */,
+				EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */,
+				EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +166,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EDD24381277CC01100926C9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDD24386277CC01100926C9B /* MASearchSuggestions.framework */,
+				EDD24388277CC01100926C9B /* MASearchSuggestionsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDD2438A277CC01400926C9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDD2438F277CC01400926C9B /* MAWebView.framework */,
+				EDD24391277CC01400926C9B /* MAWebViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EDF62B22277C96AF006DF3EB = {
 			isa = PBXGroup;
 			children = (
@@ -223,28 +241,10 @@
 		EDF62B61277C97FA006DF3EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62B7D277C9821006DF3EB /* MASearchSuggestions.xcodeproj */,
-				EDF62B74277C981D006DF3EB /* MAWebView.xcodeproj */,
+				EDD24389277CC01400926C9B /* MAWebView.xcodeproj */,
+				EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */,
 			);
 			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		EDF62B75277C981D006DF3EB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EDF62B7A277C981D006DF3EB /* MAWebView.framework */,
-				EDF62B7C277C981D006DF3EB /* MAWebViewTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EDF62B7E277C9821006DF3EB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EDF62B83277C9821006DF3EB /* MASearchSuggestions.framework */,
-				EDF62B85277C9821006DF3EB /* MASearchSuggestionsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		EDF62BB0277CA4FB006DF3EB /* Controllers */ = {
@@ -323,7 +323,7 @@
 				EDF62B27277C96AF006DF3EB /* Sources */,
 				EDF62B28277C96AF006DF3EB /* Frameworks */,
 				EDF62B29277C96AF006DF3EB /* Resources */,
-				EDF62B89277C9830006DF3EB /* Embed Frameworks */,
+				EDD24394277CC01B00926C9B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -406,12 +406,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EDF62B7E277C9821006DF3EB /* Products */;
-					ProjectRef = EDF62B7D277C9821006DF3EB /* MASearchSuggestions.xcodeproj */;
+					ProductGroup = EDD24381277CC01100926C9B /* Products */;
+					ProjectRef = EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */;
 				},
 				{
-					ProductGroup = EDF62B75277C981D006DF3EB /* Products */;
-					ProjectRef = EDF62B74277C981D006DF3EB /* MAWebView.xcodeproj */;
+					ProductGroup = EDD2438A277CC01400926C9B /* Products */;
+					ProjectRef = EDD24389277CC01400926C9B /* MAWebView.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -424,32 +424,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EDF62B7A277C981D006DF3EB /* MAWebView.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MAWebView.framework;
-			remoteRef = EDF62B79277C981D006DF3EB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EDF62B7C277C981D006DF3EB /* MAWebViewTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MAWebViewTests.xctest;
-			remoteRef = EDF62B7B277C981D006DF3EB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EDF62B83277C9821006DF3EB /* MASearchSuggestions.framework */ = {
+		EDD24386277CC01100926C9B /* MASearchSuggestions.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MASearchSuggestions.framework;
-			remoteRef = EDF62B82277C9821006DF3EB /* PBXContainerItemProxy */;
+			remoteRef = EDD24385277CC01100926C9B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EDF62B85277C9821006DF3EB /* MASearchSuggestionsTests.xctest */ = {
+		EDD24388277CC01100926C9B /* MASearchSuggestionsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MASearchSuggestionsTests.xctest;
-			remoteRef = EDF62B84277C9821006DF3EB /* PBXContainerItemProxy */;
+			remoteRef = EDD24387277CC01100926C9B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EDD2438F277CC01400926C9B /* MAWebView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MAWebView.framework;
+			remoteRef = EDD2438E277CC01400926C9B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EDD24391277CC01400926C9B /* MAWebViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MAWebViewTests.xctest;
+			remoteRef = EDD24390277CC01400926C9B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

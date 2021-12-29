@@ -9,7 +9,7 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     let window = MAWindowController()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -44,12 +44,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func removeTab(_ sender: Any?) {
         let VC = window.tabViewController.tabViewItems[window.tabViewController.selectedTabViewItemIndex].viewController as? MAViewController
+        
+        VC?.webView?.removeWebview()
         VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
         VC?.webView?.removeFromSuperview()
         VC?.webView = nil
         
         window.tabViewController.removeChild(at: window.tabViewController.selectedTabViewItemIndex)
     }
-
+    
 }
 

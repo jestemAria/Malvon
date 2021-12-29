@@ -19,6 +19,9 @@ class MAWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        shouldCascadeWindows = false
+        window?.setFrameAutosaveName("MAWindowControllerWindowState")
+        
         self.contentViewController = tabViewController
         
         let customToolbar = NSToolbar()

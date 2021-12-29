@@ -331,8 +331,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - Search Field
     @IBAction func searchFieldAction(_ sender: Any) {
-        if searchField.stringValue.isValidURL{
-            webView!.load(URLRequest(url: URL(string: searchField.stringValue)!))
+        if searchField.stringValue.isValidURL {
+            webView!.load(URLRequest(url: MAURL.fixURL(url: URL(string: searchField.stringValue)!)))
         } else {
             webView!.load(URLRequest(url: URL(string: "https://www.google.com/search?client=Malvon&q=\(searchField.stringValue.encodeToURL)")!))
         }

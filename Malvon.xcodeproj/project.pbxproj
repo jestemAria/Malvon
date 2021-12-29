@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED2E730A277CE5C000A13E39 /* MAURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2E7309277CE5C000A13E39 /* MAURL.swift */; };
 		ED7572ED277CD62300AB6401 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED7572E8277CD62300AB6401 /* Appicon.icns */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -103,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED2E7309277CE5C000A13E39 /* MAURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAURL.swift; sourceTree = "<group>"; };
 		ED7572E8277CD62300AB6401 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
 		EDD24389277CC01400926C9B /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				EDF62B98277C98A1006DF3EB /* GlobalVariables.swift */,
 				EDF62B97277C98A0006DF3EB /* MAFile.swift */,
 				EDF62B96277C98A0006DF3EB /* MAPaths.swift */,
+				ED2E7309277CE5C000A13E39 /* MAURL.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				EDF62B93277C9887006DF3EB /* HoverButton.swift in Sources */,
 				EDF62B9D277C98A1006DF3EB /* Extension+String.swift in Sources */,
 				EDF62BA6277C98F7006DF3EB /* MADownloadsViewController.swift in Sources */,
+				ED2E730A277CE5C000A13E39 /* MAURL.swift in Sources */,
 				EDF62B5D277C9738006DF3EB /* MAViewController.swift in Sources */,
 				EDF62BA3277C98AC006DF3EB /* DownloadsJSONModel.swift in Sources */,
 				EDF62B9A277C98A1006DF3EB /* MAPaths.swift in Sources */,
@@ -612,7 +616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -667,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -698,7 +702,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Malvon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -728,7 +733,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Malvon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

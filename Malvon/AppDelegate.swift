@@ -3,6 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-29.
+//  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -44,9 +45,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func removeTab(_ sender: Any?) {
         let VC = window.tabViewController.tabViewItems[window.tabViewController.selectedTabViewItemIndex].viewController as? MAViewController
-        
-        VC?.webView?.removeWebview()
+
         VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+
+        VC?.webView?.removeWebview()
         VC?.webView?.removeFromSuperview()
         VC?.webView = nil
         

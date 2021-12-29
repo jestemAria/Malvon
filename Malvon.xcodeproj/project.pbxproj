@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED7572ED277CD62300AB6401 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED7572E8277CD62300AB6401 /* Appicon.icns */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD2438F277CC01400926C9B /* MAWebView.framework */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED7572E8277CD62300AB6401 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
 		EDD24389277CC01400926C9B /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
 		EDF62B2B277C96AF006DF3EB /* Malvon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malvon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF62B2E277C96AF006DF3EB /* AppDelegate.swift */,
+				ED7572E8277CD62300AB6401 /* Appicon.icns */,
 				EDF62BB0277CA4FB006DF3EB /* Controllers */,
 				EDF62B32277C96B2006DF3EB /* MainMenu.xib */,
 				EDF62BB1277CA577006DF3EB /* Models */,
@@ -377,8 +380,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = MA;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
+				ORGANIZATIONNAME = "Ashwin Paudel";
 				TargetAttributes = {
 					EDF62B2A277C96AF006DF3EB = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -460,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDF62B31277C96B2006DF3EB /* Assets.xcassets in Resources */,
+				ED7572ED277CD62300AB6401 /* Appicon.icns in Resources */,
 				EDF62B5A277C96D3006DF3EB /* MAWindowController.xib in Resources */,
 				EDF62BAB277C9973006DF3EB /* MATabViewController.xib in Resources */,
 				EDF62BAF277C99B7006DF3EB /* MAHistoryViewController.xib in Resources */,
@@ -684,7 +690,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Malvon/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ashwin Paudel. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = Microphone;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -714,7 +720,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Malvon/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ashwin Paudel. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = Microphone;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

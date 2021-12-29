@@ -43,8 +43,9 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     @objc func closeTab() {
         let VC = tabViewController.tabViewItems[tableView.clickedRow].viewController as? MAViewController
         
-        VC?.webView?.removeWebview()
         VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+
+        VC?.webView?.removeWebview()
         VC?.webView?.removeFromSuperview()
         VC?.webView = nil
         

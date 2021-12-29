@@ -1,4 +1,4 @@
-#  Mubser
+#  Malvon
 
 The new macOS Web Browser.
 
@@ -9,7 +9,3 @@ The new macOS Web Browser.
 - [x] Downloding + Downloads History
 - [x] Tabs
 
-## Images
-
-![Image](Images/Image1.png)
-![Image](Images/Image2.png)

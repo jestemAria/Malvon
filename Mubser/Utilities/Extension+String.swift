@@ -23,7 +23,7 @@ extension String {
     }
     
     var removeHTTP: String {
-        URL(string: self)!.host!
+        URL(string: self)!.host ?? "about:blank"
     }
     
     var removeWhitespace: String {

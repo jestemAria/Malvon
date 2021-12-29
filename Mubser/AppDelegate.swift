@@ -41,4 +41,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let newWindow = MubWindowController()
         newWindow.showWindow(nil)
     }
+    
+    @IBAction func removeTab(_ sender: Any?) {
+        let VC = window.tabViewController.tabViewItems[window.tabViewController.selectedTabViewItemIndex].viewController as? MubViewController
+        VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+        VC?.webView?.removeFromSuperview()
+        VC?.webView = nil
+        
+        window.tabViewController.removeChild(at: window.tabViewController.selectedTabViewItemIndex)
+    }
 }

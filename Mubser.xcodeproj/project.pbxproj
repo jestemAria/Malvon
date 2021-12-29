@@ -20,8 +20,6 @@
 		CFC9602E27553D0B00B130F9 /* MubWebView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFC9601C2755395D00B130F9 /* MubWebView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFD078632757F7C3001482C1 /* MubHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD078612757F7C3001482C1 /* MubHistoryViewController.swift */; };
 		CFF1B2DA275D13B30057CAC4 /* MubTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B2D8275D13B30057CAC4 /* MubTabViewController.swift */; };
-		CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F8275D26D70036C4D7 /* Image1.png */; };
-		CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF9A1F9275D26D70036C4D7 /* Image2.png */; };
 		ED47E7A1277B703D00AE7795 /* MubDownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED47E79F277B703D00AE7795 /* MubDownloadsViewController.swift */; };
 		ED4DF6EF277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF6EE277B9B1700EE6F28 /* MubDownloadsTableViewCell.swift */; };
 		ED4DF6F2277BA55800EE6F28 /* MubWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4DF6F4277BA55800EE6F28 /* MubWindowController.xib */; };
@@ -489,8 +487,6 @@
 				ED4DF6F8277BA56100EE6F28 /* SearchCell.xib in Resources */,
 				ED4DF6FE277BA56900EE6F28 /* MubTabViewController.xib in Resources */,
 				CFC95F9E275538AC00B130F9 /* Assets.xcassets in Resources */,
-				CFF9A1FA275D26D70036C4D7 /* Image1.png in Resources */,
-				CFF9A1FB275D26D70036C4D7 /* Image2.png in Resources */,
 				ED4DF6F5277BA55D00EE6F28 /* MubViewController.xib in Resources */,
 				ED4DF6F2277BA55800EE6F28 /* MubWindowController.xib in Resources */,
 				CFC95FA1275538AC00B130F9 /* MainMenu.xib in Resources */,

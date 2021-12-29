@@ -6,7 +6,7 @@
 //  Copyright © 2021 Ashwin Paudel. All rights reserved.
 //
 
-import APSuggestions
+import MubSuggestions
 import Cocoa
 import MubWebView
 import WebKit
@@ -101,10 +101,38 @@ class MubViewController: NSViewController, MubWebViewDelegate, NSSearchFieldDele
     
     // Configure the elements ( buttons, searchfields )
     func configureElements() {
-        APsuggestionCellNib = "SearchCell"
+//        APsuggestionCellNib = "SearchCell"
         searchField.delegate = self
         webView!.enableAdblock()
         webView!.enableConfigurations()
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        let tab = (self.view.window?.windowController as? MubWindowController)?.tabViewController
+        
+        if event.keyCode == 18 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 19 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 20 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 21 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 22 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 23 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 24 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 25 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 26 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 27 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        } else if event.keyCode == 28 {
+            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
+        }
     }
     
     // MARK: - Buttons

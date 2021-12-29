@@ -69,6 +69,23 @@
                                     <action selector="openNewApplicationWindow:" target="-1" id="Onm-ef-fxL"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="New Tab" keyEquivalent="t" id="Zz3-QA-FEZ">
+                                <connections>
+                                    <action selector="createNewTab:" target="-1" id="QzE-A9-sew"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="wnd-XQ-7H2"/>
+                            <menuItem title="Close Tab" keyEquivalent="w" id="DVo-aG-piG">
+                                <connections>
+                                    <action selector="removeTab:" target="-1" id="oqT-bJ-nML"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Close Window" keyEquivalent="W" id="3Hq-QG-9sv">
+                                <connections>
+                                    <action selector="closeWindow:" target="-1" id="5bj-dh-Q7x"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="in3-bk-kDe"/>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
                                     <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
@@ -88,11 +105,6 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                            <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
-                                <connections>
-                                    <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
                                     <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
@@ -687,5 +699,6 @@
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
+        <menuItem isSeparatorItem="YES" id="Sen-gY-XeW"/>
     </objects>
 </document>

@@ -218,7 +218,7 @@ public class APSuggestionsWindowController: NSWindowController {
         for entry: [String: Any] in suggestions {
             frame.origin.y += frame.size.height
             var frameworkBundle: Bundle? {
-                let bundleId = "com.ashwin.APSuggestions"
+                let bundleId = "com.ashwin.MubSuggestions"
                 return Bundle(identifier: bundleId)
             }
             var viewController = NSViewController()
@@ -226,9 +226,7 @@ public class APSuggestionsWindowController: NSWindowController {
             if APsuggestionCellNib == "APFramworkDefaultCell" {
                 viewController = NSViewController(nibName: "APFramworkDefaultCell", bundle: frameworkBundle)
             } else {
-                let bundleID = Bundle.main.bundleIdentifier
-                let sdafdasf = Bundle(identifier: bundleID!)
-                viewController = NSViewController(nibName: APsuggestionCellNib, bundle: sdafdasf)
+                viewController = NSViewController(nibName: APsuggestionCellNib, bundle: nil)
             }
             
             let view = viewController.view as? APHighlightingView

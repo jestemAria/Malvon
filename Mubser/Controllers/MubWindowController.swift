@@ -30,4 +30,8 @@ class MubWindowController: NSWindowController {
     convenience init() {
         self.init(windowNibName: "MubWindowController")
     }
+    
+    @IBAction func closeWindow(_ sender: Any?) {
+        self.close()
+    }
 }

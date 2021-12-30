@@ -15,7 +15,7 @@ class HoverButton: NSButton {
     var hoveredBackgroundColor: NSColor?
     var pressedBackgroundColor: NSColor?
     
-    var changeTint: Bool = false
+    var changeTint: Bool = true
     
     fileprivate var hovered: Bool = false
     

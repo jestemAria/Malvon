@@ -214,7 +214,7 @@ public class MASuggestionsWindowController: NSWindowController {
         trackingAreas.removeAll()
         
         var contentFrame: NSRect? = contentView?.frame
-        var frame = NSRect(x: 0, y: (contentView?.cornerRadius)!, width: contentFrame!.width, height: 0.0)
+        var frame = NSRect(x: 0, y: MAProperties.cornerRadius, width: contentFrame!.width, height: 0.0)
         // offset the Y posistion so that the suggetion view does not try to draw past the rounded corners.
         for entry: [String: Any] in suggestions {
             frame.origin.y += frame.size.height
@@ -257,7 +257,7 @@ public class MASuggestionsWindowController: NSWindowController {
         /* We have added all of the suggestion to the window. Now set the size of the window.
          */
         // Don't forget to account for the extra room needed the rounded corners.
-        contentFrame?.size.height = frame.maxY + (contentView?.cornerRadius)!
+        contentFrame?.size.height = frame.maxY + MAProperties.cornerRadius
         var winFrame = NSRect(origin: window!.frame.origin, size: window!.frame.size)
         winFrame.origin.y = winFrame.maxY - contentFrame!.height
         winFrame.size.height = contentFrame!.height

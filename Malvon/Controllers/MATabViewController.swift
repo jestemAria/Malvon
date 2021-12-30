@@ -26,6 +26,9 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        (self.windowController.contentViewController as? MAViewController)?.tabsPopover.performClose(nil)
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -44,7 +47,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         let VC = tabViewController.tabViewItems[tableView.clickedRow].viewController as? MAViewController
         
         VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
-
+        
         VC?.webView?.removeWebview()
         VC?.webView?.removeFromSuperview()
         VC?.webView = nil
@@ -57,9 +60,21 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         tabViewController.selectedTabViewItemIndex = tableView.clickedRow
     }
     
+    @IBAction func willPressClose(_ sender: NSButton) {
+        let VC = tabViewController.tabViewItems[sender.tag].viewController as? MAViewController
+        
+        VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+        
+        VC?.webView?.removeWebview()
+        VC?.webView?.removeFromSuperview()
+        VC?.webView = nil
+        
+        tabViewController.removeChild(at: sender.tag)
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TabsViewCell"), owner: self) as? MATabsTableViewCell else { return nil }
-        
         let VC = tabViewController.tabViewItems[row].viewController as? MAViewController
         
         let website: URL = VC?.website ?? URL(string: "https://www.google.com")!
@@ -69,6 +84,8 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         cell.TabIcon?.image = NSImage(data: data!)
         
         cell.TabTitle?.stringValue = VC?.title ?? "Untitled Tab"
+        cell.TabCloseButton.tag = row
+        cell.TabCloseButton.action = #selector(willPressClose(_:))
         
         return cell
     }

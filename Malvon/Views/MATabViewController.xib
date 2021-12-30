@@ -31,7 +31,7 @@
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="409" minWidth="40" maxWidth="1000" id="2e9-RE-dyd">
+                                    <tableColumn identifier="tabsitemssssss" width="409" minWidth="40" maxWidth="1000" id="2e9-RE-dyd">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Tabs">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -47,7 +47,7 @@
                                                 <rect key="frame" x="18" y="0.0" width="404" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6C-n9-Axy">
+                                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6C-n9-Axy">
                                                         <rect key="frame" x="0.0" y="0.0" width="404" height="30"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eby-Uf-NfS">
@@ -59,26 +59,39 @@
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSNetwork" id="eVB-Z0-UW1"/>
                                                             </imageView>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="B6X-u9-lxC">
-                                                                <rect key="frame" x="28" y="6" width="378" height="19"/>
+                                                                <rect key="frame" x="28" y="6" width="363" height="19"/>
                                                                 <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Google" id="5R4-QR-m2b">
                                                                     <font key="font" textStyle="title3" name=".SFNS-Regular"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
+                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-9y-f0D">
+                                                                <rect key="frame" x="389" y="6.5" width="15.5" height="19"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="15" id="13F-Cm-fOH"/>
+                                                                    <constraint firstAttribute="height" constant="15" id="xJw-Sh-t8R"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="9T7-ji-U6B">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                            </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="2uZ-gJ-fbz"/>
                                                             <constraint firstItem="B6X-u9-lxC" firstAttribute="centerY" secondItem="V6C-n9-Axy" secondAttribute="centerY" id="Icg-K0-h55"/>
-                                                            <constraint firstAttribute="trailing" secondItem="B6X-u9-lxC" secondAttribute="trailing" id="Jme-7F-gE6"/>
                                                             <constraint firstItem="B6X-u9-lxC" firstAttribute="leading" secondItem="eby-Uf-NfS" secondAttribute="trailing" id="YqG-Ht-H7C"/>
+                                                            <constraint firstItem="lhd-9y-f0D" firstAttribute="centerY" secondItem="V6C-n9-Axy" secondAttribute="centerY" id="t7f-VU-OYR"/>
                                                             <constraint firstItem="eby-Uf-NfS" firstAttribute="centerY" secondItem="V6C-n9-Axy" secondAttribute="centerY" id="yJe-ps-lOC"/>
                                                         </constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
+                                                            <integer value="1000"/>
                                                         </visibilityPriorities>
                                                         <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
@@ -91,6 +104,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="V6C-n9-Axy" secondAttribute="bottom" id="q1R-8r-859"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="TabCloseButton" destination="lhd-9y-f0D" id="aS7-fa-UEm"/>
                                                     <outlet property="TabIcon" destination="eby-Uf-NfS" id="URG-P3-kYs"/>
                                                     <outlet property="TabTitle" destination="B6X-u9-lxC" id="jkK-Nk-HuS"/>
                                                 </connections>
@@ -113,15 +127,16 @@
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="wH8-46-0Wl" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="2Yc-aO-j6O"/>
-                <constraint firstAttribute="bottom" secondItem="wH8-46-0Wl" secondAttribute="bottom" id="Bs4-Qq-eRn"/>
-                <constraint firstAttribute="trailing" secondItem="wH8-46-0Wl" secondAttribute="trailing" id="adJ-FH-kDT"/>
-                <constraint firstItem="wH8-46-0Wl" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="csx-up-K3G"/>
+                <constraint firstAttribute="trailing" secondItem="wH8-46-0Wl" secondAttribute="trailing" id="Dxc-Ri-UBe"/>
+                <constraint firstItem="wH8-46-0Wl" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Tjb-Ll-5hW"/>
+                <constraint firstAttribute="bottom" secondItem="wH8-46-0Wl" secondAttribute="bottom" id="Uqt-Qg-EE2"/>
+                <constraint firstItem="wH8-46-0Wl" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="tKW-b1-MeU"/>
             </constraints>
-            <point key="canvasLocation" x="112" y="139"/>
+            <point key="canvasLocation" x="111.5" y="138.5"/>
         </customView>
     </objects>
     <resources>
         <image name="NSNetwork" width="32" height="32"/>
+        <image name="NSStopProgressTemplate" width="14" height="13"/>
     </resources>
 </document>

@@ -12,6 +12,7 @@ class MATabsTableViewCell: NSTableCellView {
     
     @IBOutlet weak var TabIcon: NSImageView!
     @IBOutlet weak var TabTitle: NSTextField!
+    @IBOutlet weak var TabCloseButton: NSButton!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

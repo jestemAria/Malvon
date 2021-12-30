@@ -9,7 +9,7 @@
 import Cocoa
 
 extension String {
-    var isValidURL: Bool {
+    public var isValidURL: Bool {
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
             return match.range.length == self.utf16.count
@@ -18,15 +18,32 @@ extension String {
         }
     }
     
-    var encodeToURL: String {
+    public var encodeToURL: String {
         self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
     
-    var removeHTTP: String {
+    public var removeHTTP: String {
         URL(string: self)!.host ?? "about:blank"
     }
     
-    var removeWhitespace: String {
+    public var removeWhitespace: String {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    public func string(_ after: String) -> String {
+        if let range = self.range(of: after) {
+            let afterString = self[range.upperBound...]
+            return String(afterString)
+        } else {
+            return ""
+        }
+    }
+    
+    public var fileName: String {
+        URL(fileURLWithPath: self).deletingPathExtension().lastPathComponent
+    }
+    
+    public var fileExtension: String {
+        return URL(fileURLWithPath: self).pathExtension
     }
 }

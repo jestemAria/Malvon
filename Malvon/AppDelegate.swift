@@ -7,15 +7,20 @@
 //
 
 import Cocoa
+import MATools
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let window = MAWindowController()
     
+    func applicationWillFinishLaunching(_ notification: Notification) {
+#if !DEBUG
+        MAUpdater().checkForUpdates()
+#endif
+    }
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        MAUpdater().checkForUpdates()
         window.showWindow(nil)
     }
     

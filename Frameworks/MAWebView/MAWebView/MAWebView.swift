@@ -89,7 +89,6 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         if let response = navigationResponse.response as? HTTPURLResponse {
             if let fields = response.allHeaderFields["Content-Type"] as? String {
                 if fields.contains("text/html") {
-                    decisionHandler(.allow)
                 } else {
                     let panel = NSSavePanel()
                     panel.nameFieldStringValue = response.suggestedFilename!
@@ -109,12 +108,12 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                             })
                             
                             downloader.download(from: response.url!, tourl: filePath!)
-                            decisionHandler(.allow)
                         }
                     }
                 }
             }
         }
+        decisionHandler(.allow)
     }
     
     /// Add the adblock script into the webview

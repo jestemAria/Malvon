@@ -7,175 +7,175 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED1F3E3D277DFDD200B61BEF /* MAProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F3E3C277DFDD200B61BEF /* MAProperties.swift */; };
-		EDF62AE5277C8E11006DF3EB /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF62ADC277C8E11006DF3EB /* MASearchSuggestions.framework */; };
-		EDF62AEA277C8E11006DF3EB /* MASearchSuggestionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62AE9277C8E11006DF3EB /* MASearchSuggestionsTests.swift */; };
-		EDF62AEB277C8E11006DF3EB /* MASearchSuggestions.h in Headers */ = {isa = PBXBuildFile; fileRef = EDF62ADF277C8E11006DF3EB /* MASearchSuggestions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDF62B04277C8E29006DF3EB /* MASuggestionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62AFD277C8E29006DF3EB /* MASuggestionsWindow.swift */; };
-		EDF62B05277C8E29006DF3EB /* MAFramworkDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62AFE277C8E29006DF3EB /* MAFramworkDefaultCell.xib */; };
-		EDF62B06277C8E29006DF3EB /* MASuggestionsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62AFF277C8E29006DF3EB /* MASuggestionsWindowController.swift */; };
-		EDF62B07277C8E29006DF3EB /* MASuggestibleTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B00277C8E29006DF3EB /* MASuggestibleTextFieldCell.swift */; };
-		EDF62B08277C8E29006DF3EB /* MARoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B01277C8E29006DF3EB /* MARoundedCornersView.swift */; };
-		EDF62B09277C8E29006DF3EB /* SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B02277C8E29006DF3EB /* SearchSuggestions.swift */; };
-		EDF62B0A277C8E29006DF3EB /* MAHighlightingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62B03277C8E29006DF3EB /* MAHighlightingView.swift */; };
+		ED53438C277E43110017AD05 /* MATools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED534383277E43110017AD05 /* MATools.framework */; };
+		ED534391277E43110017AD05 /* MAToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED534390277E43110017AD05 /* MAToolsTests.swift */; };
+		ED534392277E43110017AD05 /* MATools.h in Headers */ = {isa = PBXBuildFile; fileRef = ED534386277E43110017AD05 /* MATools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED5343AD277E432B0017AD05 /* MAPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343AA277E432B0017AD05 /* MAPaths.swift */; };
+		ED5343AE277E432B0017AD05 /* MAURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343AB277E432B0017AD05 /* MAURL.swift */; };
+		ED5343AF277E432B0017AD05 /* MAFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343AC277E432B0017AD05 /* MAFile.swift */; };
+		ED5343B6277E43630017AD05 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343B5277E43620017AD05 /* Extension+String.swift */; };
+		ED5343BA277E437F0017AD05 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343B9277E437F0017AD05 /* GlobalVariables.swift */; };
+		ED613795277E47670033E0C2 /* MAUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED613792277E47660033E0C2 /* MAUpdater.swift */; };
+		ED613796277E47670033E0C2 /* MAUpdateAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED613793277E47660033E0C2 /* MAUpdateAlertViewController.xib */; };
+		ED613797277E47670033E0C2 /* MAUpdateAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED613794277E47670033E0C2 /* MAUpdateAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EDF62AE6277C8E11006DF3EB /* PBXContainerItemProxy */ = {
+		ED53438D277E43110017AD05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EDF62AD3277C8E11006DF3EB /* Project object */;
+			containerPortal = ED53437A277E43100017AD05 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EDF62ADB277C8E11006DF3EB;
-			remoteInfo = MASearchSuggestions;
+			remoteGlobalIDString = ED534382277E43110017AD05;
+			remoteInfo = MATools;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ED1F3E3C277DFDD200B61BEF /* MAProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAProperties.swift; sourceTree = "<group>"; };
-		EDF62ADC277C8E11006DF3EB /* MASearchSuggestions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASearchSuggestions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDF62ADF277C8E11006DF3EB /* MASearchSuggestions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASearchSuggestions.h; sourceTree = "<group>"; };
-		EDF62AE4277C8E11006DF3EB /* MASearchSuggestionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASearchSuggestionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDF62AE9277C8E11006DF3EB /* MASearchSuggestionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASearchSuggestionsTests.swift; sourceTree = "<group>"; };
-		EDF62AFD277C8E29006DF3EB /* MASuggestionsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MASuggestionsWindow.swift; sourceTree = "<group>"; };
-		EDF62AFE277C8E29006DF3EB /* MAFramworkDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAFramworkDefaultCell.xib; sourceTree = "<group>"; };
-		EDF62AFF277C8E29006DF3EB /* MASuggestionsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MASuggestionsWindowController.swift; sourceTree = "<group>"; };
-		EDF62B00277C8E29006DF3EB /* MASuggestibleTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MASuggestibleTextFieldCell.swift; sourceTree = "<group>"; };
-		EDF62B01277C8E29006DF3EB /* MARoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARoundedCornersView.swift; sourceTree = "<group>"; };
-		EDF62B02277C8E29006DF3EB /* SearchSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestions.swift; sourceTree = "<group>"; };
-		EDF62B03277C8E29006DF3EB /* MAHighlightingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAHighlightingView.swift; sourceTree = "<group>"; };
+		ED534383277E43110017AD05 /* MATools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MATools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED534386277E43110017AD05 /* MATools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MATools.h; sourceTree = "<group>"; };
+		ED53438B277E43110017AD05 /* MAToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED534390277E43110017AD05 /* MAToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAToolsTests.swift; sourceTree = "<group>"; };
+		ED5343AA277E432B0017AD05 /* MAPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAPaths.swift; sourceTree = "<group>"; };
+		ED5343AB277E432B0017AD05 /* MAURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAURL.swift; sourceTree = "<group>"; };
+		ED5343AC277E432B0017AD05 /* MAFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAFile.swift; sourceTree = "<group>"; };
+		ED5343B5277E43620017AD05 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		ED5343B9277E437F0017AD05 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		ED613792277E47660033E0C2 /* MAUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAUpdater.swift; sourceTree = "<group>"; };
+		ED613793277E47660033E0C2 /* MAUpdateAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAUpdateAlertViewController.xib; sourceTree = "<group>"; };
+		ED613794277E47670033E0C2 /* MAUpdateAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAUpdateAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EDF62AD9277C8E11006DF3EB /* Frameworks */ = {
+		ED534380277E43110017AD05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDF62AE1277C8E11006DF3EB /* Frameworks */ = {
+		ED534388277E43110017AD05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AE5277C8E11006DF3EB /* MASearchSuggestions.framework in Frameworks */,
+				ED53438C277E43110017AD05 /* MATools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EDF62AD2277C8E11006DF3EB = {
+		ED534379277E43100017AD05 = {
 			isa = PBXGroup;
 			children = (
-				EDF62ADE277C8E11006DF3EB /* MASearchSuggestions */,
-				EDF62AE8277C8E11006DF3EB /* MASearchSuggestionsTests */,
-				EDF62ADD277C8E11006DF3EB /* Products */,
+				ED534385277E43110017AD05 /* MATools */,
+				ED53438F277E43110017AD05 /* MAToolsTests */,
+				ED534384277E43110017AD05 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		EDF62ADD277C8E11006DF3EB /* Products */ = {
+		ED534384277E43110017AD05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62ADC277C8E11006DF3EB /* MASearchSuggestions.framework */,
-				EDF62AE4277C8E11006DF3EB /* MASearchSuggestionsTests.xctest */,
+				ED534383277E43110017AD05 /* MATools.framework */,
+				ED53438B277E43110017AD05 /* MAToolsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EDF62ADE277C8E11006DF3EB /* MASearchSuggestions */ = {
+		ED534385277E43110017AD05 /* MATools */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62AFE277C8E29006DF3EB /* MAFramworkDefaultCell.xib */,
-				EDF62B03277C8E29006DF3EB /* MAHighlightingView.swift */,
-				EDF62B01277C8E29006DF3EB /* MARoundedCornersView.swift */,
-				EDF62B00277C8E29006DF3EB /* MASuggestibleTextFieldCell.swift */,
-				EDF62AFD277C8E29006DF3EB /* MASuggestionsWindow.swift */,
-				EDF62AFF277C8E29006DF3EB /* MASuggestionsWindowController.swift */,
-				EDF62B02277C8E29006DF3EB /* SearchSuggestions.swift */,
-				EDF62ADF277C8E11006DF3EB /* MASearchSuggestions.h */,
-				ED1F3E3C277DFDD200B61BEF /* MAProperties.swift */,
+				ED5343B9277E437F0017AD05 /* GlobalVariables.swift */,
+				ED5343AC277E432B0017AD05 /* MAFile.swift */,
+				ED5343AA277E432B0017AD05 /* MAPaths.swift */,
+				ED5343B5277E43620017AD05 /* Extension+String.swift */,
+				ED5343AB277E432B0017AD05 /* MAURL.swift */,
+				ED613794277E47670033E0C2 /* MAUpdateAlertViewController.swift */,
+				ED613793277E47660033E0C2 /* MAUpdateAlertViewController.xib */,
+				ED613792277E47660033E0C2 /* MAUpdater.swift */,
+				ED534386277E43110017AD05 /* MATools.h */,
 			);
-			path = MASearchSuggestions;
+			path = MATools;
 			sourceTree = "<group>";
 		};
-		EDF62AE8277C8E11006DF3EB /* MASearchSuggestionsTests */ = {
+		ED53438F277E43110017AD05 /* MAToolsTests */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62AE9277C8E11006DF3EB /* MASearchSuggestionsTests.swift */,
+				ED534390277E43110017AD05 /* MAToolsTests.swift */,
 			);
-			path = MASearchSuggestionsTests;
+			path = MAToolsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		EDF62AD7277C8E11006DF3EB /* Headers */ = {
+		ED53437E277E43110017AD05 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AEB277C8E11006DF3EB /* MASearchSuggestions.h in Headers */,
+				ED534392277E43110017AD05 /* MATools.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EDF62ADB277C8E11006DF3EB /* MASearchSuggestions */ = {
+		ED534382277E43110017AD05 /* MATools */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EDF62AEE277C8E11006DF3EB /* Build configuration list for PBXNativeTarget "MASearchSuggestions" */;
+			buildConfigurationList = ED534395277E43110017AD05 /* Build configuration list for PBXNativeTarget "MATools" */;
 			buildPhases = (
-				EDF62AD7277C8E11006DF3EB /* Headers */,
-				EDF62AD8277C8E11006DF3EB /* Sources */,
-				EDF62AD9277C8E11006DF3EB /* Frameworks */,
-				EDF62ADA277C8E11006DF3EB /* Resources */,
+				ED53437E277E43110017AD05 /* Headers */,
+				ED53437F277E43110017AD05 /* Sources */,
+				ED534380277E43110017AD05 /* Frameworks */,
+				ED534381277E43110017AD05 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MASearchSuggestions;
-			productName = MASearchSuggestions;
-			productReference = EDF62ADC277C8E11006DF3EB /* MASearchSuggestions.framework */;
+			name = MATools;
+			productName = MATools;
+			productReference = ED534383277E43110017AD05 /* MATools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EDF62AE3277C8E11006DF3EB /* MASearchSuggestionsTests */ = {
+		ED53438A277E43110017AD05 /* MAToolsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EDF62AF1277C8E11006DF3EB /* Build configuration list for PBXNativeTarget "MASearchSuggestionsTests" */;
+			buildConfigurationList = ED534398277E43110017AD05 /* Build configuration list for PBXNativeTarget "MAToolsTests" */;
 			buildPhases = (
-				EDF62AE0277C8E11006DF3EB /* Sources */,
-				EDF62AE1277C8E11006DF3EB /* Frameworks */,
-				EDF62AE2277C8E11006DF3EB /* Resources */,
+				ED534387277E43110017AD05 /* Sources */,
+				ED534388277E43110017AD05 /* Frameworks */,
+				ED534389277E43110017AD05 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EDF62AE7277C8E11006DF3EB /* PBXTargetDependency */,
+				ED53438E277E43110017AD05 /* PBXTargetDependency */,
 			);
-			name = MASearchSuggestionsTests;
-			productName = MASearchSuggestionsTests;
-			productReference = EDF62AE4277C8E11006DF3EB /* MASearchSuggestionsTests.xctest */;
+			name = MAToolsTests;
+			productName = MAToolsTests;
+			productReference = ED53438B277E43110017AD05 /* MAToolsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		EDF62AD3277C8E11006DF3EB /* Project object */ = {
+		ED53437A277E43100017AD05 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					EDF62ADB277C8E11006DF3EB = {
+					ED534382277E43110017AD05 = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
 					};
-					EDF62AE3277C8E11006DF3EB = {
+					ED53438A277E43110017AD05 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = EDF62AD6277C8E11006DF3EB /* Build configuration list for PBXProject "MASearchSuggestions" */;
+			buildConfigurationList = ED53437D277E43100017AD05 /* Build configuration list for PBXProject "MATools" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,27 +183,27 @@
 				en,
 				Base,
 			);
-			mainGroup = EDF62AD2277C8E11006DF3EB;
-			productRefGroup = EDF62ADD277C8E11006DF3EB /* Products */;
+			mainGroup = ED534379277E43100017AD05;
+			productRefGroup = ED534384277E43110017AD05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EDF62ADB277C8E11006DF3EB /* MASearchSuggestions */,
-				EDF62AE3277C8E11006DF3EB /* MASearchSuggestionsTests */,
+				ED534382277E43110017AD05 /* MATools */,
+				ED53438A277E43110017AD05 /* MAToolsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EDF62ADA277C8E11006DF3EB /* Resources */ = {
+		ED534381277E43110017AD05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62B05277C8E29006DF3EB /* MAFramworkDefaultCell.xib in Resources */,
+				ED613796277E47670033E0C2 /* MAUpdateAlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDF62AE2277C8E11006DF3EB /* Resources */ = {
+		ED534389277E43110017AD05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,40 +213,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EDF62AD8277C8E11006DF3EB /* Sources */ = {
+		ED53437F277E43110017AD05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62B06277C8E29006DF3EB /* MASuggestionsWindowController.swift in Sources */,
-				ED1F3E3D277DFDD200B61BEF /* MAProperties.swift in Sources */,
-				EDF62B04277C8E29006DF3EB /* MASuggestionsWindow.swift in Sources */,
-				EDF62B08277C8E29006DF3EB /* MARoundedCornersView.swift in Sources */,
-				EDF62B07277C8E29006DF3EB /* MASuggestibleTextFieldCell.swift in Sources */,
-				EDF62B09277C8E29006DF3EB /* SearchSuggestions.swift in Sources */,
-				EDF62B0A277C8E29006DF3EB /* MAHighlightingView.swift in Sources */,
+				ED5343B6277E43630017AD05 /* Extension+String.swift in Sources */,
+				ED613795277E47670033E0C2 /* MAUpdater.swift in Sources */,
+				ED5343AD277E432B0017AD05 /* MAPaths.swift in Sources */,
+				ED5343AF277E432B0017AD05 /* MAFile.swift in Sources */,
+				ED5343AE277E432B0017AD05 /* MAURL.swift in Sources */,
+				ED613797277E47670033E0C2 /* MAUpdateAlertViewController.swift in Sources */,
+				ED5343BA277E437F0017AD05 /* GlobalVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDF62AE0277C8E11006DF3EB /* Sources */ = {
+		ED534387277E43110017AD05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AEA277C8E11006DF3EB /* MASearchSuggestionsTests.swift in Sources */,
+				ED534391277E43110017AD05 /* MAToolsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EDF62AE7277C8E11006DF3EB /* PBXTargetDependency */ = {
+		ED53438E277E43110017AD05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EDF62ADB277C8E11006DF3EB /* MASearchSuggestions */;
-			targetProxy = EDF62AE6277C8E11006DF3EB /* PBXContainerItemProxy */;
+			target = ED534382277E43110017AD05 /* MATools */;
+			targetProxy = ED53438D277E43110017AD05 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		EDF62AEC277C8E11006DF3EB /* Debug */ = {
+		ED534393277E43110017AD05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -310,7 +310,7 @@
 			};
 			name = Debug;
 		};
-		EDF62AED277C8E11006DF3EB /* Release */ = {
+		ED534394277E43110017AD05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -367,7 +367,7 @@
 			};
 			name = Release;
 		};
-		EDF62AEF277C8E11006DF3EB /* Debug */ = {
+		ED534396277E43110017AD05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -389,7 +389,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MASearchSuggestions;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MATools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -398,7 +398,7 @@
 			};
 			name = Debug;
 		};
-		EDF62AF0277C8E11006DF3EB /* Release */ = {
+		ED534397277E43110017AD05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -420,7 +420,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MASearchSuggestions;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MATools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -428,7 +428,7 @@
 			};
 			name = Release;
 		};
-		EDF62AF2277C8E11006DF3EB /* Debug */ = {
+		ED534399277E43110017AD05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -437,14 +437,14 @@
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MASearchSuggestionsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MAToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		EDF62AF3277C8E11006DF3EB /* Release */ = {
+		ED53439A277E43110017AD05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -453,7 +453,7 @@
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MASearchSuggestionsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MAToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -463,34 +463,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EDF62AD6277C8E11006DF3EB /* Build configuration list for PBXProject "MASearchSuggestions" */ = {
+		ED53437D277E43100017AD05 /* Build configuration list for PBXProject "MATools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDF62AEC277C8E11006DF3EB /* Debug */,
-				EDF62AED277C8E11006DF3EB /* Release */,
+				ED534393277E43110017AD05 /* Debug */,
+				ED534394277E43110017AD05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDF62AEE277C8E11006DF3EB /* Build configuration list for PBXNativeTarget "MASearchSuggestions" */ = {
+		ED534395277E43110017AD05 /* Build configuration list for PBXNativeTarget "MATools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDF62AEF277C8E11006DF3EB /* Debug */,
-				EDF62AF0277C8E11006DF3EB /* Release */,
+				ED534396277E43110017AD05 /* Debug */,
+				ED534397277E43110017AD05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDF62AF1277C8E11006DF3EB /* Build configuration list for PBXNativeTarget "MASearchSuggestionsTests" */ = {
+		ED534398277E43110017AD05 /* Build configuration list for PBXNativeTarget "MAToolsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDF62AF2277C8E11006DF3EB /* Debug */,
-				EDF62AF3277C8E11006DF3EB /* Release */,
+				ED534399277E43110017AD05 /* Debug */,
+				ED53439A277E43110017AD05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = EDF62AD3277C8E11006DF3EB /* Project object */;
+	rootObject = ED53437A277E43100017AD05 /* Project object */;
 }

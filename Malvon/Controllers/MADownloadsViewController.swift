@@ -7,12 +7,13 @@
 //
 
 import Cocoa
+import MATools
 
 class MADownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var searchField: NSSearchField!
     var downloadJSON = [MADownloadElement]()
-    static let path = MAPaths.dataDirectory()?.appendingPathComponent("downloads.json")
+    static let path = MAPaths(.data).get()?.appendingPathComponent("downloads.json")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,7 @@ class MADownloadsViewController: NSViewController, NSTableViewDelegate, NSTableV
     }
     
     func parseJSON() -> [MADownloadElement]? {
-        let fileContents = MAFile.read(path: MADownloadsViewController.path!)
+        let fileContents = MAFile(path: MADownloadsViewController.path!).read()
         let decodedJSON = try? JSONDecoder().decode([MADownloadElement].self, from: fileContents.data(using: .utf8)!)
         
         return decodedJSON

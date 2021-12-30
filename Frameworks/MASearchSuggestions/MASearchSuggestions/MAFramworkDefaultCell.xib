@@ -13,14 +13,14 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="1" customClass="MAHighlightingView" customModule="MASearchSuggestions" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="598" height="25"/>
+        <customView misplaced="YES" id="1" customClass="MAHighlightingView" customModule="MASearchSuggestions" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="598" height="26"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="3" y="5" width="592" height="15"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5">
-                        <font key="font" metaFont="cellTitle"/>
+                    <rect key="frame" x="3" y="5" width="592" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="5">
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

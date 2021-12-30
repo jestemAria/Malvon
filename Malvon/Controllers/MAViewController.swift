@@ -10,6 +10,7 @@ import MASearchSuggestions
 import Cocoa
 import MAWebView
 import WebKit
+import MATools
 
 class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelegate {
     // MARK: - Elements
@@ -43,7 +44,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBOutlet var showTabsButton: NSButton!
     let tabsPopover = NSPopover()
     var tabsPopoverPositioningView: NSView?
-    @IBOutlet var createNewTabButton: NSButton!
+    @IBOutlet var createNewTabButton: HoverButton!
     public var website: URL?
     
     public var webConfigurations: WKWebViewConfiguration
@@ -82,11 +83,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         configureElements()
         
         if loadURL == true {
-            webView!.load(URLRequest(url: URL(string: "https://www.google.com")!))
+            let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
+            webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
             updateWebsiteURL()
         }
+        
         self.website = URL(string: "https://www.google.com")!
-        tabsPopover.behavior = .transient
+        tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
     }
     
@@ -95,6 +98,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         progressIndicator.alphaValue = 0.7
         backButtonOutlet.changeTint = true
         forwardButtonOutlet.changeTint = true
+        refreshButton.changeTint = true
+        createNewTabButton.changeTint = true
     }
     
     // Configure the elements ( buttons, searchfields )
@@ -194,7 +199,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - History Functions
     
     func parseHistoryJSON() -> [MAHistoryElement]? {
-        let fileContents = MAFile.read(path: MAHistoryViewController.path!)
+        let fileContents = MAFile(path: MAHistoryViewController.path!).read()
         let decodedJSON = try? JSONDecoder().decode([MAHistoryElement].self, from: fileContents.data(using: .utf8)!)
         
         return decodedJSON
@@ -240,10 +245,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - webView Functions
     
     func mubWebView(_ webView: MAWebView, urlDidChange url: URL?) {
+        guard let url = url else { return }
+        
         updateWebsiteURL()
         self.website = url
-        GlobalVariables.currentWebsite = self.webView!.url?.absoluteString ?? "about:blank"
-        GlobalVariables.currentWebsiteRemovedHTTP = self.webView!.url!.absoluteString.removeHTTP
         checkButtons()
     }
     
@@ -298,27 +303,41 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func updateWebsiteURL() {
-        let scheme = (self.webView!.url?.scheme ?? "http(s)") + "://"
-        let host = self.webView!.url?.host ?? "www.unknown.com"
-        let path = self.webView!.url?.path ?? "/unknown"
+        guard let url = self.webView!.url else { return }
         
         let attribute = [ NSAttributedString.Key.foregroundColor: NSColor.gray ]
         
-        let attrPath = NSAttributedString(string: path, attributes: attribute)
-        let attrHost = NSAttributedString(string: host)
-        let attrScheme = NSMutableAttributedString(string: scheme, attributes: attribute)
-        
-        attrScheme.append(attrHost)
-        attrScheme.append(attrPath)
-        
-        searchField.attributedStringValue = attrScheme
+        if url.scheme == "file" {
+            
+            if url.absoluteString.starts(with: Bundle.main.bundleURL.absoluteString) == true {
+                
+                let attrScheme = NSMutableAttributedString(string: "malvon?", attributes: attribute)
+                let attrHost = NSAttributedString(string: url.absoluteString.fileName)
+                
+                attrScheme.append(attrHost)
+                print(attrScheme)
+                searchField.attributedStringValue = attrScheme
+            } else {
+                searchField.stringValue = url.absoluteString
+            }
+        } else {
+            let scheme = (url.scheme ?? "") + "://"
+            let host = url.host ?? ""
+            let path = url.path
+            
+            let attrPath = NSAttributedString(string: path, attributes: attribute)
+            let attrHost = NSAttributedString(string: host)
+            let attrScheme = NSMutableAttributedString(string: scheme, attributes: attribute)
+            
+            attrScheme.append(attrHost)
+            attrScheme.append(attrPath)
+            
+            searchField.attributedStringValue = attrScheme
+        }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         updateWebsiteURL()
-        
-        GlobalVariables.currentWebsite = self.webView!.url!.absoluteString
-        GlobalVariables.currentWebsiteRemovedHTTP = self.webView!.url!.absoluteString.removeHTTP
         checkButtons()
     }
     
@@ -331,8 +350,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - Search Field
     @IBAction func searchFieldAction(_ sender: Any) {
-        if searchField.stringValue.isValidURL {
-            webView!.load(URLRequest(url: MAURL.fixURL(url: URL(string: searchField.stringValue)!)))
+        if searchField.stringValue.starts(with: "malvon?") {
+            let URL = Bundle.main.url(forResource: searchField.stringValue.string("malvon?"), withExtension: "html")!
+            webView!.loadFileURL(URL, allowingReadAccessTo: URL)
+        } else if URL(string: searchField.stringValue)?.scheme == "file" {
+            webView!.loadFileURL(URL(string: searchField.stringValue)!, allowingReadAccessTo: URL(string: searchField.stringValue)!)
+        } else if searchField.stringValue.isValidURL {
+            webView!.load(URLRequest(url: MAURL(URL(string: searchField.stringValue)!).fix()))
         } else {
             webView!.load(URLRequest(url: URL(string: "https://www.google.com/search?client=Malvon&q=\(searchField.stringValue.encodeToURL)")!))
         }

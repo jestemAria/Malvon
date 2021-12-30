@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MAUpdateAlertViewController" customModule="MATools" customModuleProvider="target">
+            <connections>
+                <outlet property="textView" destination="qKe-fm-4lE" id="ik4-45-pZI"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mh3-rh-e6b">
+                    <rect key="frame" x="18" y="221" width="444" height="31"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="New Update Avaliable" id="McH-Jp-eVc">
+                        <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-Cc-YN2">
+                    <rect key="frame" x="260" y="15" width="205" height="20"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f73-m1-9wW">
+                            <rect key="frame" x="-7" y="-7" width="114" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="aI1-jd-PMx"/>
+                            </constraints>
+                            <buttonCell key="cell" type="push" title="Not Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sGC-bI-g9H">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="notNowPressed:" target="-2" id="Ots-M2-5Uo"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1zK-3z-v8E">
+                            <rect key="frame" x="98" y="-7" width="114" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="8qk-3D-71F"/>
+                            </constraints>
+                            <buttonCell key="cell" type="push" title="Install Now" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qF7-gT-rG2">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="installPressed:" target="-2" id="5RG-YM-1c6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="1zK-3z-v8E" firstAttribute="height" secondItem="f73-m1-9wW" secondAttribute="height" id="04G-jM-MHJ"/>
+                        <constraint firstItem="1zK-3z-v8E" firstAttribute="width" secondItem="f73-m1-9wW" secondAttribute="width" id="05B-IG-rCC"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mom-oh-EoU">
+                    <rect key="frame" x="20" y="59" width="440" height="154"/>
+                    <clipView key="contentView" drawsBackground="NO" id="m0m-Uz-evZ">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="154"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="qKe-fm-4lE">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="154"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" red="0.33500000000000002" green="0.45600000000000002" blue="0.48799999999999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="440" height="154"/>
+                                <size key="maxSize" width="440" height="10000000"/>
+                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="MhR-uH-C0J">
+                        <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Qcv-Gh-SWx">
+                        <rect key="frame" x="424" y="0.0" width="16" height="154"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Mh3-rh-e6b" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="1uf-VQ-gVt"/>
+                <constraint firstItem="Mom-oh-EoU" firstAttribute="trailing" secondItem="Mh3-rh-e6b" secondAttribute="trailing" id="3Yb-k8-0Mb"/>
+                <constraint firstItem="Mom-oh-EoU" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="H9z-vf-N9Y"/>
+                <constraint firstItem="Mom-oh-EoU" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="RXV-Et-64I"/>
+                <constraint firstItem="Mom-oh-EoU" firstAttribute="top" secondItem="Mh3-rh-e6b" secondAttribute="bottom" constant="8" symbolic="YES" id="a1b-yt-lHp"/>
+                <constraint firstAttribute="bottom" secondItem="eAK-Cc-YN2" secondAttribute="bottom" constant="15" id="k77-cX-Fn4"/>
+                <constraint firstItem="Mh3-rh-e6b" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="niH-yN-adX"/>
+                <constraint firstAttribute="trailing" secondItem="eAK-Cc-YN2" secondAttribute="trailing" constant="15" id="q4d-QW-9n3"/>
+                <constraint firstAttribute="trailing" secondItem="Mh3-rh-e6b" secondAttribute="trailing" constant="20" id="vWV-O5-0QT"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="136"/>
+        </customView>
+    </objects>
+</document>

@@ -44,12 +44,12 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView identifier="DownloadsItemCell" id="Kzg-Oq-27m" customClass="METDownloadsTableViewCell" customModule="Methorim" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="0.0" width="555" height="30"/>
+                                            <tableCellView identifier="DownloadsItemCell" id="Kzg-Oq-27m" customClass="METDownloadsTableViewCell" customModule="Malvon" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="0.0" width="535" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="gI3-DR-CDu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="555" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="535" height="30"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dE4-t1-mgS">
                                                                 <rect key="frame" x="5" y="0.0" width="30" height="30"/>

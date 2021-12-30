@@ -7,12 +7,13 @@
 //
 
 import Cocoa
+import MATools
 
 class MAHistoryViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var searchField: NSSearchField!
     var historyJSON = [MAHistoryElement]()
-    static let path = MAPaths.dataDirectory()?.appendingPathComponent("history.json")
+    static let path = MAPaths(.data).get()?.appendingPathComponent("history.json")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +101,7 @@ class MAHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     func parseJSON() -> [MAHistoryElement]? {
-        let fileContents = MAFile.read(path: MAHistoryViewController.path!)
+        let fileContents = MAFile(path: MAHistoryViewController.path!).read()
         let decodedJSON = try? JSONDecoder().decode([MAHistoryElement].self, from: fileContents.data(using: .utf8)!)
         
         return decodedJSON

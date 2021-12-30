@@ -15,7 +15,7 @@ public class MAUpdater {
     
     public init() {
         // Get the lastest version
-        lastestVersion = MAURL(versionURL).contents()
+        lastestVersion = MAURL(versionURL).contents().removeWhitespace
         
         // Check if updates are avalible
         if lastestVersion == MA_APP_VERSION  {

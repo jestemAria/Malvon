@@ -12,3 +12,7 @@ public struct GlobalVariables {
     static var currentWebsite: String = ""
     static var currentWebsiteRemovedHTTP: String = ""
 }
+
+public struct Properties {
+    static let currentVersion = "v1.0.0-build.1"
+}

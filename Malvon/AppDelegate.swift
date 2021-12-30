@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        MAUpdater().checkForUpdates()
         window.showWindow(nil)
     }
     
@@ -45,9 +46,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func removeTab(_ sender: Any?) {
         let VC = window.tabViewController.tabViewItems[window.tabViewController.selectedTabViewItemIndex].viewController as? MAViewController
-
+        
         VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
-
+        
         VC?.webView?.removeWebview()
         VC?.webView?.removeFromSuperview()
         VC?.webView = nil

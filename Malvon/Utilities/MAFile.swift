@@ -10,6 +10,28 @@ import Cocoa
 
 public struct MAFile {
     
+    @discardableResult
+    static func unzip(path: String, destination: String) -> Bool {
+        let process = Process()
+        let pipe = Pipe()
+        
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip")
+        process.arguments = ["-o", path, "-d", destination]
+        process.standardOutput = pipe
+        
+        do {
+            try process.run()
+        } catch {
+            return false
+        }
+        
+        let resultData = pipe.fileHandleForReading.readDataToEndOfFile()
+        let result = String (data: resultData, encoding: .utf8) ?? ""
+        print(result)
+        
+        return process.terminationStatus <= 1
+    }
+    
     // MARK: - File Status
     
     static func exists(path: URL) -> Bool {

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED0B17DE277CEFF000BB47B1 /* Appicon.icns */; };
 		ED2E730A277CE5C000A13E39 /* MAURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2E7309277CE5C000A13E39 /* MAURL.swift */; };
-		ED7572ED277CD62300AB6401 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED7572E8277CD62300AB6401 /* Appicon.icns */; };
+		ED3CC6BE277D188D00C0823E /* MAUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3CC6BD277D188D00C0823E /* MAUpdater.swift */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD2438F277CC01400926C9B /* MAWebView.framework */; };
@@ -104,8 +105,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED0B17DE277CEFF000BB47B1 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		ED2E7309277CE5C000A13E39 /* MAURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAURL.swift; sourceTree = "<group>"; };
-		ED7572E8277CD62300AB6401 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
+		ED3CC6BD277D188D00C0823E /* MAUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAUpdater.swift; sourceTree = "<group>"; };
+		ED3CC6C3277D1AA400C0823E /* version.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
 		EDD24389277CC01400926C9B /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
 		EDF62B2B277C96AF006DF3EB /* Malvon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malvon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF62B2E277C96AF006DF3EB /* AppDelegate.swift */,
-				ED7572E8277CD62300AB6401 /* Appicon.icns */,
+				ED0B17DE277CEFF000BB47B1 /* Appicon.icns */,
 				EDF62BB0277CA4FB006DF3EB /* Controllers */,
 				EDF62B32277C96B2006DF3EB /* MainMenu.xib */,
 				EDF62BB1277CA577006DF3EB /* Models */,
@@ -293,6 +296,7 @@
 				EDF62B97277C98A0006DF3EB /* MAFile.swift */,
 				EDF62B96277C98A0006DF3EB /* MAPaths.swift */,
 				ED2E7309277CE5C000A13E39 /* MAURL.swift */,
+				ED3CC6BD277D188D00C0823E /* MAUpdater.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -312,6 +316,7 @@
 		EDF62BB5277CA5B7006DF3EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED3CC6C3277D1AA400C0823E /* version.txt */,
 				EDF62B30277C96B2006DF3EB /* Assets.xcassets */,
 				EDF62B35277C96B2006DF3EB /* Malvon.entitlements */,
 				EDF62BBB277CB350006DF3EB /* Info.plist */,
@@ -468,10 +473,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDF62B31277C96B2006DF3EB /* Assets.xcassets in Resources */,
-				ED7572ED277CD62300AB6401 /* Appicon.icns in Resources */,
 				EDF62B5A277C96D3006DF3EB /* MAWindowController.xib in Resources */,
 				EDF62BAB277C9973006DF3EB /* MATabViewController.xib in Resources */,
 				EDF62BAF277C99B7006DF3EB /* MAHistoryViewController.xib in Resources */,
+				ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */,
 				EDF62B5E277C9738006DF3EB /* MAViewController.xib in Resources */,
 				EDF62BA7277C98F7006DF3EB /* MADownloadsViewController.xib in Resources */,
 				EDF62B34277C96B2006DF3EB /* MainMenu.xib in Resources */,
@@ -517,6 +522,7 @@
 				EDF62B5D277C9738006DF3EB /* MAViewController.swift in Sources */,
 				EDF62BA3277C98AC006DF3EB /* DownloadsJSONModel.swift in Sources */,
 				EDF62B9A277C98A1006DF3EB /* MAPaths.swift in Sources */,
+				ED3CC6BE277D188D00C0823E /* MAUpdater.swift in Sources */,
 				EDF62B94277C9887006DF3EB /* MATabsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

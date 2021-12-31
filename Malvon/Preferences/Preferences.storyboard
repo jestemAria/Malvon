@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="GoQ-Of-RUO">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="zyV-vl-xXo">
+            <objects>
+                <windowController id="GoQ-Of-RUO" sceneMemberID="viewController">
+                    <window key="window" title="Preference" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" toolbarStyle="preference" id="hxY-Ym-uI6">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="197" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="775"/>
+                        <view key="contentView" id="m7B-cJ-gqN">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="GoQ-Of-RUO" id="nWQ-ji-jcw"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="tga-cV-lsY" kind="relationship" relationship="window.shadowedContentViewController" id="L9q-Uk-R5J"/>
+                    </connections>
+                </windowController>
+                <customObject id="iQR-qS-wif" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27" y="-291"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="nzQ-Od-qCE">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="tga-cV-lsY" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="General" identifier="" image="NSSmartBadgeTemplate" id="Bpa-lh-pfF"/>
+                        <tabViewItem label="Tabs" identifier="" image="macwindow.on.rectangle.rtl" catalog="system" id="xYD-mx-fqF"/>
+                        <tabViewItem label="Advanced" image="NSAdvanced" id="zbu-Ib-OeU"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="a60-Cy-lOE">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="tga-cV-lsY" id="WJ2-gu-Q18"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="a60-Cy-lOE" id="FY3-Uq-3MV"/>
+                        <segue destination="8jZ-y1-VYc" kind="relationship" relationship="tabItems" id="gyB-xY-fQ8"/>
+                        <segue destination="tm7-pd-KXy" kind="relationship" relationship="tabItems" id="Pfx-A1-I63"/>
+                        <segue destination="ReW-tq-RB7" kind="relationship" relationship="tabItems" id="AO7-T0-TJG"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="Suh-Lv-QmN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27" y="215"/>
+        </scene>
+        <!--Prefs General View Controller-->
+        <scene sceneID="2dG-eJ-klz">
+            <objects>
+                <viewController id="8jZ-y1-VYc" customClass="MAPrefsGeneralViewController" customModule="Malvon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DmD-8C-stq">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Bwb-rp-Ftn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="267" y="670"/>
+        </scene>
+        <!--Prefs Tab View Controller-->
+        <scene sceneID="NlN-5J-BZR">
+            <objects>
+                <viewController id="tm7-pd-KXy" customClass="MAPrefsTabViewController" customModule="Malvon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="JeC-E5-d82">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="153"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CX1-fQ-UAM">
+                                <rect key="frame" x="17" y="114" width="119" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Shows Tab Bar" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="47i-Q6-Yjn">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showsTabBar:" target="tm7-pd-KXy" id="LKh-FO-anf"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwd-Ab-Yn8">
+                                <rect key="frame" x="17" y="92" width="431" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Black view will be displayed when switching and creating new tabs" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="i1f-CH-c1u">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showBlackScreen:" target="tm7-pd-KXy" id="rF0-pR-UIa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="showBlackScreenButton" destination="iwd-Ab-Yn8" id="1Ad-RT-eiu"/>
+                        <outlet property="showTabBarButton" destination="CX1-fQ-UAM" id="idS-YK-NX8"/>
+                    </connections>
+                </viewController>
+                <customObject id="pMY-66-Qpc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-218" y="596.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3b0-gX-eWM">
+            <objects>
+                <viewController id="ReW-tq-RB7" sceneMemberID="viewController">
+                    <view key="view" id="RW3-U5-usz">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="204"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="NAl-sZ-Ocx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-701" y="632"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSSmartBadgeTemplate" width="14" height="14"/>
+        <image name="macwindow.on.rectangle.rtl" catalog="system" width="20" height="16"/>
+    </resources>
+</document>

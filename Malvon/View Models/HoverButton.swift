@@ -71,7 +71,7 @@ class HoverButton: NSButton {
                 self.layer?.cornerRadius = self.cornerRadius
                 
                 if changeTint {
-                    self.contentTintColor = .yellow
+                    self.contentTintColor = .systemGray
                 } else {
                     self.layer?.backgroundColor = self.pressedBackgroundColor?.cgColor
                 }
@@ -79,7 +79,7 @@ class HoverButton: NSButton {
                 self.layer?.cornerRadius = self.cornerRadius
                 
                 if changeTint {
-                    self.contentTintColor = .yellow
+                    self.contentTintColor = .systemGray
                 } else {
                     self.layer?.backgroundColor = self.hoveredBackgroundColor?.cgColor
                 }

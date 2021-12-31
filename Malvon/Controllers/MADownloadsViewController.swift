@@ -77,7 +77,7 @@ class MADownloadsViewController: NSViewController, NSTableViewDelegate, NSTableV
                 do {
                     try str.write(to: MADownloadsViewController.path!, atomically: true, encoding: String.Encoding.utf8)
                 } catch {
-                    print("\(error.localizedDescription)")
+                    print("errrr:::: \(error.localizedDescription)")
                 }
             }
         } else {

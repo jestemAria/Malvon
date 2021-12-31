@@ -45,16 +45,29 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     let tabsPopover = NSPopover()
     var tabsPopoverPositioningView: NSView?
     @IBOutlet var createNewTabButton: HoverButton!
+    
+    
     public var website: URL?
+    public var favicon: NSImage?
     
     public var webConfigurations: WKWebViewConfiguration
     
     private var loadURL = true
+    
+    @IBOutlet weak var blackView: NSBox!
+    public var tabViewItem: NSTabViewItem?
     // MARK: - Setup Functions
     
     init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true) {
         self.webConfigurations = config
         self.loadURL = loadURL
+        super.init(nibName: "MAViewController", bundle: nil)
+    }
+    
+    init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, _ tabView: NSTabViewItem) {
+        self.webConfigurations = config
+        self.loadURL = loadURL
+        self.tabViewItem = tabView
         super.init(nibName: "MAViewController", bundle: nil)
     }
     
@@ -70,7 +83,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchField.setFrameSize(NSSize(width: 100, height: searchField.frame.height))
         self.webView = MAWebView(frame: self.webContentView.frame, configuration: self.webConfigurations)
         
         self.webContentView.addSubview(self.webView!)
@@ -86,11 +99,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
             webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
             updateWebsiteURL()
+        } else {
+            mubWebView(self.webView!, titleChanged: self.webView!.title!)
         }
         
         self.website = URL(string: "https://www.google.com")!
         tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
+        
     }
     
     // Style the elements ( buttons, searchfields )
@@ -109,34 +125,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         webView!.initializeWebView()
         webView!.enableConfigurations()
         webView!.enableAdblock()
-    }
-    
-    override func keyDown(with event: NSEvent) {
-        let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
-        
-        if event.keyCode == 18 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 19 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 20 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 21 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 22 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 23 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 24 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 25 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 26 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 27 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        } else if event.keyCode == 28 {
-            tab?.selectedTabViewItemIndex = Int(event.keyCode-18)
-        }
     }
     
     // MARK: - Buttons
@@ -176,10 +164,17 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     @IBAction func createNewTab(_ sender: Any) {
+        self.blackView.isHidden = false
         let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
-        tab?.addTabViewItem(NSTabViewItem(viewController: MAViewController()))
+        
+        var tabItem = NSTabViewItem(viewController: MAViewController())
+        tabItem.viewController = MAViewController(tabItem)
+        
+        tab?.addTabViewItem(tabItem)
         
         tab?.selectedTabViewItemIndex = tab!.tabViewItems.count-1
+        
+        self.blackView.isHidden = true
     }
     
     func checkButtons() {
@@ -254,14 +249,17 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
         let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
+        
         let VC = MAViewController(config: configuration, loadURL: false)
         
+        let tabItem = NSTabViewItem(viewController: VC)
+        tabItem.viewController = MAViewController(config: configuration, loadURL: false, tabItem)
         
-        tab?.addTabViewItem(NSTabViewItem(viewController: VC))
+        tab?.addTabViewItem(tabItem)
         
         tab?.selectedTabViewItemIndex = tab!.tabViewItems.count-1
         
-        return VC.webView!
+        return (tabItem.viewController as? MAViewController)!.webView!
     }
     
     func mubWebView(_ webView: MAWebView, estimatedProgress progress: Double) {
@@ -282,6 +280,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
         websiteTitle.stringValue = title
         self.title = title
+        tabViewItem?.label = title
         
         guard let webViewURL = webView.url?.absoluteString else { return }
         let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
@@ -290,10 +289,24 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         do {
             data = try Data(contentsOf: url!)
-            faviconImageView.image = NSImage(data: data)
+            favicon = NSImage(data: data)
+            
+            faviconImageView.image = favicon
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    @IBAction func vcclosetabm(_ sender: Any?) {
+        let tabViewController = (self.view.window?.windowController as? MAWindowController)?.tabViewController
+        
+        self.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+        
+        self.webView?.removeWebview()
+        self.webView?.removeFromSuperview()
+        self.webView = nil
+        
+        tabViewController!.removeChild(at: tabViewController!.selectedTabViewItemIndex)
     }
     
     func mubWebViewWillCloseTab() {
@@ -487,5 +500,93 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
         // This is a command that we don't specifically handle, let the field editor do the appropriate thing.
         return false
+    }
+    
+    // MARK: - Tab Menu Items
+    
+    func switchTo(tab number: Int, _ pauses: Bool = false) {
+        let properties = AppProperties()
+        if properties.showsBlackScreen { self.blackView.isHidden = false }
+        if pauses {
+            let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
+            self.webView!.evaluateJavaScript(stopVideoScript, completionHandler:nil)
+        }
+        let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
+        
+        tab?.selectedTabViewItemIndex = 0
+        if properties.showsBlackScreen { self.blackView.isHidden = true }
+    }
+    
+    @IBAction func tab1(_ sender: Any?) {
+        switchTo(tab: 0)
+    }
+    
+    @IBAction func tab2(_ sender: Any?) {
+        switchTo(tab: 1)
+    }
+    
+    @IBAction func tab3(_ sender: Any?) {
+        switchTo(tab: 2)
+    }
+    
+    @IBAction func tab4(_ sender: Any?) {
+        switchTo(tab: 3)
+    }
+    
+    @IBAction func tab5(_ sender: Any?) {
+        switchTo(tab: 4)
+    }
+    
+    @IBAction func tab6(_ sender: Any?) {
+        switchTo(tab: 5)
+    }
+    
+    @IBAction func tab7(_ sender: Any?) {
+        switchTo(tab: 6)
+    }
+    
+    @IBAction func tab8(_ sender: Any?) {
+        switchTo(tab: 7)
+    }
+    
+    @IBAction func tab9(_ sender: Any?) {
+        switchTo(tab: 8)
+    }
+    
+    
+    @IBAction func tab1PAUSE(_ sender: Any?) {
+        switchTo(tab: 0, true)
+    }
+    
+    @IBAction func tab2PAUSE(_ sender: Any?) {
+        switchTo(tab: 1, true)
+    }
+    
+    @IBAction func tab3PAUSE(_ sender: Any?) {
+        switchTo(tab: 2, true)
+    }
+    
+    @IBAction func tab4PAUSE(_ sender: Any?) {
+        switchTo(tab: 3, true)
+    }
+    
+    @IBAction func tab5PAUSE(_ sender: Any?) {
+        switchTo(tab: 4, true)
+    }
+    
+    @IBAction func tab6PAUSE(_ sender: Any?) {
+        switchTo(tab: 5, true)
+    }
+    
+    @IBAction func tab7PAUSE(_ sender: Any?) {
+        switchTo(tab: 6, true)
+    }
+    
+    @IBAction func tab8PAUSE(_ sender: Any?) {
+        switchTo(tab: 7, true)
+    }
+    
+    @IBAction func tab9PAUSE(_ sender: Any?) {
+        switchTo(tab: 8, true)
     }
 }

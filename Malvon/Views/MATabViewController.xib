@@ -66,7 +66,7 @@
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-9y-f0D">
+                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-9y-f0D" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
                                                                 <rect key="frame" x="389" y="6.5" width="15.5" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="15" id="13F-Cm-fOH"/>

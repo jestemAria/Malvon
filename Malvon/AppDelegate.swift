@@ -32,9 +32,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     let MA_APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        print(AppProperties().showsTabBar)
+        
         if MA_APP_VERSION != MAURL("https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/version.txt").contents().removeWhitespace {
             if askForPermissions() {
                 let task = Process()
@@ -44,7 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 exit(0)
             }
         }
-        
         window.showWindow(nil)
     }
     
@@ -69,21 +69,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func openNewApplicationWindow(_ sender: Any?) {
-        let newWindow = MAWindowController()
+        let newWindow = MAWindowController(windowNibName: "MAWindowController")
         newWindow.showWindow(nil)
     }
     
-    @IBAction func removeTab(_ sender: Any?) {
-        let VC = window.tabViewController.tabViewItems[window.tabViewController.selectedTabViewItemIndex].viewController as? MAViewController
-        
-        VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
-        
-        VC?.webView?.removeWebview()
-        VC?.webView?.removeFromSuperview()
-        VC?.webView = nil
-        
-        window.tabViewController.removeChild(at: window.tabViewController.selectedTabViewItemIndex)
-    }
+    var preferencesController: NSWindowController?
     
+    @IBAction func showPreferences(_ sender: Any) {
+        if (preferencesController == nil) {
+            let storyboard = NSStoryboard(name: NSStoryboard.Name("Preferences"), bundle: nil)
+            preferencesController = storyboard.instantiateInitialController() as? NSWindowController
+        }
+        
+        if (preferencesController != nil) {
+            preferencesController!.showWindow(sender)
+        }
+    }
 }
 

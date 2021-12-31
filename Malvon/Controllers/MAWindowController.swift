@@ -10,11 +10,20 @@ import Cocoa
 
 class MAWindowController: NSWindowController {
     
+    let properties = AppProperties()
+    
     lazy var tabViewController: NSTabViewController = {
         let tabVC = NSTabViewController()
-        tabVC.addTabViewItem(NSTabViewItem(viewController: MAViewController()))
         
-        tabVC.tabStyle = .unspecified
+        var tabItem = NSTabViewItem(viewController: MAViewController())
+        tabItem.viewController = MAViewController(tabItem)
+        
+        tabVC.addTabViewItem(tabItem)
+        
+        if !properties.showsTabBar {
+            tabVC.tabView.tabViewType = .noTabsNoBorder
+            tabVC.tabStyle = .unspecified
+        }
         return tabVC
     }()
     
@@ -22,12 +31,13 @@ class MAWindowController: NSWindowController {
         super.windowDidLoad()
         shouldCascadeWindows = false
         window?.setFrameAutosaveName(window!.representedFilename)
-        
         self.contentViewController = tabViewController
         
-        let customToolbar = NSToolbar()
-        window?.titleVisibility = .hidden
-        window?.toolbar = customToolbar
+        if !properties.showsTabBar {
+            let customToolbar = NSToolbar()
+            window?.titleVisibility = .hidden
+            window?.toolbar = customToolbar
+        }
     }
     
     convenience init() {

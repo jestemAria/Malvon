@@ -1,6 +1,15 @@
 #  Changes
 
-## v1.0.1
+## v1.0.2
+- Dark mode for the start page
+- More optimization for lower energy usage
+- Added exit button for the history view controller
+- Started working on preference
+- Changed the color of `HoverButton`
+- Pressing `CMD + OPT + n` will pause all videos that are playing in current tab and switch to the next tab
+- When switching and creating a new tab, a black screen will appear (Only works when using keyboard shortcuts) ( You can disable this feature via preferences)
+
+## v1.0.1 ( **Released** )
 - Double Click ( Maximize Window )
 - Added startpage instead of using google.com
 - Close tab button on the tab popover
@@ -18,7 +27,7 @@
 - Created a Malvon Updater Application
 
 
-## v1.0.0
+## v1.0.0 ( **Released** )
 - Back/Forward/Refresh Buttons
 - Tab **Popover** (we have used a `NSPopover` instead of `TabBar` for more web content)
 - Search Suggestions (the search bar can show suggestions)

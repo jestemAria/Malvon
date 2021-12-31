@@ -18,14 +18,15 @@
             <rect key="frame" x="0.0" y="0.0" width="491" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB5-v4-RBY">
-                    <rect key="frame" x="0.0" y="0.0" width="491" height="272"/>
+                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB5-v4-RBY">
+                    <rect key="frame" x="0.0" y="0.0" width="491" height="236"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="YyY-q8-srG">
-                        <rect key="frame" x="1" y="1" width="489" height="270"/>
+                        <rect key="frame" x="1" y="1" width="489" height="234"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" headerView="jou-Gc-9Wu" viewBased="YES" id="SSI-Gw-BdC">
-                                <rect key="frame" x="0.0" y="0.0" width="489" height="242"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" headerView="jou-Gc-9Wu" viewBased="YES" id="SSI-Gw-BdC">
+                                <rect key="frame" x="0.0" y="0.0" width="489" height="206"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -44,11 +45,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="dsx-kW-Njs">
-                                                <rect key="frame" x="8" y="0.0" width="114" height="52"/>
+                                                <rect key="frame" x="8" y="0.0" width="114" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-QP-ec4">
-                                                        <rect key="frame" x="0.0" y="18" width="114" height="16"/>
+                                                        <rect key="frame" x="0.0" y="5" width="114" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Google" id="aPm-1K-rRm">
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -76,11 +77,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="kda-UX-46V">
-                                                <rect key="frame" x="139" y="0.0" width="341" height="52"/>
+                                                <rect key="frame" x="139" y="0.0" width="341" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bze-wv-mV4">
-                                                        <rect key="frame" x="0.0" y="18" width="341" height="16"/>
+                                                        <rect key="frame" x="0.0" y="5" width="341" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="https://www.google.com" id="J8h-WU-LSh">
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -112,14 +113,31 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFi-Mi-HEh" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
+                    <rect key="frame" x="5" y="245.5" width="20.5" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="BNz-bf-7Bd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closeButton:" target="-2" id="sZm-R2-1zJ"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-Z4-Xu1">
+                    <rect key="frame" x="42" y="246" width="59" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="History" id="ec9-II-Ivi">
+                        <font key="font" textStyle="title2" name=".SFNS-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <constraints>
-                <constraint firstItem="mB5-v4-RBY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SKg-ux-F2f"/>
-                <constraint firstAttribute="bottom" secondItem="mB5-v4-RBY" secondAttribute="bottom" id="YHj-FX-U38"/>
-                <constraint firstItem="mB5-v4-RBY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bVV-Vl-bF6"/>
-                <constraint firstAttribute="trailing" secondItem="mB5-v4-RBY" secondAttribute="trailing" id="hqg-dE-NBf"/>
-            </constraints>
-            <point key="canvasLocation" x="112" y="139"/>
+            <point key="canvasLocation" x="111.5" y="139"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSStopProgressTemplate" width="14" height="13"/>
+    </resources>
 </document>

@@ -77,12 +77,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TabsViewCell"), owner: self) as? MATabsTableViewCell else { return nil }
         let VC = tabViewController.tabViewItems[row].viewController as? MAViewController
         
-        let website: URL = VC?.website ?? URL(string: "https://www.google.com")!
-        
-        let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + website.absoluteString)
-        let data = try? Data(contentsOf: url!)
-        cell.TabIcon?.image = NSImage(data: data!)
-        
+        cell.TabIcon?.image = VC?.favicon
         cell.TabTitle?.stringValue = VC?.title ?? "Untitled Tab"
         cell.TabCloseButton.tag = row
         cell.TabCloseButton.action = #selector(willPressClose(_:))

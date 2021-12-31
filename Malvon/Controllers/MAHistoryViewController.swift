@@ -93,6 +93,9 @@ class MAHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVie
         return cell
     }
     
+    @IBAction func closeButton(_ sender: Any) {
+        self.view.window?.close()
+    }
     // MARK: - History Items
     
     func refreshTableView() {

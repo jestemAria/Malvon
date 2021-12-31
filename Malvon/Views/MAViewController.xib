@@ -96,14 +96,14 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-Pp-dd0">
-                                <rect key="frame" x="617" y="-2" width="154" height="39"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-Pp-dd0">
+                                <rect key="frame" x="617" y="-5" width="154" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="225" id="Dlu-gP-567"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="DnH-eO-BjQ"/>
-                                    <constraint firstAttribute="height" constant="34" id="MN6-ED-rw4"/>
+                                    <constraint firstAttribute="height" constant="39" id="PT3-Gj-ak8"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="225" id="dSI-SY-FYj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="vKc-AU-E3A"/>
                                 </constraints>
-                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Ljs-fj-BCa">
+                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Ljs-fj-BCa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent">y</string>
@@ -251,7 +251,7 @@
                                 </connections>
                             </searchField>
                             <progressIndicator ambiguous="YES" maxValue="100" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vjx-hq-QCd">
-                                <rect key="frame" x="272" y="10" width="16" height="16"/>
+                                <rect key="frame" x="271" y="10" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="43b-UU-zmC"/>
                                     <constraint firstAttribute="height" constant="16" id="ogu-cW-QaM"/>
@@ -274,13 +274,15 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Gve-Pp-dd0" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="38v-Sh-xB7"/>
                             <constraint firstItem="SBy-me-3uk" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="468-v3-2MS"/>
+                            <constraint firstItem="Gve-Pp-dd0" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="GJc-8Y-8yU"/>
+                            <constraint firstItem="2sH-LQ-Dji" firstAttribute="width" secondItem="Gve-Pp-dd0" secondAttribute="width" id="LM8-gg-nbN"/>
                             <constraint firstItem="vjx-hq-QCd" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="Pw5-mx-RK4"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="leading" secondItem="Xg7-WT-uDj" secondAttribute="leading" constant="66" id="VaU-rs-rXM"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="Yb1-kK-xo3"/>
                             <constraint firstItem="7JB-2D-Yyf" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="c0I-Kn-xMI"/>
                             <constraint firstAttribute="trailing" secondItem="7JB-2D-Yyf" secondAttribute="trailing" id="jlP-i2-iw9"/>
+                            <constraint firstAttribute="trailing" secondItem="Gve-Pp-dd0" secondAttribute="trailing" constant="32" id="lxf-FZ-73w"/>
                         </constraints>
                     </view>
                 </box>

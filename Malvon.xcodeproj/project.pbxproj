@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED0B17DE277CEFF000BB47B1 /* Appicon.icns */; };
-		ED534376277E40800017AD05 /* update_feature_list in Resources */ = {isa = PBXBuildFile; fileRef = ED534375277E40800017AD05 /* update_feature_list */; };
 		ED5343BD277E45510017AD05 /* MATools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5343A1277E43120017AD05 /* MATools.framework */; };
 		ED5343BE277E45510017AD05 /* MATools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED5343A1277E43120017AD05 /* MATools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ED79F0C0277E64FB0047BB86 /* update_feature_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = ED79F0B9277E64FB0047BB86 /* update_feature_list.txt */; };
 		ED8025C5277D695100427E5C /* newtab.html in Resources */ = {isa = PBXBuildFile; fileRef = ED8025C4277D695100427E5C /* newtab.html */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -56,6 +56,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = ED53438B277E43110017AD05;
 			remoteInfo = MAToolsTests;
+		};
+		EDD1A0F0277E73E8002BB362 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDD1A0DA277E73E3002BB362;
+			remoteInfo = "Malvon Updater";
 		};
 		EDD24385277CC01100926C9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -120,10 +127,11 @@
 /* Begin PBXFileReference section */
 		ED0B17DE277CEFF000BB47B1 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		ED3CC6C3277D1AA400C0823E /* version.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
-		ED534375277E40800017AD05 /* update_feature_list */ = {isa = PBXFileReference; lastKnownFileType = text; path = update_feature_list; sourceTree = "<group>"; };
 		ED53439B277E43110017AD05 /* MATools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MATools.xcodeproj; path = MATools/MATools.xcodeproj; sourceTree = "<group>"; };
+		ED79F0B9277E64FB0047BB86 /* update_feature_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = update_feature_list.txt; sourceTree = "<group>"; };
 		ED8025C4277D695100427E5C /* newtab.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = newtab.html; sourceTree = "<group>"; };
 		EDD08B01277D812E000C866B /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
+		EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Malvon Updater.xcodeproj"; path = "Malvon Updater/Malvon Updater.xcodeproj"; sourceTree = "<group>"; };
 		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
 		EDD24389277CC01400926C9B /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
 		EDF62B2B277C96AF006DF3EB /* Malvon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malvon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +210,22 @@
 			path = pages;
 			sourceTree = "<group>";
 		};
+		EDD1A0CA277E73C0002BB362 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		EDD1A0ED277E73E7002BB362 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDD1A0F1277E73E8002BB362 /* Malvon Updater.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EDD24381277CC01100926C9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +252,7 @@
 				EDF62B3D277C96B2006DF3EB /* MalvonTests */,
 				EDF62B47277C96B3006DF3EB /* MalvonUITests */,
 				EDF62B61277C97FA006DF3EB /* Frameworks */,
+				EDD1A0CA277E73C0002BB362 /* Applications */,
 				EDF62BB9277CB24B006DF3EB /* README.md */,
 				EDF62B2C277C96AF006DF3EB /* Products */,
 			);
@@ -338,7 +363,7 @@
 				EDF62B30277C96B2006DF3EB /* Assets.xcassets */,
 				EDF62B35277C96B2006DF3EB /* Malvon.entitlements */,
 				EDF62BBB277CB350006DF3EB /* Info.plist */,
-				ED534375277E40800017AD05 /* update_feature_list */,
+				ED79F0B9277E64FB0047BB86 /* update_feature_list.txt */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -438,6 +463,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = EDD1A0ED277E73E7002BB362 /* Products */;
+					ProjectRef = EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */;
+				},
+				{
 					ProductGroup = EDD24381277CC01100926C9B /* Products */;
 					ProjectRef = EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */;
 				},
@@ -472,6 +501,13 @@
 			fileType = wrapper.cfbundle;
 			path = MAToolsTests.xctest;
 			remoteRef = ED5343A2277E43120017AD05 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EDD1A0F1277E73E8002BB362 /* Malvon Updater.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Malvon Updater.app";
+			remoteRef = EDD1A0F0277E73E8002BB362 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EDD24386277CC01100926C9B /* MASearchSuggestions.framework */ = {
@@ -517,7 +553,7 @@
 				ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */,
 				EDF62B5E277C9738006DF3EB /* MAViewController.xib in Resources */,
 				EDF62BA7277C98F7006DF3EB /* MADownloadsViewController.xib in Resources */,
-				ED534376277E40800017AD05 /* update_feature_list in Resources */,
+				ED79F0C0277E64FB0047BB86 /* update_feature_list.txt in Resources */,
 				EDF62B34277C96B2006DF3EB /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -731,6 +767,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Malvon/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ashwin Paudel. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -761,6 +798,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Malvon/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ashwin Paudel. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;

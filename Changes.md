@@ -15,7 +15,7 @@
 - Shows a window instead of alert for the updater
 - Re-wrote all the files in the `Utilities` Folder
 - Created an `MATools` Framework and moved all the file in the `Utilities` folder there
-- The `MAUpdater` will now show release notes
+- Created a Malvon Updater Application
 
 
 ## v1.0.0

@@ -14,13 +14,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let window = MAWindowController()
     
-    func applicationWillFinishLaunching(_ notification: Notification) {
-#if !DEBUG
-        MAUpdater().checkForUpdates()
-#endif
+    func askForPermissions() -> Bool {
+        let alert = NSAlert()
+        alert.messageText = "New updates are available!"
+        alert.informativeText = "Would you like to install the updates?"
+        
+        alert.addButton(withTitle: "Yes")
+        alert.addButton(withTitle: "No")
+        
+        let response = alert.runModal()
+        
+        if response == .alertFirstButtonReturn {
+            return true
+        } else {
+            return false
+        }
     }
+    
+    let MA_APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        if MA_APP_VERSION != MAURL("https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/version.txt").contents().removeWhitespace {
+            if askForPermissions() {
+                let task = Process()
+                task.launchPath = "/usr/bin/open"
+                task.arguments = ["/Applications/Malvon.app/Contents/Applications/Malvon\\ Updater.app"]
+                task.launch()
+                exit(0)
+            }
+        }
+        
         window.showWindow(nil)
     }
     

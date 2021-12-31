@@ -42,3 +42,9 @@ public class MAURL {
         return ""
     }
 }
+
+extension URL {
+    var parentDirectory: URL? {
+        return (try? resourceValues(forKeys: [.parentDirectoryURLKey]))?.parentDirectory
+    }
+}

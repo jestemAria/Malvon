@@ -14,10 +14,6 @@
 		ED5343AE277E432B0017AD05 /* MAURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343AB277E432B0017AD05 /* MAURL.swift */; };
 		ED5343AF277E432B0017AD05 /* MAFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343AC277E432B0017AD05 /* MAFile.swift */; };
 		ED5343B6277E43630017AD05 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343B5277E43620017AD05 /* Extension+String.swift */; };
-		ED5343BA277E437F0017AD05 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5343B9277E437F0017AD05 /* GlobalVariables.swift */; };
-		ED613795277E47670033E0C2 /* MAUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED613792277E47660033E0C2 /* MAUpdater.swift */; };
-		ED613796277E47670033E0C2 /* MAUpdateAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED613793277E47660033E0C2 /* MAUpdateAlertViewController.xib */; };
-		ED613797277E47670033E0C2 /* MAUpdateAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED613794277E47670033E0C2 /* MAUpdateAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +35,6 @@
 		ED5343AB277E432B0017AD05 /* MAURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAURL.swift; sourceTree = "<group>"; };
 		ED5343AC277E432B0017AD05 /* MAFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAFile.swift; sourceTree = "<group>"; };
 		ED5343B5277E43620017AD05 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
-		ED5343B9277E437F0017AD05 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
-		ED613792277E47660033E0C2 /* MAUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAUpdater.swift; sourceTree = "<group>"; };
-		ED613793277E47660033E0C2 /* MAUpdateAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAUpdateAlertViewController.xib; sourceTree = "<group>"; };
-		ED613794277E47670033E0C2 /* MAUpdateAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAUpdateAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,14 +77,10 @@
 		ED534385277E43110017AD05 /* MATools */ = {
 			isa = PBXGroup;
 			children = (
-				ED5343B9277E437F0017AD05 /* GlobalVariables.swift */,
 				ED5343AC277E432B0017AD05 /* MAFile.swift */,
 				ED5343AA277E432B0017AD05 /* MAPaths.swift */,
 				ED5343B5277E43620017AD05 /* Extension+String.swift */,
 				ED5343AB277E432B0017AD05 /* MAURL.swift */,
-				ED613794277E47670033E0C2 /* MAUpdateAlertViewController.swift */,
-				ED613793277E47660033E0C2 /* MAUpdateAlertViewController.xib */,
-				ED613792277E47660033E0C2 /* MAUpdater.swift */,
 				ED534386277E43110017AD05 /* MATools.h */,
 			);
 			path = MATools;
@@ -199,7 +187,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED613796277E47670033E0C2 /* MAUpdateAlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,12 +205,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED5343B6277E43630017AD05 /* Extension+String.swift in Sources */,
-				ED613795277E47670033E0C2 /* MAUpdater.swift in Sources */,
 				ED5343AD277E432B0017AD05 /* MAPaths.swift in Sources */,
 				ED5343AF277E432B0017AD05 /* MAFile.swift in Sources */,
 				ED5343AE277E432B0017AD05 /* MAURL.swift in Sources */,
-				ED613797277E47670033E0C2 /* MAUpdateAlertViewController.swift in Sources */,
-				ED5343BA277E437F0017AD05 /* GlobalVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

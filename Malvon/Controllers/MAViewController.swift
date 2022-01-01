@@ -43,28 +43,34 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // Show the tabs
     @IBOutlet var showTabsButton: NSButton!
     let tabsPopover = NSPopover()
-    var tabsPopoverPositioningView: NSView?
     @IBOutlet var createNewTabButton: HoverButton!
     
-    
+    // For other Tabpopover view to access
     public var website: URL?
     public var favicon: NSImage?
     
+    // For popups
     public var webConfigurations: WKWebViewConfiguration
-    
     private var loadURL = true
     
+    // Privacy
     @IBOutlet weak var blackView: NSBox!
+    
+    // The window properties
+    public var windowController: MAWindowController
     public var tabViewItem: NSTabViewItem?
+    public var tab: NSTabViewController = NSTabViewController()
     // MARK: - Setup Functions
     
-    init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true) {
+    init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, windowCNTRL: MAWindowController) {
         self.webConfigurations = config
         self.loadURL = loadURL
+        self.windowController = windowCNTRL
         super.init(nibName: "MAViewController", bundle: nil)
     }
     
-    init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, _ tabView: NSTabViewItem) {
+    init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, _ tabView: NSTabViewItem, windowCNTRL: MAWindowController) {
+        self.windowController = windowCNTRL
         self.webConfigurations = config
         self.loadURL = loadURL
         self.tabViewItem = tabView
@@ -83,6 +89,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tab = self.windowController.tabViewController
+        
         searchField.setFrameSize(NSSize(width: 100, height: searchField.frame.height))
         self.webView = MAWebView(frame: self.webContentView.frame, configuration: self.webConfigurations)
         
@@ -90,8 +98,11 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         self.webView?.autoresizingMask = [.width, .height]
         
-        (searchField.cell as? NSSearchFieldCell)?.searchButtonCell?.isTransparent = true
-        (searchField.cell as? NSSearchFieldCell)?.cancelButtonCell?.isTransparent = true
+        if let cell = searchField.cell as? NSSearchFieldCell {
+            cell.searchButtonCell?.isTransparent = true
+            cell.cancelButtonCell?.isTransparent = true
+        }
+        
         refreshButton.cornerRadius = 10
         configureElements()
         
@@ -130,18 +141,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Buttons
     
     @IBAction func tabsPopoverButton(_ sender: NSButton) {
-        //        tabsPopoverPositioningView = NSView()
-        //        tabsPopoverPositioningView?.frame = sender.frame
-        //        view.addSubview(tabsPopoverPositioningView!, positioned: .below, relativeTo: sender)
-        
         if tabsPopover.isShown {
             tabsPopover.close()
         } else {
-            tabsPopover.contentViewController = MATabViewController(windowController: ((self.view.window?.windowController as? MAWindowController)!))
+            tabsPopover.contentViewController = MATabViewController(windowController: windowController)
             
             tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
-            //            tabsPopover.show(relativeTo: .zero, of: tabsPopoverPositioningView!, preferredEdge: .maxY)
-            //            tabsPopoverPositioningView?.frame = sender.frame
         }
     }
     
@@ -165,29 +170,30 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     @IBAction func createNewTab(_ sender: Any) {
         self.blackView.isHidden = false
-        let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
         
-        var tabItem = NSTabViewItem(viewController: MAViewController())
-        tabItem.viewController = MAViewController(tabItem)
+        let tabItem = NSTabViewItem(viewController: NSViewController())
+        tabItem.viewController = MAViewController(tabItem, windowCNTRL: self.windowController)
         
-        tab?.addTabViewItem(tabItem)
+        tab.addTabViewItem(tabItem)
         
-        tab?.selectedTabViewItemIndex = tab!.tabViewItems.count-1
+        tab.selectedTabViewItemIndex = tab.tabViewItems.count-1
         
         self.blackView.isHidden = true
     }
     
     func checkButtons() {
-        if webView!.canGoBack {
-            backButtonOutlet.isEnabled = true
-        } else {
-            backButtonOutlet.isEnabled = false
-        }
-        
-        if webView!.canGoForward {
-            forwardButtonOutlet.isEnabled = true
-        } else {
-            forwardButtonOutlet.isEnabled = false
+        if let webView = webView {
+            if webView.canGoBack {
+                backButtonOutlet.isEnabled = true
+            } else {
+                backButtonOutlet.isEnabled = false
+            }
+            
+            if webView.canGoForward {
+                forwardButtonOutlet.isEnabled = true
+            } else {
+                forwardButtonOutlet.isEnabled = false
+            }
         }
     }
     
@@ -207,6 +213,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         let newItem = MAHistoryElement(website: website, address: address)
         newHistoryJSON.append(newItem)
         historyJSON = newHistoryJSON
+        
         do {
             let data = try JSONEncoder().encode(newHistoryJSON)
             try data.write(to: MAHistoryViewController.path!)
@@ -216,7 +223,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func addHistoryEntry() {
-        addItem(website: webView!.title!, address: webView!.url!.absoluteString)
+        if let webView = webView {
+            addItem(website: webView.title!, address: webView.url!.absoluteString)
+        }
     }
     
     // If the history.json file doesn't exist, create it
@@ -248,18 +257,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
-        let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
+        let tabItem = NSTabViewItem(viewController: NSViewController())
+        tabItem.viewController = MAViewController(config: configuration, loadURL: false, tabItem, windowCNTRL: self.windowController)
         
-        let VC = MAViewController(config: configuration, loadURL: false)
+        tab.addTabViewItem(tabItem)
         
-        let tabItem = NSTabViewItem(viewController: VC)
-        tabItem.viewController = MAViewController(config: configuration, loadURL: false, tabItem)
+        tab.selectedTabViewItemIndex = tab.tabViewItems.count-1
         
-        tab?.addTabViewItem(tabItem)
-        
-        tab?.selectedTabViewItemIndex = tab!.tabViewItems.count-1
-        
-        return (tabItem.viewController as? MAViewController)!.webView!
+        return (tabItem.viewController as! MAViewController).webView!
     }
     
     func mubWebView(_ webView: MAWebView, estimatedProgress progress: Double) {
@@ -298,7 +303,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     @IBAction func vcclosetabm(_ sender: Any?) {
-        let tabViewController = (self.view.window?.windowController as? MAWindowController)?.tabViewController
         
         self.webView?.load(URLRequest(url: URL(string: "about:blank")!))
         
@@ -306,13 +310,11 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         self.webView?.removeFromSuperview()
         self.webView = nil
         
-        tabViewController!.removeChild(at: tabViewController!.selectedTabViewItemIndex)
+        tab.removeChild(at: tab.selectedTabViewItemIndex)
     }
     
     func mubWebViewWillCloseTab() {
-        let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
-        
-        tab?.tabViewItems.remove(at: tab!.selectedTabViewItemIndex)
+        tab.tabViewItems.remove(at: tab.selectedTabViewItemIndex)
     }
     
     func updateWebsiteURL() {
@@ -328,7 +330,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                 let attrHost = NSAttributedString(string: url.absoluteString.fileName)
                 
                 attrScheme.append(attrHost)
-                print(attrScheme)
                 searchField.attributedStringValue = attrScheme
             } else {
                 searchField.stringValue = url.absoluteString
@@ -505,16 +506,19 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Tab Menu Items
     
     func switchTo(tab number: Int, _ pauses: Bool = false) {
-        let properties = AppProperties()
-        if properties.showsBlackScreen { self.blackView.isHidden = false }
-        if pauses {
-            let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
-            self.webView!.evaluateJavaScript(stopVideoScript, completionHandler:nil)
-        }
-        let tab = (self.view.window?.windowController as? MAWindowController)?.tabViewController
+        self.blackView.isHidden = false
         
-        tab?.selectedTabViewItemIndex = 0
-        if properties.showsBlackScreen { self.blackView.isHidden = true }
+        if number <= tab.tabViewItems.count-1 {
+            
+            let properties = AppProperties()
+            if pauses {
+                let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
+                self.webView!.evaluateJavaScript(stopVideoScript, completionHandler:nil)
+            }
+            tab.selectedTabViewItemIndex = number
+        }
+        
+        self.blackView.isHidden = true
     }
     
     @IBAction func tab1(_ sender: Any?) {

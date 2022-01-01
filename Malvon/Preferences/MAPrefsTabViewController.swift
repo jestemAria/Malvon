@@ -12,15 +12,11 @@ class MAPrefsTabViewController: NSViewController {
     
     var properties = AppProperties()
     
-    @IBOutlet weak var showBlackScreenButton: NSButton!
-    
     @IBOutlet weak var showTabBarButton: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         properties.showsTabBar ? setState(showTabBarButton, .on) : setState(showTabBarButton, .off)
-        
-        properties.showsBlackScreen ? setState(showBlackScreenButton, .on) : setState(showBlackScreenButton, .off)
     }
     
     func setState(_ button: NSButton, _ state: NSControl.StateValue) {
@@ -63,13 +59,5 @@ class MAPrefsTabViewController: NSViewController {
         properties.set()
         
         relaunchAlert()
-    }
-    @IBAction func showBlackScreen(_ sender: Any) {
-        if properties.showsBlackScreen == true {
-            properties.showsBlackScreen = false
-        } else if properties.showsBlackScreen == false {
-            properties.showsBlackScreen = true
-        }
-        properties.set()
     }
 }

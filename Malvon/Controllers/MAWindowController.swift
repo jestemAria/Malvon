@@ -15,8 +15,8 @@ class MAWindowController: NSWindowController {
     lazy var tabViewController: NSTabViewController = {
         let tabVC = NSTabViewController()
         
-        var tabItem = NSTabViewItem(viewController: MAViewController())
-        tabItem.viewController = MAViewController(tabItem)
+        var tabItem = NSTabViewItem(viewController: NSViewController())
+        tabItem.viewController = MAViewController(tabItem, windowCNTRL: self)
         
         tabVC.addTabViewItem(tabItem)
         

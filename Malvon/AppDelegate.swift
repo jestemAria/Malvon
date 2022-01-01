@@ -34,13 +34,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let MA_APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        print(AppProperties().showsTabBar)
+        let newestVersion = MAURL("https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/version.txt").contents().removeWhitespace
         
-        if MA_APP_VERSION != MAURL("https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/version.txt").contents().removeWhitespace {
+        if MA_APP_VERSION != newestVersion && !newestVersion.isEmpty {
             if askForPermissions() {
                 let task = Process()
                 task.launchPath = "/usr/bin/open"
-                task.arguments = ["/Applications/Malvon.app/Contents/Applications/Malvon\\ Updater.app"]
+                task.arguments = ["\(Bundle.main.bundlePath)/Contents/Applications/Malvon\\ Updater.app"]
                 task.launch()
                 exit(0)
             }

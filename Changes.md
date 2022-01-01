@@ -1,13 +1,19 @@
 #  Changes
 
 ## v1.0.2
-- Dark mode for the start page
-- More optimization for lower energy usage
-- Added exit button for the history view controller
-- Started working on preference
-- Changed the color of `HoverButton`
-- Pressing `CMD + OPT + n` will pause all videos that are playing in current tab and switch to the next tab
-- When switching and creating a new tab, a black screen will appear (Only works when using keyboard shortcuts) ( You can disable this feature via preferences)
+**Commit 2:**
+    - Fixed a small mistake in the auto updater
+    - Improved tab switching
+    - Fixed a few bugs and crashes
+    - Improvments in CPU power and battery life
+**Commit 1:**
+    - Dark mode for the start page
+    - More optimization for lower energy usage
+    - Added exit button for the history view controller
+    - Started working on preference
+    - Changed the color of `HoverButton`
+    - Pressing `CMD + OPT + n` will pause all videos that are playing in current tab and switch to the next tab
+    - When switching and creating a new tab, a black screen will appear (Only works when using keyboard shortcuts) ( You can disable this feature via preferences)
 
 ## v1.0.1 ( **Released** )
 - Double Click ( Maximize Window )

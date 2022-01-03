@@ -29,6 +29,8 @@ import WebKit
     @objc func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView
     
     @objc func mubWebViewWillCloseTab()
+    
+    @objc optional func mubWebView(_ webView: MAWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void)
 }
 
 /// The MAWebView, subclass of WKWebView
@@ -84,6 +86,10 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.delegate?.mubWebViewWillCloseTab()
     }
     
+    public func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
+        self.delegate?.mubWebView?(webView as! MAWebView, runOpenPanelWith: parameters, initiatedByFrame: frame, completionHandler: completionHandler)
+    }
+    
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
         if let response = navigationResponse.response as? HTTPURLResponse {
@@ -106,6 +112,8 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                             
                             self.window?.beginSheet(mainWindow, completionHandler: { _ in
                             })
+                            
+                            mainWindow.close()
                             
                             downloader.download(from: response.url!, tourl: filePath!)
                         }

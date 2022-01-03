@@ -84,28 +84,35 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     override func viewDidAppear() {
         super.viewDidAppear()
         window = view.window!
+        
+        // Setup the buttons
         styleElements()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup the tab variable
         self.tab = self.windowController.tabViewController
         
-        searchField.setFrameSize(NSSize(width: 100, height: searchField.frame.height))
+        // Add the `webView` to the `webContentView`
         self.webView = MAWebView(frame: self.webContentView.frame, configuration: self.webConfigurations)
-        
         self.webContentView.addSubview(self.webView!)
-        
         self.webView?.autoresizingMask = [.width, .height]
         
+        // Remove the cancle and search buttons from the searchfield
         if let cell = searchField.cell as? NSSearchFieldCell {
             cell.searchButtonCell?.isTransparent = true
             cell.cancelButtonCell?.isTransparent = true
         }
         
-        refreshButton.cornerRadius = 10
+        // Configure the elements
         configureElements()
         
+        
+        // Check if the view controller is a popup or a normal view controller
+        // If it's a normal view controller, we will load the startpage
+        // If it's not, the webview will automatically load the URL, so we don't have to worry
         if loadURL == true {
             let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
             webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
@@ -114,10 +121,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             mubWebView(self.webView!, titleChanged: self.webView!.title!)
         }
         
+        // If we don't set up this property, we will most likely get an error
         self.website = URL(string: "https://www.google.com")!
+        
+        // Configure the popover
         tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
-        
+        tabsPopover.contentViewController = MATabViewController(windowController: windowController)
     }
     
     // Style the elements ( buttons, searchfields )
@@ -127,6 +137,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         forwardButtonOutlet.changeTint = true
         refreshButton.changeTint = true
         createNewTabButton.changeTint = true
+        refreshButton.cornerRadius = 10
     }
     
     // Configure the elements ( buttons, searchfields )
@@ -141,79 +152,86 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Buttons
     
     @IBAction func tabsPopoverButton(_ sender: NSButton) {
-        if tabsPopover.isShown {
-            tabsPopover.close()
-        } else {
-            tabsPopover.contentViewController = MATabViewController(windowController: windowController)
-            
-            tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
-        }
+        // If the popover is shown, close it, Vice Versa
+        tabsPopover.isShown ? tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY) : tabsPopover.close()
     }
     
     @IBAction func backButton(_ sender: Any) {
+        // If the webView can go back, go back
         if webView!.canGoBack { webView!.goBack() }
     }
     
     @IBAction func forwardButton(_ sender: Any) {
+        // If the webView can go forward, go forward
         if webView!.canGoForward { webView!.goForward() }
     }
     
     @IBAction func refreshButton(_ sender: NSButton) {
+        // If there is a reload icon, reload the page and display the X icon
         if sender.image == NSImage(named: NSImage.refreshTemplateName) {
             webView!.reload()
             sender.image = NSImage(named: NSImage.stopProgressTemplateName)
-        } else {
+        
+        // If there is a X icon, stop the webpage from loading
+        } else if sender.image == NSImage(named: NSImage.stopProgressTemplateName) {
             webView!.stopLoading()
             sender.image = NSImage(named: NSImage.refreshTemplateName)
         }
     }
     
     @IBAction func createNewTab(_ sender: Any) {
-        self.blackView.isHidden = false
-        
+        // Create an empty tab item
         let tabItem = NSTabViewItem(viewController: NSViewController())
+        // Configre the tab item
         tabItem.viewController = MAViewController(tabItem, windowCNTRL: self.windowController)
         
+        // Add the tabItem to the tabViewController
         tab.addTabViewItem(tabItem)
         
+        // Open the new tab
         tab.selectedTabViewItemIndex = tab.tabViewItems.count-1
-        
-        self.blackView.isHidden = true
     }
     
     func checkButtons() {
         if let webView = webView {
-            if webView.canGoBack {
-                backButtonOutlet.isEnabled = true
-            } else {
-                backButtonOutlet.isEnabled = false
-            }
             
-            if webView.canGoForward {
-                forwardButtonOutlet.isEnabled = true
-            } else {
-                forwardButtonOutlet.isEnabled = false
-            }
+            // If the webView can go back, enable the back button
+            webView.canGoBack ? (backButtonOutlet.isEnabled = true) : (backButtonOutlet.isEnabled = false)
+            
+            // If the webView can go forward, enable the back forward
+            webView.canGoForward ? (forwardButtonOutlet.isEnabled = true) : (forwardButtonOutlet.isEnabled = false)
         }
     }
     
     // MARK: - History Functions
     
     func parseHistoryJSON() -> [MAHistoryElement]? {
+        // Read the file
         let fileContents = MAFile(path: MAHistoryViewController.path!).read()
+        
+        // Decode the file
         let decodedJSON = try? JSONDecoder().decode([MAHistoryElement].self, from: fileContents.data(using: .utf8)!)
         
+        // Return the decoded JSON
         return decodedJSON
     }
     
     func addItem(website: String, address: String) {
+        // If the history.json file doesn't exist, create an empty file
         createHistoryFileIfNotExists()
+        
+        // Get the JSON
         var historyJSON = parseHistoryJSON()
+        
+        // Create a new JSON Property
         var newHistoryJSON: [MAHistoryElement] = historyJSON!
+        
+        // Add a new item to the new JSON property
         let newItem = MAHistoryElement(website: website, address: address)
         newHistoryJSON.append(newItem)
         historyJSON = newHistoryJSON
         
+        // Write the new JSON property
         do {
             let data = try JSONEncoder().encode(newHistoryJSON)
             try data.write(to: MAHistoryViewController.path!)
@@ -224,6 +242,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func addHistoryEntry() {
         if let webView = webView {
+            // add a new item to the history JSON
             addItem(website: webView.title!, address: webView.url!.absoluteString)
         }
     }
@@ -248,15 +267,43 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - webView Functions
     
-    func mubWebView(_ webView: MAWebView, urlDidChange url: URL?) {
-        guard let url = url else { return }
+    func mubWebView(_ webView: MAWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
+        // Create the file panel
+        let dialog = NSOpenPanel()
         
-        updateWebsiteURL()
-        self.website = url
-        checkButtons()
+        // Configure the NSOpenPanel
+        dialog.allowsMultipleSelection = parameters.allowsMultipleSelection
+        dialog.canChooseDirectories = parameters.allowsDirectories
+        
+        
+        // Show the file panel
+        dialog.beginSheetModal(for: self.view.window!) { result in
+            // If the user uploads a file complete
+            if result == .OK {
+                if let url = dialog.url {
+                    // Upload the file url to the webpage
+                    completionHandler([url])
+                }
+            } else {
+                // If the user clicks cancle
+                self.complete(nil)
+            }
+        }
+    }
+    
+    func mubWebView(_ webView: MAWebView, urlDidChange url: URL?) {
+        if let url = url {
+            // Update the search field URL
+            updateWebsiteURL()
+            // Set the website to be equal to the new URL
+            self.website = url
+            // Check if we should enable one of the buttons
+            checkButtons()
+        }
     }
     
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
+        // Create a new tab and open it
         let tabItem = NSTabViewItem(viewController: NSViewController())
         tabItem.viewController = MAViewController(config: configuration, loadURL: false, tabItem, windowCNTRL: self.windowController)
         
@@ -264,29 +311,48 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         tab.selectedTabViewItemIndex = tab.tabViewItems.count-1
         
+        // Return the new tab's webView
         return (tabItem.viewController as! MAViewController).webView!
     }
     
     func mubWebView(_ webView: MAWebView, estimatedProgress progress: Double) {
+        // Make the progress indicator visible
         progressIndicator.isHidden = false
+        
+        // Change the refresh button's icon to X mark
         refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
+        
+        // Set the value of the progress indicator
         progressIndicator.doubleValue = (progress * 100) + 10
+        
+        // Increase the value by 50
         progressIndicator.increment(by: 50)
         
+        // Set it to use threaded animations
         progressIndicator.usesThreadedAnimation = true
+        
+        // If the progress indicators value is 100,
         if progressIndicator.doubleValue == 100 {
+            // Set the value to 0
             progressIndicator.doubleValue = 0
+            // Hide the progress indicator
             progressIndicator.isHidden = true
+            // Change the icon of the refresh button to the refresh icon
             refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
+            // Check if we should disable or enable any buttons
             checkButtons()
         }
     }
     
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
+        
+        // Set the `websiteTitle` to the new title
         websiteTitle.stringValue = title
-        self.title = title
+        
+        // Set the current tab item's title to the new title
         tabViewItem?.label = title
         
+        // Get the favicon of the website
         guard let webViewURL = webView.url?.absoluteString else { return }
         let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
         
@@ -303,21 +369,27 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     @IBAction func vcclosetabm(_ sender: Any?) {
-        
+        // Make the webView load "about:blank"
         self.webView?.load(URLRequest(url: URL(string: "about:blank")!))
         
+        // Remove all the observers on the webview
         self.webView?.removeWebview()
+        // Remove from the superview
         self.webView?.removeFromSuperview()
+        // Make it nil
         self.webView = nil
         
+        // Remove the tab item
         tab.removeChild(at: tab.selectedTabViewItemIndex)
     }
     
     func mubWebViewWillCloseTab() {
-        tab.tabViewItems.remove(at: tab.selectedTabViewItemIndex)
+        vcclosetabm(nil)
     }
     
     func updateWebsiteURL() {
+        
+        // Highlight the searchfield value
         guard let url = self.webView!.url else { return }
         
         let attribute = [ NSAttributedString.Key.foregroundColor: NSColor.gray ]
@@ -351,26 +423,37 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        // Update the URL of the search field
         updateWebsiteURL()
+        // Update the state of the back and forward buttons
         checkButtons()
     }
     
     
     
     func mubWebView(_ webView: MAWebView, didFinishLoading url: URL?) {
+        // Add a new item into the history
         addHistoryEntry()
+        // Update the state of the back and forward buttons
         checkButtons()
     }
     
     // MARK: - Search Field
     @IBAction func searchFieldAction(_ sender: Any) {
+        // If the URL starts with 'malvon?'
         if searchField.stringValue.starts(with: "malvon?") {
             let URL = Bundle.main.url(forResource: searchField.stringValue.string("malvon?"), withExtension: "html")!
             webView!.loadFileURL(URL, allowingReadAccessTo: URL)
+        
+        // If the URL starts with 'file'
         } else if URL(string: searchField.stringValue)?.scheme == "file" {
             webView!.loadFileURL(URL(string: searchField.stringValue)!, allowingReadAccessTo: URL(string: searchField.stringValue)!)
+        
+        // If the URL is a valid URL
         } else if searchField.stringValue.isValidURL {
             webView!.load(URLRequest(url: MAURL(URL(string: searchField.stringValue)!).fix()))
+            
+        // If it's none of the above
         } else {
             webView!.load(URLRequest(url: URL(string: "https://www.google.com/search?client=Malvon&q=\(searchField.stringValue.encodeToURL)")!))
         }
@@ -506,8 +589,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Tab Menu Items
     
     func switchTo(tab number: Int, _ pauses: Bool = false) {
-        self.blackView.isHidden = false
-        
         if number <= tab.tabViewItems.count-1 {
             
             let properties = AppProperties()
@@ -517,8 +598,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             }
             tab.selectedTabViewItemIndex = number
         }
-        
-        self.blackView.isHidden = true
     }
     
     @IBAction func tab1(_ sender: Any?) {

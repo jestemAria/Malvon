@@ -1,6 +1,9 @@
 #  Changes
 
 ## v1.0.2
+**Commit 3:**
+    - Added NSOpenFile for file uploading
+    - Commented the code
 **Commit 2:**
     - Fixed a small mistake in the auto updater
     - Improved tab switching

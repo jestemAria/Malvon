@@ -3,7 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-28.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -14,11 +14,11 @@ public enum path {
 
 public class MAPaths {
     let path: path
-    
+
     public init(_ path: path) {
         self.path = path
     }
-    
+
     public func get() -> URL? {
         if self.path == .data {
             do {

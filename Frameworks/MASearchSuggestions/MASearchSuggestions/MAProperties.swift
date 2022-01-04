@@ -7,6 +7,6 @@
 
 import Foundation
 
-public struct MAProperties {
+public enum MAProperties {
     static let cornerRadius: CGFloat = 7
 }

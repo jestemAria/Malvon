@@ -8,7 +8,6 @@
 import XCTest
 
 class MalvonUITestsLaunchTests: XCTestCase {
-    
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

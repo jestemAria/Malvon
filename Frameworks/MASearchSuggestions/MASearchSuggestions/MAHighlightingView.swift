@@ -3,14 +3,14 @@
 //  MASearchSuggestions
 //
 //  Created by Ashwin Paudel on 2021-01-04.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
 
 class MAHighlightingView: NSView {
     var isHighlighted = false
-    
+
     // Draw with or without a highlight style
     override func draw(_ dirtyRect: NSRect) {
         layer?.cornerRadius = MAProperties.cornerRadius
@@ -27,7 +27,7 @@ class MAHighlightingView: NSView {
             __NSRectFillUsingOperation(dirtyRect, .sourceOver)
         }
     }
-    
+
     /* Custom highlighted property setter because when the property changes we need to redraw and update the containing text fields.
      */
     func setHighlighted(_ highlighted: Bool) {

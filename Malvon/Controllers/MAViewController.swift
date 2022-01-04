@@ -3,21 +3,20 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-11-29.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
-import MASearchSuggestions
 import Cocoa
+import MASearchSuggestions
+import MATools
 import MAWebView
 import WebKit
-import MATools
 
 class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelegate {
     // MARK: - Elements
     
-    
     // webView! Element
-    @IBOutlet weak var webContentView: NSView!
+    @IBOutlet var webContentView: NSView!
     var webView: MAWebView?
     
     // Search Field and Progress Indicator Elements
@@ -54,12 +53,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     private var loadURL = true
     
     // Privacy
-    @IBOutlet weak var blackView: NSBox!
+    @IBOutlet var blackView: NSBox!
     
     // The window properties
     public var windowController: MAWindowController
     public var tabViewItem: NSTabViewItem?
-    public var tab: NSTabViewController = NSTabViewController()
+    public var tab: NSTabViewController = .init()
+
     // MARK: - Setup Functions
     
     init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, windowCNTRL: MAWindowController) {
@@ -77,6 +77,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         super.init(nibName: "MAViewController", bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -93,12 +94,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         super.viewDidLoad()
         
         // Setup the tab variable
-        self.tab = self.windowController.tabViewController
+        tab = windowController.tabViewController
         
         // Add the `webView` to the `webContentView`
-        self.webView = MAWebView(frame: self.webContentView.frame, configuration: self.webConfigurations)
-        self.webContentView.addSubview(self.webView!)
-        self.webView?.autoresizingMask = [.width, .height]
+        webView = MAWebView(frame: webContentView.frame, configuration: webConfigurations)
+        webContentView.addSubview(webView!)
+        webView?.autoresizingMask = [.width, .height]
         
         // Remove the cancle and search buttons from the searchfield
         if let cell = searchField.cell as? NSSearchFieldCell {
@@ -109,7 +110,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Configure the elements
         configureElements()
         
-        
         // Check if the view controller is a popup or a normal view controller
         // If it's a normal view controller, we will load the startpage
         // If it's not, the webview will automatically load the URL, so we don't have to worry
@@ -118,16 +118,16 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
             updateWebsiteURL()
         } else {
-            mubWebView(self.webView!, titleChanged: self.webView!.title!)
+            mubWebView(webView!, titleChanged: webView!.title!)
         }
         
         // If we don't set up this property, we will most likely get an error
-        self.website = URL(string: "https://www.google.com")!
+        website = URL(string: "https://www.google.com")!
         
         // Configure the popover
         tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
-        tabsPopover.contentViewController = MATabViewController(windowController: windowController)
+        tabsPopover.contentViewController = MATabViewController(windowController: windowController, tabViewItem!)
     }
     
     // Style the elements ( buttons, searchfields )
@@ -153,7 +153,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     @IBAction func tabsPopoverButton(_ sender: NSButton) {
         // If the popover is shown, close it, Vice Versa
-        tabsPopover.isShown ? tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY) : tabsPopover.close()
+        tabsPopover.isShown ? tabsPopover.close() : tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -172,7 +172,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             webView!.reload()
             sender.image = NSImage(named: NSImage.stopProgressTemplateName)
         
-        // If there is a X icon, stop the webpage from loading
+            // If there is a X icon, stop the webpage from loading
         } else if sender.image == NSImage(named: NSImage.stopProgressTemplateName) {
             webView!.stopLoading()
             sender.image = NSImage(named: NSImage.refreshTemplateName)
@@ -183,7 +183,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Create an empty tab item
         let tabItem = NSTabViewItem(viewController: NSViewController())
         // Configre the tab item
-        tabItem.viewController = MAViewController(tabItem, windowCNTRL: self.windowController)
+        tabItem.viewController = MAViewController(tabItem, windowCNTRL: windowController)
         
         // Add the tabItem to the tabViewController
         tab.addTabViewItem(tabItem)
@@ -194,7 +194,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func checkButtons() {
         if let webView = webView {
-            
             // If the webView can go back, enable the back button
             webView.canGoBack ? (backButtonOutlet.isEnabled = true) : (backButtonOutlet.isEnabled = false)
             
@@ -261,8 +260,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                     print("\(error.localizedDescription)")
                 }
             }
-        } else {
-        }
+        } else {}
     }
     
     // MARK: - webView Functions
@@ -275,9 +273,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         dialog.allowsMultipleSelection = parameters.allowsMultipleSelection
         dialog.canChooseDirectories = parameters.allowsDirectories
         
-        
         // Show the file panel
-        dialog.beginSheetModal(for: self.view.window!) { result in
+        dialog.beginSheetModal(for: view.window!) { result in
             // If the user uploads a file complete
             if result == .OK {
                 if let url = dialog.url {
@@ -296,7 +293,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             // Update the search field URL
             updateWebsiteURL()
             // Set the website to be equal to the new URL
-            self.website = url
+            website = url
             // Check if we should enable one of the buttons
             checkButtons()
         }
@@ -305,7 +302,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
         // Create a new tab and open it
         let tabItem = NSTabViewItem(viewController: NSViewController())
-        tabItem.viewController = MAViewController(config: configuration, loadURL: false, tabItem, windowCNTRL: self.windowController)
+        tabItem.viewController = MAViewController(config: configuration, loadURL: false, tabItem, windowCNTRL: windowController)
         
         tab.addTabViewItem(tabItem)
         
@@ -345,7 +342,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
-        
         // Set the `websiteTitle` to the new title
         websiteTitle.stringValue = title
         
@@ -370,14 +366,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     @IBAction func vcclosetabm(_ sender: Any?) {
         // Make the webView load "about:blank"
-        self.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+        webView?.load(URLRequest(url: URL(string: "about:blank")!))
         
         // Remove all the observers on the webview
-        self.webView?.removeWebview()
+        webView?.removeWebview()
         // Remove from the superview
-        self.webView?.removeFromSuperview()
+        webView?.removeFromSuperview()
         // Make it nil
-        self.webView = nil
+        webView = nil
         
         // Remove the tab item
         tab.removeChild(at: tab.selectedTabViewItemIndex)
@@ -388,16 +384,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func updateWebsiteURL() {
-        
         // Highlight the searchfield value
-        guard let url = self.webView!.url else { return }
+        guard let url = webView!.url else { return }
         
-        let attribute = [ NSAttributedString.Key.foregroundColor: NSColor.gray ]
+        let attribute = [NSAttributedString.Key.foregroundColor: NSColor.gray]
         
         if url.scheme == "file" {
-            
             if url.absoluteString.starts(with: Bundle.main.bundleURL.absoluteString) == true {
-                
                 let attrScheme = NSMutableAttributedString(string: "malvon?", attributes: attribute)
                 let attrHost = NSAttributedString(string: url.absoluteString.fileName)
                 
@@ -429,8 +422,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         checkButtons()
     }
     
-    
-    
     func mubWebView(_ webView: MAWebView, didFinishLoading url: URL?) {
         // Add a new item into the history
         addHistoryEntry()
@@ -439,21 +430,22 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     // MARK: - Search Field
+
     @IBAction func searchFieldAction(_ sender: Any) {
         // If the URL starts with 'malvon?'
         if searchField.stringValue.starts(with: "malvon?") {
             let URL = Bundle.main.url(forResource: searchField.stringValue.string("malvon?"), withExtension: "html")!
             webView!.loadFileURL(URL, allowingReadAccessTo: URL)
         
-        // If the URL starts with 'file'
+            // If the URL starts with 'file'
         } else if URL(string: searchField.stringValue)?.scheme == "file" {
             webView!.loadFileURL(URL(string: searchField.stringValue)!, allowingReadAccessTo: URL(string: searchField.stringValue)!)
         
-        // If the URL is a valid URL
+            // If the URL is a valid URL
         } else if searchField.stringValue.isValidURL {
             webView!.load(URLRequest(url: MAURL(URL(string: searchField.stringValue)!).fix()))
             
-        // If it's none of the above
+            // If it's none of the above
         } else {
             webView!.load(URLRequest(url: URL(string: "https://www.google.com/search?client=Malvon&q=\(searchField.stringValue.encodeToURL)")!))
         }
@@ -590,11 +582,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func switchTo(tab number: Int, _ pauses: Bool = false) {
         if number <= tab.tabViewItems.count-1 {
-            
-            let properties = AppProperties()
             if pauses {
                 let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
-                self.webView!.evaluateJavaScript(stopVideoScript, completionHandler:nil)
+                webView!.evaluateJavaScript(stopVideoScript, completionHandler: nil)
             }
             tab.selectedTabViewItemIndex = number
         }
@@ -635,7 +625,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBAction func tab9(_ sender: Any?) {
         switchTo(tab: 8)
     }
-    
     
     @IBAction func tab1PAUSE(_ sender: Any?) {
         switchTo(tab: 0, true)

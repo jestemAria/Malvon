@@ -3,7 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-29.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -11,7 +11,6 @@ import MATools
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     let window = MAWindowController()
     
     func askForPermissions() -> Bool {
@@ -36,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         let newestVersion = MAURL("https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/version.txt").contents().removeWhitespace
         
-        if MA_APP_VERSION != newestVersion && !newestVersion.isEmpty {
+        if MA_APP_VERSION != newestVersion, !newestVersion.isEmpty {
             if askForPermissions() {
                 let task = Process()
                 task.launchPath = "/usr/bin/open"
@@ -76,14 +75,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesController: NSWindowController?
     
     @IBAction func showPreferences(_ sender: Any) {
-        if (preferencesController == nil) {
+        if preferencesController == nil {
             let storyboard = NSStoryboard(name: NSStoryboard.Name("Preferences"), bundle: nil)
             preferencesController = storyboard.instantiateInitialController() as? NSWindowController
         }
         
-        if (preferencesController != nil) {
+        if preferencesController != nil {
             preferencesController!.showWindow(sender)
         }
     }
 }
-

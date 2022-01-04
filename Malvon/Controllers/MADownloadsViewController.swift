@@ -3,147 +3,118 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-28.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
 import MATools
 
 class MADownloadsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+    // The TableView that will display the items
     @IBOutlet var tableView: NSTableView!
+    
+    // The SearchField
     @IBOutlet var searchField: NSSearchField!
-    var downloadJSON = [MADownloadElement]()
+    
+    // All the items in the download history
+    var downloadItems = [MADownloadElement]()
+    
+    // The Path to the JSON File
     static let path = MAPaths(.data).get()?.appendingPathComponent("downloads.json")
+    
+    // The menu item for the TableView
+    lazy var tableViewMenu: NSMenu = {
+        let menu = NSMenu()
+        
+        menu.addItem(withTitle: "Show In Finder", action: #selector(showInFinder), keyEquivalent: "")
+        menu.addItem(withTitle: "Copy Download Address", action: #selector(copyDownloadAddress), keyEquivalent: "")
+        
+        menu.addItem(.separator())
+        
+        menu.addItem(withTitle: "Remove from Downloads", action: #selector(removeFromDownloads), keyEquivalent: "")
+        
+        return menu
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createFileIfNotExists()
-        downloadJSON = parseJSON()!
+        // Read the json file
+        downloadItems = parseItems()
         
-        setUpMenuItems()
+        // Configure the table view
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        // Configure the table view menu
+        tableView.menu = tableViewMenu
+        
+        // Configure the double click
+        tableView.doubleAction = #selector(showInFinder)
+        
+        // Configure the delegates
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Reload the data
         tableView.reloadData()
     }
     
-    // MARK: - Table View
+    // MARK: - Menu Actions
     
-    func setUpMenuItems() {
-        let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Open", action: #selector(openURL), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Copy File Path", action: #selector(copyLocation), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Copy Download URL", action: #selector(copyAddress), keyEquivalent: ""))
-        menu.addItem(.separator())
-        menu.addItem(NSMenuItem(title: "Remove From Download", action: #selector(deleteItem), keyEquivalent: ""))
-        tableView.menu = menu
-        tableView.doubleAction = #selector(openURL)
-    }
+    @objc func showInFinder() {}
+    
+    @objc func copyDownloadAddress() {}
+    
+    @objc func removeFromDownloads() {}
+    
+    // MARK: - TableView
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return downloadJSON.count
+        // Return the number of items in the downloadItems
+        return downloadItems.count
     }
     
-    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DownloadsItemCell"), owner: self) as? MADownloadsTableViewCell else { return nil }
+        // Get an instance of the cell
+        guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView else { return nil }
         
-        cell.MAFileName.stringValue = downloadJSON[row].fileName
-        cell.MALocation.stringValue = downloadJSON[row].fileLocation
+        // Check if it's the FileName cell
+        if tableColumn!.identifier.rawValue == "downloadsViewControlerKeypath_FILENAME" {
+            cell.textField?.stringValue = downloadItems[row].fileName
         
+            // Check if it's the FileLocation cell
+        } else if tableColumn!.identifier.rawValue == "downloadsViewControlerKeypath_FILELOCATION" {
+            cell.textField?.stringValue = downloadItems[row].fileLocation
+        }
+        
+        // Return the cell
         return cell
     }
     
-    // MARK: - Download Items
+    // MARK: - JSON
     
     func refreshTableView() {
-        downloadJSON = parseJSON()!
+        // Update the downloadItems
+        downloadItems = parseItems()
+        // Reload the tableView
         tableView.reloadData()
     }
     
-    func parseJSON() -> [MADownloadElement]? {
-        let fileContents = MAFile(path: MADownloadsViewController.path!).read()
-        let decodedJSON = try? JSONDecoder().decode([MADownloadElement].self, from: fileContents.data(using: .utf8)!)
+    func parseItems() -> [MADownloadElement] {
+        // Get an instace of the MAFile
+        let file = MAFile(path: MAHistoryViewController.path!)
         
+        // Create a file if it doesn't exist
+        file.createFileIfNotExists(contents: "[]")
+        
+        // Read the file contents
+        let fileContents = file.read()
+
+        // Decode the JSON
+        let decodedJSON = try! JSONDecoder().decode([MADownloadElement].self, from: fileContents.data(using: .utf8)!)
+        
+        // Return the decoded JSON
         return decodedJSON
     }
-    
-    func createFileIfNotExists() {
-        if let pathComponent = MAHistoryViewController.path {
-            let filePath = pathComponent.path
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: filePath) {
-            } else {
-                let str = "[]"
-                do {
-                    try str.write(to: MADownloadsViewController.path!, atomically: true, encoding: String.Encoding.utf8)
-                } catch {
-                    print("errrr:::: \(error.localizedDescription)")
-                }
-            }
-        } else {
-        }
-    }
-    
-    // MARK: - Buttons
-    
-    @IBAction func closeButton(_ sender: Any) {
-        self.view.window?.close()
-    }
-    
-    
-    @IBAction func clearDownload(_ sender: Any) {
-        let emptyDownloadJSON = [MADownloadElement]()
-        
-        do {
-            let data = try JSONEncoder().encode(emptyDownloadJSON)
-            try data.write(to: MADownloadsViewController.path!)
-            tableView.reloadData()
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        refreshTableView()
-    }
-    
-    // MARK: - TableView Menu Actions
-    
-    @objc func openURL() {
-        // TODO: Handle Custom URLS
-    }
-    
-    @objc func copyLocation() {
-        let newDownloadJSON: [MADownloadElement] = downloadJSON
-        let url = newDownloadJSON[tableView.clickedRow].fileLocation
-        
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(url, forType: .string)
-        NSPasteboard.general.string(forType: .string)
-        view.window?.close()
-    }
-    
-    @objc func copyAddress() {
-        let newDownloadJSON: [MADownloadElement] = downloadJSON
-        let url = newDownloadJSON[tableView.clickedRow].fileAddress
-        
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(url, forType: .string)
-        NSPasteboard.general.string(forType: .string)
-        view.window?.close()
-    }
-    
-    @objc func deleteItem() {
-        var newDownloadJSON: [MADownloadElement] = downloadJSON
-        newDownloadJSON.reverse()
-        newDownloadJSON.remove(at: tableView.clickedRow)
-        
-        do {
-            let data = try JSONEncoder().encode(newDownloadJSON)
-            try data.write(to: MADownloadsViewController.path!)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        refreshTableView()
-    }
-    
 }

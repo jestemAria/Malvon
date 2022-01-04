@@ -3,16 +3,15 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-31.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
 
 class MAPrefsTabViewController: NSViewController {
-    
     var properties = AppProperties()
     
-    @IBOutlet weak var showTabBarButton: NSButton!
+    @IBOutlet var showTabBarButton: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -22,7 +21,6 @@ class MAPrefsTabViewController: NSViewController {
     func setState(_ button: NSButton, _ state: NSControl.StateValue) {
         button.state = state
     }
-    
     
     func relaunchAlert() {
         let alert = NSAlert()
@@ -44,11 +42,8 @@ class MAPrefsTabViewController: NSViewController {
             task.arguments = args
             task.launch()
             NSApplication.shared.terminate(nil)
-        } else {
-            
-        }
+        } else {}
     }
-    
     
     @IBAction func showsTabBar(_ sender: NSButton) {
         if properties.showsTabBar == true {

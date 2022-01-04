@@ -3,13 +3,12 @@
 //  MalvonUITests
 //
 //  Created by Ashwin Paudel on 2021-12-29.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import XCTest
 
 class MalvonUITests: XCTestCase {
-    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         

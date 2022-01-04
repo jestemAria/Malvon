@@ -3,13 +3,12 @@
 //  MASearchSuggestions
 //
 //  Created by Ashwin Paudel on 2021-01-04.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
 
 class MARoundedCornersView: NSView {
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
     }

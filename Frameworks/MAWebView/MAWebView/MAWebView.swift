@@ -3,9 +3,8 @@
 //  MAWebView
 //
 //  Created by Ashwin Paudel on 2021-11-29.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
-
 
 import Cocoa
 import WebKit
@@ -61,7 +60,7 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.removeFromSuperview()
     }
     
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
             self.delegate?.mubWebView?(self, estimatedProgress: self.estimatedProgress)
         } else if keyPath == "URL" {
@@ -75,9 +74,7 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.delegate?.mubWebView?(webView as! MAWebView, didFinishLoading: webView.url)
     }
     
-    
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        
         return self.delegate?.mubWebView(webView as! MAWebView, createWebViewWith: configuration, navigationAction: navigationAction)
     }
     
@@ -91,7 +88,6 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        
         if let response = navigationResponse.response as? HTTPURLResponse {
             if let fields = response.allHeaderFields["Content-Type"] as? String {
                 if fields.contains("text/html") {
@@ -100,7 +96,7 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                     panel.nameFieldStringValue = response.suggestedFilename!
                     DownloaderProgress.shardInstance.isFinished = false
                     panel.canCreateDirectories = true
-                    panel.beginSheetModal(for: self.window!) { [self] (res) in
+                    panel.beginSheetModal(for: self.window!) { [self] res in
                         if res == .OK {
                             DownloaderProgress.shardInstance.fileName = panel.nameFieldStringValue
                             
@@ -108,7 +104,6 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                             let ProgView = MAWebViewDownloadingViewController(nibName: "MAWebViewDownloadingViewController", bundle: frameworkBundle)
                             
                             let mainWindow = NSWindow(contentViewController: ProgView)
-                            
                             
                             self.window?.beginSheet(mainWindow, completionHandler: { _ in
                             })

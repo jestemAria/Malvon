@@ -3,7 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-11-30.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 // Code From: https://github.com/fancymax/HoverButton
@@ -70,7 +70,7 @@ class HoverButton: NSButton {
             if self.cell!.isHighlighted {
                 self.layer?.cornerRadius = self.cornerRadius
                 
-                if changeTint {
+                if self.changeTint {
                     self.contentTintColor = .systemGray
                 } else {
                     self.layer?.backgroundColor = self.pressedBackgroundColor?.cgColor
@@ -78,15 +78,14 @@ class HoverButton: NSButton {
             } else {
                 self.layer?.cornerRadius = self.cornerRadius
                 
-                if changeTint {
+                if self.changeTint {
                     self.contentTintColor = .systemGray
                 } else {
                     self.layer?.backgroundColor = self.hoveredBackgroundColor?.cgColor
                 }
             }
         } else {
-            
-            if changeTint {
+            if self.changeTint {
                 self.contentTintColor = .labelColor
             } else {
                 self.layer?.backgroundColor = self.backgroundColor?.cgColor

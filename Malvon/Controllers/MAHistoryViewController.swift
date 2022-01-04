@@ -3,7 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-01.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -94,8 +94,9 @@ class MAHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     @IBAction func closeButton(_ sender: Any) {
-        self.view.window?.close()
+        view.window?.close()
     }
+
     // MARK: - History Items
     
     func refreshTableView() {

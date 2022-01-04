@@ -8,12 +8,10 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    
     @IBOutlet var textView: NSTextView!
     
     // Parameters
     public let newFeatures = URL(string: "https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/update_feature_list.txt")!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +31,7 @@ class ViewController: NSViewController {
         print(downloadLocation)
         
         // 1. Download the zip file
-        Downloader.loadFileAsync(url: newAppFile, dest: downloadLocation) { [self] (path, error) in
+        Downloader.loadFileAsync(url: newAppFile, dest: downloadLocation) { [self] path, error in
             print("Downloaded File \(path)")
             unzip(path: downloadLocation.path, destination: dataDirectory()!.appendingPathComponent("Output").path)
             do {
@@ -94,7 +92,7 @@ class ViewController: NSViewController {
         }
         
         let resultData = pipe.fileHandleForReading.readDataToEndOfFile()
-        let result = String (data: resultData, encoding: .utf8) ?? ""
+        let result = String(data: resultData, encoding: .utf8) ?? ""
         print(result)
         
         return process.terminationStatus <= 1
@@ -105,8 +103,6 @@ class ViewController: NSViewController {
             // Update the view, if already loaded.
         }
     }
-    
-    
 }
 
 extension URL {
@@ -122,59 +118,45 @@ extension URL {
 
 extension String {
     var removeWhitespace: String {
-        self.trimmingCharacters(in: .whitespacesAndNewlines)
+        trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
 // MARK: - Downloader
 
 // https://stackoverflow.com/a/56580009
-class Downloader {
+enum Downloader {
     static func loadFileAsync(url: URL, dest: URL, completion: @escaping (String?, Error?) -> Void)
     {
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         let destinationUrl = dest
         
-        if FileManager().fileExists(atPath: destinationUrl.path)
-        {
+        if FileManager().fileExists(atPath: destinationUrl.path) {
             print("File already exists [\(destinationUrl.path)]")
             completion(destinationUrl.path, nil)
-        }
-        else
-        {
+        } else {
             let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
-            let task = session.dataTask(with: request, completionHandler:
-                                            {
+            let task = session.dataTask(with: request, completionHandler: {
                 data, response, error in
-                if error == nil
-                {
-                    if let response = response as? HTTPURLResponse
-                    {
-                        if response.statusCode == 200
-                        {
-                            if let data = data
-                            {
+                if error == nil {
+                    if let response = response as? HTTPURLResponse {
+                        if response.statusCode == 200 {
+                            if let data = data {
                                 if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
                                 {
                                     completion(destinationUrl.path, error)
-                                }
-                                else
-                                {
+                                } else {
                                     completion(destinationUrl.path, error)
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 completion(destinationUrl.path, error)
                             }
                         }
                     }
-                }
-                else
-                {
+                } else {
                     completion(destinationUrl.path, error)
                 }
             })

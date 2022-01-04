@@ -3,7 +3,7 @@
 //  MASearchSuggestions
 //
 //  Created by Ashwin Paudel on 2021-01-04.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -121,7 +121,7 @@ public class MASuggestionsWindowController: NSWindowController {
         })
         // as per the documentation, do not retain event monitors.
         // We also need to auto cancel when the window loses key status. This may be done via a mouse click in another window, or via the keyboard (cmd-~ or cmd-tab), or a notificaiton. Observing NSWindowDidResignKeyNotification catches all of these cases and the mouse down event monitor catches the other cases.
-        lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: parentWindow, queue: nil, using: { (_: Notification) -> Void in
+        lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: parentWindow, queue: nil, using: { (_: Notification) in
             // lost key status, cancel the suggestion window
             self.cancelSuggestions()
         })

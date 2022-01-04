@@ -3,20 +3,18 @@
 //  MAWebView
 //
 //  Created by Ashwin Paudel on 2021-12-27.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
 
-
 class MAWebViewDownloadingViewController: NSViewController {
+    @IBOutlet var progressIndicator: NSProgressIndicator!
     
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet var progressLabel: NSTextField!
     
-    @IBOutlet weak var progressLabel: NSTextField!
-    
-    @IBOutlet weak var percentageLabel: NSTextField!
-    @IBOutlet weak var fileNameLabel: NSTextField!
+    @IBOutlet var percentageLabel: NSTextField!
+    @IBOutlet var fileNameLabel: NSTextField!
     private var token: NSKeyValueObservation?
     private var token1: NSKeyValueObservation?
     
@@ -43,6 +41,5 @@ class MAWebViewDownloadingViewController: NSViewController {
                 self.progressLabel.stringValue = "\(Units(bytes: Int64(DownloaderProgress.shardInstance.countOfBytesReceived)).getReadableUnit()) / \(Units(bytes: Int64(DownloaderProgress.shardInstance.countOfBytesExpectedToReceive)).getReadableUnit())"
             }
         })
-        
     }
 }

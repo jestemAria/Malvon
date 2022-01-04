@@ -3,7 +3,7 @@
 //  MASearchSuggestions
 //
 //  Created by Ashwin Paudel on 29/11/2021.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 // Code From: https://github.com/geek1706/swift-google-autocomplete

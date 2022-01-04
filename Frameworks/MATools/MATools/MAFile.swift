@@ -3,7 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-28.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -12,6 +12,7 @@ public class MAFile {
     let path: String
     
     // MARK: - Initilizers
+
     public init(path: String) {
         self.path = path
     }
@@ -24,31 +25,39 @@ public class MAFile {
         self.path = path.path
     }
     
-    
     // MARK: - Public Functions
+
     @discardableResult
     public func unzip(destination: String) -> Bool {
-        return _unzip(path: path, destination: destination)
+        _unzip(path: path, destination: destination)
     }
     
     @discardableResult
     public func unzip(destination: URL) -> Bool {
-        return _unzip(path: path, destination: destination.path)
+        _unzip(path: path, destination: destination.path)
     }
     
     public func exists() -> Bool {
-        return _exists(path: path)
+        _exists(path: path)
     }
     
     public func read() -> String {
-        return _read(path: path)
+        _read(path: path)
     }
     
     public func write(_ contents: String) {
-        _write(path: self.path, contents: contents)
+        _write(path: path, contents: contents)
+    }
+    
+    /// Create a file if it doesn't exist
+    public func createFileIfNotExists(contents: String) {
+        if !exists() {
+            write(contents)
+        }
     }
     
     // MARK: - Private Functions
+
     private func _unzip(path: String, destination: String) -> Bool {
         let process = Process()
         let pipe = Pipe()
@@ -64,7 +73,7 @@ public class MAFile {
         }
         
         let resultData = pipe.fileHandleForReading.readDataToEndOfFile()
-        let result = String (data: resultData, encoding: .utf8) ?? ""
+        let result = String(data: resultData, encoding: .utf8) ?? ""
         print(result)
         
         return process.terminationStatus <= 1

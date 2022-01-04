@@ -1,6 +1,10 @@
 #  Changes
 
 ## v1.0.2
+**Commit 4:**
+    - Fixed a few mistakes
+    - Formatted Code
+    - Started re-writing the download history view controller
 **Commit 3:**
     - Added NSOpenFile for file uploading
     - Commented the code

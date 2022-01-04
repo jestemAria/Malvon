@@ -3,7 +3,7 @@
 //  Malvon
 //
 //  Created by Ashwin Paudel on 2021-12-05.
-//  Copyright © 2021 Ashwin Paudel. All rights reserved.
+//  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
 import Cocoa
@@ -12,13 +12,16 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     @IBOutlet var tableView: NSTableView!
     var windowController: MAWindowController
     var tabViewController: NSTabViewController
+    var tabViewItem: NSTabViewItem
     
-    init(windowController: MAWindowController) {
+    init(windowController: MAWindowController, _ tabViewItem: NSTabViewItem) {
         self.windowController = windowController
+        self.tabViewItem = tabViewItem
         self.tabViewController = self.windowController.tabViewController
         super.init(nibName: "MATabViewController", bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -26,8 +29,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        (self.windowController.contentViewController as? MAViewController)?.tabsPopover.performClose(nil)
-        
+        (windowController.contentViewController as? MAViewController)?.tabsPopover.performClose(nil)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -78,7 +80,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         let VC = tabViewController.tabViewItems[row].viewController as? MAViewController
         
         cell.TabIcon?.image = VC?.favicon
-        cell.TabTitle?.stringValue = VC?.title ?? "Untitled Tab"
+        cell.TabTitle?.stringValue = tabViewItem.label
         cell.TabCloseButton.tag = row
         cell.TabCloseButton.action = #selector(willPressClose(_:))
         

@@ -84,7 +84,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Add the `webView` to the `webTabView`
         webView = MAWebView(frame: webTabView.frame, configuration: webConfigurations)
         webView = getNewWebViewInstance(config: webConfigurations)
@@ -172,9 +171,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     @IBAction func createNewTab(_ sender: Any) {
+        blackView.isHidden = false
         // Create a new tab
         webView = getNewWebViewInstance()
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
+        
+        blackView.isHidden = true
     }
     
     func checkButtons() {
@@ -227,7 +229,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func addHistoryEntry() {
         if let webView = webView {
             // add a new item to the history JSON
-            addItem(website: webView.title!, address: webView.url!.absoluteString)
+            addItem(website: webView.title!, address: webView.url?.absoluteString ?? "about:blank")
         }
     }
     
@@ -296,6 +298,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, estimatedProgress progress: Double) {
+        progressIndicator.contentFilters = [CIFilter(name: "CIHueAdjust", parameters: ["inputAngle": 6])!]
+        
         // Make the progress indicator visible
         progressIndicator.isHidden = false
         
@@ -303,7 +307,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
         
         // Set the value of the progress indicator
-        progressIndicator.doubleValue = (progress * 100) + 10
+        progressIndicator.doubleValue = (progress * 100) * 2
         
         // Increase the value by 50
         progressIndicator.increment(by: 50)
@@ -311,16 +315,23 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Set it to use threaded animations
         progressIndicator.usesThreadedAnimation = true
         
-        // If the progress indicators value is 100,
         if progressIndicator.doubleValue == 100 {
-            // Set the value to 0
-            progressIndicator.doubleValue = 0
-            // Hide the progress indicator
-            progressIndicator.isHidden = true
-            // Change the icon of the refresh button to the refresh icon
-            refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
-            // Check if we should disable or enable any buttons
-            checkButtons()
+            progressIndicator.contentFilters = [CIFilter(name: "CIHueAdjust", parameters: ["inputAngle": 6.4])!]
+            // Reverse the value and change negative to positive
+            let newValue = abs((progress * 100) - 100)
+            // Set the value
+            progressIndicator.doubleValue = newValue
+            
+            if progressIndicator.doubleValue == 0 {
+                // Set the value to 0
+                progressIndicator.doubleValue = 0
+                // Hide the progress indicator
+                progressIndicator.isHidden = true
+                // Change the icon of the refresh button to the refresh icon
+                refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
+                // Check if we should disable or enable any buttons
+                checkButtons()
+            }
         }
     }
     
@@ -568,8 +579,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Tab Menu Items
     
     func switchTo(tab number: Int, _ pauses: Bool = false, closes: Bool = false) {
+        blackView.isHidden = false
         if !closes {
-            if number <= webTabView.tabViewItems.count-1 {
+            if number <= webTabView.tabViewItems.count - 1 {
                 if pauses {
                     // Run the Javascript that will pause the video
                     let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
@@ -596,6 +608,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             // Remove the tab item
             webTabView.removeTabViewItem(at: number)
         }
+        blackView.isHidden = true
     }
     
     @IBAction func tab1(_ sender: Any?) {
@@ -711,9 +724,15 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int) {
         let newWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
         webView = newWebView
+        webView?.delegate = self
         
         mubWebView(webView!, urlDidChange: webView?.url)
         mubWebView(webView!, titleChanged: webView?.title ?? "Untitled Page")
+        
+        // Set the value to 0
+        progressIndicator.doubleValue = 0
+        // Hide the progress indicator
+        progressIndicator.isHidden = true
     }
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil) -> MAWebView {

@@ -80,7 +80,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         let VC = tabViewController.tabViewItems[row].viewController as? MAViewController
         
         cell.TabIcon?.image = VC?.favicon
-        cell.TabTitle?.stringValue = tabViewItem.label
+        cell.TabTitle?.stringValue = VC!.tabViewItem!.label
         cell.TabCloseButton.tag = row
         cell.TabCloseButton.action = #selector(willPressClose(_:))
         

@@ -80,7 +80,7 @@ public class MAFile {
     }
     
     private func _exists(path: String) -> Bool {
-        let filePath = URL(string: path)!.path
+        let filePath = path
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: filePath) {
             return true

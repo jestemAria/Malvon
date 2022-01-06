@@ -127,7 +127,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Configure the popover
         tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
-        tabsPopover.contentViewController = MATabViewController(windowController: windowController, tabViewItem!)
     }
     
     // Style the elements ( buttons, searchfields )
@@ -152,6 +151,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Buttons
     
     @IBAction func tabsPopoverButton(_ sender: NSButton) {
+        // Set the content view controller
+        tabsPopover.contentViewController = MATabViewController(windowController: windowController, tabViewItem!)
+        
         // If the popover is shown, close it, Vice Versa
         tabsPopover.isShown ? tabsPopover.close() : tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
     }
@@ -402,7 +404,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         } else {
             let scheme = (url.scheme ?? "") + "://"
             let host = url.host ?? ""
-            let path = url.path
+            var path = url.path
+            let query = url.query ?? ""
+            
+            query.isEmpty ? () : (path += "?" + query)
             
             let attrPath = NSAttributedString(string: path, attributes: attribute)
             let attrHost = NSAttributedString(string: host)
@@ -580,13 +585,36 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - Tab Menu Items
     
-    func switchTo(tab number: Int, _ pauses: Bool = false) {
-        if number <= tab.tabViewItems.count-1 {
-            if pauses {
-                let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
-                webView!.evaluateJavaScript(stopVideoScript, completionHandler: nil)
+    func switchTo(tab number: Int, _ pauses: Bool = false, closes: Bool = false) {
+        if !closes {
+            if number <= tab.tabViewItems.count-1 {
+                if pauses {
+                    // Run the Javascript that will pause the video
+                    let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
+                    
+                    // Tell the webview to run that javascript
+                    webView!.evaluateJavaScript(stopVideoScript, completionHandler: nil)
+                }
+                
+                // Change the current tab to the new number
+                tab.selectedTabViewItemIndex = number
             }
-            tab.selectedTabViewItemIndex = number
+        } else {
+            // Get an instace to the viewcontroller
+            let viewController = tab.tabViewItems[number].viewController as! MAViewController
+            
+            // Make the webView load "about:blank"
+            viewController.webView?.load(URLRequest(url: URL(string: "about:blank")!))
+            
+            // Remove all the observers on the webview
+            viewController.webView?.removeWebview()
+            // Remove from the superview
+            viewController.webView?.removeFromSuperview()
+            // Make it nil
+            viewController.webView = nil
+            
+            // Remove the tab item
+            tab.removeChild(at: number)
         }
     }
     
@@ -660,5 +688,48 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     @IBAction func tab9PAUSE(_ sender: Any?) {
         switchTo(tab: 8, true)
+    }
+    
+    @IBAction func tab1CLOSE(_ sender: Any?) {
+        switchTo(tab: 0, closes: true)
+    }
+    
+    @IBAction func tab2CLOSE(_ sender: Any?) {
+        switchTo(tab: 1, closes: true)
+    }
+    
+    @IBAction func tab3CLOSE(_ sender: Any?) {
+        switchTo(tab: 2, closes: true)
+    }
+    
+    @IBAction func tab4CLOSE(_ sender: Any?) {
+        switchTo(tab: 3, closes: true)
+    }
+    
+    @IBAction func tab5CLOSE(_ sender: Any?) {
+        switchTo(tab: 4, closes: true)
+    }
+    
+    @IBAction func tab6CLOSE(_ sender: Any?) {
+        switchTo(tab: 5, closes: true)
+    }
+    
+    @IBAction func tab7CLOSE(_ sender: Any?) {
+        switchTo(tab: 6, closes: true)
+    }
+    
+    @IBAction func tab8CLOSE(_ sender: Any?) {
+        switchTo(tab: 7, closes: true)
+    }
+    
+    @IBAction func tab9CLOSE(_ sender: Any?) {
+        switchTo(tab: 8, closes: true)
+    }
+    
+    @IBAction func __tab_test_button(_ sender: Any?) {
+        let vc = tab.tabViewItems[0].viewController as! MAViewController
+        let newWebView = vc.webView!
+        webContentView.addSubview(newWebView)
+        newWebView.autoresizingMask = [.width, .height]
     }
 }

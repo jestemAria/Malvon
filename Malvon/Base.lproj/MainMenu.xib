@@ -377,104 +377,166 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Tabs" id="mVC-2e-X6P">
                                     <items>
-                                        <menuItem title="1" hidden="YES" keyEquivalent="1" allowsKeyEquivalentWhenHidden="YES" id="1z0-XO-JT5">
+                                        <menuItem title="1" keyEquivalent="1" allowsKeyEquivalentWhenHidden="YES" id="1z0-XO-JT5">
                                             <connections>
                                                 <action selector="tab1:" target="-1" id="Lh8-Q2-9hB"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="2" hidden="YES" keyEquivalent="2" allowsKeyEquivalentWhenHidden="YES" id="RbR-fG-3bl">
+                                        <menuItem title="2" keyEquivalent="2" allowsKeyEquivalentWhenHidden="YES" id="RbR-fG-3bl">
                                             <connections>
                                                 <action selector="tab2:" target="-1" id="6Eg-Is-0AF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="3" hidden="YES" keyEquivalent="3" allowsKeyEquivalentWhenHidden="YES" id="yhN-Sg-dml">
+                                        <menuItem title="3" keyEquivalent="3" allowsKeyEquivalentWhenHidden="YES" id="yhN-Sg-dml">
                                             <connections>
                                                 <action selector="tab3:" target="-1" id="mYl-yQ-h7t"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="4" hidden="YES" keyEquivalent="4" allowsKeyEquivalentWhenHidden="YES" id="dNZ-Ed-mlI">
+                                        <menuItem title="4" keyEquivalent="4" allowsKeyEquivalentWhenHidden="YES" id="dNZ-Ed-mlI">
                                             <connections>
                                                 <action selector="tab4:" target="-1" id="Bkz-hC-8Ie"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="5" hidden="YES" keyEquivalent="5" allowsKeyEquivalentWhenHidden="YES" id="Gyz-QB-bzl">
+                                        <menuItem title="5" keyEquivalent="5" allowsKeyEquivalentWhenHidden="YES" id="Gyz-QB-bzl">
                                             <connections>
                                                 <action selector="tab5:" target="-1" id="HkA-mL-U24"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="6" hidden="YES" keyEquivalent="6" allowsKeyEquivalentWhenHidden="YES" id="7ca-iI-TnH">
+                                        <menuItem title="6" keyEquivalent="6" allowsKeyEquivalentWhenHidden="YES" id="7ca-iI-TnH">
                                             <connections>
                                                 <action selector="tab6:" target="-1" id="BUo-1I-NLn"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="7" hidden="YES" keyEquivalent="7" allowsKeyEquivalentWhenHidden="YES" id="LVa-uM-SxA">
+                                        <menuItem title="7" keyEquivalent="7" allowsKeyEquivalentWhenHidden="YES" id="LVa-uM-SxA">
                                             <connections>
                                                 <action selector="tab7:" target="-1" id="apC-yb-Fd7"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="8" hidden="YES" keyEquivalent="8" allowsKeyEquivalentWhenHidden="YES" id="GPN-vP-8bW">
+                                        <menuItem title="8" keyEquivalent="8" allowsKeyEquivalentWhenHidden="YES" id="GPN-vP-8bW">
                                             <connections>
                                                 <action selector="tab8:" target="-1" id="yE4-Lh-q9V"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="9" hidden="YES" keyEquivalent="9" allowsKeyEquivalentWhenHidden="YES" id="lPT-V8-Sm7">
+                                        <menuItem title="9" keyEquivalent="9" allowsKeyEquivalentWhenHidden="YES" id="lPT-V8-Sm7">
                                             <connections>
                                                 <action selector="tab9:" target="-1" id="jfH-Tu-KNI"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="73x-1n-g3A"/>
-                                        <menuItem title="1 + Pause" hidden="YES" keyEquivalent="1" allowsKeyEquivalentWhenHidden="YES" id="o9K-Jq-Lh5">
+                                        <menuItem title="1 + Pause" keyEquivalent="1" allowsKeyEquivalentWhenHidden="YES" id="o9K-Jq-Lh5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab1PAUSE:" target="-1" id="gJl-k8-Um4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="2 + Pause" hidden="YES" keyEquivalent="2" allowsKeyEquivalentWhenHidden="YES" id="Jbt-z0-P6x">
+                                        <menuItem title="2 + Pause" keyEquivalent="2" allowsKeyEquivalentWhenHidden="YES" id="Jbt-z0-P6x">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab2PAUSE:" target="-1" id="aQd-b6-uij"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="3 + Pause" hidden="YES" keyEquivalent="3" allowsKeyEquivalentWhenHidden="YES" id="Yhv-eQ-5WC">
+                                        <menuItem title="3 + Pause" keyEquivalent="3" allowsKeyEquivalentWhenHidden="YES" id="Yhv-eQ-5WC">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab3PAUSE:" target="-1" id="u2N-2a-16W"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="4 + Pause" hidden="YES" keyEquivalent="4" allowsKeyEquivalentWhenHidden="YES" id="lXs-zk-RW6">
+                                        <menuItem title="4 + Pause" keyEquivalent="4" allowsKeyEquivalentWhenHidden="YES" id="lXs-zk-RW6">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab4PAUSE:" target="-1" id="0CB-NA-Spz"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="5 + Pause" hidden="YES" keyEquivalent="5" allowsKeyEquivalentWhenHidden="YES" id="SwH-lS-EZP">
+                                        <menuItem title="5 + Pause" keyEquivalent="5" allowsKeyEquivalentWhenHidden="YES" id="SwH-lS-EZP">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab5PAUSE:" target="-1" id="vKX-bG-9lF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="6 + Pause" hidden="YES" keyEquivalent="6" allowsKeyEquivalentWhenHidden="YES" id="Asf-B1-R30">
+                                        <menuItem title="6 + Pause" keyEquivalent="6" allowsKeyEquivalentWhenHidden="YES" id="Asf-B1-R30">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab6PAUSE:" target="-1" id="nJi-tZ-9uh"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="7 + Pause" hidden="YES" keyEquivalent="7" allowsKeyEquivalentWhenHidden="YES" id="ElA-VM-hNW">
+                                        <menuItem title="7 + Pause" keyEquivalent="7" allowsKeyEquivalentWhenHidden="YES" id="ElA-VM-hNW">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab7PAUSE:" target="-1" id="fmI-8Z-3zW"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="8 + Pause" hidden="YES" keyEquivalent="8" allowsKeyEquivalentWhenHidden="YES" id="Avc-if-J7Y">
+                                        <menuItem title="8 + Pause" keyEquivalent="8" allowsKeyEquivalentWhenHidden="YES" id="Avc-if-J7Y">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab8PAUSE:" target="-1" id="YKR-k7-Utn"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="9 + Pause" hidden="YES" keyEquivalent="9" allowsKeyEquivalentWhenHidden="YES" id="JOh-ya-AfF">
+                                        <menuItem title="9 + Pause" keyEquivalent="9" allowsKeyEquivalentWhenHidden="YES" id="JOh-ya-AfF">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="tab9PAUSE:" target="-1" id="Ssw-ze-dFV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Kb8-bV-rCD"/>
+                                        <menuItem title="1 + Close" keyEquivalent="1" allowsKeyEquivalentWhenHidden="YES" id="Xg4-mw-QH8">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab1CLOSE:" target="-1" id="0om-EP-VmV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="2 + Close" keyEquivalent="2" allowsKeyEquivalentWhenHidden="YES" id="nDW-RV-p9b">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab2CLOSE:" target="-1" id="q8b-i3-0Fo"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="3 + Close" keyEquivalent="3" allowsKeyEquivalentWhenHidden="YES" id="aTW-7M-dbF">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab3CLOSE:" target="-1" id="s1t-UV-X2s"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="4 + Close" keyEquivalent="4" allowsKeyEquivalentWhenHidden="YES" id="9De-Fh-uhl">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab4CLOSE:" target="-1" id="SQc-Lb-5Y1"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="5 + Close" keyEquivalent="5" allowsKeyEquivalentWhenHidden="YES" id="xVr-2c-J5M">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab5CLOSE:" target="-1" id="9X9-gI-pLq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="6 + Close" keyEquivalent="6" allowsKeyEquivalentWhenHidden="YES" id="oai-qb-L4f">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab6CLOSE:" target="-1" id="KZk-Ay-A2N"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="7 + Close" keyEquivalent="7" allowsKeyEquivalentWhenHidden="YES" id="VwS-5w-zmX">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab7CLOSE:" target="-1" id="Bk5-cq-euN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="8 + Close" keyEquivalent="8" allowsKeyEquivalentWhenHidden="YES" id="RIR-9L-bRO">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab8CLOSE:" target="-1" id="gpv-Fp-D5V"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="9 + Close" keyEquivalent="9" allowsKeyEquivalentWhenHidden="YES" id="rAt-lM-34i">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="tab9CLOSE:" target="-1" id="Fic-GI-Nvn"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="gVG-bs-yZY"/>
+                                        <menuItem title="test_button" allowsKeyEquivalentWhenHidden="YES" id="Tl9-Cd-LvE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="__tab_test_button:" target="-1" id="n3Z-oH-pbJ"/>
                                             </connections>
                                         </menuItem>
                                     </items>

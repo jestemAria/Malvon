@@ -31,6 +31,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </searchFieldCell>
+                    <connections>
+                        <action selector="searchFieldWillUpdate:" target="-2" id="AUb-nS-qxL"/>
+                    </connections>
                 </searchField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-YF-ufw">
                     <rect key="frame" x="399" y="236" width="83" height="40"/>
@@ -39,6 +42,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="clearAll:" target="-2" id="6Tc-Te-hj2"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdG-vj-RwP" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
                     <rect key="frame" x="7" y="244.5" width="20.5" height="24"/>
@@ -47,6 +53,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="closeWindow:" target="-2" id="NdK-1i-30n"/>
+                    </connections>
                 </button>
                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmH-Pd-xsy">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>

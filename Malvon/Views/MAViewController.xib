@@ -9,7 +9,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MAViewController" customModule="Malvon" customModuleProvider="target">
             <connections>
                 <outlet property="backButtonOutlet" destination="Jdg-BP-fje" id="TqU-Ns-htE"/>
-                <outlet property="blackView" destination="MG4-Xy-zOy" id="toy-C7-bJX"/>
                 <outlet property="createNewTabButton" destination="7IH-z6-nfQ" id="G4E-8Y-4DU"/>
                 <outlet property="faviconImageView" destination="nvT-UM-oQf" id="0mb-xW-RKD"/>
                 <outlet property="forwardButtonOutlet" destination="nIJ-8Z-Syk" id="Ybx-TY-fD8"/>
@@ -20,6 +19,7 @@
                 <outlet property="tabStackView" destination="2sH-LQ-Dji" id="yLT-QQ-PGn"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Bzk-7g-zJq"/>
                 <outlet property="webContentView" destination="Hmp-yZ-mmV" id="nRX-yd-r3M"/>
+                <outlet property="webTabView" destination="Hmp-yZ-mmV" id="jin-WX-q0I"/>
                 <outlet property="websiteTitle" destination="7Bp-dC-yib" id="FYV-N8-K4K"/>
             </connections>
         </customObject>
@@ -29,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1015" height="478"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-yZ-mmV">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-yZ-mmV" customClass="MATabView" customModule="MATabView">
                     <rect key="frame" x="0.0" y="0.0" width="1015" height="440"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </customView>
@@ -304,26 +304,14 @@
                         </constraints>
                     </view>
                 </box>
-                <box hidden="YES" boxType="custom" borderWidth="0.0" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="MG4-Xy-zOy">
-                    <rect key="frame" x="0.0" y="0.0" width="1015" height="478"/>
-                    <view key="contentView" id="g55-DT-OTU">
-                        <rect key="frame" x="0.0" y="0.0" width="1015" height="478"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </box>
             </subviews>
             <constraints>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="3Om-oq-ONP"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4yY-ps-Lif"/>
-                <constraint firstAttribute="trailing" secondItem="MG4-Xy-zOy" secondAttribute="trailing" id="I8J-Y1-aT7"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="K3P-zP-wel"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="top" secondItem="ucC-9r-3Ih" secondAttribute="bottom" id="PzJ-ik-b31"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="leading" secondItem="ucC-9r-3Ih" secondAttribute="leading" id="aQh-bj-9bb"/>
-                <constraint firstItem="MG4-Xy-zOy" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="e12-0j-fo7"/>
-                <constraint firstAttribute="bottom" secondItem="MG4-Xy-zOy" secondAttribute="bottom" id="jcN-AB-9G7"/>
                 <constraint firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="tSs-v8-d1r"/>
-                <constraint firstItem="MG4-Xy-zOy" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="uKL-78-WlQ"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="37" id="uqP-jG-Xkh"/>
             </constraints>
             <point key="canvasLocation" x="138.5" y="136"/>

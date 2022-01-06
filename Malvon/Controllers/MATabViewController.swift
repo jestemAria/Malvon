@@ -7,83 +7,89 @@
 //
 
 import Cocoa
+import MAWebView
 
 class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet var tableView: NSTableView!
-    var windowController: MAWindowController
-    var tabViewController: NSTabViewController
-    var tabViewItem: NSTabViewItem
-    
-    init(windowController: MAWindowController, _ tabViewItem: NSTabViewItem) {
-        self.windowController = windowController
-        self.tabViewItem = tabViewItem
-        self.tabViewController = self.windowController.tabViewController
+    var viewController: MAViewController
+
+    init(viewController: MAViewController) {
+        self.viewController = viewController
         super.init(nibName: "MATabViewController", bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        (windowController.contentViewController as? MAViewController)?.tabsPopover.performClose(nil)
-        
         tableView.dataSource = self
         tableView.delegate = self
-        
+
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Close Tab", action: #selector(closeTab), keyEquivalent: ""))
         tableView.menu = menu
-        
+
         tableView.action = #selector(switchTabs)
     }
-    
+
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return tabViewController.tabViewItems.count
+        return viewController.webTabView.tabViewItems.count
     }
-    
+
     @objc func closeTab() {
-        let VC = tabViewController.tabViewItems[tableView.clickedRow].viewController as? MAViewController
-        
-        VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
-        
-        VC?.webView?.removeWebview()
-        VC?.webView?.removeFromSuperview()
-        VC?.webView = nil
-        
-        tabViewController.removeChild(at: tableView.clickedRow)
+        var tabsWebView = viewController.webTabView.tabViewItems[viewController.webTabView.selectedTabViewItemIndex].view as? MAWebView
+
+        // Make the webView load "about:blank"
+        tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
+        // Remove all the observers on the webview
+        tabsWebView?.removeWebview()
+        // Remove from the superview
+        tabsWebView?.removeFromSuperview()
+        // Make it nil
+        tabsWebView = nil
+
+        // Remove the tab item
+        viewController.webTabView.removeTabViewItem(at: tableView.clickedRow)
+
         tableView.reloadData()
     }
-    
+
     @objc func switchTabs() {
-        tabViewController.selectedTabViewItemIndex = tableView.clickedRow
+        viewController.webTabView.selectTabViewItem(at: tableView.clickedRow)
+        view.window?.close()
     }
-    
+
     @IBAction func willPressClose(_ sender: NSButton) {
-        let VC = tabViewController.tabViewItems[sender.tag].viewController as? MAViewController
-        
-        VC?.webView?.load(URLRequest(url: URL(string: "about:blank")!))
-        
-        VC?.webView?.removeWebview()
-        VC?.webView?.removeFromSuperview()
-        VC?.webView = nil
-        
-        tabViewController.removeChild(at: sender.tag)
+        var tabsWebView = viewController.webTabView.tabViewItems[viewController.webTabView.selectedTabViewItemIndex].view as? MAWebView
+
+        // Make the webView load "about:blank"
+        tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
+        // Remove all the observers on the webview
+        tabsWebView?.removeWebview()
+        // Remove from the superview
+        tabsWebView?.removeFromSuperview()
+        // Make it nil
+        tabsWebView = nil
+
+        // Remove the tab item
+        viewController.webTabView.removeTabViewItem(at: sender.tag)
+
         tableView.reloadData()
     }
-    
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TabsViewCell"), owner: self) as? MATabsTableViewCell else { return nil }
-        let VC = tabViewController.tabViewItems[row].viewController as? MAViewController
-        
-        cell.TabIcon?.image = VC?.favicon
-        cell.TabTitle?.stringValue = VC!.tabViewItem!.label
+        let VC = viewController.webTabView.tabViewItems[row]
+
+        cell.TabIcon?.image = VC.image
+        cell.TabTitle?.stringValue = VC.title ?? "Untitled"
         cell.TabCloseButton.tag = row
         cell.TabCloseButton.action = #selector(willPressClose(_:))
-        
+
         return cell
     }
 }

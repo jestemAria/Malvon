@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.0.2
+**Commit 6:**
+    - Re-wrote the tabbing system, that will use less power!!!!!
 **Commit 5:**
     - Pressing `CMD + CNTR + n` will close the tab in the background
     - Finished re-writing the downloads history view controller

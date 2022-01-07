@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED4614CE2787E43300796B7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDF62AA7277C8D4A006DF3EB /* MAWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MAWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF62AAA277C8D4A006DF3EB /* MAWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAWebView.h; sourceTree = "<group>"; };
 		EDF62AAF277C8D4B006DF3EB /* MAWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +64,7 @@
 			children = (
 				EDF62AA9277C8D4A006DF3EB /* MAWebView */,
 				EDF62AB3277C8D4B006DF3EB /* MAWebViewTests */,
+				ED4614CE2787E43300796B7B /* README.md */,
 				EDF62AA8277C8D4A006DF3EB /* Products */,
 			);
 			sourceTree = "<group>";

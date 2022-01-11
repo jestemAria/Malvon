@@ -430,8 +430,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Search Field
 
     @IBAction func searchFieldAction(_ sender: Any) {
-        // If the URL starts with 'malvon?'
-        if searchField.stringValue.starts(with: "malvon?") {
+        if searchField.stringValue.isEmpty {
+            // Do nothing
+            // If the URL starts with 'malvon?'
+        } else if searchField.stringValue.starts(with: "malvon?") {
             let URL = Bundle.main.url(forResource: searchField.stringValue.string("malvon?"), withExtension: "html")!
             webView!.loadFileURL(URL, allowingReadAccessTo: URL)
         
@@ -728,6 +730,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         mubWebView(webView!, urlDidChange: webView?.url)
         mubWebView(webView!, titleChanged: webView?.title ?? "Untitled Page")
+        
+        if webView!.isLoading {
+            refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
+        } else {
+            refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
+        }
         
         // Set the value to 0
         progressIndicator.doubleValue = 0

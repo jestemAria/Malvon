@@ -32,28 +32,37 @@ open class MATabView: NSView {
     open var selectedTabViewItemIndex: Int = 0
     open var tabViewItems: [MATabViewItem] = []
     open weak var delegate: MATabViewDelegate?
-    
+
     open func selectTabViewItem(at index: Int) {
-        // Remove the current view
-        tabViewItems[selectedTabViewItemIndex].view?.removeFromSuperview()
-        
-        selectedTabViewItemIndex = index
-        
+        subviews.forEach { subview in
+            subview.isHidden = true
+        }
+        // Make a switch first, then remove the old view
         // Add the new view
         // TODO: - Error Handling
-        guard let newView = tabViewItems[selectedTabViewItemIndex].view else { return }
+        guard let newView = tabViewItems[index].view else { return }
         addSubview(newView)
         newView.autoresizingMask = [.width, .height]
-        
+        newView.isHidden = false
         delegate?.tabView?(self, didSelect: index)
+
+        // Remove the current view
+        // Just in case they selected the same tab
+        if selectedTabViewItemIndex == index {
+            tabViewItems[selectedTabViewItemIndex].view?.isHidden = false
+        } else {
+            tabViewItems[selectedTabViewItemIndex].view?.isHidden = true
+        }
+
+        selectedTabViewItemIndex = index
     }
-    
+
     open func addTabViewItem(tabViewItem: MATabViewItem) {
         tabViewItems.append(tabViewItem)
-        
+
         selectTabViewItem(at: tabViewItems.count - 1)
     }
-    
+
     open func removeTabViewItem(at index: Int) {
         if selectedTabViewItemIndex == index {
             // TODO: - If they want to remove tab number 0, make sure it moves to tab number 1

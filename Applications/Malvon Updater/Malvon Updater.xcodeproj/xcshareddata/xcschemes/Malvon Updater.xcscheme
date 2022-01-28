@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDF62B2A277C96AF006DF3EB"
-               BuildableName = "Malvon.app"
-               BlueprintName = "Malvon"
-               ReferencedContainer = "container:Malvon.xcodeproj">
+               BlueprintIdentifier = "EDD1A0D9277E73E3002BB362"
+               BuildableName = "Malvon Updater.app"
+               BlueprintName = "Malvon Updater"
+               ReferencedContainer = "container:Malvon Updater.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDF62B39277C96B2006DF3EB"
-               BuildableName = "MalvonTests.xctest"
-               BlueprintName = "MalvonTests"
-               ReferencedContainer = "container:Malvon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDF62B43277C96B3006DF3EB"
-               BuildableName = "MalvonUITests.xctest"
-               BlueprintName = "MalvonUITests"
-               ReferencedContainer = "container:Malvon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -64,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EDF62B2A277C96AF006DF3EB"
-            BuildableName = "Malvon.app"
-            BlueprintName = "Malvon"
-            ReferencedContainer = "container:Malvon.xcodeproj">
+            BlueprintIdentifier = "EDD1A0D9277E73E3002BB362"
+            BuildableName = "Malvon Updater.app"
+            BlueprintName = "Malvon Updater"
+            ReferencedContainer = "container:Malvon Updater.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -81,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EDF62B2A277C96AF006DF3EB"
-            BuildableName = "Malvon.app"
-            BlueprintName = "Malvon"
-            ReferencedContainer = "container:Malvon.xcodeproj">
+            BlueprintIdentifier = "EDD1A0D9277E73E3002BB362"
+            BuildableName = "Malvon Updater.app"
+            BlueprintName = "Malvon Updater"
+            ReferencedContainer = "container:Malvon Updater.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

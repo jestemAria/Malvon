@@ -33,6 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let MA_APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        window.showWindow(nil)
+        updateApplication()
+    }
+    
+    func updateApplication() {
         let newestVersion = MAURL("https://raw.githubusercontent.com/Ashwin-Paudel/Malvon/main/Malvon/Resources/version.txt").contents().removeWhitespace
         
         if MA_APP_VERSION != newestVersion, !newestVersion.isEmpty {
@@ -44,7 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 exit(0)
             }
         }
-        window.showWindow(nil)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

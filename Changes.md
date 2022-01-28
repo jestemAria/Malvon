@@ -1,33 +1,30 @@
 #  Changes
 
+## v1.2
+- Fixed the bug where if you close the first tab it will crash
+
 ## v1.0.2
-**Commit 6:**
-    - Re-wrote the tabbing system, that will use less power!!!!!
-**Commit 5:**
-    - Pressing `CMD + CNTR + n` will close the tab in the background
-    - Finished re-writing the downloads history view controller
-    - Fixed a few errors
-    - Thinking of changing the way of tabbing
-**Commit 4:**
-    - Fixed a few mistakes
-    - Formatted Code
-    - Started re-writing the download history view controller
-**Commit 3:**
-    - Added NSOpenFile for file uploading
-    - Commented the code
-**Commit 2:**
-    - Fixed a small mistake in the auto updater
-    - Improved tab switching
-    - Fixed a few bugs and crashes
-    - Improvments in CPU power and battery life
-**Commit 1:**
-    - Dark mode for the start page
-    - More optimization for lower energy usage
-    - Added exit button for the history view controller
-    - Started working on preference
-    - Changed the color of `HoverButton`
-    - Pressing `CMD + OPT + n` will pause all videos that are playing in current tab and switch to the next tab
-    - When switching and creating a new tab, a black screen will appear (Only works when using keyboard shortcuts) ( You can disable this feature via preferences)
+- Re-wrote the tabbing system, that will use less power!!!!!
+- Pressing `CMD + CNTR + n` will close the tab in the background
+- Finished re-writing the downloads history view controller
+- Fixed a few errors
+- Thinking of changing the way of tabbing
+- Fixed a few mistakes
+- Formatted Code
+- Started re-writing the download history view controller
+- Added NSOpenFile for file uploading
+- Commented the code
+- Fixed a small mistake in the auto updater
+- Improved tab switching
+- Fixed a few bugs and crashes
+- Improvments in CPU power and battery life
+- Dark mode for the start page
+- More optimization for lower energy usage
+- Added exit button for the history view controller
+- Started working on preference
+- Changed the color of `HoverButton`
+- Pressing `CMD + OPT + n` will pause all videos that are playing in current tab and switch to the next tab
+- When switching and creating a new tab, a black screen will appear (Only works when using keyboard shortcuts) ( You can disable this feature via preferences)
 
 ## v1.0.1 ( **Released** )
 - Double Click ( Maximize Window )

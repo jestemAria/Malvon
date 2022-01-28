@@ -19,7 +19,7 @@
 		ED806EF8277F87CB00D766F7 /* AppProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF7277F87CB00D766F7 /* AppProperties.swift */; };
 		ED806EFA277F887A00D766F7 /* MAPrefsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF9277F887A00D766F7 /* MAPrefsGeneralViewController.swift */; };
 		ED806EFC277F8BB300D766F7 /* MAPrefsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */; };
-		ED8E927627A49DC100C61B9F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED8E926C27A49DC100C61B9F /* Info.plist */; };
+		EDB840F027A4AF7200173C13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDB840EF27A4AF7100173C13 /* Info.plist */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD2438F277CC01400926C9B /* MAWebView.framework */; };
@@ -159,7 +159,7 @@
 		ED806EF7277F87CB00D766F7 /* AppProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProperties.swift; sourceTree = "<group>"; };
 		ED806EF9277F887A00D766F7 /* MAPrefsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPrefsGeneralViewController.swift; sourceTree = "<group>"; };
 		ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPrefsTabViewController.swift; sourceTree = "<group>"; };
-		ED8E926C27A49DC100C61B9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		EDB840EF27A4AF7100173C13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDD08B01277D812E000C866B /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
 		EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Malvon Updater.xcodeproj"; path = "Malvon Updater/Malvon Updater.xcodeproj"; sourceTree = "<group>"; };
 		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
@@ -320,7 +320,7 @@
 		EDF62B2D277C96AF006DF3EB /* Malvon */ = {
 			isa = PBXGroup;
 			children = (
-				ED8E926C27A49DC100C61B9F /* Info.plist */,
+				EDB840EF27A4AF7100173C13 /* Info.plist */,
 				EDF62B2E277C96AF006DF3EB /* AppDelegate.swift */,
 				ED0B17DE277CEFF000BB47B1 /* Appicon.icns */,
 				EDF62BB0277CA4FB006DF3EB /* Controllers */,
@@ -628,9 +628,9 @@
 				EDF62B5E277C9738006DF3EB /* MAViewController.xib in Resources */,
 				EDF62BA7277C98F7006DF3EB /* MADownloadsViewController.xib in Resources */,
 				ED79F0C0277E64FB0047BB86 /* update_feature_list.txt in Resources */,
-				ED8E927627A49DC100C61B9F /* Info.plist in Resources */,
 				ED806EF6277F859B00D766F7 /* Preferences.storyboard in Resources */,
 				EDF62B34277C96B2006DF3EB /* MainMenu.xib in Resources */,
+				EDB840F027A4AF7200173C13 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,7 +903,7 @@
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Malvon/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021-2022 Ashwin Paudel. All rights reserved.";
@@ -934,7 +934,7 @@
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Malvon/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021-2022 Ashwin Paudel. All rights reserved.";

@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.2
+- Created run script to make life easier :)
 - Fixed the bug where if you close the first tab it will crash
 
 ## v1.0.2

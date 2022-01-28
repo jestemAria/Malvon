@@ -431,6 +431,8 @@
 				EDF62B28277C96AF006DF3EB /* Frameworks */,
 				EDF62B29277C96AF006DF3EB /* Resources */,
 				EDD24394277CC01B00926C9B /* Embed Frameworks */,
+				EDD4E25027A43FF40073D179 /* Install Updater Application */,
+				EDD4E25227A4434B0073D179 /* Remove Useless Files */,
 			);
 			buildRules = (
 			);
@@ -645,6 +647,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EDD4E25027A43FF40073D179 /* Install Updater Application */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Install Updater Application";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ -e $TARGET_BUILD_DIR/Malvon.app/Contents/Applications ]\nthen\n    echo \"Directory Exists\"\nelse\n    mkdir $TARGET_BUILD_DIR/Malvon.app/Contents/Applications\n    mv $TARGET_BUILD_DIR/Malvon\\ Updater.app $TARGET_BUILD_DIR/Malvon.app/Contents/Applications\nfi\n";
+		};
+		EDD4E25227A4434B0073D179 /* Remove Useless Files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Remove Useless Files";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Frameworks/*.dylib\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Applications/Malvon\\ Updater.app/Contents/Frameworks/*.dylib\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EDF62B27277C96AF006DF3EB /* Sources */ = {

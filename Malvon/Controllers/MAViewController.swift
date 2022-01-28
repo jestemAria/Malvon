@@ -116,6 +116,41 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Configure the popover
         tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
+        
+        // When the app enters the background
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(willEnterBackground), name: NSApplication.willResignActiveNotification, object: nil)
+        nc.addObserver(self, selector: #selector(willBecomeActive), name: NSApplication.willBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func willEnterBackground() {
+        webTabView.isHidden = true
+        webView?.isHidden = true
+        searchField.isHidden = true
+        websiteTitle.isHidden = true
+        faviconImageView.isHidden = true
+        tabStackView.isHidden = true
+        refreshButton.isHidden = true
+        backButtonOutlet.isHidden = true
+        forwardButtonOutlet.isHidden = true
+        showTabsButton.isHidden = true
+        createNewTabButton.isHidden = true
+//        print("App Entered Background")
+    }
+    
+    @objc func willBecomeActive() {
+        webTabView.isHidden = false
+        webView?.isHidden = false
+        searchField.isHidden = false
+        websiteTitle.isHidden = false
+        faviconImageView.isHidden = false
+        tabStackView.isHidden = false
+        refreshButton.isHidden = false
+        backButtonOutlet.isHidden = false
+        forwardButtonOutlet.isHidden = false
+        showTabsButton.isHidden = false
+        createNewTabButton.isHidden = false
+//        print("App Is Active")
     }
     
     // Style the elements ( buttons, searchfields )
@@ -742,6 +777,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Hide the progress indicator
         progressIndicator.isHidden = true
     }
+
+    func tabViewEmpty() {
+        view.window?.close()
+    }
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil) -> MAWebView {
         var webConfig = WKWebViewConfiguration()
@@ -764,13 +803,5 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
         
         return newWebView
-    }
-    
-    @IBAction func __tab_test_button(_ sender: Any?) {
-        let testView = MAViewController(windowCNTRL: windowController).view
-        
-        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: testView))
-        webTabView.selectTabViewItem(at: 1)
-        print(webTabView.tabViewItems.count)
     }
 }

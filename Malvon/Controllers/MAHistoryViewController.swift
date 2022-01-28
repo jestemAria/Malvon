@@ -97,6 +97,11 @@ class MAHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVie
         view.window?.close()
     }
 
+    @IBAction func clearHistoryButtonAction(_ sender: Any) {
+        let file = MAFile(path: MAHistoryViewController.path!)
+        
+        file.write("[]")
+    }
     // MARK: - History Items
     
     func refreshTableView() {

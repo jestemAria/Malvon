@@ -55,6 +55,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag == false {
+            let newWindow = MAWindowController()
+            newWindow.showWindow(nil)
+        
+            return true
+        }
+        return false
+    }
+    
     // MARK: - Menu Bar Functions
     
     @IBAction func showBrowsingHistory(_ sender: Any?) {

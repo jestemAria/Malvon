@@ -21,6 +21,9 @@ public class MAURL {
     public func fix() -> URL {
         var newURL = ""
 
+        if url.absoluteString.isValidURL {
+            return url
+        }
         if url.absoluteString.starts(with: "file:///") {
             return url
         } else if url.scheme == nil {

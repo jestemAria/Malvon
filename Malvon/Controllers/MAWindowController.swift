@@ -11,15 +11,22 @@ import Cocoa
 class MAWindowController: NSWindowController {
     let properties = AppProperties()
     
+    let windowState = "MAWindowControllerWindowState"
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         shouldCascadeWindows = false
-        window?.setFrameAutosaveName(window!.representedFilename)
+
         self.contentViewController = MAViewController(windowCNTRL: self)
-        
+
         let customToolbar = NSToolbar()
         window?.titleVisibility = .hidden
         window?.toolbar = customToolbar
+        
+        let data = UserDefaults.standard.object(forKey: self.windowState) as? String ?? ""
+        window?.setFrame(NSRectFromString(data), display: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.windowWillClose), name: NSWindow.willCloseNotification, object: nil)
     }
     
     convenience init() {
@@ -30,6 +37,15 @@ class MAWindowController: NSWindowController {
         self.close()
     }
     
+    // MARK: - Position
+
+    @objc func windowWillClose() {
+        guard let frame = window?.frame else { return }
+        UserDefaults.standard.set(NSStringFromRect(frame), forKey: windowState)
+    }
+    
+    // MARK: - TitleBar
+
     // https://stackoverflow.com/questions/52150960/double-click-on-transparent-nswindow-title-does-not-maximize-the-window
     
     override func mouseUp(with event: NSEvent) {

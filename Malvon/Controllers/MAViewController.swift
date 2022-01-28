@@ -467,7 +467,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBAction func searchFieldAction(_ sender: Any) {
         if searchField.stringValue.isEmpty {
             // Do nothing
-            // If the URL starts with 'malvon?'
+            return
         } else if searchField.stringValue.starts(with: "malvon?") {
             let URL = Bundle.main.url(forResource: searchField.stringValue.string("malvon?"), withExtension: "html")!
             webView!.loadFileURL(URL, allowingReadAccessTo: URL)

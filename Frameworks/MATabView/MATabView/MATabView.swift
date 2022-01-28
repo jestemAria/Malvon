@@ -67,13 +67,22 @@ open class MATabView: NSView {
     open func removeTabViewItem(at index: Int) {
         if selectedTabViewItemIndex == index {
             // If there are no more tabs left
-            if index == 0 || tabViewItems.count == 1 {
+            if index == 0 && tabViewItems.count == 1 {
                 self.delegate?.tabViewEmpty?()
                 return
-            } else {
+            } else if index == 0 && tabViewItems.count != 1 {
+                selectTabViewItem(at: selectedTabViewItemIndex + 1)
+                selectedTabViewItemIndex -= 1
+                tabViewItems.remove(at: index)
+                return
+            }
+            else {
                 selectTabViewItem(at: selectedTabViewItemIndex - 1)
+                tabViewItems.remove(at: index)
+                return
             }
         }
+        
         tabViewItems.remove(at: index)
     }
 }

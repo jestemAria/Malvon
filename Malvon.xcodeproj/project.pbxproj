@@ -433,6 +433,7 @@
 				EDD24394277CC01B00926C9B /* Embed Frameworks */,
 				EDD4E25027A43FF40073D179 /* Install Updater Application */,
 				EDD4E25227A4434B0073D179 /* Remove Useless Files */,
+				ED770A1927A4471200686499 /* Compress File */,
 			);
 			buildRules = (
 			);
@@ -649,6 +650,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		ED770A1927A4471200686499 /* Compress File */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Compress File";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nzip $TARGET_BUILD_DIR/Malvon.$MARKETING_VERSION.zip $TARGET_BUILD_DIR/Malvon.app\n";
+		};
 		EDD4E25027A43FF40073D179 /* Install Updater Application */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -683,7 +702,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Frameworks/*.dylib\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Applications/Malvon\\ Updater.app/Contents/Frameworks/*.dylib\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Frameworks/*.dylib\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Applications/Malvon\\ Updater.app/Contents/Frameworks/*.dylib\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

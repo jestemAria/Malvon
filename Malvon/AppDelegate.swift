@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let MA_APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // Insert code here to initialize your application        
         window.showWindow(nil)
         updateApplication()
     }

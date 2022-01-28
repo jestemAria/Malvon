@@ -782,6 +782,19 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         view.window?.close()
     }
     
+    func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int) {
+        var tabsWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
+        
+        // Make the webView load "about:blank"
+        tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
+        // Remove all the observers on the webview
+        tabsWebView?.removeWebview()
+        // Remove from the superview
+        tabsWebView?.removeFromSuperview()
+        // Make it nil
+        tabsWebView = nil
+    }
+    
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil) -> MAWebView {
         var webConfig = WKWebViewConfiguration()
         if config == nil {

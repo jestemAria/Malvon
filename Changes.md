@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.2
+- Fixed problem where video will keep on playing even when closed
 - Fixed Window State Problem
 - Fixed the search field
 - Fixed the bug when closing the first tab, it will close the window

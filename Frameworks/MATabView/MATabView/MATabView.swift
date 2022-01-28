@@ -26,6 +26,7 @@ import Cocoa
 @objc public protocol MATabViewDelegate: NSObjectProtocol {
     @objc optional func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int)
     @objc optional func tabViewDidChangeNumberOfTabViewItems(_ tabView: MATabView)
+    @objc optional func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int)
     
     /// When there are no more tabs left
     @objc optional func tabViewEmpty()
@@ -68,21 +69,24 @@ open class MATabView: NSView {
         if selectedTabViewItemIndex == index {
             // If there are no more tabs left
             if index == 0 && tabViewItems.count == 1 {
+                self.delegate?.tabView?(self, willRemove: index)
                 self.delegate?.tabViewEmpty?()
                 return
             } else if index == 0 && tabViewItems.count != 1 {
                 selectTabViewItem(at: selectedTabViewItemIndex + 1)
                 selectedTabViewItemIndex -= 1
+                self.delegate?.tabView?(self, willRemove: index)
                 tabViewItems.remove(at: index)
                 return
             }
             else {
                 selectTabViewItem(at: selectedTabViewItemIndex - 1)
+                self.delegate?.tabView?(self, willRemove: index)
                 tabViewItems.remove(at: index)
                 return
             }
         }
-        
+        self.delegate?.tabView?(self, willRemove: index)
         tabViewItems.remove(at: index)
     }
 }

@@ -117,10 +117,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         tabsPopover.behavior = .semitransient
         tabsPopover.animates = false
         
-        // When the app enters the background
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(willEnterBackground), name: NSApplication.willResignActiveNotification, object: nil)
-        nc.addObserver(self, selector: #selector(willBecomeActive), name: NSApplication.willBecomeActiveNotification, object: nil)
+        if AppProperties().hidesScreenElementsWhenNotActive {
+            // When the app enters the background
+            let nc = NotificationCenter.default
+            nc.addObserver(self, selector: #selector(willEnterBackground), name: NSApplication.willResignActiveNotification, object: nil)
+            nc.addObserver(self, selector: #selector(willBecomeActive), name: NSApplication.willBecomeActiveNotification, object: nil)
+        }
     }
     
     @objc func willEnterBackground() {
@@ -203,6 +205,15 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             webView!.stopLoading()
             sender.image = NSImage(named: NSImage.refreshTemplateName)
         }
+    }
+    
+    func createNewTab(url: URL) {
+        blackView.isHidden = false
+        // Create a new tab
+        webView = getNewWebViewInstance(url: url)
+        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
+        
+        blackView.isHidden = true
     }
     
     @IBAction func createNewTab(_ sender: Any) {
@@ -394,17 +405,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     @IBAction func vcclosetabm(_ sender: Any?) {
-        var tabsWebView = webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView
-        
-        // Make the webView load "about:blank"
-        tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
-        // Remove all the observers on the webview
-        tabsWebView?.removeWebview()
-        // Remove from the superview
-        tabsWebView?.removeFromSuperview()
-        // Make it nil
-        tabsWebView = nil
-        
         // Remove the tab item
         webTabView.removeTabViewItem(at: webTabView.selectedTabViewItemIndex)
     }
@@ -631,18 +631,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                 webTabView.selectTabViewItem(at: number)
             }
         } else {
-            var tabsWebView = webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView
-            
-            // Make the webView load "about:blank"
-            tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
-            // Remove all the observers on the webview
-            tabsWebView?.removeWebview()
-            // Remove from the superview
-            tabsWebView?.removeFromSuperview()
-            // Make it nil
-            tabsWebView = nil
-            
-            // Remove the tab item
             webTabView.removeTabViewItem(at: number)
         }
         blackView.isHidden = true
@@ -795,7 +783,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         tabsWebView = nil
     }
     
-    private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil) -> MAWebView {
+    private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {
         var webConfig = WKWebViewConfiguration()
         if config == nil {
             webConfig = webConfigurations
@@ -813,6 +801,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
             newWebView.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
             updateWebsiteURL()
+        }
+        
+        if url != nil {
+            newWebView.load(.init(url: url!))
         }
         
         return newWebView

@@ -11,11 +11,11 @@ import Cocoa
 class MAPrefsTabViewController: NSViewController {
     var properties = AppProperties()
     
-    @IBOutlet var showTabBarButton: NSButton!
+    @IBOutlet var hidesScreenElementsWhenNotActive: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        properties.showsTabBar ? setState(showTabBarButton, .on) : setState(showTabBarButton, .off)
+        properties.hidesScreenElementsWhenNotActive ? setState(hidesScreenElementsWhenNotActive, .on) : setState(hidesScreenElementsWhenNotActive, .off)
     }
     
     func setState(_ button: NSButton, _ state: NSControl.StateValue) {
@@ -45,11 +45,11 @@ class MAPrefsTabViewController: NSViewController {
         } else {}
     }
     
-    @IBAction func showsTabBar(_ sender: NSButton) {
-        if properties.showsTabBar == true {
-            properties.showsTabBar = false
-        } else if properties.showsTabBar == false {
-            properties.showsTabBar = true
+    @IBAction func hidesScreenElementsWhenNotActiveAction(_ sender: NSButton) {
+        if properties.hidesScreenElementsWhenNotActive == true {
+            properties.hidesScreenElementsWhenNotActive = false
+        } else if properties.hidesScreenElementsWhenNotActive == false {
+            properties.hidesScreenElementsWhenNotActive = true
         }
         properties.set()
         

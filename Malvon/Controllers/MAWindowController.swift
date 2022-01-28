@@ -13,11 +13,23 @@ class MAWindowController: NSWindowController {
     
     let windowState = "MAWindowControllerWindowState"
     
+//    lazy var tabView: NSTabViewController = {
+//        var tabView = NSTabViewController()
+//
+//        tabView.addTabViewItem(NSTabViewItem(viewController: MAViewController(windowCNTRL: self)))
+//        tabView.addTabViewItem(NSTabViewItem(viewController: MAViewController(windowCNTRL: self)))
+//        tabView.addTabViewItem(NSTabViewItem(viewController: MAViewController(windowCNTRL: self)))
+//        tabView.addTabViewItem(NSTabViewItem(viewController: MAViewController(windowCNTRL: self)))
+//
+//        return tabView
+//    }()
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         shouldCascadeWindows = false
 
         self.contentViewController = MAViewController(windowCNTRL: self)
+//        self.contentViewController = tabView
 
         let customToolbar = NSToolbar()
         window?.titleVisibility = .hidden
@@ -41,7 +53,7 @@ class MAWindowController: NSWindowController {
 
     @objc func windowWillClose() {
         guard let frame = window?.frame else { return }
-        UserDefaults.standard.set(NSStringFromRect(frame), forKey: windowState)
+        UserDefaults.standard.set(NSStringFromRect(frame), forKey: self.windowState)
     }
     
     // MARK: - TitleBar

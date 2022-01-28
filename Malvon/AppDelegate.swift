@@ -32,9 +32,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let MA_APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application        
+        // Insert code here to initialize your application
         window.showWindow(nil)
         updateApplication()
+        setAsDefaultBrowser()
+    }
+    
+    func application(_ application: NSApplication, open urls: [URL]) {
+        print(urls)
+        for url in urls {
+            // Create a new window if there are no windows
+            if application.windows.isEmpty {
+                window.showWindow(nil)
+            }
+            
+            // Functions
+            if let range = url.absoluteString.range(of: "open?") {
+                let value = url.absoluteString[range.upperBound...]
+                if String(value).isValidURL {
+                    let VC = application.mainWindow?.contentViewController as? MAViewController
+                    VC!.createNewTab(url: URL(string: String(value))!)
+                } else {
+                    let alert = NSAlert()
+                    alert.messageText = "Invalid URL"
+                    alert.informativeText = "This is not a valid URL"
+                    
+                    alert.addButton(withTitle: "Ok")
+                    
+                    alert.runModal()
+                }
+            }
+        }
     }
     
     func updateApplication() {
@@ -96,6 +124,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if preferencesController != nil {
             preferencesController!.showWindow(sender)
+        }
+    }
+    
+    // MARK: - Other
+
+    public func setAsDefaultBrowser() {
+        let bundleID = Bundle.main.bundleIdentifier as CFString?
+        var httpResult: OSStatus?
+        if let bundleID = bundleID {
+            httpResult = LSSetDefaultHandlerForURLScheme("http" as CFString, bundleID)
+            print(httpResult!)
+        }
+        var httpsResult: OSStatus?
+        if let bundleID = bundleID {
+            httpsResult = LSSetDefaultHandlerForURLScheme("https" as CFString, bundleID)
+            print(httpsResult!)
+        }
+        
+        var fileResult: OSStatus?
+        if let bundleID = bundleID {
+            fileResult = LSSetDefaultHandlerForURLScheme("HTML document" as CFString, bundleID)
+            print(fileResult!)
+        }
+        
+        var XHTMLdoc: OSStatus?
+        if let bundleID = bundleID {
+            XHTMLdoc = LSSetDefaultHandlerForURLScheme("XHTML document" as CFString, bundleID)
+            print(XHTMLdoc!)
         }
     }
 }

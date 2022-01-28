@@ -102,6 +102,7 @@ class MAHistoryViewController: NSViewController, NSTableViewDelegate, NSTableVie
         
         file.write("[]")
     }
+
     // MARK: - History Items
     
     func refreshTableView() {

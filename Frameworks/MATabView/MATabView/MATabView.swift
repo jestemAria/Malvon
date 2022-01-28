@@ -27,7 +27,7 @@ import Cocoa
     @objc optional func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int)
     @objc optional func tabViewDidChangeNumberOfTabViewItems(_ tabView: MATabView)
     @objc optional func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int)
-    
+
     /// When there are no more tabs left
     @objc optional func tabViewEmpty()
 }
@@ -42,7 +42,7 @@ open class MATabView: NSView {
             subview.isHidden = true
         }
         // Make a switch first, then remove the old view
-        guard let newView = tabViewItems[index].view else { return }
+        let newView = tabViewItems[index].view!
         addSubview(newView)
         newView.autoresizingMask = [.width, .height]
         newView.isHidden = false
@@ -68,25 +68,24 @@ open class MATabView: NSView {
     open func removeTabViewItem(at index: Int) {
         if selectedTabViewItemIndex == index {
             // If there are no more tabs left
-            if index == 0 && tabViewItems.count == 1 {
-                self.delegate?.tabView?(self, willRemove: index)
-                self.delegate?.tabViewEmpty?()
+            if index == 0, tabViewItems.count == 1 {
+                delegate?.tabView?(self, willRemove: index)
+                delegate?.tabViewEmpty?()
                 return
-            } else if index == 0 && tabViewItems.count != 1 {
+            } else if index == 0, tabViewItems.count != 1 {
                 selectTabViewItem(at: selectedTabViewItemIndex + 1)
                 selectedTabViewItemIndex -= 1
-                self.delegate?.tabView?(self, willRemove: index)
+                delegate?.tabView?(self, willRemove: index)
                 tabViewItems.remove(at: index)
                 return
-            }
-            else {
+            } else {
                 selectTabViewItem(at: selectedTabViewItemIndex - 1)
-                self.delegate?.tabView?(self, willRemove: index)
+                delegate?.tabView?(self, willRemove: index)
                 tabViewItems.remove(at: index)
                 return
             }
         }
-        self.delegate?.tabView?(self, willRemove: index)
+        delegate?.tabView?(self, willRemove: index)
         tabViewItems.remove(at: index)
     }
 }

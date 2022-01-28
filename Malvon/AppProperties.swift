@@ -9,15 +9,15 @@
 import Foundation
 
 public struct AppProperties {
-    var showsTabBar: Bool
+    var hidesScreenElementsWhenNotActive: Bool
 
     private let defaults = UserDefaults.standard
 
     public init() {
-        showsTabBar = defaults.bool(forKey: "MA_APP_PROPERTIES_showsTabBar")
+        hidesScreenElementsWhenNotActive = defaults.bool(forKey: "MA_APP_PROPERTIES_hidesScreenElementsWhenNotActive")
     }
 
     func set() {
-        defaults.set(showsTabBar, forKey: "MA_APP_PROPERTIES_showsTabBar")
+        defaults.set(hidesScreenElementsWhenNotActive, forKey: "MA_APP_PROPERTIES_hidesScreenElementsWhenNotActive")
     }
 }

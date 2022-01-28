@@ -128,8 +128,6 @@ extension String {
 enum Downloader {
     static func loadFileAsync(url: URL, dest: URL, completion: @escaping (String?, Error?) -> Void)
     {
-        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
         let destinationUrl = dest
         
         if FileManager().fileExists(atPath: destinationUrl.path) {

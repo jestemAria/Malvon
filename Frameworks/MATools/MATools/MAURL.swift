@@ -21,16 +21,16 @@ public class MAURL {
     public func fix() -> URL {
         var newURL = ""
 
-        if url.absoluteString.isValidURL {
+        if url.isFileURL || (url.host != nil && url.scheme != nil) {
             return url
         }
-        if url.absoluteString.starts(with: "file:///") {
-            return url
-        } else if url.scheme == nil {
+        if url.scheme == nil {
             newURL += "https://"
-        } else if !url.host!.contains("www") {
+        }
+        if let host = url.host, host.contains("www") {
             newURL += "www.\(url.host!)"
         }
+
         newURL += url.path
         newURL += url.query ?? ""
         return URL(string: newURL)!

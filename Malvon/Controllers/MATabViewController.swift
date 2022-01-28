@@ -34,6 +34,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
         tableView.menu = menu
 
         tableView.action = #selector(switchTabs)
+        tableView.doubleAction = #selector(switchTabs)
     }
 
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -83,6 +84,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TabsViewCell"), owner: self) as? MATabsTableViewCell else { return nil }
+
         let VC = viewController.webTabView.tabViewItems[row]
 
         cell.TabIcon?.image = VC.image

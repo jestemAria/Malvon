@@ -10,16 +10,17 @@ import Cocoa
 
 public extension String {
     var isValidURL: Bool {
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
-            return match.range.length == self.utf16.count
-        } else {
-            return false
+        let types: NSTextCheckingResult.CheckingType = [.link]
+        let detector = try? NSDataDetector(types: types.rawValue)
+        guard detector != nil, self.count > 0 else { return false }
+        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count)) > 0 {
+            return true
         }
+        return false
     }
     
     var encodeToURL: String {
-        self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
     
     var removeHTTP: String {
@@ -27,11 +28,11 @@ public extension String {
     }
     
     var removeWhitespace: String {
-        self.trimmingCharacters(in: .whitespacesAndNewlines)
+        trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     func string(_ after: String) -> String {
-        if let range = self.range(of: after) {
+        if let range = range(of: after) {
             let afterString = self[range.upperBound...]
             return String(afterString)
         } else {

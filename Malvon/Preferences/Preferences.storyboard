@@ -81,14 +81,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CX1-fQ-UAM">
-                                <rect key="frame" x="17" y="114" width="119" height="22"/>
+                                <rect key="frame" x="17" y="114" width="267" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Shows Tab Bar" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="47i-Q6-Yjn">
+                                <buttonCell key="cell" type="check" title="Hides screen elements when not active" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="47i-Q6-Yjn">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="showsTabBar:" target="tm7-pd-KXy" id="LKh-FO-anf"/>
+                                    <action selector="hidesScreenElementsWhenNotActiveAction:" target="tm7-pd-KXy" id="H26-eV-XIr"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwd-Ab-Yn8">
@@ -105,6 +105,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="hidesScreenElementsWhenNotActive" destination="CX1-fQ-UAM" id="xTl-GD-pDx"/>
                         <outlet property="showBlackScreenButton" destination="iwd-Ab-Yn8" id="1Ad-RT-eiu"/>
                         <outlet property="showTabBarButton" destination="CX1-fQ-UAM" id="idS-YK-NX8"/>
                     </connections>

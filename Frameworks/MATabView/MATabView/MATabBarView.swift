@@ -10,36 +10,51 @@ import Cocoa
 
 @objc public protocol MATabBarViewDelegate: NSObjectProtocol {
     @objc optional func tabBarView(_ tabBarView: MATabBarView, didSelect tabBarViewItemIndex: Int)
+    @objc optional func tabBarView(_ tabBarView: MATabBarView, wantsToClose tabBarViewItemIndex: Int)
 }
 
-open class MATabBarView: NSView {
+open class MATabBarView: NSView, MATabBarViewItemDelegate {
     open var tabStackView: NSStackView = .init(frame: .zero)
     
     open weak var delegate: MATabBarViewDelegate?
     
     open func removeTab(at index: Int) {
+        // Error Handling
+        // We need to switch the tag of each button
+        
+        for (position, subview) in tabStackView.subviews.enumerated() {
+            if position > index {
+                (subview as? MATabBarViewItem)!.tag -= 1
+            }
+        }
+        
         tabStackView.subviews[index].removeFromSuperview()
     }
     
-    @objc func didSelectTab(_ sender: NSButton) {
+    @objc func didSelectTab(_ sender: MATabBarViewItem) {
         delegate?.tabBarView?(self, didSelect: sender.tag)
     }
     
     open func addTab(title: String) {
-        let newButton = NSButton()
+        let newButton = MATabBarViewItem(frame: .zero)
+        
         newButton.translatesAutoresizingMaskIntoConstraints = true
-        newButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//        newButton.widthAnchor.constraint(equalTo: .init(), multiplier: 0.5).isActive = true
-//        let width = newButton.widthAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
-            
+        newButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        newButton.widthAnchor.constraint(equalToConstant: 225).isActive = true
         newButton.tag = tabStackView.subviews.count
-        
-        newButton.title = title
-        
+            
+        newButton.label = title
+        newButton.title = ""
         newButton.target = self
         newButton.action = #selector(didSelectTab(_:))
         
+        newButton.delegate = self
+        
         tabStackView.addArrangedSubview(newButton)
+    }
+    
+    public func tabBarViewItem(_ tabBarViewItem: MATabBarViewItem, wantsToClose tabBarViewItemIndex: Int) {
+        delegate?.tabBarView?(self, wantsToClose: tabBarViewItemIndex)
     }
     
     override open func draw(_ dirtyRect: NSRect) {
@@ -53,17 +68,8 @@ open class MATabBarView: NSView {
         tabStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         tabStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         tabStackView.orientation = .horizontal
-        tabStackView.distribution = .fillEqually
-        tabStackView.alignment = .top
-        tabStackView.spacing = 1
-        tabStackView.setHuggingPriority(NSLayoutConstraint.Priority.defaultLow, for: .horizontal)
-        
-//        let newView = NSView(frame: .init(x: 0, y: 0, width: 50, height: 30))
-//
-//        newView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//        newView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        newView.layer?.backgroundColor = .white
-//
-//        tabStackView.addArrangedSubview(convertItemToView(item: .init(view: NSView())))
+        tabStackView.distribution = .gravityAreas
+        tabStackView.alignment = .centerY
+        tabStackView.spacing = 0.3
     }
 }

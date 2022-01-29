@@ -46,7 +46,17 @@ open class MATabView: NSView, MATabBarViewDelegate {
         selectTabViewItem(at: tabBarViewItemIndex)
     }
 
+    public func tabBarView(_ tabBarView: MATabBarView, wantsToClose tabBarViewItemIndex: Int) {
+        removeTabViewItem(at: tabBarViewItemIndex)
+    }
+
     open func selectTabViewItem(at index: Int) {
+        if !tabBar!.tabStackView.subviews.isEmpty {
+            if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
+                button.alphaValue = 0.6
+                button.isMainButton = false
+            }
+        }
         subviews.forEach { subview in
             subview.isHidden = true
         }
@@ -64,16 +74,25 @@ open class MATabView: NSView, MATabBarViewDelegate {
         } else {
             tabViewItems[selectedTabViewItemIndex].view?.isHidden = true
         }
-
         selectedTabViewItemIndex = index
+
+        if !tabBar!.tabStackView.subviews.isEmpty {
+            if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
+                button.alphaValue = 1
+                button.isMainButton = true
+            }
+        }
     }
 
     open func addTabViewItem(tabViewItem: MATabViewItem) {
         tabViewItems.append(tabViewItem)
 
+        tabBar?.addTab(title: "New Tab")
         selectTabViewItem(at: tabViewItems.count - 1)
-
-        tabBar?.addTab(title: "New Tab \(tabViewItems.count - 1)")
+        if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
+            button.alphaValue = 1
+            button.isMainButton = true
+        }
     }
 
     open func removeTabViewItem(at index: Int) {
@@ -89,15 +108,24 @@ open class MATabView: NSView, MATabBarViewDelegate {
                 delegate?.tabView?(self, willRemove: index)
                 tabBar?.removeTab(at: index)
                 tabViewItems.remove(at: index)
+                if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
+                    button.alphaValue = 1
+                    button.isMainButton = true
+                }
                 return
             } else {
                 selectTabViewItem(at: selectedTabViewItemIndex - 1)
                 delegate?.tabView?(self, willRemove: index)
                 tabBar?.removeTab(at: index)
                 tabViewItems.remove(at: index)
+                if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
+                    button.alphaValue = 1
+                    button.isMainButton = true
+                }
                 return
             }
         }
+
         delegate?.tabView?(self, willRemove: index)
         tabBar?.removeTab(at: index)
         tabViewItems.remove(at: index)

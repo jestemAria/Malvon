@@ -25,11 +25,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBOutlet var progressIndicator: NSProgressIndicator!
     @IBOutlet var searchField: MASearchField!
     
-    // Website Title Favicon Image, And tab Elements
-    @IBOutlet var websiteTitle: NSTextField!
-    @IBOutlet var faviconImageView: NSImageView!
-    @IBOutlet var tabStackView: NSStackView!
-    
     // Refresh, Back, Forward outlets
     @IBOutlet var refreshButton: HoverButton!
     @IBOutlet var backButtonOutlet: HoverButton!
@@ -121,9 +116,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         webTabView.isHidden = true
         webView?.isHidden = true
         searchField.isHidden = true
-        websiteTitle.isHidden = true
-        faviconImageView.isHidden = true
-        tabStackView.isHidden = true
         refreshButton.isHidden = true
         backButtonOutlet.isHidden = true
         forwardButtonOutlet.isHidden = true
@@ -136,9 +128,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         webTabView.isHidden = false
         webView?.isHidden = false
         searchField.isHidden = false
-        websiteTitle.isHidden = false
-        faviconImageView.isHidden = false
-        tabStackView.isHidden = false
         refreshButton.isHidden = false
         backButtonOutlet.isHidden = false
         forwardButtonOutlet.isHidden = false
@@ -379,11 +368,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
             // Set the new title
             webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].title = webView.title
-            
-            websiteTitle.stringValue = webView.title ?? "Untitled Tab"
-            
-            (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? NSButton)?.title = webView.title ?? "Untitled Tab"
-            
+                                    
+            (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
+
             // Get the favicon of the website
             guard let webViewURL = webView.url?.absoluteString else { return }
             let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
@@ -393,21 +380,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             do {
                 data = try Data(contentsOf: url!)
                 webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].image = NSImage(data: data)
-                
-                faviconImageView.image = NSImage(data: data)
             } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    @IBAction func vcclosetabm(_ sender: Any?) {
-        // Remove the tab item
-        webTabView.removeTabViewItem(at: webTabView.selectedTabViewItemIndex)
-    }
-    
     func mubWebViewWillCloseTab() {
-        vcclosetabm(nil)
+        webTabView.removeTabViewItem(at: webTabView.selectedTabViewItemIndex)
     }
     
     func updateWebsiteURL() {
@@ -776,6 +756,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         tabsWebView?.removeFromSuperview()
         // Make it nil
         tabsWebView = nil
+        
+        progressIndicator.isHidden = true
     }
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {

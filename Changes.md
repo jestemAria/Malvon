@@ -1,6 +1,9 @@
 #  Changes
 
 ## v1.2
+- Added a close button
+- Made the tabs look better
+- Created a tab bar
 - Added retry button to the error page
 - Added Error Page for when the webView fails loading a web page
 - Fixed problem where video will keep on playing even when closed
@@ -10,7 +13,7 @@
 - Created run script to make life easier :)
 - Fixed the bug where if you close the first tab it will crash
 
-## v1.0.2
+## v1.0.2 ( **Released** )
 - Re-wrote the tabbing system, that will use less power!!!!!
 - Pressing `CMD + CNTR + n` will close the tab in the background
 - Finished re-writing the downloads history view controller

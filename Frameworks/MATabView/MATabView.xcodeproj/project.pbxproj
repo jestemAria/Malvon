@@ -12,6 +12,7 @@
 		ED62D7252787383500ABE8DD /* MATabView.h in Headers */ = {isa = PBXBuildFile; fileRef = ED62D7192787383500ABE8DD /* MATabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED62D73F2787384E00ABE8DD /* MATabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */; };
 		ED62D7412787392100ABE8DD /* MATabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62D7402787392100ABE8DD /* MATabView.swift */; };
+		EDD23EDC27A4EE95009B79B7 /* MATabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		ED62D7232787383500ABE8DD /* MATabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewTests.swift; sourceTree = "<group>"; };
 		ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewItem.swift; sourceTree = "<group>"; };
 		ED62D7402787392100ABE8DD /* MATabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabView.swift; sourceTree = "<group>"; };
+		EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				ED62D7192787383500ABE8DD /* MATabView.h */,
 				ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */,
 				ED62D7402787392100ABE8DD /* MATabView.swift */,
+				EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */,
 			);
 			path = MATabView;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDD23EDC27A4EE95009B79B7 /* MATabBarView.swift in Sources */,
 				ED62D7412787392100ABE8DD /* MATabView.swift in Sources */,
 				ED62D73F2787384E00ABE8DD /* MATabViewItem.swift in Sources */,
 			);

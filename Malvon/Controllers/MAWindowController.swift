@@ -35,6 +35,8 @@ class MAWindowController: NSWindowController {
         window?.titleVisibility = .hidden
         window?.toolbar = customToolbar
         
+        window?.updateConstraintsIfNeeded()
+        
         let data = UserDefaults.standard.object(forKey: self.windowState) as? String ?? ""
         window?.setFrame(NSRectFromString(data), display: true)
         

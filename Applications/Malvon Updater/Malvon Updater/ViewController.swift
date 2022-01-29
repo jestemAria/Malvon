@@ -32,7 +32,7 @@ class ViewController: NSViewController {
         
         // 1. Download the zip file
         Downloader.loadFileAsync(url: newAppFile, dest: downloadLocation) { [self] path, error in
-            print("Downloaded File \(path)")
+            print("Downloaded File \(path!)")
             unzip(path: downloadLocation.path, destination: dataDirectory()!.appendingPathComponent("Output").path)
             do {
                 if FileManager.default.fileExists(atPath: "/Applications/Malvon.app") {

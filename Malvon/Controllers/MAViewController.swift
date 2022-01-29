@@ -18,7 +18,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // webView! Element
     @IBOutlet var webTabView: MATabView!
-    
+    @IBOutlet var webTabBarView: MATabBarView!
     var webView: MAWebView?
     
     // Search Field and Progress Indicator Elements
@@ -46,16 +46,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     let tabsPopover = NSPopover()
     @IBOutlet var createNewTabButton: HoverButton!
     
-    // For other Tabpopover view to access
-    public var website: URL?
-    public var favicon: NSImage?
-    
     // For popups
     public var webConfigurations: WKWebViewConfiguration
     private var loadURL = true
-    
-    // Privacy
-    @IBOutlet var blackView: NSBox!
     
     // The window properties
     public var windowController: MAWindowController
@@ -87,6 +80,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Add the `webView` to the `webTabView`
         webView = MAWebView(frame: webTabView.frame, configuration: webConfigurations)
         webView = getNewWebViewInstance(config: webConfigurations)
+        webTabView.tabBar = webTabBarView
+        webTabView.`init`()
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
         
         webTabView.delegate = self
@@ -109,9 +104,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         } else {
             mubWebView(webView!, titleChanged: webView!.title!)
         }
-        
-        // If we don't set up this property, we will most likely get an error
-        website = URL(string: "https://www.google.com")!
         
         // Configure the popover
         tabsPopover.behavior = .semitransient
@@ -208,21 +200,15 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func createNewTab(url: URL) {
-        blackView.isHidden = false
         // Create a new tab
         webView = getNewWebViewInstance(url: url)
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
-        
-        blackView.isHidden = true
     }
     
     @IBAction func createNewTab(_ sender: Any) {
-        blackView.isHidden = false
         // Create a new tab
         webView = getNewWebViewInstance()
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
-        
-        blackView.isHidden = true
     }
     
     func checkButtons() {
@@ -334,14 +320,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, urlDidChange url: URL?) {
-        if let url = url {
-            // Update the search field URL
-            updateWebsiteURL()
-            // Set the website to be equal to the new URL
-            website = url
-            // Check if we should enable one of the buttons
-            checkButtons()
-        }
+        // Update the search field URL
+        updateWebsiteURL()
+        // Check if we should enable one of the buttons
+        checkButtons()
     }
     
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
@@ -394,25 +376,28 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
-        // Set the new title
-        let tabItem = webTabView.tabViewItems[webTabView.selectedTabViewItemIndex]
-        tabItem.title = title
-        
-        websiteTitle.stringValue = tabItem.title ?? "Untitled Tab"
-        
-        // Get the favicon of the website
-        guard let webViewURL = webView.url?.absoluteString else { return }
-        let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
-        
-        let data: Data
-        
-        do {
-            data = try Data(contentsOf: url!)
-            tabItem.image = NSImage(data: data)
+        if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
+            // Set the new title
+            webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].title = webView.title
             
-            faviconImageView.image = tabItem.image
-        } catch {
-            print(error.localizedDescription)
+            websiteTitle.stringValue = webView.title ?? "Untitled Tab"
+            
+            (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? NSButton)?.title = webView.title ?? "Untitled Tab"
+            
+            // Get the favicon of the website
+            guard let webViewURL = webView.url?.absoluteString else { return }
+            let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
+            
+            let data: Data
+            
+            do {
+                data = try Data(contentsOf: url!)
+                webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].image = NSImage(data: data)
+                
+                faviconImageView.image = NSImage(data: data)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -628,7 +613,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Tab Menu Items
     
     func switchTo(tab number: Int, _ pauses: Bool = false, closes: Bool = false) {
-        blackView.isHidden = false
         if !closes {
             if number <= webTabView.tabViewItems.count - 1 {
                 if pauses {
@@ -645,7 +629,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         } else {
             webTabView.removeTabViewItem(at: number)
         }
-        blackView.isHidden = true
     }
     
     @IBAction func tab1(_ sender: Any?) {
@@ -764,7 +747,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         webView?.delegate = self
         
         mubWebView(webView!, urlDidChange: webView?.url)
-        mubWebView(webView!, titleChanged: webView?.title ?? "Untitled Page")
+        mubWebView(webView!, titleChanged: webView?.title ?? "Untitled Tab")
         
         if webView!.isLoading {
             refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)

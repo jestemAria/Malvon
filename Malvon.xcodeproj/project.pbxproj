@@ -19,7 +19,6 @@
 		ED806EF8277F87CB00D766F7 /* AppProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF7277F87CB00D766F7 /* AppProperties.swift */; };
 		ED806EFA277F887A00D766F7 /* MAPrefsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF9277F887A00D766F7 /* MAPrefsGeneralViewController.swift */; };
 		ED806EFC277F8BB300D766F7 /* MAPrefsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */; };
-		EDB840F027A4AF7200173C13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDB840EF27A4AF7100173C13 /* Info.plist */; };
 		EDD23ED127A4CCCC009B79B7 /* error_page.html in Resources */ = {isa = PBXBuildFile; fileRef = EDD23ED027A4CCCC009B79B7 /* error_page.html */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -634,7 +633,6 @@
 				ED79F0C0277E64FB0047BB86 /* update_feature_list.txt in Resources */,
 				ED806EF6277F859B00D766F7 /* Preferences.storyboard in Resources */,
 				EDF62B34277C96B2006DF3EB /* MainMenu.xib in Resources */,
-				EDB840F027A4AF7200173C13 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

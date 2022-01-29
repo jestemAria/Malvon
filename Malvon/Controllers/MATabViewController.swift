@@ -14,7 +14,7 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     var viewController: MAViewController
 
     init(viewController: MAViewController) {
-        self.viewController = viewController
+        self.viewController = NSApp.mainWindow?.contentViewController as! MAViewController
         super.init(nibName: "MATabViewController", bundle: nil)
     }
 
@@ -65,18 +65,6 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
     }
 
     @IBAction func willPressClose(_ sender: NSButton) {
-        var tabsWebView = viewController.webTabView.tabViewItems[viewController.webTabView.selectedTabViewItemIndex].view as? MAWebView
-
-        // Make the webView load "about:blank"
-        tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
-        // Remove all the observers on the webview
-        tabsWebView?.removeWebview()
-        // Remove from the superview
-        tabsWebView?.removeFromSuperview()
-        // Make it nil
-        tabsWebView = nil
-
-        // Remove the tab item
         viewController.webTabView.removeTabViewItem(at: sender.tag)
 
         tableView.reloadData()
@@ -87,8 +75,26 @@ class MATabViewController: NSViewController, NSTableViewDataSource, NSTableViewD
 
         let VC = viewController.webTabView.tabViewItems[row]
 
-        cell.TabIcon?.image = VC.image
-        cell.TabTitle?.stringValue = VC.title ?? "Untitled"
+//        if VC.title == nil || VC.image == nil || ((VC.view as! MAWebView).title ?? "Untitled Tab") != VC.title {
+        cell.TabTitle?.stringValue = (VC.view as! MAWebView).title ?? "Untitled Tab"
+
+        if let webViewURL = (VC.view as! MAWebView).url?.absoluteString {
+            let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
+
+            let data: Data
+
+            do {
+                data = try Data(contentsOf: url!)
+                cell.TabIcon?.image = NSImage(data: data)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+//        } else {
+//            cell.TabIcon?.image = VC.image
+//            cell.TabTitle.stringValue = VC.title!
+//        }
+
         cell.TabCloseButton.tag = row
         cell.TabCloseButton.action = #selector(willPressClose(_:))
 

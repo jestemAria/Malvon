@@ -32,10 +32,19 @@ import Cocoa
     @objc optional func tabViewEmpty()
 }
 
-open class MATabView: NSView {
+open class MATabView: NSView, MATabBarViewDelegate {
     open var selectedTabViewItemIndex: Int = 0
     open var tabViewItems: [MATabViewItem] = []
     open weak var delegate: MATabViewDelegate?
+    open var tabBar: MATabBarView?
+
+    open func `init`() {
+        tabBar?.delegate = self
+    }
+
+    public func tabBarView(_ tabBarView: MATabBarView, didSelect tabBarViewItemIndex: Int) {
+        selectTabViewItem(at: tabBarViewItemIndex)
+    }
 
     open func selectTabViewItem(at index: Int) {
         subviews.forEach { subview in
@@ -63,6 +72,8 @@ open class MATabView: NSView {
         tabViewItems.append(tabViewItem)
 
         selectTabViewItem(at: tabViewItems.count - 1)
+
+        tabBar?.addTab(title: "New Tab \(tabViewItems.count - 1)")
     }
 
     open func removeTabViewItem(at index: Int) {
@@ -76,16 +87,19 @@ open class MATabView: NSView {
                 selectTabViewItem(at: selectedTabViewItemIndex + 1)
                 selectedTabViewItemIndex -= 1
                 delegate?.tabView?(self, willRemove: index)
+                tabBar?.removeTab(at: index)
                 tabViewItems.remove(at: index)
                 return
             } else {
                 selectTabViewItem(at: selectedTabViewItemIndex - 1)
                 delegate?.tabView?(self, willRemove: index)
+                tabBar?.removeTab(at: index)
                 tabViewItems.remove(at: index)
                 return
             }
         }
         delegate?.tabView?(self, willRemove: index)
+        tabBar?.removeTab(at: index)
         tabViewItems.remove(at: index)
     }
 }

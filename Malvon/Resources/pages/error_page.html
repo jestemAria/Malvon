@@ -59,6 +59,17 @@
         color: #444;
         overflow: auto !important;
     }
+        
+    .retry_button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
 
     @media (prefers-color-scheme: dark) {
         html,
@@ -82,10 +93,16 @@
 
     
     <h1>Error Loading Webpage</h1>
-    <h3 id=error_msg>Error Message</h3>
+    <h3 id=error_msg>Unknown Error</h3>
+    
+    <button type="button" id="retryBTN" class="retry_button" onclick="retryLoading()">Retry</button>
 
 
     <script>
+        function retryLoading() {
+            window.location.href = retryLoadingURL;
+        }
+        
         function errorMessage(message) {
             document.getElementById("error_msg").innerHTML = "Error Message: " + message;
         }
@@ -106,6 +123,7 @@
             var f = b.get;
             a = checkTime(a);
             d = checkTime(d);
+            if (e > 12) e -= 12;
             document.getElementById("time").innerHTML = e + ":" + a + " " + c;
             t = setTimeout(function () { startTime() }, 500)
         }

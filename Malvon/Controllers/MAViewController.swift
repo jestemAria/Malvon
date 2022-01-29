@@ -302,8 +302,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         let newtabURL = Bundle.main.url(forResource: "error_page", withExtension: "html")
         self.webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
         
-        let errorMessageScript = WKUserScript(source: "errorMessage(\"\(error.localizedDescription)\")", injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        webView.configuration.userContentController.addUserScript(errorMessageScript)
+        if let info = error._userInfo as? [String: Any] {
+            if let url = info["NSErrorFailingURLKey"] as? URL {
+                let errorMessageScript = WKUserScript(source: "errorMessage(\"\(error.localizedDescription)\")\nlet retryLoadingURL = \"\(url.absoluteString)\"", injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+                webView.configuration.userContentController.addUserScript(errorMessageScript)
+            }
+        }
     }
     
     func mubWebView(_ webView: MAWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {

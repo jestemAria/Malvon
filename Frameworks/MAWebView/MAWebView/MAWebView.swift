@@ -85,10 +85,6 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.delegate?.mubWebViewWillCloseTab()
     }
     
-    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        self.delegate?.mubWebView?(webView as! MAWebView, failedLoadingWebpage: error)
-    }
-    
     public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         self.delegate?.mubWebView?(webView as! MAWebView, failedLoadingWebpage: error)
     }
@@ -97,33 +93,28 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.delegate?.mubWebView?(webView as! MAWebView, runOpenPanelWith: parameters, initiatedByFrame: frame, completionHandler: completionHandler)
     }
     
-    
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         if let response = navigationResponse.response as? HTTPURLResponse {
-            if let fields = response.allHeaderFields["Content-Type"] as? String {
-                print(navigationResponse.canShowMIMEType)
-                if fields.contains("text/html") {
-                } else {
-                    let panel = NSSavePanel()
-                    panel.nameFieldStringValue = response.suggestedFilename!
-                    DownloaderProgress.shardInstance.isFinished = false
-                    panel.canCreateDirectories = true
-                    panel.beginSheetModal(for: self.window!) { [self] res in
-                        if res == .OK {
-                            DownloaderProgress.shardInstance.fileName = panel.nameFieldStringValue
+            if !navigationResponse.canShowMIMEType {
+                let panel = NSSavePanel()
+                panel.nameFieldStringValue = response.suggestedFilename!
+                DownloaderProgress.shardInstance.isFinished = false
+                panel.canCreateDirectories = true
+                panel.beginSheetModal(for: self.window!) { [self] res in
+                    if res == .OK {
+                        DownloaderProgress.shardInstance.fileName = panel.nameFieldStringValue
                             
-                            let filePath = panel.url
-                            let ProgView = MAWebViewDownloadingViewController(nibName: "MAWebViewDownloadingViewController", bundle: frameworkBundle)
+                        let filePath = panel.url
+                        let ProgView = MAWebViewDownloadingViewController(nibName: "MAWebViewDownloadingViewController", bundle: frameworkBundle)
                             
-                            let mainWindow = NSWindow(contentViewController: ProgView)
+                        let mainWindow = NSWindow(contentViewController: ProgView)
                             
-                            self.window?.beginSheet(mainWindow, completionHandler: { _ in
-                            })
+                        self.window?.beginSheet(mainWindow, completionHandler: { _ in
+                        })
                             
-                            mainWindow.close()
+                        mainWindow.close()
                             
-                            downloader.download(from: response.url!, tourl: filePath!)
-                        }
+                        downloader.download(from: response.url!, tourl: filePath!)
                     }
                 }
             }

@@ -241,6 +241,7 @@
             var f = b.get;
             a = checkTime(a);
             d = checkTime(d);
+            if (e > 12) e -= 12;
             document.getElementById("time").innerHTML = e + ":" + a + " " + c;
             t = setTimeout(function () { startTime() }, 500)
         }

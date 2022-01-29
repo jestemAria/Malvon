@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Added retry button to the error page
+- Added Error Page for when the webView fails loading a web page
 - Fixed problem where video will keep on playing even when closed
 - Fixed Window State Problem
 - Fixed the search field

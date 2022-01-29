@@ -105,7 +105,7 @@
                             </menuItem>
                             <menuItem title="Close Tab" keyEquivalent="w" id="wjv-hu-eW3">
                                 <connections>
-                                    <action selector="vcclosetabm:" target="-1" id="huL-PD-1v2"/>
+                                    <action selector="closeTab:" target="-1" id="7mP-zt-hGQ"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="jwL-PV-tKG"/>

@@ -14,7 +14,6 @@
                 <outlet property="progressIndicator" destination="hRj-KC-y0I" id="yh3-Un-oIE"/>
                 <outlet property="refreshButton" destination="SBy-me-3uk" id="5i9-Qi-3Wb"/>
                 <outlet property="searchField" destination="QEv-1d-jkS" id="ZCp-UQ-61p"/>
-                <outlet property="showTabsButton" destination="Gve-Pp-dd0" id="dCc-Wc-niW"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Bzk-7g-zJq"/>
                 <outlet property="webContentView" destination="Hmp-yZ-mmV" id="nRX-yd-r3M"/>
                 <outlet property="webTabBarView" destination="cDw-fm-S7o" id="H3Y-GB-B1Z"/>
@@ -94,26 +93,6 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-Pp-dd0">
-                                <rect key="frame" x="861" y="-5" width="154" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="PT3-Gj-ak8"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="225" id="dSI-SY-FYj"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="vKc-AU-E3A"/>
-                                </constraints>
-                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="center" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Ljs-fj-BCa">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent">y</string>
-                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="tabsPopoverButton:" target="-2" id="ZF8-Ng-tiH"/>
-                                </connections>
-                            </button>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7JB-2D-Yyf">
-                                <rect key="frame" x="1045" y="18" width="0.0" height="0.0"/>
-                            </stackView>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEv-1d-jkS" customClass="MASearchField" customModule="Malvon" customModuleProvider="target">
                                 <rect key="frame" x="177" y="3" width="818" height="30"/>
                                 <shadow key="shadow">
@@ -148,17 +127,13 @@
                             </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="7JB-2D-Yyf" firstAttribute="leading" secondItem="QEv-1d-jkS" secondAttribute="trailing" constant="50" id="1fI-ui-gOS"/>
+                            <constraint firstAttribute="trailing" secondItem="QEv-1d-jkS" secondAttribute="trailing" constant="50" id="22Y-Iz-8qn"/>
                             <constraint firstItem="SBy-me-3uk" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="468-v3-2MS"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="leading" secondItem="iQp-AF-cVn" secondAttribute="trailing" constant="50" id="4li-D1-mLD"/>
                             <constraint firstAttribute="bottom" secondItem="iQp-AF-cVn" secondAttribute="bottom" id="6V5-6R-NvQ"/>
-                            <constraint firstItem="Gve-Pp-dd0" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="GJc-8Y-8yU"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="leading" secondItem="Xg7-WT-uDj" secondAttribute="leading" constant="66" id="VaU-rs-rXM"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="Yb1-kK-xo3"/>
-                            <constraint firstItem="7JB-2D-Yyf" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="c0I-Kn-xMI"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="h4e-Cu-fbD"/>
-                            <constraint firstAttribute="trailing" secondItem="7JB-2D-Yyf" secondAttribute="trailing" id="jlP-i2-iw9"/>
-                            <constraint firstAttribute="trailing" secondItem="Gve-Pp-dd0" secondAttribute="trailing" constant="32" id="lxf-FZ-73w"/>
                             <constraint firstItem="iQp-AF-cVn" firstAttribute="leading" secondItem="WUV-lC-r8G" secondAttribute="trailing" id="vU8-Wz-15G"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="leading" secondItem="SBy-me-3uk" secondAttribute="trailing" constant="-30" id="w0T-hv-HhC"/>
                             <constraint firstItem="iQp-AF-cVn" firstAttribute="top" secondItem="Xg7-WT-uDj" secondAttribute="top" id="wck-RM-g9D"/>

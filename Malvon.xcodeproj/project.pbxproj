@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED0B17DE277CEFF000BB47B1 /* Appicon.icns */; };
-		ED34883027838C0800907E2D /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED34882F27838C0800907E2D /* TabManager.swift */; };
 		ED5343BD277E45510017AD05 /* MATools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5343A1277E43120017AD05 /* MATools.framework */; };
 		ED5343BE277E45510017AD05 /* MATools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED5343A1277E43120017AD05 /* MATools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ED62D742278739B500ABE8DD /* MATabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED62D7372787383700ABE8DD /* MATabView.framework */; };
@@ -43,8 +42,6 @@
 		EDF62BA3277C98AC006DF3EB /* DownloadsJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62BA0277C98AC006DF3EB /* DownloadsJSONModel.swift */; };
 		EDF62BA6277C98F7006DF3EB /* MADownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62BA4277C98F7006DF3EB /* MADownloadsViewController.swift */; };
 		EDF62BA7277C98F7006DF3EB /* MADownloadsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62BA5277C98F7006DF3EB /* MADownloadsViewController.xib */; };
-		EDF62BAA277C9973006DF3EB /* MATabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62BA8277C9973006DF3EB /* MATabViewController.swift */; };
-		EDF62BAB277C9973006DF3EB /* MATabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62BA9277C9973006DF3EB /* MATabViewController.xib */; };
 		EDF62BAE277C99B7006DF3EB /* MAHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62BAC277C99B7006DF3EB /* MAHistoryViewController.swift */; };
 		EDF62BAF277C99B7006DF3EB /* MAHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62BAD277C99B7006DF3EB /* MAHistoryViewController.xib */; };
 		EDF62BBA277CB24B006DF3EB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDF62BB9277CB24B006DF3EB /* README.md */; };
@@ -149,7 +146,6 @@
 
 /* Begin PBXFileReference section */
 		ED0B17DE277CEFF000BB47B1 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
-		ED34882F27838C0800907E2D /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		ED3CC6C3277D1AA400C0823E /* version.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		ED53439B277E43110017AD05 /* MATools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MATools.xcodeproj; path = MATools/MATools.xcodeproj; sourceTree = "<group>"; };
 		ED62D72E2787383500ABE8DD /* MATabView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MATabView.xcodeproj; path = MATabView/MATabView.xcodeproj; sourceTree = "<group>"; };
@@ -188,8 +184,6 @@
 		EDF62BA0277C98AC006DF3EB /* DownloadsJSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsJSONModel.swift; sourceTree = "<group>"; };
 		EDF62BA4277C98F7006DF3EB /* MADownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADownloadsViewController.swift; sourceTree = "<group>"; };
 		EDF62BA5277C98F7006DF3EB /* MADownloadsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MADownloadsViewController.xib; sourceTree = "<group>"; };
-		EDF62BA8277C9973006DF3EB /* MATabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewController.swift; sourceTree = "<group>"; };
-		EDF62BA9277C9973006DF3EB /* MATabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MATabViewController.xib; sourceTree = "<group>"; };
 		EDF62BAC277C99B7006DF3EB /* MAHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAHistoryViewController.swift; sourceTree = "<group>"; };
 		EDF62BAD277C99B7006DF3EB /* MAHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MAHistoryViewController.xib; sourceTree = "<group>"; };
 		EDF62BB9277CB24B006DF3EB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -333,7 +327,6 @@
 				EDF62BB2277CA586006DF3EB /* View Models */,
 				EDF62BB4277CA5AC006DF3EB /* Views */,
 				ED806EF7277F87CB00D766F7 /* AppProperties.swift */,
-				ED34882F27838C0800907E2D /* TabManager.swift */,
 			);
 			path = Malvon;
 			sourceTree = "<group>";
@@ -372,7 +365,6 @@
 				EDF62B57277C96D3006DF3EB /* MAWindowController.swift */,
 				EDF62B5B277C9738006DF3EB /* MAViewController.swift */,
 				EDF62BA4277C98F7006DF3EB /* MADownloadsViewController.swift */,
-				EDF62BA8277C9973006DF3EB /* MATabViewController.swift */,
 				EDF62BAC277C99B7006DF3EB /* MAHistoryViewController.swift */,
 			);
 			path = Controllers;
@@ -405,7 +397,6 @@
 				EDF62B58277C96D3006DF3EB /* MAWindowController.xib */,
 				EDF62B5C277C9738006DF3EB /* MAViewController.xib */,
 				EDF62BA5277C98F7006DF3EB /* MADownloadsViewController.xib */,
-				EDF62BA9277C9973006DF3EB /* MATabViewController.xib */,
 				EDF62BAD277C99B7006DF3EB /* MAHistoryViewController.xib */,
 			);
 			path = Views;
@@ -623,7 +614,6 @@
 			files = (
 				EDF62B31277C96B2006DF3EB /* Assets.xcassets in Resources */,
 				EDF62B5A277C96D3006DF3EB /* MAWindowController.xib in Resources */,
-				EDF62BAB277C9973006DF3EB /* MATabViewController.xib in Resources */,
 				ED8025C5277D695100427E5C /* newtab.html in Resources */,
 				EDF62BAF277C99B7006DF3EB /* MAHistoryViewController.xib in Resources */,
 				ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */,
@@ -706,7 +696,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Frameworks/*.dylib\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Applications/Malvon\\ Updater.app/Contents/Frameworks/*.dylib\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Applications/Malvon\\ Updater.app/Contents/Frameworks/*.dylib\nrm -rf $TARGET_BUILD_DIR/Malvon.app/Contents/Frameworks/*.dylib\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -722,12 +712,10 @@
 				EDF62B95277C9887006DF3EB /* MASearchField.swift in Sources */,
 				EDF62BAE277C99B7006DF3EB /* MAHistoryViewController.swift in Sources */,
 				EDF62B59277C96D3006DF3EB /* MAWindowController.swift in Sources */,
-				EDF62BAA277C9973006DF3EB /* MATabViewController.swift in Sources */,
 				EDF62B93277C9887006DF3EB /* HoverButton.swift in Sources */,
 				EDF62BA6277C98F7006DF3EB /* MADownloadsViewController.swift in Sources */,
 				ED806EFA277F887A00D766F7 /* MAPrefsGeneralViewController.swift in Sources */,
 				EDF62B5D277C9738006DF3EB /* MAViewController.swift in Sources */,
-				ED34883027838C0800907E2D /* TabManager.swift in Sources */,
 				EDF62BA3277C98AC006DF3EB /* DownloadsJSONModel.swift in Sources */,
 				ED806EFC277F8BB300D766F7 /* MAPrefsTabViewController.swift in Sources */,
 				ED806EF8277F87CB00D766F7 /* AppProperties.swift in Sources */,

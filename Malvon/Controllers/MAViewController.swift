@@ -37,8 +37,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     private var window = NSWindow()
     
     // Show the tabs
-    @IBOutlet var showTabsButton: NSButton!
-    let tabsPopover = NSPopover()
     @IBOutlet var createNewTabButton: HoverButton!
     
     // For popups
@@ -100,10 +98,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             mubWebView(webView!, titleChanged: webView!.title!)
         }
         
-        // Configure the popover
-        tabsPopover.behavior = .semitransient
-        tabsPopover.animates = false
-        
         if AppProperties().hidesScreenElementsWhenNotActive {
             // When the app enters the background
             let nc = NotificationCenter.default
@@ -157,14 +151,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - Buttons
     
-    @IBAction func tabsPopoverButton(_ sender: NSButton) {
-        // Set the content view controller
-        tabsPopover.contentViewController = MATabViewController(viewController: self)
-
-        // If the popover is shown, close it, Vice Versa
-        tabsPopover.isShown ? tabsPopover.close() : tabsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
-    }
-    
     @IBAction func backButton(_ sender: Any) {
         // If the webView can go back, go back
         if webView!.canGoBack { webView!.goBack() }
@@ -198,6 +184,11 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Create a new tab
         webView = getNewWebViewInstance()
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
+    }
+    
+    @IBAction func closeTab(_ sender: Any) {
+        // Close the current tab
+        webTabView.removeTabViewItem(at: webTabView.selectedTabViewItemIndex)
     }
     
     func checkButtons() {

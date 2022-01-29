@@ -113,7 +113,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         refreshButton.isHidden = true
         backButtonOutlet.isHidden = true
         forwardButtonOutlet.isHidden = true
-        showTabsButton.isHidden = true
         createNewTabButton.isHidden = true
 //        print("App Entered Background")
     }
@@ -125,7 +124,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         refreshButton.isHidden = false
         backButtonOutlet.isHidden = false
         forwardButtonOutlet.isHidden = false
-        showTabsButton.isHidden = false
         createNewTabButton.isHidden = false
 //        print("App Is Active")
     }

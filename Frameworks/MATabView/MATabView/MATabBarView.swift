@@ -28,7 +28,14 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
             }
         }
         
-        tabStackView.subviews[index].removeFromSuperview()
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.25
+            context.allowsImplicitAnimation = true
+            
+            tabStackView.subviews[index].alphaValue = 0.0
+        } completionHandler: { [self] in
+            tabStackView.subviews[index].removeFromSuperview()
+        }
     }
     
     @objc func didSelectTab(_ sender: MATabBarViewItem) {
@@ -49,8 +56,13 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
         newButton.action = #selector(didSelectTab(_:))
         
         newButton.delegate = self
-        
-        tabStackView.addArrangedSubview(newButton)
+
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.25
+            context.allowsImplicitAnimation = true
+            
+            tabStackView.addArrangedSubview(newButton)
+        }
     }
     
     public func tabBarViewItem(_ tabBarViewItem: MATabBarViewItem, wantsToClose tabBarViewItemIndex: Int) {

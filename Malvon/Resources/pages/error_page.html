@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Error Loading Webpage</title>
+    <link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css>
+    <link href=https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css rel=stylesheet>
+    <script src=https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js></script>
+</head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        width: 100%;
+        max-width: 1000px;
+        padding: 0;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        background-color: rgba(231, 231, 233, 0.25)
+    }
+
+    .topcorner {
+        position: absolute;
+        top: 10px;
+        right: 10px
+    }
+
+    .wrap {
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+    }
+
+    .noselectable {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    html,
+    body {
+        height: 100%;
+        font-size: 16px;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #FaFaFa;
+        font-family: 'Roboto', sans-serif;
+        color: #444;
+        overflow: auto !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html,
+        body {
+            height: 100%;
+            font-size: 16px;
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #2b2b2b;
+            font-family: 'Roboto', sans-serif;
+            color: rgb(201, 201, 201);
+            overflow: auto !important;
+        }
+    }
+</style>
+
+<body>
+    <div class=topcorner>
+        <div id=time></div>
+    </div>
+
+    
+    <h1>Error Loading Webpage</h1>
+    <h3 id=error_msg>Error Message</h3>
+
+
+    <script>
+        function errorMessage(message) {
+            document.getElementById("error_msg").innerHTML = "Error Message: " + message;
+        }
+        
+        function checkTime(a) {
+            if (a < 10) {
+                a = "0" + a
+            }
+            return a
+        }
+
+        function startTime() {
+            var b = new Date();
+            var e = b.getHours();
+            var a = b.getMinutes();
+            var d = b.getSeconds();
+            var c = e >= 12 ? "pm" : "am";
+            var f = b.get;
+            a = checkTime(a);
+            d = checkTime(d);
+            document.getElementById("time").innerHTML = e + ":" + a + " " + c;
+            t = setTimeout(function () { startTime() }, 500)
+        }
+        
+        startTime();
+    </script>
+</body>
+
+</html>

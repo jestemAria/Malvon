@@ -298,6 +298,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - webView Functions
     
+    func mubWebView(_ webView: MAWebView, failedLoadingWebpage error: Error) {
+        let newtabURL = Bundle.main.url(forResource: "error_page", withExtension: "html")
+        self.webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
+        
+        let errorMessageScript = WKUserScript(source: "errorMessage(\"\(error.localizedDescription)\")", injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        webView.configuration.userContentController.addUserScript(errorMessageScript)
+    }
+    
     func mubWebView(_ webView: MAWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
         // Create the file panel
         let dialog = NSOpenPanel()

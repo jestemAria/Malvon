@@ -20,6 +20,7 @@
 		ED806EFA277F887A00D766F7 /* MAPrefsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF9277F887A00D766F7 /* MAPrefsGeneralViewController.swift */; };
 		ED806EFC277F8BB300D766F7 /* MAPrefsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */; };
 		EDB840F027A4AF7200173C13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDB840EF27A4AF7100173C13 /* Info.plist */; };
+		EDD23ED127A4CCCC009B79B7 /* error_page.html in Resources */ = {isa = PBXBuildFile; fileRef = EDD23ED027A4CCCC009B79B7 /* error_page.html */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD2438F277CC01400926C9B /* MAWebView.framework */; };
@@ -162,6 +163,7 @@
 		EDB840EF27A4AF7100173C13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDD08B01277D812E000C866B /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
 		EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Malvon Updater.xcodeproj"; path = "Malvon Updater/Malvon Updater.xcodeproj"; sourceTree = "<group>"; };
+		EDD23ED027A4CCCC009B79B7 /* error_page.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = error_page.html; sourceTree = "<group>"; };
 		EDD24380277CC01100926C9B /* MASearchSuggestions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASearchSuggestions.xcodeproj; path = MASearchSuggestions/MASearchSuggestions.xcodeproj; sourceTree = "<group>"; };
 		EDD24389277CC01400926C9B /* MAWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MAWebView.xcodeproj; path = MAWebView/MAWebView.xcodeproj; sourceTree = "<group>"; };
 		EDF62B2B277C96AF006DF3EB /* Malvon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malvon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				ED8025C4277D695100427E5C /* newtab.html */,
+				EDD23ED027A4CCCC009B79B7 /* error_page.html */,
 			);
 			path = pages;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				ED0B17DF277CEFF000BB47B1 /* Appicon.icns in Resources */,
 				EDF62B5E277C9738006DF3EB /* MAViewController.xib in Resources */,
 				EDF62BA7277C98F7006DF3EB /* MADownloadsViewController.xib in Resources */,
+				EDD23ED127A4CCCC009B79B7 /* error_page.html in Resources */,
 				ED79F0C0277E64FB0047BB86 /* update_feature_list.txt in Resources */,
 				ED806EF6277F859B00D766F7 /* Preferences.storyboard in Resources */,
 				EDF62B34277C96B2006DF3EB /* MainMenu.xib in Resources */,

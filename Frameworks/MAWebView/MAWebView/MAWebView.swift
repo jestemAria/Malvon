@@ -30,6 +30,8 @@ import WebKit
     @objc func mubWebViewWillCloseTab()
     
     @objc optional func mubWebView(_ webView: MAWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void)
+    
+    @objc optional func mubWebView(_ webView: MAWebView, failedLoadingWebpage error: Error)
 }
 
 /// The MAWebView, subclass of WKWebView
@@ -83,13 +85,23 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.delegate?.mubWebViewWillCloseTab()
     }
     
+    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        self.delegate?.mubWebView?(webView as! MAWebView, failedLoadingWebpage: error)
+    }
+    
+    public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        self.delegate?.mubWebView?(webView as! MAWebView, failedLoadingWebpage: error)
+    }
+    
     public func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
         self.delegate?.mubWebView?(webView as! MAWebView, runOpenPanelWith: parameters, initiatedByFrame: frame, completionHandler: completionHandler)
     }
     
+    
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         if let response = navigationResponse.response as? HTTPURLResponse {
             if let fields = response.allHeaderFields["Content-Type"] as? String {
+                print(navigationResponse.canShowMIMEType)
                 if fields.contains("text/html") {
                 } else {
                     let panel = NSSavePanel()
@@ -116,6 +128,7 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
                 }
             }
         }
+        
         decisionHandler(.allow)
     }
     

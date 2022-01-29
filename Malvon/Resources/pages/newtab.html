@@ -228,7 +228,8 @@
         function checkTime(a) {
             if (a < 10) {
                 a = "0" + a
-            } return a
+            }
+            return a
         }
 
         function startTime() {
@@ -242,7 +243,9 @@
             d = checkTime(d);
             document.getElementById("time").innerHTML = e + ":" + a + " " + c;
             t = setTimeout(function () { startTime() }, 500)
-        } startTime();
+        }
+        
+        startTime();
     </script>
 </body>
 

@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				ED62D7192787383500ABE8DD /* MATabView.h */,
-				ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */,
 				ED62D7402787392100ABE8DD /* MATabView.swift */,
+				ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */,
 				EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */,
 			);
 			path = MATabView;

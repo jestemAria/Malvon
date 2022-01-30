@@ -57,23 +57,14 @@ open class MATabView: NSView, MATabBarViewDelegate {
                 button.isMainButton = false
             }
         }
-        subviews.forEach { subview in
-            subview.isHidden = true
-        }
-        // Make a switch first, then remove the old view
+        // Add the new subview
         let newView = tabViewItems[index].view!
         addSubview(newView)
         newView.autoresizingMask = [.width, .height]
-        newView.isHidden = false
+
+        // Call the delegate function
         delegate?.tabView?(self, didSelect: index)
 
-        // Remove the current view
-        // Just in case they selected the same tab
-        if selectedTabViewItemIndex == index {
-            tabViewItems[selectedTabViewItemIndex].view?.isHidden = false
-        } else {
-            tabViewItems[selectedTabViewItemIndex].view?.isHidden = true
-        }
         selectedTabViewItemIndex = index
 
         if !tabBar!.tabStackView.subviews.isEmpty {

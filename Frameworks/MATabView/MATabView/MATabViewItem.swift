@@ -40,6 +40,17 @@ open class MATabBarViewItem: NSButton {
     var xPosition: CGFloat = 4
     var yPosition: CGFloat = 2
     var closeButtonSize = NSSize(width: 16, height: 16)
+    private var _favicon: NSImage?
+
+    open var favicon: NSImage? {
+        get {
+            return _favicon
+        }
+        set(image) {
+            _favicon = image as NSImage?
+            closeButton.image = _favicon
+        }
+    }
 
     /// The Tab Title
     open var label: String {
@@ -53,10 +64,27 @@ open class MATabBarViewItem: NSButton {
 
     override open func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        title = ""
+        // Tab Title
+        setUpTitle()
+
+        // Close Button
+        setUpCloseButton()
+
+        // Background and corner radius
+        let bgColor: NSColor = .quaternaryLabelColor
+        layer?.cornerRadius = 4
+        layer?.masksToBounds = true
+        layer?.backgroundColor = bgColor.cgColor
+        bgColor.setFill()
+        dirtyRect.fill()
+
+        let area = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
+        addTrackingArea(area)
+    }
+
+    fileprivate func setUpTitle() {
         let position = xPosition * 2 + closeButtonSize.width
 
-        // Tab Title
         tabTitle.translatesAutoresizingMaskIntoConstraints = false
         tabTitle.isEditable = false
         tabTitle.alignment = .center
@@ -73,8 +101,9 @@ open class MATabBarViewItem: NSButton {
         tabTitle.setContentHuggingPriority(NSLayoutConstraint.Priority(rawValue: NSLayoutConstraint.Priority.defaultLow.rawValue - 10), for: .horizontal)
         tabTitle.setContentCompressionResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: .horizontal)
         tabTitle.lineBreakMode = .byTruncatingTail
+    }
 
-        // Close Button
+    fileprivate func setUpCloseButton() {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.target = self
         closeButton.action = #selector(closeTab)
@@ -91,25 +120,18 @@ open class MATabBarViewItem: NSButton {
         closeButton.bezelStyle = .shadowlessSquare
         closeButton.isBordered = false
         closeButton.imagePosition = .imageOnly
-
-        // Self
-        wantsLayer = true
-        layer?.cornerRadius = 10
-        setButtonType(.momentaryPushIn)
-        image = nil
-        layer?.backgroundColor = .black
-
-        let area = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
-        addTrackingArea(area)
+        closeButton.layer?.masksToBounds = false
     }
 
     override open func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)
+        closeButton.image = NSImage(named: NSImage.stopProgressTemplateName)
         animator().alphaValue = 0.8
     }
 
     override open func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
+        closeButton.image = favicon
         animator().alphaValue = isMainButton ? 1 : 0.6
     }
 

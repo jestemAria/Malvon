@@ -1,6 +1,10 @@
 #  Changes
 
 ## v1.2
+- Uses less energy
+- Fixed when creating a new tab, it will use 135% of CPU
+- Added favicon to the tab bar
+- Close button automatically hides and opens
 - Added a close button
 - Made the tabs look better
 - Created a tab bar

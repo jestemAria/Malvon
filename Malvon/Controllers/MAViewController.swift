@@ -45,6 +45,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // The window properties
     public var windowController: MAWindowController
+    
+    // Just to improve proformance
+    private var startPageHTML = String()
+    let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
 
     // MARK: - Setup Functions
     
@@ -70,6 +74,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startPageHTML = MAURL(newtabURL!).contents()
         // Add the `webView` to the `webTabView`
         webView = MAWebView(frame: webTabView.frame, configuration: webConfigurations)
         webView = getNewWebViewInstance(config: webConfigurations)
@@ -91,8 +96,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // If it's a normal view controller, we will load the startpage
         // If it's not, the webview will automatically load the URL, so we don't have to worry
         if loadURL == true {
-            let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
-            webView!.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
+            webView?.loadHTMLString(startPageHTML, baseURL: newtabURL!)
             updateWebsiteURL()
         } else {
             mubWebView(webView!, titleChanged: webView!.title!)
@@ -304,6 +308,29 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         checkButtons()
     }
     
+    func mubWebView(_ webView: MAWebView, titleChanged title: String) {
+        if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
+            // Set the new title
+            webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].title = webView.title
+
+            (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
+
+            // Get the favicon of the website
+            guard let webViewURL = webView.url?.absoluteString else { return }
+            let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
+
+            let data: Data
+
+            do {
+                data = try Data(contentsOf: url!)
+                webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].image = NSImage(data: data)
+                (webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.favicon = NSImage(data: data)!
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
         // Create a new tab and open it
         
@@ -325,53 +352,23 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
         
         // Set the value of the progress indicator
-        progressIndicator.doubleValue = (progress * 100) * 2
+        progressIndicator.doubleValue = (progress * 100)
         
         // Increase the value by 50
-        progressIndicator.increment(by: 50)
+        progressIndicator.increment(by: 0)
         
         // Set it to use threaded animations
         progressIndicator.usesThreadedAnimation = true
         
         if progressIndicator.doubleValue == 100 {
-            progressIndicator.contentFilters = [CIFilter(name: "CIHueAdjust", parameters: ["inputAngle": 6.4])!]
-            // Reverse the value and change negative to positive
-            let newValue = abs((progress * 100) - 100)
-            // Set the value
-            progressIndicator.doubleValue = newValue
-            
-            if progressIndicator.doubleValue == 0 {
-                // Set the value to 0
-                progressIndicator.doubleValue = 0
-                // Hide the progress indicator
-                progressIndicator.isHidden = true
-                // Change the icon of the refresh button to the refresh icon
-                refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
-                // Check if we should disable or enable any buttons
-                checkButtons()
-            }
-        }
-    }
-    
-    func mubWebView(_ webView: MAWebView, titleChanged title: String) {
-        if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
-            // Set the new title
-            webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].title = webView.title
-                                    
-            (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
-
-            // Get the favicon of the website
-            guard let webViewURL = webView.url?.absoluteString else { return }
-            let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
-            
-            let data: Data
-            
-            do {
-                data = try Data(contentsOf: url!)
-                webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].image = NSImage(data: data)
-            } catch {
-                print(error.localizedDescription)
-            }
+            // Set the value to 0
+            progressIndicator.doubleValue = 0
+            // Hide the progress indicator
+            progressIndicator.isHidden = true
+            // Change the icon of the refresh button to the refresh icon
+            refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
+            // Check if we should disable or enable any buttons
+            checkButtons()
         }
     }
     
@@ -712,20 +709,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int) {
         let newWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
+        
         webView = newWebView
         webView?.delegate = self
         
-        mubWebView(webView!, urlDidChange: webView?.url)
-        mubWebView(webView!, titleChanged: webView?.title ?? "Untitled Tab")
+        checkButtons()
+        updateWebsiteURL()
         
-        if webView!.isLoading {
-            refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)
-        } else {
-            refreshButton.image = NSImage(named: NSImage.refreshTemplateName)
-        }
-        
-        // Set the value to 0
-        progressIndicator.doubleValue = 0
         // Hide the progress indicator
         progressIndicator.isHidden = true
     }
@@ -736,7 +726,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int) {
         var tabsWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
-        
         // Make the webView load "about:blank"
         tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
         // Remove all the observers on the webview
@@ -750,27 +739,15 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {
-        var webConfig = WKWebViewConfiguration()
-        if config == nil {
-            webConfig = webConfigurations
-        } else {
-            webConfig = config!
-        }
-        let newWebView = MAWebView(frame: webTabView.frame, configuration: webConfig)
-        
+        let newWebView = MAWebView(frame: webTabView.frame, configuration: config ?? WKWebViewConfiguration())
+
         newWebView.initializeWebView()
         newWebView.enableConfigurations()
         newWebView.enableAdblock()
         newWebView.delegate = self
-        
+
         if config == nil {
-            let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
-            newWebView.loadFileURL(newtabURL!, allowingReadAccessTo: newtabURL!)
-            updateWebsiteURL()
-        }
-        
-        if url != nil {
-            newWebView.load(.init(url: url!))
+            _ = url != nil ? newWebView.load(.init(url: url!)) : newWebView.loadHTMLString(startPageHTML, baseURL: newtabURL!)
         }
         
         return newWebView

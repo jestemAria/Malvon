@@ -74,15 +74,23 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startPageHTML = MAURL(newtabURL!).contents()
+        DispatchQueue.global(qos: .background).async { [self] in
+            if let string = UserDefaults.standard.string(forKey: "startPageHTML") {
+                startPageHTML = string
+            } else {
+                startPageHTML = MAURL(newtabURL!).contents()
+                UserDefaults.standard.set(startPageHTML, forKey: "startPageHTML")
+            }
+        }
         // Add the `webView` to the `webTabView`
+
         webView = MAWebView(frame: webTabView.frame, configuration: webConfigurations)
         webView = getNewWebViewInstance(config: webConfigurations)
         webTabView.tabBar = webTabBarView
         webTabView.`init`()
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
-        
         webTabView.delegate = self
+
         // Remove the cancle and search buttons from the searchfield
         if let cell = searchField.cell as? NSSearchFieldCell {
             cell.searchButtonCell?.isTransparent = true
@@ -92,21 +100,18 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Configure the elements
         configureElements()
         
-        // Check if the view controller is a popup or a normal view controller
-        // If it's a normal view controller, we will load the startpage
-        // If it's not, the webview will automatically load the URL, so we don't have to worry
-        if loadURL == true {
-            webView?.loadHTMLString(startPageHTML, baseURL: newtabURL!)
-            updateWebsiteURL()
-        } else {
-            mubWebView(webView!, titleChanged: webView!.title!)
-        }
-        
         if AppProperties().hidesScreenElementsWhenNotActive {
             // When the app enters the background
             let nc = NotificationCenter.default
             nc.addObserver(self, selector: #selector(willEnterBackground), name: NSApplication.willResignActiveNotification, object: nil)
             nc.addObserver(self, selector: #selector(willBecomeActive), name: NSApplication.willBecomeActiveNotification, object: nil)
+        }
+        
+        // Check if the view controller is a popup or a normal view controller
+        // If it's a normal view controller, we will load the startpage
+        // If it's not, the webview will automatically load the URL, so we don't have to worry
+        if loadURL {
+            webView?.loadHTMLString(startPageHTML, baseURL: newtabURL!)
         }
     }
     
@@ -118,7 +123,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         backButtonOutlet.isHidden = true
         forwardButtonOutlet.isHidden = true
         createNewTabButton.isHidden = true
-//        print("App Entered Background")
     }
     
     @objc func willBecomeActive() {
@@ -129,7 +133,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         backButtonOutlet.isHidden = false
         forwardButtonOutlet.isHidden = false
         createNewTabButton.isHidden = false
-//        print("App Is Active")
     }
     
     // Style the elements ( buttons, searchfields )
@@ -200,6 +203,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             
             // If the webView can go forward, enable the back forward
             webView.canGoForward ? (forwardButtonOutlet.isEnabled = true) : (forwardButtonOutlet.isEnabled = false)
+            
+            webView.isLoading ? (refreshButton.image = NSImage(named: NSImage.stopProgressTemplateName)) : (refreshButton.image = NSImage(named: NSImage.refreshTemplateName))
         }
     }
     
@@ -208,10 +213,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func parseHistoryJSON() -> [MAHistoryElement]? {
         // Read the file
         let fileContents = MAFile(path: MAHistoryViewController.path!).read()
-        
+
         // Decode the file
         let decodedJSON = try? JSONDecoder().decode([MAHistoryElement].self, from: fileContents.data(using: .utf8)!)
-        
+
         // Return the decoded JSON
         return decodedJSON
     }
@@ -219,18 +224,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func addItem(website: String, address: String) {
         // If the history.json file doesn't exist, create an empty file
         createHistoryFileIfNotExists()
-        
-        // Get the JSON
-        var historyJSON = parseHistoryJSON()
-        
+
         // Create a new JSON Property
-        var newHistoryJSON: [MAHistoryElement] = historyJSON!
-        
+        var newHistoryJSON: [MAHistoryElement] = parseHistoryJSON()!
+
         // Add a new item to the new JSON property
-        let newItem = MAHistoryElement(website: website, address: address)
-        newHistoryJSON.append(newItem)
-        historyJSON = newHistoryJSON
-        
+        newHistoryJSON.append(MAHistoryElement(website: website, address: address))
+
         // Write the new JSON property
         do {
             let data = try JSONEncoder().encode(newHistoryJSON)
@@ -240,28 +240,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
     }
     
-    func addHistoryEntry() {
-        if let webView = webView {
-            // add a new item to the history JSON
-            addItem(website: webView.title!, address: webView.url?.absoluteString ?? "about:blank")
-        }
-    }
-    
     // If the history.json file doesn't exist, create it
     func createHistoryFileIfNotExists() {
-        if let pathComponent = MAHistoryViewController.path {
-            let filePath = pathComponent.path
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: filePath) {
-            } else {
-                let str = "[]"
-                do {
-                    try str.write(to: MAHistoryViewController.path!, atomically: true, encoding: String.Encoding.utf8)
-                } catch {
-                    print("\(error.localizedDescription)")
-                }
-            }
-        } else {}
+        let pathComponent = MAFile(path: MAHistoryViewController.path!)
+        if !pathComponent.exists() {
+            pathComponent.write("[]")
+        }
     }
     
     // MARK: - webView Functions
@@ -308,26 +292,26 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         checkButtons()
     }
     
+    func getFavicon(url: String) -> NSImage? {
+        let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + url)
+
+        do {
+            return NSImage(data: try Data(contentsOf: url!))
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
         if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
             // Set the new title
-            webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].title = webView.title
-
             (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
 
             // Get the favicon of the website
             guard let webViewURL = webView.url?.absoluteString else { return }
-            let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + webViewURL)
-
-            let data: Data
-
-            do {
-                data = try Data(contentsOf: url!)
-                webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].image = NSImage(data: data)
-                (webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.favicon = NSImage(data: data)!
-            } catch {
-                print(error.localizedDescription)
-            }
+            
+            (webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.favicon = getFavicon(url: webViewURL)
         }
     }
     
@@ -343,8 +327,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, estimatedProgress progress: Double) {
-        progressIndicator.contentFilters = [CIFilter(name: "CIHueAdjust", parameters: ["inputAngle": 6])!]
-        
         // Make the progress indicator visible
         progressIndicator.isHidden = false
         
@@ -355,7 +337,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         progressIndicator.doubleValue = (progress * 100)
         
         // Increase the value by 50
-        progressIndicator.increment(by: 0)
+        progressIndicator.increment(by: 50)
         
         // Set it to use threaded animations
         progressIndicator.usesThreadedAnimation = true
@@ -420,7 +402,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func mubWebView(_ webView: MAWebView, didFinishLoading url: URL?) {
         // Add a new item into the history
-        addHistoryEntry()
+        addItem(website: webView.title!, address: webView.url!.absoluteString)
         // Update the state of the back and forward buttons
         checkButtons()
     }
@@ -708,10 +690,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Tab Functions
     
     func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int) {
-        let newWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
-        
-        webView = newWebView
-        webView?.delegate = self
+        webView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
         
         checkButtons()
         updateWebsiteURL()
@@ -740,11 +719,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {
         let newWebView = MAWebView(frame: webTabView.frame, configuration: config ?? WKWebViewConfiguration())
-
+        
         newWebView.initializeWebView()
         newWebView.enableConfigurations()
-        newWebView.enableAdblock()
-        newWebView.delegate = self
+        
+        DispatchQueue.global(qos: .background).async {
+            newWebView.enableAdblock()
+            newWebView.delegate = self
+        }
 
         if config == nil {
             _ = url != nil ? newWebView.load(.init(url: url!)) : newWebView.loadHTMLString(startPageHTML, baseURL: newtabURL!)

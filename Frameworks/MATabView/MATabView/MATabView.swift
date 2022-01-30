@@ -8,16 +8,6 @@
 
 //  MARK: - TODO List
 
-/**
-    **1. Save the previous tab **
-        *When the user closes the tab, go to the previous tab*
-    **2. Error Handeling**
-        *Fix a few errors*
-    **3. Create a tabbar similar to Google Chrome's**
-        *Try creating a vertical stack view*
-    **4. Hidden Tabs that can be shown with a keyboard shortcut**
-        *Good for privacy*
- */
 
 import Cocoa
 
@@ -53,7 +43,7 @@ open class MATabView: NSView, MATabBarViewDelegate {
     open func selectTabViewItem(at index: Int) {
         if !tabBar!.tabStackView.subviews.isEmpty {
             if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
-                button.alphaValue = 0.6
+                button.animator().alphaValue = 0.6
                 button.isMainButton = false
             }
         }
@@ -69,7 +59,7 @@ open class MATabView: NSView, MATabBarViewDelegate {
 
         if !tabBar!.tabStackView.subviews.isEmpty {
             if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
-                button.alphaValue = 1
+                button.animator().alphaValue = 1
                 button.isMainButton = true
             }
         }
@@ -81,7 +71,6 @@ open class MATabView: NSView, MATabBarViewDelegate {
         tabBar?.addTab(title: "New Tab")
         selectTabViewItem(at: tabViewItems.count - 1)
         if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
-            button.alphaValue = 1
             button.isMainButton = true
         }
     }

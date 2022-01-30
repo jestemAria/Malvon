@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         window.showWindow(nil)
         updateApplication()
-        setAsDefaultBrowser()
+//        setAsDefaultBrowser()
     }
     
     func application(_ application: NSApplication, open urls: [URL]) {

@@ -11,10 +11,6 @@ import Cocoa
 // Some code used from: https://github.com/robin/LYTabView
 open class MATabViewItem: NSObject {
     open var view: NSView?
-    open var title: String?
-    open var tabView: MATabView?
-    open var index: Int?
-    open var image: NSImage?
 
     public convenience init(view: NSView) {
         self.init()

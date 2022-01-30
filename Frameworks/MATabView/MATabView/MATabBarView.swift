@@ -59,12 +59,7 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
 
         newButton.delegate = self
 
-        NSAnimationContext.runAnimationGroup { context in
-            context.duration = 0.25
-            context.allowsImplicitAnimation = true
-
-            tabStackView.addArrangedSubview(newButton)
-        }
+        tabStackView.addArrangedSubview(newButton)
     }
 
     public func tabBarViewItem(_ tabBarViewItem: MATabBarViewItem, wantsToClose tabBarViewItemIndex: Int) {

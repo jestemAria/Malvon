@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.2
+- More improvements with energy usage
 - Uses less energy
 - Fixed when creating a new tab, it will use 135% of CPU
 - Added favicon to the tab bar

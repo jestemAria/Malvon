@@ -7,178 +7,168 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EDF62AB0277C8D4B006DF3EB /* MAWebView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF62AA7277C8D4A006DF3EB /* MAWebView.framework */; };
-		EDF62AB5277C8D4B006DF3EB /* MAWebViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62AB4277C8D4B006DF3EB /* MAWebViewTests.swift */; };
-		EDF62AB6277C8D4B006DF3EB /* MAWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = EDF62AAA277C8D4A006DF3EB /* MAWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDF62AC9277C8D57006DF3EB /* MAWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62AC8277C8D57006DF3EB /* MAWebView.swift */; };
-		EDF62ACB277C8D7C006DF3EB /* MAWebViewDownloadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62ACA277C8D7B006DF3EB /* MAWebViewDownloadingViewController.swift */; };
-		EDF62ACE277C8D9B006DF3EB /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62ACC277C8D9B006DF3EB /* Downloader.swift */; };
-		EDF62ACF277C8D9B006DF3EB /* FileUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF62ACD277C8D9B006DF3EB /* FileUnits.swift */; };
-		EDF62AD1277C8DB4006DF3EB /* MAWebViewDownloadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF62AD0277C8DB4006DF3EB /* MAWebViewDownloadingViewController.xib */; };
+		ED87CBC327A82C9700006253 /* Unique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED87CBBA27A82C9700006253 /* Unique.framework */; };
+		ED87CBC827A82C9700006253 /* UniqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87CBC727A82C9700006253 /* UniqueTests.swift */; };
+		ED87CBC927A82C9700006253 /* Unique.h in Headers */ = {isa = PBXBuildFile; fileRef = ED87CBBD27A82C9700006253 /* Unique.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDFB5A2827A82E2300C6F779 /* DOMNode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EDFB5A2627A82E2300C6F779 /* DOMNode.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		EDFB5A2927A82E2300C6F779 /* DOMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDFB5A2727A82E2300C6F779 /* DOMNode.cpp */; };
+		EDFB5A2C27A8305F00C6F779 /* DOMNodeWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */; };
+		EDFB5A2D27A830D100C6F779 /* DOMNodeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDFB5A3A27A8356C00C6F779 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = EDFB5A3927A8356C00C6F779 /* test.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EDF62AB1277C8D4B006DF3EB /* PBXContainerItemProxy */ = {
+		ED87CBC427A82C9700006253 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EDF62A9E277C8D4A006DF3EB /* Project object */;
+			containerPortal = ED87CBB127A82C9700006253 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EDF62AA6277C8D4A006DF3EB;
-			remoteInfo = MAWebView;
+			remoteGlobalIDString = ED87CBB927A82C9700006253;
+			remoteInfo = Unique;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ED4614CE2787E43300796B7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		EDF62AA7277C8D4A006DF3EB /* MAWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MAWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDF62AAA277C8D4A006DF3EB /* MAWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAWebView.h; sourceTree = "<group>"; };
-		EDF62AAF277C8D4B006DF3EB /* MAWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDF62AB4277C8D4B006DF3EB /* MAWebViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAWebViewTests.swift; sourceTree = "<group>"; };
-		EDF62AC8277C8D57006DF3EB /* MAWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAWebView.swift; sourceTree = "<group>"; };
-		EDF62ACA277C8D7B006DF3EB /* MAWebViewDownloadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAWebViewDownloadingViewController.swift; sourceTree = "<group>"; };
-		EDF62ACC277C8D9B006DF3EB /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		EDF62ACD277C8D9B006DF3EB /* FileUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUnits.swift; sourceTree = "<group>"; };
-		EDF62AD0277C8DB4006DF3EB /* MAWebViewDownloadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAWebViewDownloadingViewController.xib; sourceTree = "<group>"; };
-		EDFEE3E627A8081A00937D8F /* MAWebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAWebKit.framework; path = ../WebKit/WebKitBuild/Release/MAWebKit.framework; sourceTree = "<group>"; };
+		ED87CBBA27A82C9700006253 /* Unique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED87CBBD27A82C9700006253 /* Unique.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Unique.h; sourceTree = "<group>"; };
+		ED87CBC227A82C9700006253 /* UniqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED87CBC727A82C9700006253 /* UniqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTests.swift; sourceTree = "<group>"; };
+		EDFB5A2627A82E2300C6F779 /* DOMNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DOMNode.hpp; sourceTree = "<group>"; };
+		EDFB5A2727A82E2300C6F779 /* DOMNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DOMNode.cpp; sourceTree = "<group>"; };
+		EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOMNodeWrapper.h; sourceTree = "<group>"; };
+		EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DOMNodeWrapper.mm; sourceTree = "<group>"; };
+		EDFB5A3927A8356C00C6F779 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EDF62AA4277C8D4A006DF3EB /* Frameworks */ = {
+		ED87CBB727A82C9700006253 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDF62AAC277C8D4B006DF3EB /* Frameworks */ = {
+		ED87CBBF27A82C9700006253 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AB0277C8D4B006DF3EB /* MAWebView.framework in Frameworks */,
+				ED87CBC327A82C9700006253 /* Unique.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EDF62A9D277C8D4A006DF3EB = {
+		ED87CBB027A82C9700006253 = {
 			isa = PBXGroup;
 			children = (
-				EDF62AA9277C8D4A006DF3EB /* MAWebView */,
-				EDF62AB3277C8D4B006DF3EB /* MAWebViewTests */,
-				ED4614CE2787E43300796B7B /* README.md */,
-				EDF62AA8277C8D4A006DF3EB /* Products */,
-				EDFEE3E527A8081A00937D8F /* Frameworks */,
+				ED87CBBC27A82C9700006253 /* Unique */,
+				ED87CBC627A82C9700006253 /* UniqueTests */,
+				ED87CBBB27A82C9700006253 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		EDF62AA8277C8D4A006DF3EB /* Products */ = {
+		ED87CBBB27A82C9700006253 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62AA7277C8D4A006DF3EB /* MAWebView.framework */,
-				EDF62AAF277C8D4B006DF3EB /* MAWebViewTests.xctest */,
+				ED87CBBA27A82C9700006253 /* Unique.framework */,
+				ED87CBC227A82C9700006253 /* UniqueTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EDF62AA9277C8D4A006DF3EB /* MAWebView */ = {
+		ED87CBBC27A82C9700006253 /* Unique */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62AC8277C8D57006DF3EB /* MAWebView.swift */,
-				EDF62ACC277C8D9B006DF3EB /* Downloader.swift */,
-				EDF62ACD277C8D9B006DF3EB /* FileUnits.swift */,
-				EDF62AAA277C8D4A006DF3EB /* MAWebView.h */,
-				EDF62ACA277C8D7B006DF3EB /* MAWebViewDownloadingViewController.swift */,
-				EDF62AD0277C8DB4006DF3EB /* MAWebViewDownloadingViewController.xib */,
+				ED87CBBD27A82C9700006253 /* Unique.h */,
+				EDFB5A2627A82E2300C6F779 /* DOMNode.hpp */,
+				EDFB5A2727A82E2300C6F779 /* DOMNode.cpp */,
+				EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */,
+				EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */,
+				EDFB5A3927A8356C00C6F779 /* test.html */,
 			);
-			path = MAWebView;
+			path = Unique;
 			sourceTree = "<group>";
 		};
-		EDF62AB3277C8D4B006DF3EB /* MAWebViewTests */ = {
+		ED87CBC627A82C9700006253 /* UniqueTests */ = {
 			isa = PBXGroup;
 			children = (
-				EDF62AB4277C8D4B006DF3EB /* MAWebViewTests.swift */,
+				ED87CBC727A82C9700006253 /* UniqueTests.swift */,
 			);
-			path = MAWebViewTests;
-			sourceTree = "<group>";
-		};
-		EDFEE3E527A8081A00937D8F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EDFEE3E627A8081A00937D8F /* MAWebKit.framework */,
-			);
-			name = Frameworks;
+			path = UniqueTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		EDF62AA2277C8D4A006DF3EB /* Headers */ = {
+		ED87CBB527A82C9700006253 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AB6277C8D4B006DF3EB /* MAWebView.h in Headers */,
+				EDFB5A2827A82E2300C6F779 /* DOMNode.hpp in Headers */,
+				ED87CBC927A82C9700006253 /* Unique.h in Headers */,
+				EDFB5A2D27A830D100C6F779 /* DOMNodeWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EDF62AA6277C8D4A006DF3EB /* MAWebView */ = {
+		ED87CBB927A82C9700006253 /* Unique */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EDF62AB9277C8D4B006DF3EB /* Build configuration list for PBXNativeTarget "MAWebView" */;
+			buildConfigurationList = ED87CBCC27A82C9700006253 /* Build configuration list for PBXNativeTarget "Unique" */;
 			buildPhases = (
-				EDF62AA2277C8D4A006DF3EB /* Headers */,
-				EDF62AA3277C8D4A006DF3EB /* Sources */,
-				EDF62AA4277C8D4A006DF3EB /* Frameworks */,
-				EDF62AA5277C8D4A006DF3EB /* Resources */,
+				ED87CBB527A82C9700006253 /* Headers */,
+				ED87CBB627A82C9700006253 /* Sources */,
+				ED87CBB727A82C9700006253 /* Frameworks */,
+				ED87CBB827A82C9700006253 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MAWebView;
-			productName = MAWebView;
-			productReference = EDF62AA7277C8D4A006DF3EB /* MAWebView.framework */;
+			name = Unique;
+			productName = Unique;
+			productReference = ED87CBBA27A82C9700006253 /* Unique.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EDF62AAE277C8D4B006DF3EB /* MAWebViewTests */ = {
+		ED87CBC127A82C9700006253 /* UniqueTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EDF62ABC277C8D4B006DF3EB /* Build configuration list for PBXNativeTarget "MAWebViewTests" */;
+			buildConfigurationList = ED87CBCF27A82C9700006253 /* Build configuration list for PBXNativeTarget "UniqueTests" */;
 			buildPhases = (
-				EDF62AAB277C8D4B006DF3EB /* Sources */,
-				EDF62AAC277C8D4B006DF3EB /* Frameworks */,
-				EDF62AAD277C8D4B006DF3EB /* Resources */,
+				ED87CBBE27A82C9700006253 /* Sources */,
+				ED87CBBF27A82C9700006253 /* Frameworks */,
+				ED87CBC027A82C9700006253 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EDF62AB2277C8D4B006DF3EB /* PBXTargetDependency */,
+				ED87CBC527A82C9700006253 /* PBXTargetDependency */,
 			);
-			name = MAWebViewTests;
-			productName = MAWebViewTests;
-			productReference = EDF62AAF277C8D4B006DF3EB /* MAWebViewTests.xctest */;
+			name = UniqueTests;
+			productName = UniqueTests;
+			productReference = ED87CBC227A82C9700006253 /* UniqueTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		EDF62A9E277C8D4A006DF3EB /* Project object */ = {
+		ED87CBB127A82C9700006253 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					EDF62AA6277C8D4A006DF3EB = {
+					ED87CBB927A82C9700006253 = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
 					};
-					EDF62AAE277C8D4B006DF3EB = {
+					ED87CBC127A82C9700006253 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = EDF62AA1277C8D4A006DF3EB /* Build configuration list for PBXProject "MAWebView" */;
+			buildConfigurationList = ED87CBB427A82C9700006253 /* Build configuration list for PBXProject "Unique" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -186,27 +176,27 @@
 				en,
 				Base,
 			);
-			mainGroup = EDF62A9D277C8D4A006DF3EB;
-			productRefGroup = EDF62AA8277C8D4A006DF3EB /* Products */;
+			mainGroup = ED87CBB027A82C9700006253;
+			productRefGroup = ED87CBBB27A82C9700006253 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EDF62AA6277C8D4A006DF3EB /* MAWebView */,
-				EDF62AAE277C8D4B006DF3EB /* MAWebViewTests */,
+				ED87CBB927A82C9700006253 /* Unique */,
+				ED87CBC127A82C9700006253 /* UniqueTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EDF62AA5277C8D4A006DF3EB /* Resources */ = {
+		ED87CBB827A82C9700006253 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AD1277C8DB4006DF3EB /* MAWebViewDownloadingViewController.xib in Resources */,
+				EDFB5A3A27A8356C00C6F779 /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDF62AAD277C8D4B006DF3EB /* Resources */ = {
+		ED87CBC027A82C9700006253 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,37 +206,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EDF62AA3277C8D4A006DF3EB /* Sources */ = {
+		ED87CBB627A82C9700006253 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62ACB277C8D7C006DF3EB /* MAWebViewDownloadingViewController.swift in Sources */,
-				EDF62ACF277C8D9B006DF3EB /* FileUnits.swift in Sources */,
-				EDF62AC9277C8D57006DF3EB /* MAWebView.swift in Sources */,
-				EDF62ACE277C8D9B006DF3EB /* Downloader.swift in Sources */,
+				EDFB5A2C27A8305F00C6F779 /* DOMNodeWrapper.mm in Sources */,
+				EDFB5A2927A82E2300C6F779 /* DOMNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDF62AAB277C8D4B006DF3EB /* Sources */ = {
+		ED87CBBE27A82C9700006253 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF62AB5277C8D4B006DF3EB /* MAWebViewTests.swift in Sources */,
+				ED87CBC827A82C9700006253 /* UniqueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EDF62AB2277C8D4B006DF3EB /* PBXTargetDependency */ = {
+		ED87CBC527A82C9700006253 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EDF62AA6277C8D4A006DF3EB /* MAWebView */;
-			targetProxy = EDF62AB1277C8D4B006DF3EB /* PBXContainerItemProxy */;
+			target = ED87CBB927A82C9700006253 /* Unique */;
+			targetProxy = ED87CBC427A82C9700006253 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		EDF62AB7277C8D4B006DF3EB /* Debug */ = {
+		ED87CBCA27A82C9700006253 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -298,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -310,7 +298,7 @@
 			};
 			name = Debug;
 		};
-		EDF62AB8277C8D4B006DF3EB /* Release */ = {
+		ED87CBCB27A82C9700006253 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -356,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -367,7 +355,7 @@
 			};
 			name = Release;
 		};
-		EDF62ABA277C8D4B006DF3EB /* Debug */ = {
+		ED87CBCD27A82C9700006253 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -389,7 +377,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MAWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Unique;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -398,7 +386,7 @@
 			};
 			name = Debug;
 		};
-		EDF62ABB277C8D4B006DF3EB /* Release */ = {
+		ED87CBCE27A82C9700006253 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -420,41 +408,38 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MAWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Unique;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		EDF62ABD277C8D4B006DF3EB /* Debug */ = {
+		ED87CBD027A82C9700006253 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MAWebViewTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.UniqueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		EDF62ABE277C8D4B006DF3EB /* Release */ = {
+		ED87CBD127A82C9700006253 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.MAWebViewTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.UniqueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -464,34 +449,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EDF62AA1277C8D4A006DF3EB /* Build configuration list for PBXProject "MAWebView" */ = {
+		ED87CBB427A82C9700006253 /* Build configuration list for PBXProject "Unique" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDF62AB7277C8D4B006DF3EB /* Debug */,
-				EDF62AB8277C8D4B006DF3EB /* Release */,
+				ED87CBCA27A82C9700006253 /* Debug */,
+				ED87CBCB27A82C9700006253 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDF62AB9277C8D4B006DF3EB /* Build configuration list for PBXNativeTarget "MAWebView" */ = {
+		ED87CBCC27A82C9700006253 /* Build configuration list for PBXNativeTarget "Unique" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDF62ABA277C8D4B006DF3EB /* Debug */,
-				EDF62ABB277C8D4B006DF3EB /* Release */,
+				ED87CBCD27A82C9700006253 /* Debug */,
+				ED87CBCE27A82C9700006253 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDF62ABC277C8D4B006DF3EB /* Build configuration list for PBXNativeTarget "MAWebViewTests" */ = {
+		ED87CBCF27A82C9700006253 /* Build configuration list for PBXNativeTarget "UniqueTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDF62ABD277C8D4B006DF3EB /* Debug */,
-				EDF62ABE277C8D4B006DF3EB /* Release */,
+				ED87CBD027A82C9700006253 /* Debug */,
+				ED87CBD127A82C9700006253 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = EDF62A9E277C8D4A006DF3EB /* Project object */;
+	rootObject = ED87CBB127A82C9700006253 /* Project object */;
 }

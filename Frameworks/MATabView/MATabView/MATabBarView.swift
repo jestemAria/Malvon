@@ -5,6 +5,8 @@
 //  Created by Ashwin Paudel on 2022-01-28.
 //  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
+//
+//  Some code from: https://stackoverflow.com/questions/10016475/create-nsscrollview-programmatically-in-an-nsview-cocoa/55219153
 
 import Cocoa
 
@@ -13,21 +15,20 @@ import Cocoa
     @objc optional func tabBarView(_ tabBarView: MATabBarView, wantsToClose tabBarViewItemIndex: Int)
 }
 
+final class FlippedClipView: NSClipView {
+    override var isFlipped: Bool {
+        return true
+    }
+}
+
 open class MATabBarView: NSView, MATabBarViewItemDelegate {
-    open var tabStackView: NSStackView = .init(frame: .zero)
+    open var tabStackView = NSStackView()
+    private let scrollView: NSScrollView = .init()
 
     open weak var delegate: MATabBarViewDelegate?
+    let clipView = FlippedClipView()
 
     open func removeTab(at index: Int) {
-        // Error Handling
-        // We need to switch the tag of each button
-
-        for (position, subview) in tabStackView.subviews.enumerated() {
-            if position > index {
-                (subview as? MATabBarViewItem)!.tag -= 1
-            }
-        }
-
         NSAnimationContext.runAnimationGroup { context in
             context.duration = 0.25
             context.allowsImplicitAnimation = true
@@ -35,6 +36,11 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
             tabStackView.subviews[index].alphaValue = 0.0
         } completionHandler: { [self] in
             tabStackView.subviews[index].removeFromSuperview()
+        }
+
+        // Remap the tags of each button
+        for (position, subview) in tabStackView.subviews.enumerated() {
+            (subview as! MATabBarViewItem).tag = position
         }
     }
 
@@ -45,8 +51,8 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
     open func addTab(title: String) {
         let newButton = MATabBarViewItem(frame: .zero)
 
-        newButton.translatesAutoresizingMaskIntoConstraints = true
-        newButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        newButton.translatesAutoresizingMaskIntoConstraints = false
+        newButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         newButton.widthAnchor.constraint(equalToConstant: 225).isActive = true
         newButton.tag = tabStackView.subviews.count
 
@@ -68,17 +74,42 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
 
     override open func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+        addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.hasVerticalScroller = false
+        scrollView.hasVerticalRuler = false
+        scrollView.drawsBackground = false
+        scrollView.verticalScrollElasticity = .none
 
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+
+        clipView.drawsBackground = false
+        scrollView.contentView = clipView
+        clipView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            clipView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            clipView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            clipView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            clipView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
+
+        scrollView.documentView = tabStackView
         tabStackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(tabStackView)
+        NSLayoutConstraint.activate([
+            tabStackView.leftAnchor.constraint(equalTo: clipView.leftAnchor),
+            tabStackView.topAnchor.constraint(equalTo: clipView.topAnchor),
+            tabStackView.bottomAnchor.constraint(equalTo: clipView.bottomAnchor)
+        ])
 
-        tabStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        tabStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tabStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        tabStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         tabStackView.orientation = .horizontal
         tabStackView.distribution = .gravityAreas
         tabStackView.alignment = .centerY
-        tabStackView.spacing = 0.3
+        tabStackView.spacing = 05
     }
 }

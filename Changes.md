@@ -1,6 +1,16 @@
 #  Changes
 
 ## v1.2
+- Started working on a web browser engine :)
+- Added support for re-opening closed tabs
+- Fixed the minimize problem
+- Made a slight delay when opening new tab and popups to make it load in the background
+- Used more tactics to energy saving
+- Fixed problem where url from spotlight search wont open 
+- Fixed Problem where webview wont autoresize
+- Fixed Problem where webview wont get first responder
+- Created Scroll View for tab scrolling
+- Fixed problems with the cursor
 - More improvements with energy usage
 - Uses less energy
 - Fixed when creating a new tab, it will use 135% of CPU

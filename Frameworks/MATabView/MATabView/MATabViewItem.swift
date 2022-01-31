@@ -29,7 +29,7 @@ open class MATabBarViewItem: NSButton {
     open weak var delegate: MATabBarViewItemDelegate?
 
     let tabTitle = NSTextField(frame: .zero)
-    var closeButton = NSButton(frame: .zero)
+    open var closeButton = NSButton(frame: .zero)
 
     var isMainButton = false
 
@@ -112,11 +112,12 @@ open class MATabBarViewItem: NSButton {
         closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: xPosition).isActive = true
         closeButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         closeButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -yPosition).isActive = true
-        closeButton.image = NSImage(named: NSImage.stopProgressTemplateName)
         closeButton.bezelStyle = .shadowlessSquare
         closeButton.isBordered = false
         closeButton.imagePosition = .imageOnly
         closeButton.layer?.masksToBounds = false
+
+        closeButton.image = favicon
     }
 
     override open func mouseEntered(with event: NSEvent) {

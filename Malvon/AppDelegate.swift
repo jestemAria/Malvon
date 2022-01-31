@@ -8,6 +8,7 @@
 
 import Cocoa
 import MATools
+import Unique
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -35,6 +36,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         window.showWindow(nil)
         updateApplication()
+//        printTestFunction()
+//        HelloWorldWrapper().sayHelloFromC()
+        
 //        setAsDefaultBrowser()
     }
     
@@ -45,7 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if application.windows.isEmpty {
                 window.showWindow(nil)
             }
-            
+            if url.isFileURL || (url.host != nil && url.scheme != nil) {
+                let VC = application.mainWindow?.contentViewController as? MAViewController
+                VC!.createNewTab(url: url)
+            }
             // Functions
             if let range = url.absoluteString.range(of: "open?") {
                 let value = url.absoluteString[range.upperBound...]
@@ -91,10 +98,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if flag == false {
             let newWindow = MAWindowController()
             newWindow.showWindow(nil)
-        
-            return true
         }
-        return false
+        return true
     }
     
     // MARK: - Menu Bar Functions

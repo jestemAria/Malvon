@@ -6,9 +6,6 @@
 //  Copyright © 2021-2022 Ashwin Paudel. All rights reserved.
 //
 
-//  MARK: - TODO List
-
-
 import Cocoa
 
 // MARK: - Delegate Methods
@@ -17,6 +14,8 @@ import Cocoa
     @objc optional func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int)
     @objc optional func tabViewDidChangeNumberOfTabViewItems(_ tabView: MATabView)
     @objc optional func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int)
+
+    @objc optional func tabView(_ tabView: MATabView, createdNewTab tabViewItemIndex: Int)
 
     /// When there are no more tabs left
     @objc optional func tabViewEmpty()
@@ -47,8 +46,13 @@ open class MATabView: NSView, MATabBarViewDelegate {
                 button.isMainButton = false
             }
         }
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
         // Add the new subview
         let newView = tabViewItems[index].view!
+        autoresizesSubviews = true
+        newView.setFrameSize(frame.size)
         addSubview(newView)
         newView.autoresizingMask = [.width, .height]
 
@@ -69,6 +73,7 @@ open class MATabView: NSView, MATabBarViewDelegate {
         tabViewItems.append(tabViewItem)
 
         tabBar?.addTab(title: "New Tab")
+        delegate?.tabView?(self, createdNewTab: tabViewItems.count - 1)
         selectTabViewItem(at: tabViewItems.count - 1)
         if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
             button.isMainButton = true

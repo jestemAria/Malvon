@@ -18,6 +18,8 @@
 		ED806EF8277F87CB00D766F7 /* AppProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF7277F87CB00D766F7 /* AppProperties.swift */; };
 		ED806EFA277F887A00D766F7 /* MAPrefsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EF9277F887A00D766F7 /* MAPrefsGeneralViewController.swift */; };
 		ED806EFC277F8BB300D766F7 /* MAPrefsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */; };
+		ED87CBDD27A82CB600006253 /* Unique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED87CBD827A82C9800006253 /* Unique.framework */; };
+		ED87CBDE27A82CB600006253 /* Unique.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED87CBD827A82C9800006253 /* Unique.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDD23ED127A4CCCC009B79B7 /* error_page.html in Resources */ = {isa = PBXBuildFile; fileRef = EDD23ED027A4CCCC009B79B7 /* error_page.html */; };
 		EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; };
 		EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDD24386277CC01100926C9B /* MASearchSuggestions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -75,6 +77,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = ED62D71E2787383500ABE8DD;
 			remoteInfo = MATabViewTests;
+		};
+		ED87CBD727A82C9800006253 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED87CBD227A82C9700006253 /* Unique.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED87CBBA27A82C9700006253;
+			remoteInfo = Unique;
+		};
+		ED87CBD927A82C9800006253 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED87CBD227A82C9700006253 /* Unique.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED87CBC227A82C9700006253;
+			remoteInfo = UniqueTests;
 		};
 		EDD1A0F0277E73E8002BB362 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -135,6 +151,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				ED5343BE277E45510017AD05 /* MATools.framework in Embed Frameworks */,
+				ED87CBDE27A82CB600006253 /* Unique.framework in Embed Frameworks */,
 				EDD24396277CC01E00926C9B /* MAWebView.framework in Embed Frameworks */,
 				EDD24393277CC01B00926C9B /* MASearchSuggestions.framework in Embed Frameworks */,
 				ED62D743278739B500ABE8DD /* MATabView.framework in Embed Frameworks */,
@@ -145,6 +162,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED00099527A731E2001F2712 /* Building.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Building.md; sourceTree = "<group>"; };
 		ED0B17DE277CEFF000BB47B1 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		ED3CC6C3277D1AA400C0823E /* version.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
 		ED53439B277E43110017AD05 /* MATools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MATools.xcodeproj; path = MATools/MATools.xcodeproj; sourceTree = "<group>"; };
@@ -155,6 +173,7 @@
 		ED806EF7277F87CB00D766F7 /* AppProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProperties.swift; sourceTree = "<group>"; };
 		ED806EF9277F887A00D766F7 /* MAPrefsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPrefsGeneralViewController.swift; sourceTree = "<group>"; };
 		ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAPrefsTabViewController.swift; sourceTree = "<group>"; };
+		ED87CBD227A82C9700006253 /* Unique.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Unique.xcodeproj; path = Unique/Unique.xcodeproj; sourceTree = "<group>"; };
 		EDB840EF27A4AF7100173C13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDD08B01277D812E000C866B /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
 		EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Malvon Updater.xcodeproj"; path = "Malvon Updater/Malvon Updater.xcodeproj"; sourceTree = "<group>"; };
@@ -195,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED5343BD277E45510017AD05 /* MATools.framework in Frameworks */,
+				ED87CBDD27A82CB600006253 /* Unique.framework in Frameworks */,
 				EDD24395277CC01E00926C9B /* MAWebView.framework in Frameworks */,
 				EDD24392277CC01B00926C9B /* MASearchSuggestions.framework in Frameworks */,
 				ED62D742278739B500ABE8DD /* MATabView.framework in Frameworks */,
@@ -218,6 +238,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED00099427A731CF001F2712 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				ED00099527A731E2001F2712 /* Building.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
 		ED53439C277E43110017AD05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +281,15 @@
 				ED806EFB277F8BB300D766F7 /* MAPrefsTabViewController.swift */,
 			);
 			path = Preferences;
+			sourceTree = "<group>";
+		};
+		ED87CBD327A82C9700006253 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED87CBD827A82C9800006253 /* Unique.framework */,
+				ED87CBDA27A82C9800006253 /* UniqueTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EDD1A0CA277E73C0002BB362 /* Applications */ = {
@@ -292,12 +329,13 @@
 		EDF62B22277C96AF006DF3EB = {
 			isa = PBXGroup;
 			children = (
-				EDD08B01277D812E000C866B /* Changes.md */,
+				ED00099427A731CF001F2712 /* Docs */,
 				EDF62B2D277C96AF006DF3EB /* Malvon */,
 				EDF62B3D277C96B2006DF3EB /* MalvonTests */,
 				EDF62B47277C96B3006DF3EB /* MalvonUITests */,
 				EDF62B61277C97FA006DF3EB /* Frameworks */,
 				EDD1A0CA277E73C0002BB362 /* Applications */,
+				EDD08B01277D812E000C866B /* Changes.md */,
 				EDF62BB9277CB24B006DF3EB /* README.md */,
 				EDF62B2C277C96AF006DF3EB /* Products */,
 			);
@@ -351,6 +389,7 @@
 		EDF62B61277C97FA006DF3EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED87CBD227A82C9700006253 /* Unique.xcodeproj */,
 				ED62D72E2787383500ABE8DD /* MATabView.xcodeproj */,
 				ED53439B277E43110017AD05 /* MATools.xcodeproj */,
 				EDD24389277CC01400926C9B /* MAWebView.xcodeproj */,
@@ -488,6 +527,7 @@
 				TargetAttributes = {
 					EDF62B2A277C96AF006DF3EB = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					EDF62B39277C96B2006DF3EB = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -531,6 +571,10 @@
 					ProductGroup = EDD2438A277CC01400926C9B /* Products */;
 					ProjectRef = EDD24389277CC01400926C9B /* MAWebView.xcodeproj */;
 				},
+				{
+					ProductGroup = ED87CBD327A82C9700006253 /* Products */;
+					ProjectRef = ED87CBD227A82C9700006253 /* Unique.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -568,6 +612,20 @@
 			fileType = wrapper.cfbundle;
 			path = MATabViewTests.xctest;
 			remoteRef = ED62D7382787383700ABE8DD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ED87CBD827A82C9800006253 /* Unique.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Unique.framework;
+			remoteRef = ED87CBD727A82C9800006253 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ED87CBDA27A82C9800006253 /* UniqueTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UniqueTests.xctest;
+			remoteRef = ED87CBD927A82C9800006253 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EDD1A0F1277E73E8002BB362 /* Malvon Updater.app */ = {
@@ -885,13 +943,19 @@
 		EDF62B4F277C96B3006DF3EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Malvon/Resources/Malvon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/WebKit/WebKitBuild/Release",
+				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Malvon/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
@@ -909,6 +973,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.Malvon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -916,13 +982,19 @@
 		EDF62B50277C96B3006DF3EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Malvon/Resources/Malvon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/WebKit/WebKitBuild/Release",
+				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Malvon/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
@@ -941,6 +1013,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

@@ -141,7 +141,7 @@
                     </view>
                 </box>
                 <progressIndicator maxValue="100" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hRj-KC-y0I">
-                    <rect key="frame" x="0.0" y="434" width="1045" height="12"/>
+                    <rect key="frame" x="0.0" y="436" width="1045" height="12"/>
                 </progressIndicator>
                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7c-MQ-R1I">
                     <rect key="frame" x="0.0" y="410" width="1045" height="30"/>
@@ -209,20 +209,24 @@
                 <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="3Mi-wq-joZ"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="3Om-oq-ONP"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4yY-ps-Lif"/>
-                <constraint firstAttribute="trailing" secondItem="D7c-MQ-R1I" secondAttribute="trailing" id="7Ib-Yg-xj3"/>
+                <constraint firstItem="D7c-MQ-R1I" firstAttribute="top" secondItem="2v0-wv-Lo9" secondAttribute="bottom" id="Bob-7a-BAV"/>
+                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="DJn-Cv-On9"/>
+                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="FAd-Tt-Fcq"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="K3P-zP-wel"/>
-                <constraint firstItem="D7c-MQ-R1I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="MLy-po-UK1"/>
-                <constraint firstItem="D7c-MQ-R1I" firstAttribute="top" secondItem="2v0-wv-Lo9" secondAttribute="bottom" id="Ng8-WJ-MQ6"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="D7c-MQ-R1I" secondAttribute="bottom" id="PZF-mA-dTE"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="top" secondItem="ucC-9r-3Ih" secondAttribute="bottom" id="PzJ-ik-b31"/>
-                <constraint firstItem="hRj-KC-y0I" firstAttribute="top" secondItem="2v0-wv-Lo9" secondAttribute="bottom" constant="-6" id="Xz0-hN-EAg"/>
+                <constraint firstItem="hRj-KC-y0I" firstAttribute="trailing" secondItem="2v0-wv-Lo9" secondAttribute="trailing" id="SXg-Np-u3e"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="hRj-KC-y0I" secondAttribute="bottom" constant="26" id="Uff-UE-3vE"/>
+                <constraint firstItem="hRj-KC-y0I" firstAttribute="leading" secondItem="2v0-wv-Lo9" secondAttribute="leading" id="X0p-n1-70l"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="leading" secondItem="ucC-9r-3Ih" secondAttribute="leading" id="aQh-bj-9bb"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dMf-H9-Haj"/>
                 <constraint firstItem="Hmp-yZ-mmV" firstAttribute="trailing" secondItem="2v0-wv-Lo9" secondAttribute="trailing" id="iyw-fB-zJZ"/>
-                <constraint firstAttribute="trailing" secondItem="hRj-KC-y0I" secondAttribute="trailing" id="kvI-Yt-gy8"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="D7c-MQ-R1I" secondAttribute="bottom" id="spC-Op-G32"/>
+                <constraint firstAttribute="trailing" secondItem="D7c-MQ-R1I" secondAttribute="trailing" id="kMQ-mc-ca1"/>
+                <constraint firstItem="D7c-MQ-R1I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="lzW-ml-bEY"/>
                 <constraint firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="tSs-v8-d1r"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="D7c-MQ-R1I" secondAttribute="bottom" id="ubf-N3-C50"/>
                 <constraint firstItem="2v0-wv-Lo9" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="37" id="uqP-jG-Xkh"/>
                 <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="2v0-wv-Lo9" secondAttribute="leading" id="wUb-wc-5rA"/>
-                <constraint firstItem="hRj-KC-y0I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="zfh-CY-ju2"/>
             </constraints>
             <point key="canvasLocation" x="138.5" y="136"/>
         </customView>

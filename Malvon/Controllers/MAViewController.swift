@@ -13,10 +13,13 @@ import MATools
 import MAWebView
 import WebKit
 
+// The browser will have a slight delay when creating a new tab
+let waitTime = 0.43
+
 class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelegate, MATabViewDelegate {
     // MARK: - Elements
     
-    // webView! Element
+    // webView Element
     @IBOutlet var webTabView: MATabView!
     @IBOutlet var webTabBarView: MATabBarView!
     var webView: MAWebView?
@@ -74,44 +77,61 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.global(qos: .background).async { [self] in
-            if let string = UserDefaults.standard.string(forKey: "startPageHTML") {
-                startPageHTML = string
-            } else {
-                startPageHTML = MAURL(newtabURL!).contents()
-                UserDefaults.standard.set(startPageHTML, forKey: "startPageHTML")
-            }
-        }
-        // Add the `webView` to the `webTabView`
-
-        webView = MAWebView(frame: webTabView.frame, configuration: webConfigurations)
-        webView = getNewWebViewInstance(config: webConfigurations)
-        webTabView.tabBar = webTabBarView
-        webTabView.`init`()
-        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
-        webTabView.delegate = self
-
-        // Remove the cancle and search buttons from the searchfield
+        // Remove the cancel and search buttons from the searchfield
         if let cell = searchField.cell as? NSSearchFieldCell {
             cell.searchButtonCell?.isTransparent = true
             cell.cancelButtonCell?.isTransparent = true
         }
         
-        // Configure the elements
-        configureElements()
-        
-        if AppProperties().hidesScreenElementsWhenNotActive {
-            // When the app enters the background
-            let nc = NotificationCenter.default
-            nc.addObserver(self, selector: #selector(willEnterBackground), name: NSApplication.willResignActiveNotification, object: nil)
-            nc.addObserver(self, selector: #selector(willBecomeActive), name: NSApplication.willBecomeActiveNotification, object: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+            DispatchQueue.global(qos: .background).async { [self] in
+                if let string = UserDefaults.standard.string(forKey: "startPageHTML") {
+                    startPageHTML = string
+                } else {
+                    startPageHTML = MAURL(newtabURL!).contents()
+                    UserDefaults.standard.set(startPageHTML, forKey: "startPageHTML")
+                }
+
+                if let lastTabs = UserDefaults.standard.stringArray(forKey: "MAViewController_lastOpenedTabs") {
+                    lastOpenedTabs = lastTabs
+                } else {
+                    lastOpenedTabs = [String]()
+                    UserDefaults.standard.set(lastOpenedTabs, forKey: "MAViewController_lastOpenedTabs")
+                }
+
+                // Check if the view controller is a popup or a normal view controller
+                // If it's a normal view controller, we will load the startpage
+                // If it's not, the webview will automatically load the URL, so we don't have to worry
+                if loadURL {
+                    DispatchQueue.main.async {
+                        webView?.loadHTMLString(startPageHTML, baseURL: newtabURL!)
+                        // updateWebsiteURL()
+                    }
+                }
+            }
         }
         
-        // Check if the view controller is a popup or a normal view controller
-        // If it's a normal view controller, we will load the startpage
-        // If it's not, the webview will automatically load the URL, so we don't have to worry
-        if loadURL {
-            webView?.loadHTMLString(startPageHTML, baseURL: newtabURL!)
+        // Add the `webView` to the `webTabView`
+        webView = MAWebView(frame: webTabView.frame, configuration: webConfigurations)
+        
+        webView = getNewWebViewInstance(config: webConfigurations)
+        webTabView.tabBar = webTabBarView
+        webTabView.`init`()
+        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
+        webTabView.delegate = self
+        
+        // Configure the elements
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [self] _ in
+            configureElements()
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [self] _ in
+            if AppProperties().hidesScreenElementsWhenNotActive {
+                // When the app enters the background
+                let nc = NotificationCenter.default
+                nc.addObserver(self, selector: #selector(willEnterBackground), name: NSApplication.willResignActiveNotification, object: nil)
+                nc.addObserver(self, selector: #selector(willBecomeActive), name: NSApplication.willBecomeActiveNotification, object: nil)
+            }
         }
     }
     
@@ -182,18 +202,38 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func createNewTab(url: URL) {
         // Create a new tab
         webView = getNewWebViewInstance(url: url)
-        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
+        
+        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { _ in
+            self.webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: self.webView!))
+            self.webView?.delegate = self
+        }
     }
     
     @IBAction func createNewTab(_ sender: Any) {
         // Create a new tab
         webView = getNewWebViewInstance()
-        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
+        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { _ in
+            self.webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: self.webView!))
+            self.webView?.delegate = self
+        }
     }
     
     @IBAction func closeTab(_ sender: Any) {
+        // Add the url to the last open tabs list
+        // Also save to user defaults
+        lastOpenedTabs.append(webView?.url?.absoluteString ?? "about:blank")
+        UserDefaults.standard.set(lastOpenedTabs, forKey: "MAViewController_lastOpenedTabs")
+        
         // Close the current tab
         webTabView.removeTabViewItem(at: webTabView.selectedTabViewItemIndex)
+    }
+    
+    var lastOpenedTabs = [String]()
+    @IBAction func reopenLastTab(_ sender: Any) {
+        if !(lastOpenedTabs.isEmpty) {
+            createNewTab(url: URL(string: lastOpenedTabs.first ?? "about:blank")!)
+            lastOpenedTabs.removeFirst()
+        }
     }
     
     func checkButtons() {
@@ -304,14 +344,16 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
-        if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
-            // Set the new title
-            (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
+        if !(webTabView.selectedTabViewItemIndex >= webTabView.tabViewItems.count) {
+            if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
+                // Set the new title
+                (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
 
-            // Get the favicon of the website
-            guard let webViewURL = webView.url?.absoluteString else { return }
+                // Get the favicon of the website
+                guard let webViewURL = webView.url?.absoluteString else { return }
             
-            (webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.favicon = getFavicon(url: webViewURL)
+                (webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.favicon = getFavicon(url: webViewURL)
+            }
         }
     }
     
@@ -319,8 +361,21 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Create a new tab and open it
         
         let newWebView = getNewWebViewInstance(config: configuration)
-        self.webView = newWebView
-        webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: newWebView))
+        
+        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
+            webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: newWebView))
+            let tabItem = webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as! MATabBarViewItem
+
+            tabItem.favicon = getFavicon(url: self.webView!.url!.absoluteString)
+            tabItem.label = self.webView!.title ?? "Untitled Tab"
+            
+            Timer.scheduledTimer(withTimeInterval: waitTime / waitTime - 1, repeats: false) { _ in
+                tabItem.closeButton.image = tabItem.favicon
+            }
+            
+            self.webView = newWebView
+            self.webView?.delegate = self
+        }
         
         // Return the new tab's webView
         return newWebView
@@ -692,11 +747,17 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int) {
         webView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
         
+        view.window?.makeFirstResponder(webView!)
+        
         checkButtons()
         updateWebsiteURL()
         
         // Hide the progress indicator
         progressIndicator.isHidden = true
+    }
+    
+    func tabView(_ tabView: MATabView, createdNewTab tabViewItemIndex: Int) {
+        view.window?.makeFirstResponder(searchField)
     }
 
     func tabViewEmpty() {
@@ -725,7 +786,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         DispatchQueue.global(qos: .background).async {
             newWebView.enableAdblock()
-            newWebView.delegate = self
         }
 
         if config == nil {

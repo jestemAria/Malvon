@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Updated the newtab.html file
+- Updated the load time
 - Fixed the reopen tab
 - Started working on a web browser engine :)
 - Added support for re-opening closed tabs

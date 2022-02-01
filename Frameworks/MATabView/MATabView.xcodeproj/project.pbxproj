@@ -32,6 +32,8 @@
 		ED62D7232787383500ABE8DD /* MATabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewTests.swift; sourceTree = "<group>"; };
 		ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewItem.swift; sourceTree = "<group>"; };
 		ED62D7402787392100ABE8DD /* MATabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabView.swift; sourceTree = "<group>"; };
+		ED8CCB7E27A997EC0060DCA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED8CCB7F27A99AAF0060DCA2 /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
 		EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,8 @@
 				ED62D7402787392100ABE8DD /* MATabView.swift */,
 				EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */,
 				ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */,
+				ED8CCB7F27A99AAF0060DCA2 /* Changes.md */,
+				ED8CCB7E27A997EC0060DCA2 /* README.md */,
 			);
 			path = MATabView;
 			sourceTree = "<group>";

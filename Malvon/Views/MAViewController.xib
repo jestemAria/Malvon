@@ -146,7 +146,7 @@
                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7c-MQ-R1I">
                     <rect key="frame" x="0.0" y="410" width="1045" height="30"/>
                     <subviews>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="y1h-6y-xoN">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="y1h-6y-xoN" customClass="MATabBarView" customModule="MATabView">
                             <rect key="frame" x="0.0" y="0.0" width="1015" height="30"/>
                             <subviews>
                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="cDw-fm-S7o" customClass="MATabBarView" customModule="MATabView">

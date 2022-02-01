@@ -14,7 +14,7 @@ import MAWebView
 import WebKit
 
 // The browser will have a slight delay when creating a new tab
-let waitTime = 0.43
+let waitTime = 0.05
 
 // The number of items in the closed tabs list
 let closeTabNumbers = 5
@@ -122,7 +122,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         webView = getNewWebViewInstance(config: webConfigurations)
         webTabView.tabBar = webTabBarView
-        webTabView.`init`()
         webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: webView!))
         webTabView.delegate = self
         
@@ -212,7 +211,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             self.webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: self.webView!))
             
-            let tabItem = webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as! MATabBarViewItem
+            let tabItem = webTabBarView.getTabItem(at: webTabView.selectedTabViewItemIndex)!
 
             tabItem.favicon = getFavicon(url: self.webView!.url!.absoluteString)
             tabItem.label = self.webView!.title ?? "Untitled Tab"
@@ -231,7 +230,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             self.webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: self.webView!))
             
-            let tabItem = webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as! MATabBarViewItem
+            let tabItem = webTabBarView.getTabItem(at: webTabView.selectedTabViewItemIndex)!
 
             tabItem.favicon = getFavicon(url: self.webView!.url!.absoluteString)
             tabItem.label = self.webView!.title ?? "Untitled Tab"
@@ -359,22 +358,20 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
 
         do {
             return NSImage(data: try Data(contentsOf: url!))
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
         return nil
     }
     
     func mubWebView(_ webView: MAWebView, titleChanged title: String) {
-        if !(webTabView.selectedTabViewItemIndex >= webTabView.tabViewItems.count) {
-            if let webView = (webTabView.tabViewItems[webTabView.selectedTabViewItemIndex].view as? MAWebView) {
+        if !(webTabView.selectedTabViewItemIndex >= webTabView.tabViewItems) {
+            if let webView = webTabView.getView(at: webTabView.selectedTabViewItemIndex) as? MAWebView {
                 // Set the new title
-                (webTabView.tabBar?.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.label = webView.title ?? "Untitled Tab"
+                webTabView.tabBar?.getTabItem(at: webTabView.selectedTabViewItemIndex)?.label = webView.title ?? "Untitled Tab"
 
                 // Get the favicon of the website
                 guard let webViewURL = webView.url?.absoluteString else { return }
             
-                (webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as? MATabBarViewItem)?.favicon = getFavicon(url: webViewURL)
+                webTabView.tabBar?.getTabItem(at: webTabView.selectedTabViewItemIndex)?.favicon = getFavicon(url: webViewURL)
             }
         }
     }
@@ -386,7 +383,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: newWebView))
-            let tabItem = webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as! MATabBarViewItem
+            let tabItem = webTabView.tabBar!.getTabItem(at: webTabView.selectedTabViewItemIndex)!
 
             tabItem.favicon = getFavicon(url: self.webView!.url!.absoluteString)
             tabItem.label = self.webView!.title ?? "Untitled Tab"
@@ -639,7 +636,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func switchTo(tab number: Int, _ pauses: Bool = false, closes: Bool = false) {
         if !closes {
-            if number <= webTabView.tabViewItems.count - 1 {
+            if number <= webTabView.tabViewItems - 1 {
                 if pauses {
                     // Run the Javascript that will pause the video
                     let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
@@ -767,7 +764,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // MARK: - Tab Functions
     
     func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int) {
-        webView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
+        webView = webTabView.getView(at: tabViewItemIndex) as? MAWebView
         
         view.window?.makeFirstResponder(webView!)
         
@@ -778,16 +775,17 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         progressIndicator.isHidden = true
     }
     
-    func tabView(_ tabView: MATabView, createdNewTab tabViewItemIndex: Int) {
+    func tabView(_ tabView: MATabView, didCreateTab tabViewItemIndex: Int) {
+        progressIndicator.isHidden = true
         view.window?.makeFirstResponder(searchField)
     }
 
-    func tabViewEmpty() {
+    func tabView(noMoreTabsLeft tabView: MATabView) {
         view.window?.close()
     }
     
     func tabView(_ tabView: MATabView, willClose tabViewItemIndex: Int) {
-        var tabsWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
+        var tabsWebView = webTabView.getView(at: tabViewItemIndex) as? MAWebView
         
         // Add the url to the last open tabs list
         // Also save to user defaults

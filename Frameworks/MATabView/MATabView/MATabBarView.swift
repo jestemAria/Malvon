@@ -22,11 +22,15 @@ final class FlippedClipView: NSClipView {
 }
 
 open class MATabBarView: NSView, MATabBarViewItemDelegate {
-    open var tabStackView = NSStackView()
+    private var tabStackView = NSStackView()
     private let scrollView: NSScrollView = .init()
 
     open weak var delegate: MATabBarViewDelegate?
     let clipView = FlippedClipView()
+
+    open var tabViewItems: Int {
+        return tabStackView.subviews.count
+    }
 
     open func removeTab(at index: Int) {
         NSAnimationContext.runAnimationGroup { context in
@@ -42,6 +46,13 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
         for (position, subview) in tabStackView.subviews.enumerated() {
             (subview as! MATabBarViewItem).tag = position
         }
+    }
+
+    open func getTabItem(at index: Int) -> MATabBarViewItem? {
+        if index > tabStackView.subviews.count - 1 {
+            return nil
+        }
+        return tabStackView.subviews[index] as? MATabBarViewItem
     }
 
     @objc func didSelectTab(_ sender: MATabBarViewItem) {
@@ -64,8 +75,17 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
         newButton.bezelStyle = .shadowlessSquare
 
         newButton.delegate = self
+        newButton.alphaValue = 0
 
         tabStackView.addArrangedSubview(newButton)
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.25
+            context.allowsImplicitAnimation = true
+
+            newButton.animator().alphaValue = 1.0
+        } completionHandler: {
+            newButton.animator().alphaValue = 1
+        }
     }
 
     public func tabBarViewItem(_ tabBarViewItem: MATabBarViewItem, wantsToClose tabBarViewItemIndex: Int) {

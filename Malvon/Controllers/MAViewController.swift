@@ -16,6 +16,9 @@ import WebKit
 // The browser will have a slight delay when creating a new tab
 let waitTime = 0.43
 
+// The number of items in the closed tabs list
+let closeTabNumbers = 5
+
 class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelegate, MATabViewDelegate {
     // MARK: - Elements
     
@@ -52,6 +55,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // Just to improve proformance
     private var startPageHTML = String()
     let newtabURL = Bundle.main.url(forResource: "newtab", withExtension: "html")
+    
+    // Create a fixed size array ( saves memory )
+    var lastOpenedTabs = [String](repeating: String(), count: closeTabNumbers)
 
     // MARK: - Setup Functions
     
@@ -203,8 +209,18 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Create a new tab
         webView = getNewWebViewInstance(url: url)
         
-        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             self.webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: self.webView!))
+            
+            let tabItem = webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as! MATabBarViewItem
+
+            tabItem.favicon = getFavicon(url: self.webView!.url!.absoluteString)
+            tabItem.label = self.webView!.title ?? "Untitled Tab"
+            
+            Timer.scheduledTimer(withTimeInterval: waitTime / waitTime - 1, repeats: false) { _ in
+                tabItem.closeButton.image = tabItem.favicon
+            }
+            
             self.webView?.delegate = self
         }
     }
@@ -212,27 +228,33 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBAction func createNewTab(_ sender: Any) {
         // Create a new tab
         webView = getNewWebViewInstance()
-        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             self.webTabView.addTabViewItem(tabViewItem: MATabViewItem(view: self.webView!))
+            
+            let tabItem = webTabBarView.tabStackView.subviews[webTabView.selectedTabViewItemIndex] as! MATabBarViewItem
+
+            tabItem.favicon = getFavicon(url: self.webView!.url!.absoluteString)
+            tabItem.label = self.webView!.title ?? "Untitled Tab"
+            
+            Timer.scheduledTimer(withTimeInterval: waitTime / waitTime - 1, repeats: false) { _ in
+                tabItem.closeButton.image = tabItem.favicon
+            }
+            
             self.webView?.delegate = self
         }
     }
     
     @IBAction func closeTab(_ sender: Any) {
-        // Add the url to the last open tabs list
-        // Also save to user defaults
-        lastOpenedTabs.append(webView?.url?.absoluteString ?? "about:blank")
-        UserDefaults.standard.set(lastOpenedTabs, forKey: "MAViewController_lastOpenedTabs")
-        
         // Close the current tab
         webTabView.removeTabViewItem(at: webTabView.selectedTabViewItemIndex)
     }
     
-    var lastOpenedTabs = [String]()
     @IBAction func reopenLastTab(_ sender: Any) {
         if !(lastOpenedTabs.isEmpty) {
-            createNewTab(url: URL(string: lastOpenedTabs.first ?? "about:blank")!)
-            lastOpenedTabs.removeFirst()
+            if let first = lastOpenedTabs.first {
+                createNewTab(url: URL(string: first)!)
+                lastOpenedTabs.removeFirst()
+            }
         }
     }
     
@@ -764,8 +786,21 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         view.window?.close()
     }
     
-    func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int) {
+    func tabView(_ tabView: MATabView, willClose tabViewItemIndex: Int) {
         var tabsWebView = webTabView.tabViewItems[tabViewItemIndex].view as? MAWebView
+        
+        // Add the url to the last open tabs list
+        // Also save to user defaults
+        if let urlString = tabsWebView?.url?.absoluteString {
+            if !(tabsWebView!.url!.isFileURL) {
+                lastOpenedTabs.insert(urlString, at: 0)
+            
+                lastOpenedTabs.removeLast()
+            
+                UserDefaults.standard.set(lastOpenedTabs, forKey: "MAViewController_lastOpenedTabs")
+            }
+        }
+        
         // Make the webView load "about:blank"
         tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
         // Remove all the observers on the webview

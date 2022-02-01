@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.2
+- Fixed the reopen tab
 - Started working on a web browser engine :)
 - Added support for re-opening closed tabs
 - Fixed the minimize problem

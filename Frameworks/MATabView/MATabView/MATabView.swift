@@ -13,7 +13,7 @@ import Cocoa
 @objc public protocol MATabViewDelegate: NSObjectProtocol {
     @objc optional func tabView(_ tabView: MATabView, didSelect tabViewItemIndex: Int)
     @objc optional func tabViewDidChangeNumberOfTabViewItems(_ tabView: MATabView)
-    @objc optional func tabView(_ tabView: MATabView, willRemove tabViewItemIndex: Int)
+    @objc optional func tabView(_ tabView: MATabView, willClose tabViewItemIndex: Int)
 
     @objc optional func tabView(_ tabView: MATabView, createdNewTab tabViewItemIndex: Int)
 
@@ -84,13 +84,13 @@ open class MATabView: NSView, MATabBarViewDelegate {
         if selectedTabViewItemIndex == index {
             // If there are no more tabs left
             if index == 0, tabViewItems.count == 1 {
-                delegate?.tabView?(self, willRemove: index)
+                delegate?.tabView?(self, willClose: index)
                 delegate?.tabViewEmpty?()
                 return
             } else if index == 0, tabViewItems.count != 1 {
                 selectTabViewItem(at: selectedTabViewItemIndex + 1)
                 selectedTabViewItemIndex -= 1
-                delegate?.tabView?(self, willRemove: index)
+                delegate?.tabView?(self, willClose: index)
                 tabBar?.removeTab(at: index)
                 tabViewItems.remove(at: index)
                 if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
@@ -100,7 +100,7 @@ open class MATabView: NSView, MATabBarViewDelegate {
                 return
             } else {
                 selectTabViewItem(at: selectedTabViewItemIndex - 1)
-                delegate?.tabView?(self, willRemove: index)
+                delegate?.tabView?(self, willClose: index)
                 tabBar?.removeTab(at: index)
                 tabViewItems.remove(at: index)
                 if let button = (tabBar?.tabStackView.subviews[selectedTabViewItemIndex] as? MATabBarViewItem) {
@@ -111,7 +111,7 @@ open class MATabView: NSView, MATabBarViewDelegate {
             }
         }
 
-        delegate?.tabView?(self, willRemove: index)
+        delegate?.tabView?(self, willClose: index)
         tabBar?.removeTab(at: index)
         tabViewItems.remove(at: index)
     }

@@ -21,7 +21,7 @@ final class FlippedClipView: NSClipView {
     }
 }
 
-open class MATabBarView: NSView, MATabBarViewItemDelegate {
+open class MATabBarView: NSView, MATabBarItemDelegate {
     private var tabStackView = NSStackView()
     private let scrollView: NSScrollView = .init()
 
@@ -41,26 +41,29 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
         } completionHandler: { [self] in
             tabStackView.subviews[index].removeFromSuperview()
         }
-
         // Remap the tags of each button
         for (position, subview) in tabStackView.subviews.enumerated() {
-            (subview as! MATabBarViewItem).tag = position
+            (subview as! MATabBarItem).tag = position
         }
     }
 
-    open func getTabItem(at index: Int) -> MATabBarViewItem? {
+    open func getTabItem(at index: Int) -> MATabBarItem? {
         if index > tabStackView.subviews.count - 1 {
             return nil
         }
-        return tabStackView.subviews[index] as? MATabBarViewItem
+        return tabStackView.subviews[index] as? MATabBarItem
     }
 
-    @objc func didSelectTab(_ sender: MATabBarViewItem) {
+    @objc func didSelectTab(_ sender: MATabBarItem) {
+        // Remap the tags of each button
+        for (position, subview) in tabStackView.subviews.enumerated() {
+            (subview as! MATabBarItem).tag = position
+        }
         delegate?.tabBarView?(self, didSelect: sender.tag)
     }
 
     open func addTab(title: String) {
-        let newButton = MATabBarViewItem(frame: .zero)
+        let newButton = MATabBarItem(frame: .zero)
 
         newButton.translatesAutoresizingMaskIntoConstraints = false
         newButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -88,7 +91,7 @@ open class MATabBarView: NSView, MATabBarViewItemDelegate {
         }
     }
 
-    public func tabBarViewItem(_ tabBarViewItem: MATabBarViewItem, wantsToClose tabBarViewItemIndex: Int) {
+    public func tabBarViewItem(_ tabBarViewItem: MATabBarItem, wantsToClose tabBarViewItemIndex: Int) {
         delegate?.tabBarView?(self, wantsToClose: tabBarViewItemIndex)
     }
 

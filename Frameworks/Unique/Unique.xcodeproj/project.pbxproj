@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0B165327AC12BC00AB1317 /* Changes.md in Resources */ = {isa = PBXBuildFile; fileRef = ED0B165227AC12BC00AB1317 /* Changes.md */; };
 		ED87CBC327A82C9700006253 /* Unique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED87CBBA27A82C9700006253 /* Unique.framework */; };
 		ED87CBC827A82C9700006253 /* UniqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87CBC727A82C9700006253 /* UniqueTests.swift */; };
 		ED87CBC927A82C9700006253 /* Unique.h in Headers */ = {isa = PBXBuildFile; fileRef = ED87CBBD27A82C9700006253 /* Unique.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDCC4D8B27A8CE7700B3F5E2 /* HTMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDCC4D8927A8CE7700B3F5E2 /* HTMLParser.cpp */; };
-		EDCC4D8C27A8CE7700B3F5E2 /* HTMLParser.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EDCC4D8A27A8CE7700B3F5E2 /* HTMLParser.hpp */; };
-		EDFB5A2827A82E2300C6F779 /* DOMNode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EDFB5A2627A82E2300C6F779 /* DOMNode.hpp */; };
-		EDFB5A2927A82E2300C6F779 /* DOMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDFB5A2727A82E2300C6F779 /* DOMNode.cpp */; };
+		ED97544227AB31B600DAAEBB /* DOMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED97544027AB31B600DAAEBB /* DOMNode.cpp */; };
+		ED97544327AB31B600DAAEBB /* DOMNode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ED97544127AB31B600DAAEBB /* DOMNode.hpp */; };
+		ED97544C27AB383D00DAAEBB /* HTMLParser.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */; };
+		ED97544D27AB3A5C00DAAEBB /* HTMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED97544927AB383D00DAAEBB /* HTMLParser.cpp */; };
 		EDFB5A2C27A8305F00C6F779 /* DOMNodeWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */; };
 		EDFB5A2D27A830D100C6F779 /* DOMNodeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDFB5A3A27A8356C00C6F779 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = EDFB5A3927A8356C00C6F779 /* test.html */; };
@@ -30,14 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED0B165227AC12BC00AB1317 /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
 		ED87CBBA27A82C9700006253 /* Unique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED87CBBD27A82C9700006253 /* Unique.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Unique.h; sourceTree = "<group>"; };
 		ED87CBC227A82C9700006253 /* UniqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED87CBC727A82C9700006253 /* UniqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTests.swift; sourceTree = "<group>"; };
-		EDCC4D8927A8CE7700B3F5E2 /* HTMLParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTMLParser.cpp; sourceTree = "<group>"; };
-		EDCC4D8A27A8CE7700B3F5E2 /* HTMLParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HTMLParser.hpp; sourceTree = "<group>"; };
-		EDFB5A2627A82E2300C6F779 /* DOMNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DOMNode.hpp; sourceTree = "<group>"; };
-		EDFB5A2727A82E2300C6F779 /* DOMNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DOMNode.cpp; sourceTree = "<group>"; };
+		ED97544027AB31B600DAAEBB /* DOMNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DOMNode.cpp; sourceTree = "<group>"; };
+		ED97544127AB31B600DAAEBB /* DOMNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DOMNode.hpp; sourceTree = "<group>"; };
+		ED97544927AB383D00DAAEBB /* HTMLParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTMLParser.cpp; sourceTree = "<group>"; };
+		ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HTMLParser.hpp; sourceTree = "<group>"; };
 		EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOMNodeWrapper.h; sourceTree = "<group>"; };
 		EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DOMNodeWrapper.mm; sourceTree = "<group>"; };
 		EDFB5A3927A8356C00C6F779 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				ED87CBBC27A82C9700006253 /* Unique */,
 				ED87CBC627A82C9700006253 /* UniqueTests */,
+				ED0B165227AC12BC00AB1317 /* Changes.md */,
 				ED87CBBB27A82C9700006253 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,14 +86,11 @@
 		ED87CBBC27A82C9700006253 /* Unique */ = {
 			isa = PBXGroup;
 			children = (
-				ED87CBBD27A82C9700006253 /* Unique.h */,
-				EDFB5A2627A82E2300C6F779 /* DOMNode.hpp */,
-				EDFB5A2727A82E2300C6F779 /* DOMNode.cpp */,
+				ED97544827AB371300DAAEBB /* CPP */,
 				EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */,
 				EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */,
 				EDFB5A3927A8356C00C6F779 /* test.html */,
-				EDCC4D8927A8CE7700B3F5E2 /* HTMLParser.cpp */,
-				EDCC4D8A27A8CE7700B3F5E2 /* HTMLParser.hpp */,
+				ED87CBBD27A82C9700006253 /* Unique.h */,
 			);
 			path = Unique;
 			sourceTree = "<group>";
@@ -103,6 +103,17 @@
 			path = UniqueTests;
 			sourceTree = "<group>";
 		};
+		ED97544827AB371300DAAEBB /* CPP */ = {
+			isa = PBXGroup;
+			children = (
+				ED97544027AB31B600DAAEBB /* DOMNode.cpp */,
+				ED97544127AB31B600DAAEBB /* DOMNode.hpp */,
+				ED97544927AB383D00DAAEBB /* HTMLParser.cpp */,
+				ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */,
+			);
+			path = CPP;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -110,9 +121,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDFB5A2827A82E2300C6F779 /* DOMNode.hpp in Headers */,
+				ED97544327AB31B600DAAEBB /* DOMNode.hpp in Headers */,
 				ED87CBC927A82C9700006253 /* Unique.h in Headers */,
-				EDCC4D8C27A8CE7700B3F5E2 /* HTMLParser.hpp in Headers */,
+				ED97544C27AB383D00DAAEBB /* HTMLParser.hpp in Headers */,
 				EDFB5A2D27A830D100C6F779 /* DOMNodeWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0B165327AC12BC00AB1317 /* Changes.md in Resources */,
 				EDFB5A3A27A8356C00C6F779 /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,9 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED97544227AB31B600DAAEBB /* DOMNode.cpp in Sources */,
 				EDFB5A2C27A8305F00C6F779 /* DOMNodeWrapper.mm in Sources */,
-				EDFB5A2927A82E2300C6F779 /* DOMNode.cpp in Sources */,
-				EDCC4D8B27A8CE7700B3F5E2 /* HTMLParser.cpp in Sources */,
+				ED97544D27AB3A5C00DAAEBB /* HTMLParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ import MAWebView
 import WebKit
 
 // The browser will have a slight delay when creating a new tab
-let waitTime = 0.05
+let waitTime = 0.43
 
 // The number of items in the closed tabs list
 let closeTabNumbers = 5
@@ -26,6 +26,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBOutlet var webTabView: MATabView!
     @IBOutlet var webTabBarView: MATabBarView!
     var webView: MAWebView?
+    var processPool = WKProcessPool()
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
@@ -63,6 +64,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, windowCNTRL: MAWindowController) {
         self.webConfigurations = config
+        webConfigurations.processPool = processPool
         self.loadURL = loadURL
         self.windowController = windowCNTRL
         super.init(nibName: "MAViewController", bundle: nil)
@@ -781,6 +783,18 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
 
     func tabView(noMoreTabsLeft tabView: MATabView) {
+        // Hide progress indicator
+        progressIndicator.isHidden = true
+        // Stop it from loading
+        webView?.stopLoading()
+        // Remove all the observers on the webview
+        webView?.removeWebview()
+        // Remove from the superview
+        webView?.removeFromSuperview()
+        // Make it nil
+        webView = nil
+        
+        // Close the window
         view.window?.close()
     }
     
@@ -799,20 +813,22 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             }
         }
         
-        // Make the webView load "about:blank"
-        tabsWebView?.load(URLRequest(url: URL(string: "about:blank")!))
+        // Hide progress indicator
+        progressIndicator.isHidden = true
+        // Stop it from loading
+        tabsWebView?.stopLoading()
         // Remove all the observers on the webview
         tabsWebView?.removeWebview()
         // Remove from the superview
         tabsWebView?.removeFromSuperview()
         // Make it nil
         tabsWebView = nil
-        
-        progressIndicator.isHidden = true
     }
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {
-        let newWebView = MAWebView(frame: webTabView.frame, configuration: config ?? WKWebViewConfiguration())
+        let webConfig = WKWebViewConfiguration()
+        webConfig.processPool = processPool
+        let newWebView = MAWebView(frame: webTabView.frame, configuration: config ?? webConfig)
         
         newWebView.initializeWebView()
         newWebView.enableConfigurations()

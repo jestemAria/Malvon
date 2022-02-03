@@ -1,6 +1,9 @@
 #  Changes
 
 ## v1.2
+- Used a shared process pool instead of using seperate process pools
+- Updated the Unique Web Engine to Parse and Lex Text and Element Nodes
+- Fixed the bug where closing the tab may cause the application to crash
 - Updated the newtab.html file
 - Updated the load time
 - Fixed the reopen tab

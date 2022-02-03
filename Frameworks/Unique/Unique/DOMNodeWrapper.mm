@@ -6,5 +6,13 @@
 //
 
 #import "DOMNodeWrapper.h"
-#include "DOMNode.hpp"
+#include "CPP/HTMLParser.hpp"
 
+@implementation testClassWrapper
+
+- (void) parseHTML:(NSString*)source {
+    NSLog(@"dsfa\n");
+    testParser();
+}
+
+@end

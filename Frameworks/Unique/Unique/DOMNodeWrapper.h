@@ -10,4 +10,8 @@
 
 #import <Foundation/Foundation.h>
 
+@interface testClassWrapper : NSObject
+- (void) parseHTML:(NSString*)source;
+@end
+
 #endif /* DOMNodeWrapper_h */

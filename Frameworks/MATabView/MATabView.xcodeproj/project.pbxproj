@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED4DDE7C27AACDBA00C99AEE /* MATabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DDE7B27AACDB900C99AEE /* MATabBarItem.swift */; };
 		ED62D71F2787383500ABE8DD /* MATabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED62D7162787383500ABE8DD /* MATabView.framework */; };
 		ED62D7242787383500ABE8DD /* MATabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62D7232787383500ABE8DD /* MATabViewTests.swift */; };
 		ED62D7252787383500ABE8DD /* MATabView.h in Headers */ = {isa = PBXBuildFile; fileRef = ED62D7192787383500ABE8DD /* MATabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED4DDE7B27AACDB900C99AEE /* MATabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarItem.swift; sourceTree = "<group>"; };
 		ED62D7162787383500ABE8DD /* MATabView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MATabView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED62D7192787383500ABE8DD /* MATabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MATabView.h; sourceTree = "<group>"; };
 		ED62D71E2787383500ABE8DD /* MATabViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MATabViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +82,7 @@
 				ED62D7192787383500ABE8DD /* MATabView.h */,
 				ED62D7402787392100ABE8DD /* MATabView.swift */,
 				EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */,
+				ED4DDE7B27AACDB900C99AEE /* MATabBarItem.swift */,
 				ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */,
 				ED8CCB7F27A99AAF0060DCA2 /* Changes.md */,
 				ED8CCB7E27A997EC0060DCA2 /* README.md */,
@@ -207,6 +210,7 @@
 			files = (
 				EDD23EDC27A4EE95009B79B7 /* MATabBarView.swift in Sources */,
 				ED62D7412787392100ABE8DD /* MATabView.swift in Sources */,
+				ED4DDE7C27AACDBA00C99AEE /* MATabBarItem.swift in Sources */,
 				ED62D73F2787384E00ABE8DD /* MATabViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

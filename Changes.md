@@ -1,6 +1,12 @@
 #  Changes
 
 ## v1.2
+- Added an example application
+- Made the code more simple
+- Added configurations
+- Fixed the scrolling issue
+- Re-wrote the entire tabing system
+- Changed the color of the tab bar items based on appearance
 - Used a shared process pool instead of using seperate process pools
 - Updated the Unique Web Engine to Parse and Lex Text and Element Nodes
 - Fixed the bug where closing the tab may cause the application to crash

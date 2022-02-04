@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.showWindow(nil)
         updateApplication()
         // setAsDefaultBrowser()
-        testClassWrapper().parseHTML("hello world")
+        // testClassWrapper().parseHTML("hello world")
     }
     
     func application(_ application: NSApplication, open urls: [URL]) {

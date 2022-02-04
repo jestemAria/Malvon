@@ -9,14 +9,12 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MAViewController" customModule="Malvon" customModuleProvider="target">
             <connections>
                 <outlet property="backButtonOutlet" destination="Jdg-BP-fje" id="TqU-Ns-htE"/>
-                <outlet property="createNewTabButton" destination="7IH-z6-nfQ" id="G4E-8Y-4DU"/>
                 <outlet property="forwardButtonOutlet" destination="nIJ-8Z-Syk" id="Ybx-TY-fD8"/>
                 <outlet property="progressIndicator" destination="hRj-KC-y0I" id="yh3-Un-oIE"/>
-                <outlet property="refreshButton" destination="SBy-me-3uk" id="5i9-Qi-3Wb"/>
+                <outlet property="refreshButton" destination="SBy-me-3uk" id="V7Q-hN-qIG"/>
                 <outlet property="searchField" destination="QEv-1d-jkS" id="ZCp-UQ-61p"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Bzk-7g-zJq"/>
                 <outlet property="webContentView" destination="Hmp-yZ-mmV" id="nRX-yd-r3M"/>
-                <outlet property="webTabBarView" destination="cDw-fm-S7o" id="H3Y-GB-B1Z"/>
                 <outlet property="webTabView" destination="Hmp-yZ-mmV" id="jin-WX-q0I"/>
             </connections>
         </customObject>
@@ -27,19 +25,19 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-yZ-mmV" customClass="MATabView" customModule="MATabView">
-                    <rect key="frame" x="0.0" y="0.0" width="1045" height="410"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1045" height="437"/>
                 </customView>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2v0-wv-Lo9">
-                    <rect key="frame" x="0.0" y="438" width="1045" height="5"/>
+                    <rect key="frame" x="0.0" y="435" width="1045" height="5"/>
                 </box>
                 <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ucC-9r-3Ih">
-                    <rect key="frame" x="0.0" y="441" width="1045" height="35"/>
+                    <rect key="frame" x="0.0" y="442" width="1045" height="34"/>
                     <view key="contentView" id="Xg7-WT-uDj">
-                        <rect key="frame" x="0.0" y="0.0" width="1045" height="35"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1045" height="34"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUV-lC-r8G">
-                                <rect key="frame" x="66" y="3" width="60" height="30"/>
+                                <rect key="frame" x="66" y="2" width="60" height="30"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jdg-BP-fje" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-2" width="30" height="35"/>
@@ -94,7 +92,7 @@
                                 </customSpacing>
                             </stackView>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEv-1d-jkS" customClass="MASearchField" customModule="Malvon" customModuleProvider="target">
-                                <rect key="frame" x="177" y="3" width="818" height="30"/>
+                                <rect key="frame" x="177" y="2" width="818" height="30"/>
                                 <shadow key="shadow">
                                     <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </shadow>
@@ -108,7 +106,7 @@
                                 </connections>
                             </searchField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SBy-me-3uk" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
-                                <rect key="frame" x="177" y="0.5" width="30.5" height="37"/>
+                                <rect key="frame" x="177" y="-0.5" width="30.5" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9eU-BH-g53"/>
                                     <constraint firstAttribute="width" constant="30" id="MdS-qR-LfH"/>
@@ -123,7 +121,7 @@
                                 </connections>
                             </button>
                             <box hidden="YES" horizontalHuggingPriority="249" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="iQp-AF-cVn">
-                                <rect key="frame" x="124" y="0.0" width="5" height="35"/>
+                                <rect key="frame" x="124" y="0.0" width="5" height="34"/>
                             </box>
                         </subviews>
                         <constraints>
@@ -131,6 +129,7 @@
                             <constraint firstItem="SBy-me-3uk" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="468-v3-2MS"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="leading" secondItem="iQp-AF-cVn" secondAttribute="trailing" constant="50" id="4li-D1-mLD"/>
                             <constraint firstAttribute="bottom" secondItem="iQp-AF-cVn" secondAttribute="bottom" id="6V5-6R-NvQ"/>
+                            <constraint firstItem="WUV-lC-r8G" firstAttribute="top" secondItem="Xg7-WT-uDj" secondAttribute="top" constant="2" id="FFh-cF-6Zg"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="leading" secondItem="Xg7-WT-uDj" secondAttribute="leading" constant="66" id="VaU-rs-rXM"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="Yb1-kK-xo3"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="h4e-Cu-fbD"/>
@@ -141,98 +140,31 @@
                     </view>
                 </box>
                 <progressIndicator maxValue="100" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hRj-KC-y0I">
-                    <rect key="frame" x="0.0" y="436" width="1045" height="12"/>
+                    <rect key="frame" x="0.0" y="437" width="1045" height="12"/>
                 </progressIndicator>
-                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7c-MQ-R1I">
-                    <rect key="frame" x="0.0" y="410" width="1045" height="30"/>
-                    <subviews>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="y1h-6y-xoN" customClass="MATabBarView" customModule="MATabView">
-                            <rect key="frame" x="0.0" y="0.0" width="1015" height="30"/>
-                            <subviews>
-                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="cDw-fm-S7o" customClass="MATabBarView" customModule="MATabView">
-                                    <rect key="frame" x="0.0" y="0.0" width="1015" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="gxa-Yx-Kio"/>
-                                    </constraints>
-                                </customView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="cDw-fm-S7o" secondAttribute="bottom" id="BCs-FR-Oma"/>
-                                <constraint firstItem="cDw-fm-S7o" firstAttribute="leading" secondItem="y1h-6y-xoN" secondAttribute="leading" id="N4L-xe-duB"/>
-                                <constraint firstAttribute="trailing" secondItem="cDw-fm-S7o" secondAttribute="trailing" id="Tlm-DN-bmA"/>
-                                <constraint firstItem="cDw-fm-S7o" firstAttribute="top" secondItem="y1h-6y-xoN" secondAttribute="top" id="dyh-pP-TVq"/>
-                                <constraint firstItem="cDw-fm-S7o" firstAttribute="leading" secondItem="y1h-6y-xoN" secondAttribute="leading" id="iBD-PQ-8aO"/>
-                                <constraint firstAttribute="trailing" secondItem="cDw-fm-S7o" secondAttribute="trailing" id="l54-Tj-bQ7"/>
-                                <constraint firstAttribute="height" constant="30" id="yeY-wP-Yt6"/>
-                            </constraints>
-                        </customView>
-                        <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4F-My-kqm">
-                            <rect key="frame" x="1015" y="0.0" width="30" height="30"/>
-                            <subviews>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7IH-z6-nfQ" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="-1.5" width="30.5" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="1ic-TI-gPF"/>
-                                        <constraint firstAttribute="height" constant="30" id="V4E-aJ-Pd6"/>
-                                    </constraints>
-                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="ofW-pQ-Jq8">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="createNewTab:" target="-2" id="km1-05-Vgz"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="V5U-Mf-Fkr"/>
-                            </constraints>
-                            <visibilityPriorities>
-                                <integer value="1000"/>
-                            </visibilityPriorities>
-                            <customSpacing>
-                                <real value="3.4028234663852886e+38"/>
-                            </customSpacing>
-                        </stackView>
-                    </subviews>
-                    <visibilityPriorities>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                    </visibilityPriorities>
-                    <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                    </customSpacing>
-                </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="3Mi-wq-joZ"/>
-                <constraint firstItem="2v0-wv-Lo9" firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="3Om-oq-ONP"/>
+                <constraint firstAttribute="trailing" secondItem="2v0-wv-Lo9" secondAttribute="trailing" id="2ZQ-dY-lnw"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4yY-ps-Lif"/>
-                <constraint firstItem="D7c-MQ-R1I" firstAttribute="top" secondItem="2v0-wv-Lo9" secondAttribute="bottom" id="Bob-7a-BAV"/>
-                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="DJn-Cv-On9"/>
-                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="FAd-Tt-Fcq"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="5FP-Sy-im8"/>
+                <constraint firstItem="hRj-KC-y0I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Em8-uh-iXc"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="K3P-zP-wel"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="D7c-MQ-R1I" secondAttribute="bottom" id="PZF-mA-dTE"/>
-                <constraint firstItem="2v0-wv-Lo9" firstAttribute="top" secondItem="ucC-9r-3Ih" secondAttribute="bottom" id="PzJ-ik-b31"/>
-                <constraint firstItem="hRj-KC-y0I" firstAttribute="trailing" secondItem="2v0-wv-Lo9" secondAttribute="trailing" id="SXg-Np-u3e"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="hRj-KC-y0I" secondAttribute="bottom" constant="26" id="Uff-UE-3vE"/>
-                <constraint firstItem="hRj-KC-y0I" firstAttribute="leading" secondItem="2v0-wv-Lo9" secondAttribute="leading" id="X0p-n1-70l"/>
-                <constraint firstItem="2v0-wv-Lo9" firstAttribute="leading" secondItem="ucC-9r-3Ih" secondAttribute="leading" id="aQh-bj-9bb"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dMf-H9-Haj"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="trailing" secondItem="2v0-wv-Lo9" secondAttribute="trailing" id="iyw-fB-zJZ"/>
-                <constraint firstAttribute="trailing" secondItem="D7c-MQ-R1I" secondAttribute="trailing" id="kMQ-mc-ca1"/>
-                <constraint firstItem="D7c-MQ-R1I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="lzW-ml-bEY"/>
+                <constraint firstItem="2v0-wv-Lo9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Opf-4i-Rtm"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Rrh-lT-05M"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="hRj-KC-y0I" secondAttribute="bottom" id="S7A-95-7ps"/>
+                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="UiS-v6-wc9"/>
+                <constraint firstAttribute="trailing" secondItem="hRj-KC-y0I" secondAttribute="trailing" id="Yj3-nV-F6b"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="2v0-wv-Lo9" secondAttribute="bottom" id="cev-lJ-NdC"/>
+                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="gAl-zx-zfv"/>
+                <constraint firstItem="hRj-KC-y0I" firstAttribute="top" secondItem="ucC-9r-3Ih" secondAttribute="bottom" constant="-7" id="oBo-T0-2od"/>
                 <constraint firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="tSs-v8-d1r"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="D7c-MQ-R1I" secondAttribute="bottom" id="ubf-N3-C50"/>
-                <constraint firstItem="2v0-wv-Lo9" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="37" id="uqP-jG-Xkh"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="2v0-wv-Lo9" secondAttribute="leading" id="wUb-wc-5rA"/>
+                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="uOR-Dy-tmz"/>
+                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="vOx-Hs-893"/>
             </constraints>
             <point key="canvasLocation" x="138.5" y="136"/>
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSGoBackTemplate" width="10" height="14"/>
         <image name="NSGoForwardTemplate" width="10" height="14"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>

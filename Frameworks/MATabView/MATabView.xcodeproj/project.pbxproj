@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED4DDE7C27AACDBA00C99AEE /* MATabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DDE7B27AACDB900C99AEE /* MATabBarItem.swift */; };
 		ED62D71F2787383500ABE8DD /* MATabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED62D7162787383500ABE8DD /* MATabView.framework */; };
 		ED62D7242787383500ABE8DD /* MATabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62D7232787383500ABE8DD /* MATabViewTests.swift */; };
 		ED62D7252787383500ABE8DD /* MATabView.h in Headers */ = {isa = PBXBuildFile; fileRef = ED62D7192787383500ABE8DD /* MATabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED62D73F2787384E00ABE8DD /* MATabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */; };
-		ED62D7412787392100ABE8DD /* MATabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62D7402787392100ABE8DD /* MATabView.swift */; };
-		EDD23EDC27A4EE95009B79B7 /* MATabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */; };
+		ED75544627AC7EEA008D2948 /* MATabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75544527AC7EEA008D2948 /* MATabView.swift */; };
+		ED75544827AC8159008D2948 /* MATab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75544727AC8159008D2948 /* MATab.swift */; };
+		ED75544A27AC822A008D2948 /* MATabViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75544927AC822A008D2948 /* MATabViewConfiguration.swift */; };
+		ED75544C27AC8279008D2948 /* MATabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75544B27AC8279008D2948 /* MATabBar.swift */; };
+		ED75547427AC9C8D008D2948 /* MATabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75547327AC9C8D008D2948 /* MATabBarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,19 +25,28 @@
 			remoteGlobalIDString = ED62D7152787383500ABE8DD;
 			remoteInfo = MATabView;
 		};
+		ED75546C27AC8714008D2948 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED75546827AC8713008D2948 /* MATabViewExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED75545627AC870D008D2948;
+			remoteInfo = MATabViewExample;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ED4DDE7B27AACDB900C99AEE /* MATabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarItem.swift; sourceTree = "<group>"; };
 		ED62D7162787383500ABE8DD /* MATabView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MATabView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED62D7192787383500ABE8DD /* MATabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MATabView.h; sourceTree = "<group>"; };
 		ED62D71E2787383500ABE8DD /* MATabViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MATabViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED62D7232787383500ABE8DD /* MATabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewTests.swift; sourceTree = "<group>"; };
-		ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewItem.swift; sourceTree = "<group>"; };
-		ED62D7402787392100ABE8DD /* MATabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabView.swift; sourceTree = "<group>"; };
+		ED75544527AC7EEA008D2948 /* MATabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabView.swift; sourceTree = "<group>"; };
+		ED75544727AC8159008D2948 /* MATab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATab.swift; sourceTree = "<group>"; };
+		ED75544927AC822A008D2948 /* MATabViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabViewConfiguration.swift; sourceTree = "<group>"; };
+		ED75544B27AC8279008D2948 /* MATabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBar.swift; sourceTree = "<group>"; };
+		ED75546827AC8713008D2948 /* MATabViewExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MATabViewExample.xcodeproj; path = MATabViewExample/MATabViewExample.xcodeproj; sourceTree = "<group>"; };
+		ED75547327AC9C8D008D2948 /* MATabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarItem.swift; sourceTree = "<group>"; };
 		ED8CCB7E27A997EC0060DCA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED8CCB7F27A99AAF0060DCA2 /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
-		EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,7 @@
 		ED62D70C2787383500ABE8DD = {
 			isa = PBXGroup;
 			children = (
+				ED75546827AC8713008D2948 /* MATabViewExample.xcodeproj */,
 				ED62D7182787383500ABE8DD /* MATabView */,
 				ED62D7222787383500ABE8DD /* MATabViewTests */,
 				ED62D7172787383500ABE8DD /* Products */,
@@ -80,10 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				ED62D7192787383500ABE8DD /* MATabView.h */,
-				ED62D7402787392100ABE8DD /* MATabView.swift */,
-				EDD23EDB27A4EE95009B79B7 /* MATabBarView.swift */,
-				ED4DDE7B27AACDB900C99AEE /* MATabBarItem.swift */,
-				ED62D73E2787384E00ABE8DD /* MATabViewItem.swift */,
+				ED75544527AC7EEA008D2948 /* MATabView.swift */,
+				ED75544B27AC8279008D2948 /* MATabBar.swift */,
+				ED75547327AC9C8D008D2948 /* MATabBarItem.swift */,
+				ED75544727AC8159008D2948 /* MATab.swift */,
+				ED75544927AC822A008D2948 /* MATabViewConfiguration.swift */,
 				ED8CCB7F27A99AAF0060DCA2 /* Changes.md */,
 				ED8CCB7E27A997EC0060DCA2 /* README.md */,
 			);
@@ -96,6 +108,14 @@
 				ED62D7232787383500ABE8DD /* MATabViewTests.swift */,
 			);
 			path = MATabViewTests;
+			sourceTree = "<group>";
+		};
+		ED75546927AC8713008D2948 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED75546D27AC8714008D2948 /* MATabViewExample.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +198,12 @@
 			mainGroup = ED62D70C2787383500ABE8DD;
 			productRefGroup = ED62D7172787383500ABE8DD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ED75546927AC8713008D2948 /* Products */;
+					ProjectRef = ED75546827AC8713008D2948 /* MATabViewExample.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				ED62D7152787383500ABE8DD /* MATabView */,
@@ -185,6 +211,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ED75546D27AC8714008D2948 /* MATabViewExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MATabViewExample.app;
+			remoteRef = ED75546C27AC8714008D2948 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		ED62D7142787383500ABE8DD /* Resources */ = {
@@ -208,10 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDD23EDC27A4EE95009B79B7 /* MATabBarView.swift in Sources */,
-				ED62D7412787392100ABE8DD /* MATabView.swift in Sources */,
-				ED4DDE7C27AACDBA00C99AEE /* MATabBarItem.swift in Sources */,
-				ED62D73F2787384E00ABE8DD /* MATabViewItem.swift in Sources */,
+				ED75547427AC9C8D008D2948 /* MATabBarItem.swift in Sources */,
+				ED75544827AC8159008D2948 /* MATab.swift in Sources */,
+				ED75544627AC7EEA008D2948 /* MATabView.swift in Sources */,
+				ED75544C27AC8279008D2948 /* MATabBar.swift in Sources */,
+				ED75544A27AC822A008D2948 /* MATabViewConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,7 +58,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
 
     @IBOutlet var controlButtonBox: NSBox!
     
-    let tabConfiguration: MATabViewConfiguration
+    var tabConfiguration: MATabViewConfiguration
 
     // MARK: - Setup Functions
     
@@ -352,6 +352,47 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
     }
     
+    func updateColors(colorConfig: MATabViewConfiguration) {
+        let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+
+        if appearance == "Dark" {
+            controlButtonBox.fillColor = colorConfig.darkTabBackgroundColor
+            view.layer?.backgroundColor = colorConfig.darkTabBackgroundColor.cgColor
+        } else {
+            controlButtonBox.fillColor = colorConfig.lightTabBackgroundColor
+            view.layer?.backgroundColor = colorConfig.lightTabBackgroundColor.cgColor
+        }
+        
+        webTabView.updateColors(configuration: tabConfiguration)
+    }
+    
+    func updateThemeColor(colorConfig: MATabViewConfiguration) {
+        let javascript = """
+        function a() {
+            var theme = document.querySelector("meta[name=theme-color]");
+            
+            return theme.content;
+        };
+        a();
+        """
+        
+        webView!.evaluateJavaScript(javascript) { [self] value, _ in
+            if let value = value {
+                let hexValue = value as! String
+                let color = NSColor(hex: hexValue)
+                colorConfig.lightTabBackgroundColor = color
+                
+                // TODO: Darken this a little bit
+                colorConfig.darkTabBackgroundColor = color
+                updateColors(colorConfig: colorConfig)
+            } else {
+                let blankColorConfig = MATabViewConfiguration()
+                updateColors(colorConfig: blankColorConfig)
+            }
+            print("THEME COLOR = \(value ?? "UNKNOWN")")
+        }
+    }
+    
     func mubWebView(_ webView: MAWebView, urlDidChange url: URL?) {
         // Update the search field URL
         updateWebsiteURL()
@@ -479,18 +520,14 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
     }
     
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        // Update the URL of the search field
-        updateWebsiteURL()
-        // Update the state of the back and forward buttons
-        checkButtons()
-    }
-    
     func mubWebView(_ webView: MAWebView, didFinishLoading url: URL?) {
         // Add a new item into the history
         addItem(website: webView.title!, address: webView.url!.absoluteString)
         // Update the state of the back and forward buttons
         checkButtons()
+        // Update the theme color
+        let colorConfig = webTabView.tabBar.get(tabItem: webTabView.selectedTab!.position).configuration
+        updateThemeColor(colorConfig: colorConfig)
     }
     
     // MARK: - Search Field
@@ -775,7 +812,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // MARK: - Tab Functions
     
-    func tabView(_ tabView: MATabView, didSelect tab: MATab) {
+    func tabView(_ tabView: MATabView, didSelect tab: MATab, colorConfig: MATabViewConfiguration) {
         webView = webTabView.selectedTab?.view as? MAWebView
         view.window?.makeFirstResponder(webView!)
         
@@ -784,6 +821,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         // Hide the progress indicator
         progressIndicator.isHidden = true
+        
+        tabConfiguration = MATabViewConfiguration()
+        updateThemeColor(colorConfig: tabConfiguration)
     }
     
     func tabView(_ tabView: MATabView, didCreateTab tab: MATab) {
@@ -857,5 +897,54 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
         
         return newWebView
+    }
+}
+
+// https://stackoverflow.com/questions/68679658/swift-5-4-hex-to-nscolor
+extension NSColor {
+    convenience init(hex: String) {
+        let trimHex = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        let dropHash = String(trimHex.dropFirst()).trimmingCharacters(in: .whitespacesAndNewlines)
+        let hexString = trimHex.starts(with: "#") ? dropHash : trimHex
+        let ui64 = UInt64(hexString, radix: 16)
+        let value = ui64 != nil ? Int(ui64!) : 0
+        // #RRGGBB
+        var components = (
+            R: CGFloat((value >> 16) & 0xff) / 255,
+            G: CGFloat((value >> 08) & 0xff) / 255,
+            B: CGFloat((value >> 00) & 0xff) / 255,
+            a: CGFloat(1)
+        )
+        if String(hexString).count == 8 {
+            // #RRGGBBAA
+            components = (
+                R: CGFloat((value >> 24) & 0xff) / 255,
+                G: CGFloat((value >> 16) & 0xff) / 255,
+                B: CGFloat((value >> 08) & 0xff) / 255,
+                a: CGFloat((value >> 00) & 0xff) / 255
+            )
+        }
+        self.init(red: components.R, green: components.G, blue: components.B, alpha: components.a)
+    }
+
+    func toHex(alpha: Bool = false) -> String? {
+        guard let components = cgColor.components, components.count >= 3 else {
+            return nil
+        }
+    
+        let r = Float(components[0])
+        let g = Float(components[1])
+        let b = Float(components[2])
+        var a = Float(1.0)
+    
+        if components.count >= 4 {
+            a = Float(components[3])
+        }
+    
+        if alpha {
+            return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
+        } else {
+            return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+        }
     }
 }

@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Updated `colorConfiguration` and made each tab have their seperate color configuration
+- Added Support for website theme color
 - Created a plus tab button
 - Fixed the `isObserving` variable
 - Fixed the tab system when closing the last tab

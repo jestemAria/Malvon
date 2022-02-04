@@ -10,8 +10,8 @@ import Cocoa
 
 @objc public protocol MATabViewDelegate: NSObjectProtocol {
     // Select Functions
-    @objc optional func tabView(_ tabView: MATabView, willSelect tab: MATab)
-    @objc optional func tabView(_ tabView: MATabView, didSelect tab: MATab)
+    @objc optional func tabView(_ tabView: MATabView, willSelect tab: MATab, colorConfig: MATabViewConfiguration)
+    @objc optional func tabView(_ tabView: MATabView, didSelect tab: MATab, colorConfig: MATabViewConfiguration)
 
     // Close Functions
     @objc optional func tabView(_ tabView: MATabView, willClose tab: MATab)
@@ -29,7 +29,7 @@ open class MATabView: NSView, MATabBarDelegate {
     open var selectedTab: MATab?
     open var tabs = [MATab]()
     open weak var delegate: MATabViewDelegate?
-    private var tabBar = MATabBar(frame: .zero)
+    open var tabBar = MATabBar(frame: .zero)
 
     open var configuration = MATabViewConfiguration()
 
@@ -75,7 +75,7 @@ open class MATabView: NSView, MATabBarDelegate {
     }
 
     open func select(tab: MATab, isNewTab: Bool = false) {
-        delegate?.tabView?(self, willSelect: tab)
+        delegate?.tabView?(self, willSelect: tab, colorConfig: tabBar.get(tabItem: tab.position).configuration)
 
         if !(tabBar.isEmpty()) {
             let oldTab = tabBar.get(tabItem: selectedTab!.position)
@@ -97,6 +97,7 @@ open class MATabView: NSView, MATabBarDelegate {
 //
         if !isNewTab {
             let newTab = tabBar.get(tabItem: tab.position)
+            updateColors(configuration: tabBar.get(tabItem: selectedTab!.position).configuration)
             newTab.alphaValue = 0.0
             newTab.isSelectedTab = true
 
@@ -105,7 +106,11 @@ open class MATabView: NSView, MATabBarDelegate {
 
         selectedTab!.isSelectedTab = true
 
-        delegate?.tabView?(self, didSelect: tab)
+        if isNewTab {
+            delegate?.tabView?(self, didSelect: tab, colorConfig: configuration)
+        } else {
+            delegate?.tabView?(self, didSelect: tab, colorConfig: configuration)
+        }
     }
 
     open func create(tab: MATab) {
@@ -162,7 +167,7 @@ open class MATabView: NSView, MATabBarDelegate {
 
     // MARK: - Get & Set
 
-    public func get(tab at: Int) -> MATab {
+    open func get(tab at: Int) -> MATab {
         tabs[at]
     }
 
@@ -176,5 +181,11 @@ open class MATabView: NSView, MATabBarDelegate {
         tabs[at].icon = icon
         tabBar.get(tabItem: at).tab.icon = icon
         tabBar.get(tabItem: at).closeButton.image = icon
+    }
+
+    open func updateColors(configuration: MATabViewConfiguration) {
+        self.configuration = configuration
+        tabBar.heightAnchor.constraint(equalToConstant: configuration.tabHeight).isActive = true
+        tabBar.updateColors(configuration: configuration)
     }
 }

@@ -146,4 +146,20 @@ open class MATabBar: NSView, MATabBarItemDelegate {
     public var tabCount: Int {
         return stackView.arrangedSubviews.count
     }
+
+    open func updateColors(configuration: MATabViewConfiguration) {
+        self.configuration = configuration
+        scrollView.heightAnchor.constraint(equalToConstant: configuration.tabHeight).isActive = true
+        let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+
+        if appearance == "Dark" {
+            layer?.backgroundColor = configuration.darkTabBackgroundColor.cgColor
+        } else {
+            layer?.backgroundColor = configuration.lightTabBackgroundColor.cgColor
+        }
+
+        for view in stackView.arrangedSubviews {
+            (view as! MATabBarItem).updateColors(configuration: configuration)
+        }
+    }
 }

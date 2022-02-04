@@ -55,6 +55,24 @@ open class MATabBarItem: NSButton {
         dirtyRect.fill()
     }
 
+    open func updateColors(configuration: MATabViewConfiguration) {
+        wantsLayer = true
+        self.configuration = configuration
+        var bgColor: NSColor = configuration.lightTabColor
+        layer?.borderColor = configuration.lightTabBorderColor.cgColor
+        layer?.cornerRadius = 4
+        layer?.borderWidth = 1
+        let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+
+        if appearance == "Dark" {
+            bgColor = configuration.darkTabColor
+            layer?.borderColor = configuration.darkTabBorderColor.cgColor
+        }
+
+        layer?.masksToBounds = true
+        layer?.backgroundColor = bgColor.cgColor
+    }
+
     private final func configureViews() {
         // Tab Title
         let position = xPosition * 2 + closeButtonSize.width

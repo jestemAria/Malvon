@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public struct MATabViewConfiguration {
+public class MATabViewConfiguration: NSObject {
     // Light
     public var lightTabColor: NSColor = .white
     public var lightTabBorderColor: NSColor = .black
@@ -23,5 +23,5 @@ public struct MATabViewConfiguration {
     public var tabHeight: CGFloat = 30.0
     public var tabWidth: CGFloat = 225.0
 
-    public init() {}
+    override public init() {}
 }

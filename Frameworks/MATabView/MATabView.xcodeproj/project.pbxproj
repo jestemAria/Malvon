@@ -15,6 +15,8 @@
 		ED75544A27AC822A008D2948 /* MATabViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75544927AC822A008D2948 /* MATabViewConfiguration.swift */; };
 		ED75544C27AC8279008D2948 /* MATabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75544B27AC8279008D2948 /* MATabBar.swift */; };
 		ED75547427AC9C8D008D2948 /* MATabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75547327AC9C8D008D2948 /* MATabBarItem.swift */; };
+		EDF78B3F27AD6FB000CCE9E4 /* Changes.md in Resources */ = {isa = PBXBuildFile; fileRef = EDF78B3D27AD6FB000CCE9E4 /* Changes.md */; };
+		EDF78B4027AD6FB000CCE9E4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDF78B3E27AD6FB000CCE9E4 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +47,8 @@
 		ED75544B27AC8279008D2948 /* MATabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBar.swift; sourceTree = "<group>"; };
 		ED75546827AC8713008D2948 /* MATabViewExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MATabViewExample.xcodeproj; path = MATabViewExample/MATabViewExample.xcodeproj; sourceTree = "<group>"; };
 		ED75547327AC9C8D008D2948 /* MATabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MATabBarItem.swift; sourceTree = "<group>"; };
-		ED8CCB7E27A997EC0060DCA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		ED8CCB7F27A99AAF0060DCA2 /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
+		EDF78B3D27AD6FB000CCE9E4 /* Changes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
+		EDF78B3E27AD6FB000CCE9E4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,8 @@
 				ED75546827AC8713008D2948 /* MATabViewExample.xcodeproj */,
 				ED62D7182787383500ABE8DD /* MATabView */,
 				ED62D7222787383500ABE8DD /* MATabViewTests */,
+				EDF78B3D27AD6FB000CCE9E4 /* Changes.md */,
+				EDF78B3E27AD6FB000CCE9E4 /* README.md */,
 				ED62D7172787383500ABE8DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,8 +100,6 @@
 				ED75547327AC9C8D008D2948 /* MATabBarItem.swift */,
 				ED75544727AC8159008D2948 /* MATab.swift */,
 				ED75544927AC822A008D2948 /* MATabViewConfiguration.swift */,
-				ED8CCB7F27A99AAF0060DCA2 /* Changes.md */,
-				ED8CCB7E27A997EC0060DCA2 /* README.md */,
 			);
 			path = MATabView;
 			sourceTree = "<group>";
@@ -227,6 +229,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDF78B4027AD6FB000CCE9E4 /* README.md in Resources */,
+				EDF78B3F27AD6FB000CCE9E4 /* Changes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,11 @@
 #  Changes
 
 ## v1.2
+- Updated the appearance
+- Removed the process pools because it slowed the webview down
+- Fixed the tab bug
+- Created an `isObserving` variable in the webView
+- Created a basic web view class
 - Updated the constaint layouts
 - Fixed bug where closing the first tab will crash the application
 - Added an example application

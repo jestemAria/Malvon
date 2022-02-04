@@ -38,6 +38,7 @@
 		EDF62ACC277C8D9B006DF3EB /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		EDF62ACD277C8D9B006DF3EB /* FileUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUnits.swift; sourceTree = "<group>"; };
 		EDF62AD0277C8DB4006DF3EB /* MAWebViewDownloadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAWebViewDownloadingViewController.xib; sourceTree = "<group>"; };
+		EDF78B2E27AD6F5600CCE9E4 /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
 		EDFEE3E627A8081A00937D8F /* MAWebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAWebKit.framework; path = ../WebKit/WebKitBuild/Release/MAWebKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +67,7 @@
 				EDF62AA9277C8D4A006DF3EB /* MAWebView */,
 				EDF62AB3277C8D4B006DF3EB /* MAWebViewTests */,
 				ED4614CE2787E43300796B7B /* README.md */,
+				EDF78B2E27AD6F5600CCE9E4 /* Changes.md */,
 				EDF62AA8277C8D4A006DF3EB /* Products */,
 				EDFEE3E527A8081A00937D8F /* Frameworks */,
 			);

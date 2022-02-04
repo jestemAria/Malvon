@@ -25,7 +25,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // webView Element
     @IBOutlet var webTabView: MATabView!
     var webView: MAWebView?
-    var processPool = WKProcessPool()
+    // var processPool = WKProcessPool()
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
@@ -56,11 +56,18 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     // Create a fixed size array ( saves memory )
     var lastOpenedTabs = [String](repeating: String(), count: closeTabNumbers)
 
+    @IBOutlet var controlButtonBox: NSBox!
+    
+    let tabConfiguration: MATabViewConfiguration
+
     // MARK: - Setup Functions
     
     init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, windowCNTRL: MAWindowController) {
         self.webConfigurations = config
-        webConfigurations.processPool = processPool
+        // webConfigurations.processPool = processPool
+        
+        self.tabConfiguration = MATabViewConfiguration()
+        
         self.loadURL = loadURL
         self.windowController = windowCNTRL
         super.init(nibName: "MAViewController", bundle: nil)
@@ -79,8 +86,24 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         styleElements()
     }
     
+    override func viewDidLayout() {
+        let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+
+        if appearance == "Dark" {
+            controlButtonBox.fillColor = tabConfiguration.darkTabBackgroundColor
+            view.layer?.backgroundColor = tabConfiguration.darkTabBackgroundColor.cgColor
+        } else {
+            controlButtonBox.fillColor = tabConfiguration.lightTabBackgroundColor
+            view.layer?.backgroundColor = tabConfiguration.lightTabBackgroundColor.cgColor
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        webTabView.configuration = tabConfiguration
+        view.wantsLayer = true
+        
         // Remove the cancel and search buttons from the searchfield
         if let cell = searchField.cell as? NSSearchFieldCell {
             cell.searchButtonCell?.isTransparent = true
@@ -356,6 +379,19 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: webViewURL) ?? NSImage())
         }
     }
+    
+    /*
+          // Get the theme color of the website
+     //        self.webView?.evaluateJavaScript("function a() {var markup = document.documentElement.innerHTML; return markup} a();", completionHandler: { value, _ in
+     //            do {
+     //                let regex = try! NSRegularExpression(pattern: "<meta name='?.theme-color'?.*>")
+     //                if regex.matches(value as! String) {
+     //                    let newString = (value as! String).stringAfter("<meta").stringBefore(">")
+     //                    print(newString)
+     //                }
+     //            } catch {}
+     //        })
+          */
     
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
         // Create a new tab and open it
@@ -756,16 +792,18 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
 
     func tabView(noMoreTabsLeft tabView: MATabView) {
-        // Hide progress indicator
-        progressIndicator.isHidden = true
-        // Stop it from loading
-        webView?.stopLoading()
-        // Remove all the observers on the webview
-        webView?.removeWebview()
-        // Remove from the superview
-        webView?.removeFromSuperview()
-        // Make it nil
-        webView = nil
+        if webView!.isObserving {
+            // Hide progress indicator
+            progressIndicator.isHidden = true
+            // Stop it from loading
+            webView?.stopLoading()
+            // Remove all the observers on the webview
+            webView?.removeWebview()
+            // Remove from the superview
+            webView?.removeFromSuperview()
+            // Make it nil
+            webView = nil
+        }
         
         // Close the window
         view.window?.close()
@@ -786,22 +824,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             }
         }
         
-        // Hide progress indicator
-        progressIndicator.isHidden = true
-        // Stop it from loading
-        tabWebView?.stopLoading()
-        // Remove all the observers on the webview
-        tabWebView?.removeWebview()
-        // Remove from the superview
-        tabWebView?.removeFromSuperview()
-        // Make it nil
-        tabWebView = nil
-    }
-    
-    func tabView(_ tabView: MATabView, didClose tab: MATab) {
-        var tabWebView = webTabView.selectedTab?.view as? MAWebView
-        
-        if tabWebView != nil {
+        if tabWebView != nil, webView!.isObserving {
             // Hide progress indicator
             progressIndicator.isHidden = true
             // Stop it from loading
@@ -817,8 +840,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {
         let webConfig = WKWebViewConfiguration()
-        webConfig.processPool = processPool
-        let newWebView = MAWebView(frame: webTabView.frame, configuration: config ?? webConfig)
+        // webConfig.processPool = processPool
+        let newWebView = MAWebView(frame: .zero, configuration: config ?? webConfig)
         
         newWebView.initializeWebView()
         newWebView.enableConfigurations()

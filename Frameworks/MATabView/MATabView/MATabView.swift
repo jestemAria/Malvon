@@ -128,6 +128,18 @@ open class MATabView: NSView, MATabBarDelegate {
     open func remove(tab: MATab) {
         delegate?.tabView?(self, willClose: tab)
 
+        if tabs.isEmpty {
+            delegate?.tabView?(noMoreTabsLeft: self)
+            return
+        } else if (tabs.count - 1) != 0 || (tabs.count - 1) == 1 {
+            if selectedTab?.position == 0 {
+                selectedTab = tabs[selectedTab!.position + 1]
+            } else {
+                selectedTab = tabs[selectedTab!.position - 1]
+            }
+            select(tab: selectedTab!)
+        }
+
         tabs.remove(at: tab.position)
         tabBar.remove(tab: tab)
 
@@ -135,14 +147,7 @@ open class MATabView: NSView, MATabBarDelegate {
             tab.position = index
         }
 
-        if !tabs.isEmpty || tabs.count == 1 {
-            selectedTab = selectedTab!.position == 0 ? tabs[selectedTab!.position + 1] : tabs[selectedTab!.position - 1]
-            select(tab: selectedTab!)
-
-            delegate?.tabView?(self, didClose: tab)
-        } else {
-            delegate?.tabView?(noMoreTabsLeft: self)
-        }
+        delegate?.tabView?(self, didClose: tab)
     }
 
     // MARK: - Tab Bar

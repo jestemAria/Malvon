@@ -54,6 +54,7 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
         self.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         self.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
         self.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+        self.isObserving = true
     }
     
     public func removeWebview() {
@@ -67,13 +68,10 @@ public class MAWebView: WKWebView, WKUIDelegate, WKNavigationDelegate {
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            self.isObserving = true
             self.delegate?.mubWebView?(self, estimatedProgress: self.estimatedProgress)
         } else if keyPath == "URL" {
-            self.isObserving = true
             self.delegate?.mubWebView?(self, urlDidChange: self.url)
         } else if keyPath == "title" {
-            self.isObserving = true
             self.delegate?.mubWebView?(self, titleChanged: self.title ?? "Unknown Title")
         }
     }

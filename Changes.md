@@ -1,6 +1,10 @@
 #  Changes
 
 ## v1.2
+- Created a plus tab button
+- Fixed the `isObserving` variable
+- Fixed the tab system when closing the last tab
+- Added a `tabCount` variable
 - Updated the appearance
 - Removed the process pools because it slowed the webview down
 - Fixed the tab bug

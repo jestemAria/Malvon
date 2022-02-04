@@ -792,6 +792,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
 
     func tabView(noMoreTabsLeft tabView: MATabView) {
+        webView?.loadHTMLString("", baseURL: nil)
+
         if webView!.isObserving {
             // Hide progress indicator
             progressIndicator.isHidden = true

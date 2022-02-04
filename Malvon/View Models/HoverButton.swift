@@ -33,7 +33,12 @@ class HoverButton: NSButton {
         self.commonInit()
     }
     
-    func commonInit() {
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        self.commonInit()
+    }
+    
+    private final func commonInit() {
         self.wantsLayer = true
         self.createTrackingArea()
         self.hovered = false

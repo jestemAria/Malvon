@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.0
+- Fixed the tab system when closing the last tab
+- Added a `tabCount` variable
 - Fixed the tab bug
 - Fixed bug where closing the first tab will crash the application
 - Added an example application

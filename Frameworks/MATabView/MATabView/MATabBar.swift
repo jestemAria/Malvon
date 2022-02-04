@@ -142,4 +142,8 @@ open class MATabBar: NSView, MATabBarItemDelegate {
     public func get(tabItem at: Int) -> MATabBarItem {
         return stackView.arrangedSubviews[at] as! MATabBarItem
     }
+
+    public var tabCount: Int {
+        return stackView.arrangedSubviews.count
+    }
 }

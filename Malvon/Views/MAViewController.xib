@@ -90,7 +90,7 @@
                                 </customSpacing>
                             </stackView>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEv-1d-jkS" customClass="MASearchField" customModule="Malvon" customModuleProvider="target">
-                                <rect key="frame" x="177" y="2" width="818" height="30"/>
+                                <rect key="frame" x="177" y="2" width="788" height="30"/>
                                 <shadow key="shadow">
                                     <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </shadow>
@@ -122,21 +122,37 @@
                                 <rect key="frame" x="124" y="0.0" width="5" height="34"/>
                             </box>
                             <progressIndicator maxValue="100" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hRj-KC-y0I">
-                                <rect key="frame" x="177" y="-6" width="818" height="12"/>
+                                <rect key="frame" x="177" y="-6" width="788" height="12"/>
                             </progressIndicator>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q8L-5E-bWD" customClass="HoverButton" customModule="Malvon" customModuleProvider="target">
+                                <rect key="frame" x="1015" y="0.5" width="30.5" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8qv-4I-NVk"/>
+                                    <constraint firstAttribute="width" constant="30" id="geD-YR-1H3"/>
+                                </constraints>
+                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="large" state="on" imageScaling="proportionallyDown" inset="2" id="oCm-io-N5A">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="createNewTab:" target="-2" id="HFW-D5-AXi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="QEv-1d-jkS" secondAttribute="trailing" constant="50" id="22Y-Iz-8qn"/>
+                            <constraint firstItem="q8L-5E-bWD" firstAttribute="leading" secondItem="hRj-KC-y0I" secondAttribute="trailing" constant="50" id="3nc-tf-OdK"/>
                             <constraint firstItem="SBy-me-3uk" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="468-v3-2MS"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="leading" secondItem="iQp-AF-cVn" secondAttribute="trailing" constant="50" id="4li-D1-mLD"/>
-                            <constraint firstAttribute="trailing" secondItem="hRj-KC-y0I" secondAttribute="trailing" constant="50" id="5js-ng-E95"/>
+                            <constraint firstItem="q8L-5E-bWD" firstAttribute="leading" secondItem="QEv-1d-jkS" secondAttribute="trailing" constant="50" id="66N-aM-a3k"/>
                             <constraint firstAttribute="bottom" secondItem="iQp-AF-cVn" secondAttribute="bottom" id="6V5-6R-NvQ"/>
+                            <constraint firstAttribute="trailing" secondItem="q8L-5E-bWD" secondAttribute="trailing" id="90f-Yh-kfv"/>
                             <constraint firstItem="hRj-KC-y0I" firstAttribute="leading" secondItem="iQp-AF-cVn" secondAttribute="trailing" constant="50" id="9Xt-u0-kqc"/>
                             <constraint firstAttribute="bottom" secondItem="hRj-KC-y0I" secondAttribute="bottom" constant="-6" id="DXj-ry-8Qk"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="top" secondItem="Xg7-WT-uDj" secondAttribute="top" constant="2" id="FFh-cF-6Zg"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="leading" secondItem="Xg7-WT-uDj" secondAttribute="leading" constant="66" id="VaU-rs-rXM"/>
                             <constraint firstItem="WUV-lC-r8G" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="Yb1-kK-xo3"/>
-                            <constraint firstItem="QEv-1d-jkS" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="h4e-Cu-fbD"/>
+                            <constraint firstItem="q8L-5E-bWD" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="kAZ-zD-7oj"/>
+                            <constraint firstItem="QEv-1d-jkS" firstAttribute="centerY" secondItem="Xg7-WT-uDj" secondAttribute="centerY" id="u82-6o-3WV"/>
                             <constraint firstItem="iQp-AF-cVn" firstAttribute="leading" secondItem="WUV-lC-r8G" secondAttribute="trailing" id="vU8-Wz-15G"/>
                             <constraint firstItem="QEv-1d-jkS" firstAttribute="leading" secondItem="SBy-me-3uk" secondAttribute="trailing" constant="-30" id="w0T-hv-HhC"/>
                             <constraint firstItem="iQp-AF-cVn" firstAttribute="top" secondItem="Xg7-WT-uDj" secondAttribute="top" id="wck-RM-g9D"/>
@@ -157,6 +173,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSGoBackTemplate" width="10" height="14"/>
         <image name="NSGoForwardTemplate" width="10" height="14"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>

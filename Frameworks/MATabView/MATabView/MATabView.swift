@@ -128,7 +128,7 @@ open class MATabView: NSView, MATabBarDelegate {
     open func remove(tab: MATab) {
         delegate?.tabView?(self, willClose: tab)
 
-        if tabs.isEmpty {
+        if tabs.isEmpty || tabBar.tabCount == 1 {
             delegate?.tabView?(noMoreTabsLeft: self)
             return
         } else if (tabs.count - 1) != 0 || (tabs.count - 1) == 1 {

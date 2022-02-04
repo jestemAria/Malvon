@@ -21,7 +21,7 @@ public class MAURL {
     public func fix() -> URL {
         var newURL = ""
 
-        if url.isFileURL || (url.host != nil && url.scheme != nil) {
+        if url.isFileURL || (url.host != nil && url.scheme != nil) && !(url.absoluteString.containsWhitespace) {
             return url
         }
         if url.scheme == nil {
@@ -49,5 +49,11 @@ public class MAURL {
 extension URL {
     var parentDirectory: URL? {
         return (try? resourceValues(forKeys: [.parentDirectoryURLKey]))?.parentDirectory
+    }
+}
+
+public extension String {
+    public var containsWhitespace: Bool {
+        return (rangeOfCharacter(from: .whitespacesAndNewlines) != nil)
     }
 }

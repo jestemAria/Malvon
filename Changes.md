@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Updated the images
+- Fixed the MAURL.fix() function
 - Updated `colorConfiguration` and made each tab have their seperate color configuration
 - Added Support for website theme color
 - Created a plus tab button

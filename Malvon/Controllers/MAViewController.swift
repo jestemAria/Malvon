@@ -545,7 +545,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             webView!.loadFileURL(URL(string: searchField.stringValue)!, allowingReadAccessTo: URL(string: searchField.stringValue)!)
         
             // If the URL is a valid URL
-        } else if searchField.stringValue.isValidURL {
+        } else if searchField.stringValue.isValidURL && !searchField.stringValue.containsWhitespace {
             webView!.load(URLRequest(url: MAURL(URL(string: searchField.stringValue)!).fix()))
             
             // If it's none of the above

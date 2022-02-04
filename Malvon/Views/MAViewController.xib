@@ -25,11 +25,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hmp-yZ-mmV" customClass="MATabView" customModule="MATabView">
-                    <rect key="frame" x="0.0" y="0.0" width="1045" height="437"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1045" height="440"/>
                 </customView>
-                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2v0-wv-Lo9">
-                    <rect key="frame" x="0.0" y="435" width="1045" height="5"/>
-                </box>
                 <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ucC-9r-3Ih">
                     <rect key="frame" x="0.0" y="442" width="1045" height="34"/>
                     <view key="contentView" id="Xg7-WT-uDj">
@@ -144,22 +141,16 @@
                 </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="2v0-wv-Lo9" secondAttribute="trailing" id="2ZQ-dY-lnw"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4yY-ps-Lif"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="5FP-Sy-im8"/>
+                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="5Ca-dp-uhb"/>
                 <constraint firstItem="hRj-KC-y0I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Em8-uh-iXc"/>
                 <constraint firstItem="ucC-9r-3Ih" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="K3P-zP-wel"/>
-                <constraint firstItem="2v0-wv-Lo9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Opf-4i-Rtm"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Rrh-lT-05M"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="hRj-KC-y0I" secondAttribute="bottom" id="S7A-95-7ps"/>
-                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="UiS-v6-wc9"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="hRj-KC-y0I" secondAttribute="bottom" constant="-3" id="YI8-8i-9d3"/>
                 <constraint firstAttribute="trailing" secondItem="hRj-KC-y0I" secondAttribute="trailing" id="Yj3-nV-F6b"/>
-                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="top" secondItem="2v0-wv-Lo9" secondAttribute="bottom" id="cev-lJ-NdC"/>
-                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="gAl-zx-zfv"/>
+                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="b8X-2R-1f8"/>
                 <constraint firstItem="hRj-KC-y0I" firstAttribute="top" secondItem="ucC-9r-3Ih" secondAttribute="bottom" constant="-7" id="oBo-T0-2od"/>
                 <constraint firstAttribute="trailing" secondItem="ucC-9r-3Ih" secondAttribute="trailing" id="tSs-v8-d1r"/>
-                <constraint firstAttribute="trailing" secondItem="Hmp-yZ-mmV" secondAttribute="trailing" id="uOR-Dy-tmz"/>
-                <constraint firstAttribute="bottom" secondItem="Hmp-yZ-mmV" secondAttribute="bottom" id="vOx-Hs-893"/>
+                <constraint firstItem="Hmp-yZ-mmV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="zqZ-Uo-S7r"/>
             </constraints>
             <point key="canvasLocation" x="138.5" y="136"/>
         </customView>

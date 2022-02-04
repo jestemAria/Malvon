@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Updated the constaint layouts
+- Fixed bug where closing the first tab will crash the application
 - Added an example application
 - Made the code more simple
 - Added configurations

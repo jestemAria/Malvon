@@ -135,7 +135,7 @@ open class MATabView: NSView, MATabBarDelegate {
             tab.position = index
         }
 
-        if !tabs.isEmpty {
+        if !tabs.isEmpty || tabs.count == 1 {
             selectedTab = selectedTab!.position == 0 ? tabs[selectedTab!.position + 1] : tabs[selectedTab!.position - 1]
             select(tab: selectedTab!)
 

@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.0
+- Few Fixes with the tab bar
 - Added Support for hiding and unhiding tabs
 - Made fixed in the `updateColor` function
 - Updated `colorConfiguration` and made each tab have their seperate color configuration

@@ -19,13 +19,14 @@ let waitTime = 0.43
 // The number of items in the closed tabs list
 let closeTabNumbers = 5
 
+let processPool = WKProcessPool()
+
 class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelegate, MATabViewDelegate {
     // MARK: - Elements
     
     // webView Element
     @IBOutlet var webTabView: MATabView!
     var webView: MAWebView?
-    // var processPool = WKProcessPool()
     
     // Search Field and Progress Indicator Elements
     @IBOutlet var progressIndicator: NSProgressIndicator!
@@ -65,7 +66,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, windowCNTRL: MAWindowController) {
         self.webConfigurations = config
-        // webConfigurations.processPool = processPool
+        webConfigurations.processPool = processPool
         
         self.tabConfiguration = MATabViewConfiguration()
         
@@ -139,6 +140,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         webView = getNewWebViewInstance(config: webConfigurations)
         webTabView.create(tab: MATab(view: webView!, title: "Untitled Tab"))
         webTabView.delegate = self
+        webView?.configuration.websiteDataStore = .default()
         
         // Configure the elements
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [self] _ in
@@ -382,7 +384,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         let ciColor = CIColor(color: tabConfiguration.lightTabBackgroundColor)!
         
         let value = (ciColor.red * 0.299 + ciColor.green * 0.587 + ciColor.blue * 0.114) * 1000
-        print(value)
         if !(value > 186) {
             backButtonOutlet.contentTintColor = .white
             forwardButtonOutlet.contentTintColor = .white
@@ -526,6 +527,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             if url.absoluteString.starts(with: Bundle.main.bundleURL.absoluteString) == true {
                 let attrScheme = NSMutableAttributedString(string: "malvon?", attributes: attribute)
                 let attrHost = NSAttributedString(string: url.absoluteString.fileName)
+                if url.absoluteString.fileName == "newtab" {
+                    // Set the search field to nothing so that the user can type
+                    return
+                }
                 
                 attrScheme.append(attrHost)
                 searchField.attributedStringValue = attrScheme
@@ -915,7 +920,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     private func getNewWebViewInstance(config: WKWebViewConfiguration? = nil, url: URL? = nil) -> MAWebView {
         let webConfig = WKWebViewConfiguration()
-        // webConfig.processPool = processPool
+        webConfig.processPool = processPool
         let newWebView = MAWebView(frame: .zero, configuration: config ?? webConfig)
         
         newWebView.initializeWebView()

@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Decided to use process pool
+- Few Fixes with the tab bar
 - Changed the design of the search field
 - Added Support for hiding and unhiding tabs
 - Fixed the problem where when all the windows were closed, the `createNewTab` function wouldn't work

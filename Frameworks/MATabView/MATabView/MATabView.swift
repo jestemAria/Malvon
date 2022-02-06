@@ -167,13 +167,15 @@ open class MATabView: NSView, MATabBarDelegate {
     }
 
     public func tabBar(_ tabBarView: MATabBar, wantsToHide tab: MATab) {
-        if (tabs.count - 1) != 0 || (tabs.count - 1) == 1 {
-            if selectedTab?.position == 0 {
-                selectedTab = tabs[selectedTab!.position + 1]
-            } else {
-                selectedTab = tabs[selectedTab!.position - 1]
+        if selectedTab?.position == tab.position {
+            if (tabs.count - 1) != 0 || (tabs.count - 1) == 1 {
+                if selectedTab?.position == 0 {
+                    selectedTab = tabs[selectedTab!.position + 1]
+                } else {
+                    selectedTab = tabs[selectedTab!.position - 1]
+                }
+                select(tab: selectedTab!)
             }
-            select(tab: selectedTab!)
         }
 
         hiddenTabs.append(tab)

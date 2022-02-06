@@ -86,6 +86,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Setup the buttons
         styleElements()
         searchField.alphaValue = 0.6
+        searchField.layer?.borderWidth = 1
+        searchField.layer?.cornerRadius = 8
     }
     
     override func viewDidLayout() {
@@ -110,6 +112,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         if let cell = searchField.cell as? NSSearchFieldCell {
             cell.searchButtonCell?.isTransparent = true
             cell.cancelButtonCell?.isTransparent = true
+            cell.focusRingType = .none
         }
         
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
@@ -388,14 +391,16 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             tabConfiguration.lightTabBorderColor = .white
             tabConfiguration.lightTabTitleTextColor = .white
             tabConfiguration.darkTabTitleTextColor = .white
+            searchField.layer?.borderColor = NSColor.white.cgColor
         } else {
             backButtonOutlet.contentTintColor = .black
             forwardButtonOutlet.contentTintColor = .black
             addNewTabButtonOutlet.contentTintColor = .black
             tabConfiguration.darkTabBorderColor = .gray
             tabConfiguration.lightTabBorderColor = .gray
-            tabConfiguration.lightTabTitleTextColor = .black
-            tabConfiguration.darkTabTitleTextColor = .black
+            tabConfiguration.lightTabTitleTextColor = .white
+            tabConfiguration.darkTabTitleTextColor = .white
+            searchField.layer?.borderColor = NSColor.gray.cgColor
         }
         
         webTabView.updateColors(configuration: tabConfiguration)
@@ -419,7 +424,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                 colorConfig.darkTabColor = color.lighter()
                 colorConfig.lightTabColor = color.darker()
                 
-                // TODO: Darken this a little bit
                 colorConfig.darkTabBackgroundColor = color
                 updateColors(colorConfig: colorConfig)
             } else {
@@ -460,19 +464,6 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
     }
     
-    /*
-     // Get the theme color of the website
-     //        self.webView?.evaluateJavaScript("function a() {var markup = document.documentElement.innerHTML; return markup} a();", completionHandler: { value, _ in
-     //            do {
-     //                let regex = try! NSRegularExpression(pattern: "<meta name='?.theme-color'?.*>")
-     //                if regex.matches(value as! String) {
-     //                    let newString = (value as! String).stringAfter("<meta").stringBefore(">")
-     //                    print(newString)
-     //                }
-     //            } catch {}
-     //        })
-     */
-    
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
         // Create a new tab and open it
         
@@ -481,7 +472,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             webTabView.create(tab: MATab(view: newWebView, title: "Untitled Tab"))
             
-            webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: self.webView!.url!.absoluteString) ?? NSImage())
+            webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: self.webView!.url?.absoluteString ?? "about:blank") ?? NSImage())
+            
             webTabView.set(tab: webTabView.selectedTab!.position, title: self.webView!.title ?? "Untitled Tab")
             
             self.webView = newWebView

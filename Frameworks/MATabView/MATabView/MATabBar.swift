@@ -16,6 +16,8 @@ final class FlippedView: NSClipView {
 @objc public protocol MATabBarDelegate: NSObjectProtocol {
     @objc optional func tabBar(_ tabBarView: MATabBar, didSelect tab: MATab)
     @objc optional func tabBar(_ tabBarView: MATabBar, wantsToClose tab: MATab)
+    @objc optional func tabBar(_ tabBarView: MATabBar, wantsToHide tab: MATab)
+    @objc optional func tabBar(wantsToUnhide tabBarView: MATabBar)
 }
 
 open class MATabBar: NSView, MATabBarItemDelegate {
@@ -65,6 +67,10 @@ open class MATabBar: NSView, MATabBarItemDelegate {
         stackView.distribution = .gravityAreas
         stackView.alignment = .centerY
         stackView.spacing = 0.5
+
+        let menu = NSMenu()
+        menu.addItem(withTitle: "Unhide all tabs", action: #selector(unhideAllTabs), keyEquivalent: "")
+        self.menu = menu
     }
 
     override public func draw(_ dirtyRect: NSRect) {
@@ -91,6 +97,14 @@ open class MATabBar: NSView, MATabBarItemDelegate {
 
     public func tabBarItem(_ tabBarItem: MATabBarItem, wantsToClose tab: MATab) {
         delegate?.tabBar?(self, wantsToClose: tab)
+    }
+
+    public func tabBarItem(_ tabBarItem: MATabBarItem, wantsToHide tab: MATab) {
+        delegate?.tabBar?(self, wantsToHide: tab)
+    }
+
+    @objc func unhideAllTabs() {
+        delegate?.tabBar?(wantsToUnhide: self)
     }
 
     // MARK: - Tab Functions

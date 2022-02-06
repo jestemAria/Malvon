@@ -28,6 +28,7 @@ import Cocoa
 open class MATabView: NSView, MATabBarDelegate {
     open var selectedTab: MATab?
     open var tabs = [MATab]()
+    open var hiddenTabs = [MATab]()
     open weak var delegate: MATabViewDelegate?
     open var tabBar = MATabBar(frame: .zero)
 
@@ -163,6 +164,37 @@ open class MATabView: NSView, MATabBarDelegate {
 
     public func tabBar(_ tabBarView: MATabBar, wantsToClose tab: MATab) {
         remove(tab: tab)
+    }
+
+    public func tabBar(_ tabBarView: MATabBar, wantsToHide tab: MATab) {
+        if (tabs.count - 1) != 0 || (tabs.count - 1) == 1 {
+            if selectedTab?.position == 0 {
+                selectedTab = tabs[selectedTab!.position + 1]
+            } else {
+                selectedTab = tabs[selectedTab!.position - 1]
+            }
+            select(tab: selectedTab!)
+        }
+
+        hiddenTabs.append(tab)
+        tabs.remove(at: tab.position)
+        tabBar.remove(tab: tab)
+
+        for (index, tab) in tabs.enumerated() {
+            tab.position = index
+        }
+    }
+
+    public func tabBar(wantsToUnhide tabBarView: MATabBar) {
+        tabs.append(contentsOf: hiddenTabs)
+        for (index, tab) in tabs.enumerated() {
+            tab.position = index
+        }
+
+        for tab in hiddenTabs {
+            tabBar.add(tab: tab)
+        }
+        hiddenTabs.removeAll()
     }
 
     // MARK: - Get & Set

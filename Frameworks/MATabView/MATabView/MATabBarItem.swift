@@ -10,6 +10,7 @@ import Cocoa
 
 @objc public protocol MATabBarItemDelegate: NSObjectProtocol {
     @objc optional func tabBarItem(_ tabBarItem: MATabBarItem, wantsToClose tab: MATab)
+    @objc optional func tabBarItem(_ tabBarItem: MATabBarItem, wantsToHide tab: MATab)
 }
 
 open class MATabBarItem: NSButton {
@@ -35,6 +36,24 @@ open class MATabBarItem: NSButton {
         }
     }
 
+    // MARK: - Initilizers
+
+    public required init(frame frameRect: NSRect, tab: MATab) {
+        self.tab = tab
+        isSelectedTab = tab.isSelectedTab
+        super.init(frame: frameRect)
+        configureViews()
+
+        let menu = NSMenu()
+        menu.addItem(withTitle: "Hide Tab", action: #selector(hideTab), keyEquivalent: "")
+        self.menu = menu
+    }
+
+    @available(*, unavailable)
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override open func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -57,6 +76,8 @@ open class MATabBarItem: NSButton {
         dirtyRect.fill()
     }
 
+    // MARK: - Functions
+
     open func updateColors(configuration: MATabViewConfiguration) {
         wantsLayer = true
         self.configuration = configuration
@@ -72,7 +93,6 @@ open class MATabBarItem: NSButton {
         }
         layer?.backgroundColor = bgColor.cgColor
         (cell as? NSButtonCell)?.backgroundColor = bgColor
-//        bgColor.setFill()
     }
 
     private final func configureViews() {
@@ -134,19 +154,13 @@ open class MATabBarItem: NSButton {
         animator().alphaValue = isSelectedTab ? 1 : 0.6
     }
 
+    // MARK: - Button Actions
+
     @objc func closeTab() {
         delegate?.tabBarItem?(self, wantsToClose: tab)
     }
 
-    public required init(frame frameRect: NSRect, tab: MATab) {
-        self.tab = tab
-        isSelectedTab = tab.isSelectedTab
-        super.init(frame: frameRect)
-        configureViews()
-    }
-
-    @available(*, unavailable)
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func hideTab() {
+        delegate?.tabBarItem?(self, wantsToHide: tab)
     }
 }

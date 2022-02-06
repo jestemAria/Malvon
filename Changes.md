@@ -1,6 +1,8 @@
 #  Changes
 
 ## v1.2
+- Changed the design of the search field
+- Added Support for hiding and unhiding tabs
 - Fixed the problem where when all the windows were closed, the `createNewTab` function wouldn't work
 - Made fixed in the `updateColor` function
 - Fixed the problem in the theme color where the button may be black on a black background

@@ -10,7 +10,7 @@
 - Fixed the problem in the theme color where the button may be black on a black background
 - Updated the images
 - Fixed the MAURL.fix() function
-- Updated `colorConfiguration` and made each tab have their seperate color configuration
+- Updated `colorConfiguration` and made each tab have their separate color configuration
 - Added Support for website theme color
 - Created a plus tab button
 - Fixed the `isObserving` variable
@@ -21,7 +21,7 @@
 - Fixed the tab bug
 - Created an `isObserving` variable in the webView
 - Created a basic web view class
-- Updated the constaint layouts
+- Updated the constraint layouts
 - Fixed bug where closing the first tab will crash the application
 - Added an example application
 - Made the code more simple
@@ -29,20 +29,20 @@
 - Fixed the scrolling issue
 - Re-wrote the entire tabing system
 - Changed the color of the tab bar items based on appearance
-- Used a shared process pool instead of using seperate process pools
+- Used a shared process pool instead of using separate process pools
 - Updated the Unique Web Engine to Parse and Lex Text and Element Nodes
 - Fixed the bug where closing the tab may cause the application to crash
 - Updated the newtab.html file
 - Updated the load time
-- Fixed the reopen tab
+- Fixed reopen tab
 - Started working on a web browser engine :)
 - Added support for re-opening closed tabs
-- Fixed the minimize problem
+- Fixed minimize problem
 - Made a slight delay when opening new tab and popups to make it load in the background
 - Used more tactics to energy saving
-- Fixed problem where url from spotlight search wont open 
-- Fixed Problem where webview wont autoresize
-- Fixed Problem where webview wont get first responder
+- Fixed problem where url from spotlight search won't open 
+- Fixed Problem where webview won't autoresize
+- Fixed Problem where webview won't get first responder
 - Created Scroll View for tab scrolling
 - Fixed problems with the cursor
 - More improvements with energy usage
@@ -65,7 +65,7 @@
 ## v1.0.2 ( **Released** )
 - Re-wrote the tabbing system, that will use less power!!!!!
 - Pressing `CMD + CNTR + n` will close the tab in the background
-- Finished re-writing the downloads history view controller
+- Finished re-writing the downloads' history view controller
 - Fixed a few errors
 - Thinking of changing the way of tabbing
 - Fixed a few mistakes
@@ -76,7 +76,7 @@
 - Fixed a small mistake in the auto updater
 - Improved tab switching
 - Fixed a few bugs and crashes
-- Improvments in CPU power and battery life
+- Improvements in CPU power and battery life
 - Dark mode for the start page
 - More optimization for lower energy usage
 - Added exit button for the history view controller
@@ -96,7 +96,7 @@
 - CreateTab button is now a `HoverButton`
 - Search Suggestions list will have a different style
 - Created a close button beside the search field
-- Fixed the contraints and layout of the search field
+- Fixed the constraint and layout of the search field
 - Shows a window instead of alert for the updater
 - Re-wrote all the files in the `Utilities` Folder
 - Created an `MATools` Framework and moved all the file in the `Utilities` folder there
@@ -107,6 +107,6 @@
 - Back/Forward/Refresh Buttons
 - Tab **Popover** (we have used a `NSPopover` instead of `TabBar` for more web content)
 - Search Suggestions (the search bar can show suggestions)
-- Automatic URL formatting (eg. `youtube.com` -> `https://www.youtube.com`)
+- Automatic URL formatting (e.g. `youtube.com` -> `https://www.youtube.com`)
 - Automatic Updater ( Without relaunching!! )
 - Anything a normal web browser does basically ( back, forward, refresh, search suggestions etc.)

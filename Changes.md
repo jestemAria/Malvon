@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.2
+- Fixed the problem in the theme color where the button may be black on a black background
 - Updated the images
 - Fixed the MAURL.fix() function
 - Updated `colorConfiguration` and made each tab have their seperate color configuration

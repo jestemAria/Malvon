@@ -35,6 +35,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     @IBOutlet var refreshButton: HoverButton!
     @IBOutlet var backButtonOutlet: HoverButton!
     @IBOutlet var forwardButtonOutlet: HoverButton!
+    @IBOutlet var addNewTabButtonOutlet: HoverButton!
     
     // Search Suggestions field
     var suggestions = [String]()
@@ -55,11 +56,11 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     // Create a fixed size array ( saves memory )
     var lastOpenedTabs = [String](repeating: String(), count: closeTabNumbers)
-
+    
     @IBOutlet var controlButtonBox: NSBox!
     
     var tabConfiguration: MATabViewConfiguration
-
+    
     // MARK: - Setup Functions
     
     init(config: WKWebViewConfiguration = WKWebViewConfiguration(), loadURL: Bool = true, windowCNTRL: MAWindowController) {
@@ -88,7 +89,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     override func viewDidLayout() {
         let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-
+        
         if appearance == "Dark" {
             controlButtonBox.fillColor = tabConfiguration.darkTabBackgroundColor
             view.layer?.backgroundColor = tabConfiguration.darkTabBackgroundColor.cgColor
@@ -118,22 +119,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                     startPageHTML = MAURL(newtabURL!).contents()
                     UserDefaults.standard.set(startPageHTML, forKey: "startPageHTML")
                 }
-
+                
                 if let lastTabs = UserDefaults.standard.stringArray(forKey: "MAViewController_lastOpenedTabs") {
                     lastOpenedTabs = lastTabs
                 } else {
                     lastOpenedTabs = [String]()
                     UserDefaults.standard.set(lastOpenedTabs, forKey: "MAViewController_lastOpenedTabs")
-                }
-
-                // Check if the view controller is a popup or a normal view controller
-                // If it's a normal view controller, we will load the startpage
-                // If it's not, the webview will automatically load the URL, so we don't have to worry
-                if loadURL {
-                    DispatchQueue.main.async {
-                        webView?.loadHTMLString(startPageHTML, baseURL: newtabURL!)
-                        // updateWebsiteURL()
-                    }
                 }
             }
         }
@@ -148,6 +139,9 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         // Configure the elements
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [self] _ in
             configureElements()
+            if loadURL {
+                webView!.loadHTMLString(startPageHTML, baseURL: newtabURL!)
+            }
         }
         
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [self] _ in
@@ -167,6 +161,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         refreshButton.isHidden = true
         backButtonOutlet.isHidden = true
         forwardButtonOutlet.isHidden = true
+        addNewTabButtonOutlet.isHidden = true
     }
     
     @objc func willBecomeActive() {
@@ -176,15 +171,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         refreshButton.isHidden = false
         backButtonOutlet.isHidden = false
         forwardButtonOutlet.isHidden = false
+        addNewTabButtonOutlet.isHidden = false
     }
     
     // Style the elements ( buttons, searchfields )
     func styleElements() {
         progressIndicator.alphaValue = 0.7
-        backButtonOutlet.changeTint = true
-        forwardButtonOutlet.changeTint = true
-        refreshButton.changeTint = true
-        refreshButton.cornerRadius = 10
     }
     
     // Configure the elements ( buttons, searchfields )
@@ -213,7 +205,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         if sender.image == NSImage(named: NSImage.refreshTemplateName) {
             webView!.reload()
             sender.image = NSImage(named: NSImage.stopProgressTemplateName)
-        
+            
             // If there is a X icon, stop the webpage from loading
         } else if sender.image == NSImage(named: NSImage.stopProgressTemplateName) {
             webView!.stopLoading()
@@ -229,7 +221,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             webTabView.create(tab: MATab(view: self.webView!, title: "Untitled Tab"))
             
             webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: self.webView!.url!.absoluteString) ?? NSImage())
-
+            
             webTabView.set(tab: webTabView.selectedTab!.position, title: self.webView!.title ?? "Untitled Tab")
             
             self.webView?.delegate = self
@@ -244,7 +236,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             
             webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: self.webView!.url!.absoluteString) ?? NSImage())
             webTabView.set(tab: webTabView.selectedTab!.position, title: self.webView!.title ?? "Untitled Tab")
-
+            
             self.webView?.delegate = self
         }
     }
@@ -280,10 +272,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func parseHistoryJSON() -> [MAHistoryElement]? {
         // Read the file
         let fileContents = MAFile(path: MAHistoryViewController.path!).read()
-
+        
         // Decode the file
         let decodedJSON = try? JSONDecoder().decode([MAHistoryElement].self, from: fileContents.data(using: .utf8)!)
-
+        
         // Return the decoded JSON
         return decodedJSON
     }
@@ -291,13 +283,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     func addItem(website: String, address: String) {
         // If the history.json file doesn't exist, create an empty file
         createHistoryFileIfNotExists()
-
+        
         // Create a new JSON Property
         var newHistoryJSON: [MAHistoryElement] = parseHistoryJSON()!
-
+        
         // Add a new item to the new JSON property
         newHistoryJSON.append(MAHistoryElement(website: website, address: address))
-
+        
         // Write the new JSON property
         do {
             let data = try JSONEncoder().encode(newHistoryJSON)
@@ -354,7 +346,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func updateColors(colorConfig: MATabViewConfiguration) {
         let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-
+        
         if appearance == "Dark" {
             controlButtonBox.fillColor = colorConfig.darkTabBackgroundColor
             view.layer?.backgroundColor = colorConfig.darkTabBackgroundColor.cgColor
@@ -364,6 +356,21 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
         
         webTabView.updateColors(configuration: tabConfiguration)
+        
+        // Update the webview elements
+        let ciColor = CIColor(color: tabConfiguration.lightTabBackgroundColor)!
+        
+        let value = (ciColor.red * 0.299 + ciColor.green * 0.587 + ciColor.blue * 0.114) * 1000
+        print(value)
+        if !(value > 186) {
+            backButtonOutlet.contentTintColor = .white
+            forwardButtonOutlet.contentTintColor = .white
+            addNewTabButtonOutlet.contentTintColor = .white
+        } else {
+            backButtonOutlet.contentTintColor = .black
+            forwardButtonOutlet.contentTintColor = .black
+            addNewTabButtonOutlet.contentTintColor = .black
+        }
     }
     
     func updateThemeColor(colorConfig: MATabViewConfiguration) {
@@ -398,11 +405,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         updateWebsiteURL()
         // Check if we should enable one of the buttons
         checkButtons()
+        // Update the theme color
+        updateThemeColor(colorConfig: tabConfiguration)
     }
     
     func getFavicon(url: String) -> NSImage? {
         let url = URL(string: "https://www.google.com/s2/favicons?sz=30&domain_url=" + url)
-
+        
         do {
             return NSImage(data: try Data(contentsOf: url!))
         } catch {}
@@ -413,7 +422,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         if let webView = webTabView.selectedTab?.view as? MAWebView {
             // Set the new title
             webTabView.set(tab: webTabView.selectedTab!.position, title: self.webView!.title ?? "Untitled Tab")
-
+            
             // Get the favicon of the website
             guard let webViewURL = webView.url?.absoluteString else { return }
             
@@ -422,7 +431,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     /*
-          // Get the theme color of the website
+     // Get the theme color of the website
      //        self.webView?.evaluateJavaScript("function a() {var markup = document.documentElement.innerHTML; return markup} a();", completionHandler: { value, _ in
      //            do {
      //                let regex = try! NSRegularExpression(pattern: "<meta name='?.theme-color'?.*>")
@@ -432,7 +441,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
      //                }
      //            } catch {}
      //        })
-          */
+     */
     
     func mubWebView(_ webView: MAWebView, createWebViewWith configuration: WKWebViewConfiguration, navigationAction: WKNavigationAction) -> MAWebView {
         // Create a new tab and open it
@@ -444,7 +453,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             
             webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: self.webView!.url!.absoluteString) ?? NSImage())
             webTabView.set(tab: webTabView.selectedTab!.position, title: self.webView!.title ?? "Untitled Tab")
-
+            
             self.webView = newWebView
             self.webView?.delegate = self
         }
@@ -531,7 +540,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     }
     
     // MARK: - Search Field
-
+    
     @IBAction func searchFieldAction(_ sender: Any) {
         if searchField.stringValue.isEmpty {
             // Do nothing
@@ -539,13 +548,13 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         } else if searchField.stringValue.starts(with: "malvon?") {
             let URL = Bundle.main.url(forResource: searchField.stringValue.string("malvon?"), withExtension: "html")!
             webView!.loadFileURL(URL, allowingReadAccessTo: URL)
-        
+            
             // If the URL starts with 'file'
         } else if URL(string: searchField.stringValue)?.scheme == "file" {
             webView!.loadFileURL(URL(string: searchField.stringValue)!, allowingReadAccessTo: URL(string: searchField.stringValue)!)
-        
+            
             // If the URL is a valid URL
-        } else if searchField.stringValue.isValidURL && !searchField.stringValue.containsWhitespace {
+        } else if searchField.stringValue.isValidURL, !searchField.stringValue.containsWhitespace {
             webView!.load(URLRequest(url: MAURL(URL(string: searchField.stringValue)!).fix()))
             
             // If it's none of the above
@@ -689,11 +698,11 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                 if pauses {
                     // Run the Javascript that will pause the video
                     let stopVideoScript = "var videos = document.getElementsByTagName('video'); for( var i = 0; i < videos.length; i++ ){videos.item(i).pause()}"
-
+                    
                     // Tell the webview to run that javascript
                     webView!.evaluateJavaScript(stopVideoScript, completionHandler: nil)
                 }
-
+                
                 // Change the current tab to the new number
                 webTabView.select(tab: number)
             }
@@ -830,10 +839,10 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         progressIndicator.isHidden = true
         view.window?.makeFirstResponder(searchField)
     }
-
+    
     func tabView(noMoreTabsLeft tabView: MATabView) {
         webView?.loadHTMLString("", baseURL: nil)
-
+        
         if webView!.isObserving {
             // Hide progress indicator
             progressIndicator.isHidden = true
@@ -853,15 +862,15 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
     
     func tabView(_ tabView: MATabView, willClose tab: MATab) {
         var tabWebView = webTabView.selectedTab?.view as? MAWebView
-
+        
         // Add the url to the last open tabs list
         // Also save to user defaults
         if let urlString = tabWebView?.url?.absoluteString {
             if !(tabWebView!.url!.isFileURL) {
                 lastOpenedTabs.insert(urlString, at: 0)
-            
+                
                 lastOpenedTabs.removeLast()
-            
+                
                 UserDefaults.standard.set(lastOpenedTabs, forKey: "MAViewController_lastOpenedTabs")
             }
         }
@@ -891,7 +900,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         DispatchQueue.global(qos: .background).async {
             newWebView.enableAdblock()
         }
-
+        
         if config == nil {
             _ = url != nil ? newWebView.load(.init(url: url!)) : newWebView.loadHTMLString(startPageHTML, baseURL: newtabURL!)
         }
@@ -926,21 +935,21 @@ extension NSColor {
         }
         self.init(red: components.R, green: components.G, blue: components.B, alpha: components.a)
     }
-
+    
     func toHex(alpha: Bool = false) -> String? {
         guard let components = cgColor.components, components.count >= 3 else {
             return nil
         }
-    
+        
         let r = Float(components[0])
         let g = Float(components[1])
         let b = Float(components[2])
         var a = Float(1.0)
-    
+        
         if components.count >= 4 {
             a = Float(components[3])
         }
-    
+        
         if alpha {
             return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
         } else {

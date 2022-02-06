@@ -8,11 +8,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MAViewController" customModule="Malvon" customModuleProvider="target">
             <connections>
+                <outlet property="addNewTabButtonOutlet" destination="q8L-5E-bWD" id="ZaG-1X-vaV"/>
                 <outlet property="backButtonOutlet" destination="Jdg-BP-fje" id="TqU-Ns-htE"/>
                 <outlet property="controlButtonBox" destination="ucC-9r-3Ih" id="HUM-OT-DVW"/>
                 <outlet property="forwardButtonOutlet" destination="nIJ-8Z-Syk" id="Ybx-TY-fD8"/>
                 <outlet property="progressIndicator" destination="hRj-KC-y0I" id="yh3-Un-oIE"/>
-                <outlet property="refreshButton" destination="SBy-me-3uk" id="V7Q-hN-qIG"/>
+                <outlet property="refreshButton" destination="SBy-me-3uk" id="iJX-MZ-yQ4"/>
                 <outlet property="searchField" destination="QEv-1d-jkS" id="ZCp-UQ-61p"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Bzk-7g-zJq"/>
                 <outlet property="webContentView" destination="Hmp-yZ-mmV" id="nRX-yd-r3M"/>

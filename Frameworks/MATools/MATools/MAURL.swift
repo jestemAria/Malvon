@@ -53,7 +53,7 @@ extension URL {
 }
 
 public extension String {
-    public var containsWhitespace: Bool {
+    var containsWhitespace: Bool {
         return (rangeOfCharacter(from: .whitespacesAndNewlines) != nil)
     }
 }

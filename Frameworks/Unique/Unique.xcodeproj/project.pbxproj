@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		ED0B165327AC12BC00AB1317 /* Changes.md in Resources */ = {isa = PBXBuildFile; fileRef = ED0B165227AC12BC00AB1317 /* Changes.md */; };
-		ED87CBC327A82C9700006253 /* Unique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED87CBBA27A82C9700006253 /* Unique.framework */; };
-		ED87CBC827A82C9700006253 /* UniqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87CBC727A82C9700006253 /* UniqueTests.swift */; };
 		ED87CBC927A82C9700006253 /* Unique.h in Headers */ = {isa = PBXBuildFile; fileRef = ED87CBBD27A82C9700006253 /* Unique.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED97544227AB31B600DAAEBB /* DOMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED97544027AB31B600DAAEBB /* DOMNode.cpp */; };
-		ED97544327AB31B600DAAEBB /* DOMNode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ED97544127AB31B600DAAEBB /* DOMNode.hpp */; };
-		ED97544C27AB383D00DAAEBB /* HTMLParser.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */; };
+		ED97544327AB31B600DAAEBB /* DOMNode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ED97544127AB31B600DAAEBB /* DOMNode.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED97544C27AB383D00DAAEBB /* HTMLParser.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED97544D27AB3A5C00DAAEBB /* HTMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED97544927AB383D00DAAEBB /* HTMLParser.cpp */; };
 		EDFB5A2C27A8305F00C6F779 /* DOMNodeWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */; };
 		EDFB5A2D27A830D100C6F779 /* DOMNodeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		ED087F4127ADEB9000739EA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED87CBB127A82C9700006253 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED87CBB927A82C9700006253;
+			remoteInfo = Unique;
+		};
 		ED87CBC427A82C9700006253 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ED87CBB127A82C9700006253 /* Project object */;
@@ -30,22 +35,51 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		ED087F3527ADEB7700739EA6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		ED087F4327ADEB9000739EA6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		ED0B165227AC12BC00AB1317 /* Changes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Changes.md; sourceTree = "<group>"; };
-		ED87CBBA27A82C9700006253 /* Unique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED87CBBD27A82C9700006253 /* Unique.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Unique.h; sourceTree = "<group>"; };
-		ED87CBC227A82C9700006253 /* UniqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED87CBC727A82C9700006253 /* UniqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTests.swift; sourceTree = "<group>"; };
 		ED97544027AB31B600DAAEBB /* DOMNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DOMNode.cpp; sourceTree = "<group>"; };
 		ED97544127AB31B600DAAEBB /* DOMNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DOMNode.hpp; sourceTree = "<group>"; };
 		ED97544927AB383D00DAAEBB /* HTMLParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTMLParser.cpp; sourceTree = "<group>"; };
 		ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HTMLParser.hpp; sourceTree = "<group>"; };
+		EDB47EF827AF02AF00C0DE04 /* Unique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDB47EF927AF02AF00C0DE04 /* UniqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDB47EFA27AF02AF00C0DE04 /* UniqueTset */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = UniqueTset; path = /Users/ashwinpaudel/Desktop/Malvon/Frameworks/Unique/build/Debug/UniqueTset; sourceTree = "<absolute>"; };
 		EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOMNodeWrapper.h; sourceTree = "<group>"; };
 		EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DOMNodeWrapper.mm; sourceTree = "<group>"; };
 		EDFB5A3927A8356C00C6F779 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED087F3427ADEB7700739EA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED87CBB727A82C9700006253 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED87CBC327A82C9700006253 /* Unique.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,19 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				ED87CBBC27A82C9700006253 /* Unique */,
-				ED87CBC627A82C9700006253 /* UniqueTests */,
 				ED0B165227AC12BC00AB1317 /* Changes.md */,
-				ED87CBBB27A82C9700006253 /* Products */,
+				EDB47EF827AF02AF00C0DE04 /* Unique.framework */,
+				EDB47EF927AF02AF00C0DE04 /* UniqueTests.xctest */,
 			);
-			sourceTree = "<group>";
-		};
-		ED87CBBB27A82C9700006253 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ED87CBBA27A82C9700006253 /* Unique.framework */,
-				ED87CBC227A82C9700006253 /* UniqueTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		ED87CBBC27A82C9700006253 /* Unique */ = {
@@ -93,14 +117,6 @@
 				ED87CBBD27A82C9700006253 /* Unique.h */,
 			);
 			path = Unique;
-			sourceTree = "<group>";
-		};
-		ED87CBC627A82C9700006253 /* UniqueTests */ = {
-			isa = PBXGroup;
-			children = (
-				ED87CBC727A82C9700006253 /* UniqueTests.swift */,
-			);
-			path = UniqueTests;
 			sourceTree = "<group>";
 		};
 		ED97544827AB371300DAAEBB /* CPP */ = {
@@ -131,6 +147,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		ED087F3627ADEB7700739EA6 /* UniqueTset */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED087F3B27ADEB7700739EA6 /* Build configuration list for PBXNativeTarget "UniqueTset" */;
+			buildPhases = (
+				ED087F3327ADEB7700739EA6 /* Sources */,
+				ED087F3427ADEB7700739EA6 /* Frameworks */,
+				ED087F3527ADEB7700739EA6 /* CopyFiles */,
+				ED087F4327ADEB9000739EA6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED087F4227ADEB9000739EA6 /* PBXTargetDependency */,
+			);
+			name = UniqueTset;
+			productName = UniqueTset;
+			productReference = EDB47EFA27AF02AF00C0DE04 /* UniqueTset */;
+			productType = "com.apple.product-type.tool";
+		};
 		ED87CBB927A82C9700006253 /* Unique */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED87CBCC27A82C9700006253 /* Build configuration list for PBXNativeTarget "Unique" */;
@@ -146,7 +181,7 @@
 			);
 			name = Unique;
 			productName = Unique;
-			productReference = ED87CBBA27A82C9700006253 /* Unique.framework */;
+			productReference = EDB47EF827AF02AF00C0DE04 /* Unique.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ED87CBC127A82C9700006253 /* UniqueTests */ = {
@@ -164,7 +199,7 @@
 			);
 			name = UniqueTests;
 			productName = UniqueTests;
-			productReference = ED87CBC227A82C9700006253 /* UniqueTests.xctest */;
+			productReference = EDB47EF927AF02AF00C0DE04 /* UniqueTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -177,6 +212,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					ED087F3627ADEB7700739EA6 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					ED87CBB927A82C9700006253 = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
@@ -195,12 +233,13 @@
 				Base,
 			);
 			mainGroup = ED87CBB027A82C9700006253;
-			productRefGroup = ED87CBBB27A82C9700006253 /* Products */;
+			productRefGroup = ED87CBB027A82C9700006253;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				ED87CBB927A82C9700006253 /* Unique */,
 				ED87CBC127A82C9700006253 /* UniqueTests */,
+				ED087F3627ADEB7700739EA6 /* UniqueTset */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +264,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED087F3327ADEB7700739EA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED87CBB627A82C9700006253 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,13 +285,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED87CBC827A82C9700006253 /* UniqueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		ED087F4227ADEB9000739EA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED87CBB927A82C9700006253 /* Unique */;
+			targetProxy = ED087F4127ADEB9000739EA6 /* PBXContainerItemProxy */;
+		};
 		ED87CBC527A82C9700006253 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ED87CBB927A82C9700006253 /* Unique */;
@@ -254,6 +304,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		ED087F3C27ADEB7700739EA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ED087F3D27ADEB7700739EA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B29PGN9AG4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		ED87CBCA27A82C9700006253 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -469,6 +541,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED087F3B27ADEB7700739EA6 /* Build configuration list for PBXNativeTarget "UniqueTset" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED087F3C27ADEB7700739EA6 /* Debug */,
+				ED087F3D27ADEB7700739EA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ED87CBB427A82C9700006253 /* Build configuration list for PBXProject "Unique" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

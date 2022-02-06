@@ -4,8 +4,7 @@ The new macOS Web Browser. This web browse
 
 ## Images
 
-![Image1](Docs/Resources/Image1.png)
-![Image1](Docs/Resources/Tabs.png)
+![Image1](Docs/Resources/Image1.png?)
 
 ## TODO 
 - [x] Create a simple browser ( reload, back, forward, searchfield, progress bar )

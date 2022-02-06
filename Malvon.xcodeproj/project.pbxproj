@@ -92,6 +92,13 @@
 			remoteGlobalIDString = ED87CBC227A82C9700006253;
 			remoteInfo = UniqueTests;
 		};
+		EDA8FA9327B0230E00AD659F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED87CBD227A82C9700006253 /* Unique.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDA8FA8627B01F8A00AD659F;
+			remoteInfo = UniqueTset;
+		};
 		EDD1A0F0277E73E8002BB362 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDD1A0EC277E73E7002BB362 /* Malvon Updater.xcodeproj */;
@@ -288,6 +295,7 @@
 			children = (
 				ED87CBD827A82C9800006253 /* Unique.framework */,
 				ED87CBDA27A82C9800006253 /* UniqueTests.xctest */,
+				EDA8FA9427B0230E00AD659F /* UniqueTset */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -628,6 +636,13 @@
 			remoteRef = ED87CBD927A82C9800006253 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		EDA8FA9427B0230E00AD659F /* UniqueTset */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = UniqueTset;
+			remoteRef = EDA8FA9327B0230E00AD659F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EDD1A0F1277E73E8002BB362 /* Malvon Updater.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -952,10 +967,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks/WebKit/WebKitBuild/Release",
-				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Malvon/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
@@ -991,10 +1002,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B29PGN9AG4;
 				ENABLE_HARDENED_RUNTIME = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks/WebKit/WebKitBuild/Release",
-				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Malvon/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";

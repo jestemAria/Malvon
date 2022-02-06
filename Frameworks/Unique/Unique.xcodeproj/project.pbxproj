@@ -64,9 +64,9 @@
 		ED97544127AB31B600DAAEBB /* DOMNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DOMNode.hpp; sourceTree = "<group>"; };
 		ED97544927AB383D00DAAEBB /* HTMLParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTMLParser.cpp; sourceTree = "<group>"; };
 		ED97544A27AB383D00DAAEBB /* HTMLParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HTMLParser.hpp; sourceTree = "<group>"; };
+		EDA8FA8627B01F8A00AD659F /* UniqueTset */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = UniqueTset; path = /Users/ashwinpaudel/Desktop/Malvon/Frameworks/Unique/build/Debug/UniqueTset; sourceTree = "<absolute>"; };
 		EDB47EF827AF02AF00C0DE04 /* Unique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDB47EF927AF02AF00C0DE04 /* UniqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDB47EFA27AF02AF00C0DE04 /* UniqueTset */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = UniqueTset; path = /Users/ashwinpaudel/Desktop/Malvon/Frameworks/Unique/build/Debug/UniqueTset; sourceTree = "<absolute>"; };
+		EDB47EF927AF02AF00C0DE04 /* UniqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = UniqueTests.xctest; path = /Users/ashwinpaudel/Desktop/Malvon/Frameworks/Unique/build/Debug/UniqueTests.xctest; sourceTree = "<absolute>"; };
 		EDFB5A2A27A82FFA00C6F779 /* DOMNodeWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOMNodeWrapper.h; sourceTree = "<group>"; };
 		EDFB5A2B27A8305F00C6F779 /* DOMNodeWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DOMNodeWrapper.mm; sourceTree = "<group>"; };
 		EDFB5A3927A8356C00C6F779 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 				ED87CBBC27A82C9700006253 /* Unique */,
 				ED0B165227AC12BC00AB1317 /* Changes.md */,
 				EDB47EF827AF02AF00C0DE04 /* Unique.framework */,
-				EDB47EF927AF02AF00C0DE04 /* UniqueTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,7 +162,7 @@
 			);
 			name = UniqueTset;
 			productName = UniqueTset;
-			productReference = EDB47EFA27AF02AF00C0DE04 /* UniqueTset */;
+			productReference = EDA8FA8627B01F8A00AD659F /* UniqueTset */;
 			productType = "com.apple.product-type.tool";
 		};
 		ED87CBB927A82C9700006253 /* Unique */ = {

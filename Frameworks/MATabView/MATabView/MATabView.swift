@@ -186,6 +186,6 @@ open class MATabView: NSView, MATabBarDelegate {
     open func updateColors(configuration: MATabViewConfiguration) {
         self.configuration = configuration
         tabBar.heightAnchor.constraint(equalToConstant: configuration.tabHeight).isActive = true
-        tabBar.updateColors(configuration: configuration)
+        tabBar.updateColors(configuration: configuration, selectedTab: selectedTab!)
     }
 }

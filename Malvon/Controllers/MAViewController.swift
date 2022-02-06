@@ -85,6 +85,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         
         // Setup the buttons
         styleElements()
+        searchField.alphaValue = 0.6
     }
     
     override func viewDidLayout() {
@@ -228,8 +229,27 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
         }
     }
     
+    func createNewTab() {
+        // Create a new tab
+        webView = getNewWebViewInstance()
+        
+        Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
+            webTabView.create(tab: MATab(view: self.webView!, title: "Untitled Tab"))
+            
+            webTabView.set(tab: webTabView.selectedTab!.position, icon: getFavicon(url: self.webView!.url!.absoluteString) ?? NSImage())
+            
+            webTabView.set(tab: webTabView.selectedTab!.position, title: self.webView!.title ?? "Untitled Tab")
+            
+            self.webView?.delegate = self
+        }
+    }
+    
     @IBAction func createNewTab(_ sender: Any) {
         // Create a new tab
+        if NSApp.windows.isEmpty {
+            let newWindow = MAWindowController(windowNibName: "MAWindowController")
+            newWindow.showWindow(nil)
+        }
         webView = getNewWebViewInstance()
         Timer.scheduledTimer(withTimeInterval: waitTime, repeats: false) { [self] _ in
             webTabView.create(tab: MATab(view: self.webView!, title: "Untitled Tab"))
@@ -354,9 +374,7 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             controlButtonBox.fillColor = colorConfig.lightTabBackgroundColor
             view.layer?.backgroundColor = colorConfig.lightTabBackgroundColor.cgColor
         }
-        
-        webTabView.updateColors(configuration: tabConfiguration)
-        
+                
         // Update the webview elements
         let ciColor = CIColor(color: tabConfiguration.lightTabBackgroundColor)!
         
@@ -366,11 +384,21 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             backButtonOutlet.contentTintColor = .white
             forwardButtonOutlet.contentTintColor = .white
             addNewTabButtonOutlet.contentTintColor = .white
+            tabConfiguration.darkTabBorderColor = .white
+            tabConfiguration.lightTabBorderColor = .white
+            tabConfiguration.lightTabTitleTextColor = .white
+            tabConfiguration.darkTabTitleTextColor = .white
         } else {
             backButtonOutlet.contentTintColor = .black
             forwardButtonOutlet.contentTintColor = .black
             addNewTabButtonOutlet.contentTintColor = .black
+            tabConfiguration.darkTabBorderColor = .gray
+            tabConfiguration.lightTabBorderColor = .gray
+            tabConfiguration.lightTabTitleTextColor = .black
+            tabConfiguration.darkTabTitleTextColor = .black
         }
+        
+        webTabView.updateColors(configuration: tabConfiguration)
     }
     
     func updateThemeColor(colorConfig: MATabViewConfiguration) {
@@ -388,6 +416,8 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
                 let hexValue = value as! String
                 let color = NSColor(hex: hexValue)
                 colorConfig.lightTabBackgroundColor = color
+                colorConfig.darkTabColor = color.lighter()
+                colorConfig.lightTabColor = color.darker()
                 
                 // TODO: Darken this a little bit
                 colorConfig.darkTabBackgroundColor = color
@@ -635,10 +665,12 @@ class MAViewController: NSViewController, MAWebViewDelegate, NSSearchFieldDelega
             // This suggestion has been skipped, don"t skip the next one.
             skipNextSuggestion = false
         }
+        searchField.alphaValue = 0.8
     }
     
     func controlTextDidEndEditing(_ obj: Notification) {
         suggestionsController?.cancelSuggestions()
+        searchField.alphaValue = 0.6
     }
     
     func controlTextDidBeginEditing(_ obj: Notification) {
@@ -956,4 +988,39 @@ extension NSColor {
             return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
         }
     }
+}
+
+// https://stackoverflow.com/a/63003757
+enum ColorBrightness {
+    case light
+    case dark
+}
+
+extension NSColor {
+    func mix(type: ColorBrightness) -> Self {
+        let ciColor = CIColor(color: self)!
+        
+        let red = ciColor.red
+        let green = ciColor.green
+        let blue = ciColor.blue
+        
+        if type == .dark {
+            return Self(
+                red: max(red - 0.2, 0.0),
+                green: max(green - 0.2, 0.0),
+                blue: max(blue - 0.2, 0.0),
+                alpha: ciColor.alpha
+            )
+        } else {
+            return Self(
+                red: max(red + 0.2, 0.0),
+                green: max(green + 0.2, 0.0),
+                blue: max(blue + 0.2, 0.0),
+                alpha: ciColor.alpha
+            )
+        }
+    }
+
+    func lighter() -> Self { mix(type: .light) }
+    func darker() -> Self { mix(type: .dark) }
 }

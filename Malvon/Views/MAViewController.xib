@@ -92,6 +92,9 @@
                             </stackView>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEv-1d-jkS" customClass="MASearchField" customModule="Malvon" customModuleProvider="target">
                                 <rect key="frame" x="177" y="2" width="788" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="vbV-Dj-koP"/>
+                                </constraints>
                                 <shadow key="shadow">
                                     <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </shadow>

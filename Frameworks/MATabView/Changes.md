@@ -1,6 +1,7 @@
 #  Changes
 
 ## v1.0
+- Made fixed in the `updateColor` function
 - Updated `colorConfiguration` and made each tab have their seperate color configuration
 - Fixed the tab system when closing the last tab
 - Added a `tabCount` variable

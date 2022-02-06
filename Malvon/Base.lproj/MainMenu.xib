@@ -73,9 +73,9 @@
                                     <action selector="openNewApplicationWindow:" target="-1" id="WVz-nB-1tf"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="New Tab" keyEquivalent="t" id="KZT-kQ-euq">
+                            <menuItem title="New Tab" keyEquivalent="t" allowsKeyEquivalentWhenHidden="YES" id="KZT-kQ-euq">
                                 <connections>
-                                    <action selector="createNewTab:" target="-1" id="cOa-4e-rXm"/>
+                                    <action selector="createTab:" target="-1" id="vag-fQ-MUh"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="e90-eP-Tnb"/>

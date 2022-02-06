@@ -130,6 +130,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction func createTab(_ sender: Any) {
+        var newWindow = NSApp.windows.isEmpty ? MAWindowController(windowNibName: "MAWindowController") : NSApp.mainWindow?.windowController!
+//        newWindow.showWindow(nil)
+        
+        if NSApp.windows.isEmpty {
+            newWindow!.showWindow(nil)
+        }
+        
+        if let newWindow = newWindow {
+            let VC = newWindow.contentViewController as? MAViewController
+            VC!.createNewTab()
+        } else {
+            newWindow = MAWindowController(windowNibName: "MAWindowController")
+            newWindow!.window?.makeKeyAndOrderFront(nil)
+        }
+    }
+    
     // MARK: - Other
 
     public func setAsDefaultBrowser() {

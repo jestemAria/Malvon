@@ -42,11 +42,13 @@ open class MATabBarItem: NSButton {
         layer?.borderColor = configuration.lightTabBorderColor.cgColor
         layer?.cornerRadius = 4
         layer?.borderWidth = 1
+        tabTitle.textColor = configuration.lightTabTitleTextColor
         let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
 
         if appearance == "Dark" {
             bgColor = configuration.darkTabColor
             layer?.borderColor = configuration.darkTabBorderColor.cgColor
+            tabTitle.textColor = configuration.darkTabTitleTextColor
         }
 
         layer?.masksToBounds = true
@@ -60,17 +62,17 @@ open class MATabBarItem: NSButton {
         self.configuration = configuration
         var bgColor: NSColor = configuration.lightTabColor
         layer?.borderColor = configuration.lightTabBorderColor.cgColor
-        layer?.cornerRadius = 4
-        layer?.borderWidth = 1
+        tabTitle.textColor = configuration.lightTabTitleTextColor
         let appearance = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
 
         if appearance == "Dark" {
             bgColor = configuration.darkTabColor
             layer?.borderColor = configuration.darkTabBorderColor.cgColor
+            tabTitle.textColor = configuration.darkTabTitleTextColor
         }
-
-        layer?.masksToBounds = true
         layer?.backgroundColor = bgColor.cgColor
+        (cell as? NSButtonCell)?.backgroundColor = bgColor
+//        bgColor.setFill()
     }
 
     private final func configureViews() {

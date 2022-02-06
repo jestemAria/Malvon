@@ -13,11 +13,13 @@ public class MATabViewConfiguration: NSObject {
     public var lightTabColor: NSColor = .white
     public var lightTabBorderColor: NSColor = .black
     public var lightTabBackgroundColor: NSColor = .white
+    public var lightTabTitleTextColor: NSColor = .black
 
     // Dark
     public var darkTabColor: NSColor = .black
     public var darkTabBorderColor: NSColor = .lightGray
     public var darkTabBackgroundColor: NSColor = .black
+    public var darkTabTitleTextColor: NSColor = .white
 
     // Tab Dimensions
     public var tabHeight: CGFloat = 30.0
